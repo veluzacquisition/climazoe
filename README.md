@@ -100,6 +100,55 @@ de conciliación; por eso cada producto guarda su `fuente_url`.
 
 ---
 
+## Supabase
+
+El frontend intenta Supabase primero y, si no hay credenciales o la consulta
+falla, cae a `public/data/catalogo.json`. Eso significa que el sitio nunca se
+queda sin catálogo mientras se migra.
+
+### Puesta en marcha
+
+1. Crear un proyecto en Supabase (región `us-east-1`).
+2. Llenar `.env.local` (ver `.env.example`). Ese archivo está en `.gitignore`.
+3. Aplicar el esquema: pegar `supabase/migrations/0001_catalogo.sql` en el
+   SQL Editor del proyecto.
+4. Cargar el catálogo:
+
+   ```bash
+   cd scraper
+   ./.venv/bin/pip install -r requirements-import.txt
+   ./.venv/bin/python importar_a_supabase.py --dry-run   # ver el plan
+   ./.venv/bin/python importar_a_supabase.py
+   ```
+
+5. En Vercel, añadir `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`.
+   **La `service_role` no va a Vercel**: es sólo para los scripts locales.
+
+### Cómo se protege el costo del proveedor
+
+`precio_proveedor` vive en la tabla `productos`, pero el rol `anon` **no
+tiene ninguna política de SELECT** sobre esa tabla: con RLS activo, eso es
+denegado. El público sólo puede leer las vistas `catalogo_publico` y
+`categorias_publicas`, que corren con los privilegios de su dueño y no
+incluyen esa columna. O sea, el costo no se filtra aunque alguien consulte la
+API a mano con la anon key.
+
+### Publicación de productos
+
+Un producto se activa cuando tiene **al menos una imagen** — no cuando tiene
+precio. Clima Zoe vende por cotización, así que exigir precio dejaría el
+catálogo entero apagado; lo que no se admite es una imagen rota en
+producción. Un trigger lo verifica en Postgres.
+
+### Imágenes
+
+`producto_imagenes` tiene dos columnas: `url_cloudinary` y `url_origen`. La
+vista pública hace `coalesce` entre las dos. Hoy sólo está poblada
+`url_origen`; cuando estén las imágenes propias de Clima Zoe se rellena
+`url_cloudinary` y el sitio cambia solo, sin tocar código.
+
+---
+
 ## Deploy (Vercel)
 
 `vercel.json` hace dos cosas que no son automáticas:

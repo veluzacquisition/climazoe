@@ -12,11 +12,10 @@ export const site = {
   nombre: 'Clima Zoe',
   claim: 'Energía solar para la casa, el campo y el negocio',
 
-  /** [PENDIENTE: contenido real de Clima Zoe] — confirmar con Don Carlos. */
   contacto: {
     /** Formato internacional sin '+' ni espacios, como lo pide wa.me. */
-    whatsapp: '57XXXXXXXXXX',
-    telefono: null as string | null,
+    whatsapp: '573223919801',
+    telefono: '+57 322 391 9801',
     email: null as string | null,
     direccion: null as string | null,
     ciudad: null as string | null,

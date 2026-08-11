@@ -54,10 +54,54 @@ export interface NodoCategoria extends CategoriaWeb {
 
 let cache: Promise<Catalogo> | null = null;
 
+/**
+ * Origen de los datos, en orden:
+ *
+ *   1. Supabase, si hay credenciales. Se consultan las vistas
+ *      `catalogo_publico` y `categorias_publicas`, que ya devuelven la forma
+ *      exacta de `ProductoWeb` / `CategoriaWeb` y —lo importante— NO incluyen
+ *      el costo del proveedor.
+ *   2. `public/data/catalogo.json`, el volcado del scraper.
+ *
+ * El respaldo no es pereza: mientras se migra, un error de red o una tabla a
+ * medio poblar dejaría el sitio sin catálogo. Con esto se degrada a los datos
+ * del último scraping en vez de mostrar una página vacía.
+ */
+async function desdeSupabase(): Promise<Catalogo> {
+  const { supabase } = await import('./supabase');
+  if (!supabase) throw new Error('Supabase sin configurar');
+
+  const [productos, categorias] = await Promise.all([
+    supabase.from('catalogo_publico').select('*').order('orden'),
+    supabase.from('categorias_publicas').select('*'),
+  ]);
+
+  if (productos.error) throw new Error(productos.error.message);
+  if (categorias.error) throw new Error(categorias.error.message);
+  if (!productos.data?.length) throw new Error('El catálogo de Supabase está vacío');
+
+  return {
+    generado_en: new Date().toISOString(),
+    con_precios: productos.data.some(
+      (p) => p.precios && Object.keys(p.precios).length > 0,
+    ),
+    categorias: categorias.data as CategoriaWeb[],
+    productos: productos.data as ProductoWeb[],
+  };
+}
+
+async function desdeJSON(): Promise<Catalogo> {
+  const r = await fetch('/data/catalogo.json');
+  if (!r.ok) throw new Error(`No se pudo cargar el catálogo (HTTP ${r.status})`);
+  return r.json() as Promise<Catalogo>;
+}
+
 function cargarCatalogo(): Promise<Catalogo> {
-  cache ??= fetch('/data/catalogo.json').then((r) => {
-    if (!r.ok) throw new Error(`No se pudo cargar el catálogo (HTTP ${r.status})`);
-    return r.json() as Promise<Catalogo>;
+  cache ??= desdeSupabase().catch((e: Error) => {
+    if (import.meta.env.DEV) {
+      console.info(`[catálogo] Supabase no disponible (${e.message}); usando el JSON local.`);
+    }
+    return desdeJSON();
   });
   return cache;
 }
