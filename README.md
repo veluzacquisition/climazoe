@@ -100,6 +100,22 @@ de conciliación; por eso cada producto guarda su `fuente_url`.
 
 ---
 
+## Deploy (Vercel)
+
+`vercel.json` hace dos cosas que no son automáticas:
+
+- **SPA fallback.** El sitio enruta en el cliente con react-router. Sin el
+  rewrite a `index.html`, entrar directo a `/paleta` o refrescar
+  `/producto/x` devuelve 404. Vercel resuelve los archivos estáticos *antes*
+  de aplicar rewrites, así que el catch-all no intercepta `/assets/*`.
+- **Cache.** Los assets de Vite llevan hash en el nombre, así que van con
+  `immutable` a un año; el logo, a una semana.
+
+Cada push a `main` dispara un deploy de producción; las ramas y PRs generan
+preview URLs.
+
+---
+
 ## Estructura
 
 ```
