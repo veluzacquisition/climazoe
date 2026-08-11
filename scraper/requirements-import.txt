@@ -1,0 +1,3 @@
+# Sólo para importar_a_supabase.py (Fase 2). El scraper no las necesita.
+supabase>=2.10
+cloudinary>=1.41

@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Scraper (Python)
+scraper/.venv/
+scraper/__pycache__/
+**/__pycache__/
+*.pyc
+
+# HTML crudo cacheado del scraping: pesado y regenerable con `--sin-cache`.
+data/raw_html/
+
+# Lista completa de precios del proveedor. Se regenera con el scraper en ~6 min;
+# se deja fuera del repo público a propósito. Para incluirla, borrar esta línea.
+data/catalogo_solphower.json
