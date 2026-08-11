@@ -22,7 +22,7 @@ const TOKENS = [
     hex: '#FFFFFF',
     nombre: 'Blanco',
     origen: 'La palabra "CLIMA"',
-    papel: 'Texto principal y títulos. 21:1 sobre negro.',
+    papel: 'Color de marca, no sólo texto: alrededor del 62% de la página va sobre superficies claras. El negro se reserva para el hero, las cifras y los cierres.',
   },
   {
     css: '--zoe-green',
@@ -54,11 +54,11 @@ export default function Paleta() {
   return (
     <div className="contenedor py-14">
       <header className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-marca">
+        <p className="text-sm font-semibold uppercase tracking-widest text-marca-texto">
           Interno — identidad visual
         </p>
         <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
-          La paleta de <span className="text-marca">Clima Zoe</span>
+          La paleta de <span className="text-marca-texto">Clima Zoe</span>
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-texto-medio">
           Estos colores no son una propuesta: salieron de muestrear los píxeles
@@ -91,7 +91,7 @@ export default function Paleta() {
               <div className="p-5">
                 <div className="flex items-baseline justify-between gap-2">
                   <h3 className="text-base font-semibold">{t.nombre}</h3>
-                  <code className="font-mono text-xs text-marca">{t.hex}</code>
+                  <code className="font-mono text-xs text-marca-texto">{t.hex}</code>
                 </div>
                 <p className="mt-1 font-mono text-[11px] text-texto-suave">{t.css}</p>
                 <p className="mt-3 text-sm leading-relaxed text-texto-medio">{t.papel}</p>
@@ -132,7 +132,9 @@ export default function Paleta() {
             </thead>
             <tbody className="divide-y divide-borde-suave">
               {[
-                ['Botón primario', 'Verde con texto NEGRO', 'Negro da 10.24:1; blanco sobre ese verde da 2.05:1 y es ilegible'],
+                ['Botón primario', 'Verde con texto NEGRO', 'Negro da 10.24:1; blanco sobre ese verde da 2.05:1 y es ilegible. Igual en secciones claras y oscuras'],
+                ['Verde como TEXTO', 'Cambia con el tono', '#68CB4E sobre blanco da 2.05:1, así que en secciones claras la letra usa #3E7A2F (5.21:1)'],
+                ['Ritmo de la página', '~62% claro / 38% oscuro', 'Todo negro se lee apagado para una marca de energía'],
                 ['Precios', 'Verde', 'Es el dato que más se busca y el color que ancla la marca'],
                 ['Badge de descuento', 'Rojo con texto negro', '4.85:1 contra 4.33:1 del blanco'],
                 ['Navy', 'Bordes, íconos y tinte de tarjetas', '2.31:1 sobre negro: no pasa ni para UI'],
@@ -141,7 +143,7 @@ export default function Paleta() {
               ].map(([uso, regla, porque]) => (
                 <tr key={uso}>
                   <td className="px-5 py-3.5 font-medium text-texto">{uso}</td>
-                  <td className="px-5 py-3.5 text-marca">{regla}</td>
+                  <td className="px-5 py-3.5 text-marca-texto">{regla}</td>
                   <td className="px-5 py-3.5 text-texto-medio">{porque}</td>
                 </tr>
               ))}
@@ -183,7 +185,7 @@ function MockHeader() {
       <div className="flex items-center justify-between gap-4 bg-fondo px-6 py-4">
         <Logo className="h-10" />
         <nav className="hidden items-center gap-1 md:flex">
-          <span className="rounded-marca bg-marca-tenue px-3.5 py-2 text-sm font-medium text-marca">
+          <span className="rounded-marca bg-marca-tenue px-3.5 py-2 text-sm font-medium text-marca-texto">
             Catálogo
           </span>
           {['Servicios', 'Nosotros', 'Contacto'].map((t) => (
@@ -204,14 +206,14 @@ function MockHero() {
   return (
     <Marco titulo="Hero">
       <div className="bg-fondo px-8 py-16 sm:px-14">
-        <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca">
+        <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca-texto">
           <span className="size-1.5 rounded-full bg-marca" />
           Más de 7 años instalando en Colombia
         </p>
         <h3 className="mt-7 max-w-2xl text-4xl font-bold leading-[1.05] sm:text-5xl">
           Energía solar
           <br />
-          que <span className="text-marca">se paga sola</span>
+          que <span className="text-marca-texto">se paga sola</span>
         </h3>
         <p className="mt-5 max-w-lg text-lg text-texto-medio">
           Paneles, baterías e instalación para hogares, fincas y negocios.
@@ -255,7 +257,7 @@ function MockGrid() {
             <div className="p-5">
               <p className="text-xs font-medium uppercase tracking-wide text-texto-suave">{p.cat}</p>
               <h4 className="mt-1.5 text-base font-semibold leading-snug">{p.nombre}</h4>
-              <p className="mt-3 text-xl font-bold text-marca">{p.precio}</p>
+              <p className="mt-3 text-xl font-bold text-marca-texto">{p.precio}</p>
               {p.stock ? (
                 <span className="mt-4 flex w-full items-center justify-center gap-2 rounded-marca bg-marca px-4 py-2.5 text-sm font-semibold text-marca-contraste">
                   Comprar por WhatsApp

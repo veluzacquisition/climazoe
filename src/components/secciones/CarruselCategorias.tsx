@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { construirArbol, useCatalogo } from '../../lib/catalogo';
+import Seccion, { TituloSeccion } from '../Seccion';
 
 /**
  * "Categorías destacadas" en carrusel, como el del sitio de referencia.
@@ -41,22 +42,17 @@ export default function CarruselCategorias() {
   };
 
   return (
-    <section className="contenedor py-16">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold sm:text-4xl">Categorías destacadas</h2>
-          <p className="mt-3 text-lg text-texto-medio">
-            Equipos para hogar, finca y empresa. Si no sabe qué necesita,
-            escríbanos y le armamos el sistema a la medida.
-          </p>
-        </div>
-
-        <div className="flex gap-2">
+    <Seccion tono="claro">
+      <TituloSeccion
+        titulo="Categorías destacadas"
+        bajada="Equipos para hogar, finca y empresa. Si no sabe qué necesita, escríbanos y le armamos el sistema a la medida."
+        accion={
+          <div className="flex gap-2">
           <button
             type="button"
             onClick={() => desplazar(-1)}
             aria-label="Categorías anteriores"
-            className="flex size-10 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca-borde hover:text-marca"
+            className="flex size-10 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca-borde hover:text-marca-texto"
           >
             ‹
           </button>
@@ -64,12 +60,13 @@ export default function CarruselCategorias() {
             type="button"
             onClick={() => desplazar(1)}
             aria-label="Categorías siguientes"
-            className="flex size-10 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca-borde hover:text-marca"
+            className="flex size-10 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca-borde hover:text-marca-texto"
           >
             ›
           </button>
-        </div>
-      </div>
+          </div>
+        }
+      />
 
       <div ref={pista} className="pista mt-10 gap-4 pb-2">
         {cargando
@@ -80,12 +77,12 @@ export default function CarruselCategorias() {
               <Link
                 key={c.slug}
                 to={`/catalogo?categoria=${c.slug}`}
-                className="group flex w-56 flex-col justify-between rounded-marca-lg border border-borde-suave bg-superficie p-6 transition-colors hover:border-marca-borde hover:bg-superficie-alta"
+                className="group flex w-56 flex-col justify-between rounded-marca-lg border border-borde-suave bg-superficie p-6 transition-colors hover:border-marca hover:bg-superficie-alta"
               >
-                <span className="flex size-12 items-center justify-center rounded-marca bg-marca-tenue text-marca transition-colors group-hover:bg-marca group-hover:text-marca-contraste">
+                <span className="flex size-12 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto transition-colors group-hover:bg-marca group-hover:text-marca-contraste">
                   {iconoDe(c.slug, c.nombre)}
                 </span>
-                <span className="mt-6 block font-semibold leading-snug transition-colors group-hover:text-marca">
+                <span className="mt-6 block font-semibold leading-snug transition-colors group-hover:text-marca-texto">
                   {c.nombre}
                 </span>
                 <span className="mt-1 block text-sm text-texto-suave">
@@ -94,7 +91,7 @@ export default function CarruselCategorias() {
               </Link>
             ))}
       </div>
-    </section>
+    </Seccion>
   );
 }
 

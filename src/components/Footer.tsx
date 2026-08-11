@@ -36,7 +36,7 @@ export default function Footer() {
               <dd>
                 <a
                   href={`tel:${site.contacto.telefono?.replace(/\s/g, '')}`}
-                  className="text-lg font-bold text-marca transition-colors hover:text-marca-fuerte"
+                  className="text-lg font-bold text-marca-texto transition-colors hover:text-marca-fuerte"
                 >
                   {site.contacto.telefono}
                 </a>
@@ -54,7 +54,7 @@ export default function Footer() {
               href={`https://wa.me/${site.contacto.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-marca border border-borde px-3 py-2 text-xs font-medium text-texto-medio transition-colors hover:border-marca-borde hover:text-marca"
+              className="rounded-marca border border-borde px-3 py-2 text-xs font-medium text-texto-medio transition-colors hover:border-marca-borde hover:text-marca-texto"
             >
               WhatsApp
             </a>
@@ -68,25 +68,25 @@ export default function Footer() {
               <li key={c.slug}>
                 <Link
                   to={`/catalogo?categoria=${c.slug}`}
-                  className="transition-colors hover:text-marca"
+                  className="transition-colors hover:text-marca-texto"
                 >
                   {c.nombre}
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/catalogo" className="font-semibold text-marca">
+              <Link to="/catalogo" className="font-semibold text-marca-texto">
                 Ver todo →
               </Link>
             </li>
           </ColumnaFooter>
 
           <ColumnaFooter titulo="Sobre nosotros">
-            <li><Link to="/nosotros" className="transition-colors hover:text-marca">Quiénes somos</Link></li>
-            <li><Link to="/servicios" className="transition-colors hover:text-marca">Servicios e instalación</Link></li>
-            <li><Link to="/contacto" className="transition-colors hover:text-marca">Contacto</Link></li>
-            <li><Link to="/contacto" className="transition-colors hover:text-marca">Política de privacidad</Link></li>
-            <li><Link to="/contacto" className="transition-colors hover:text-marca">PQRS</Link></li>
+            <li><Link to="/nosotros" className="transition-colors hover:text-marca-texto">Quiénes somos</Link></li>
+            <li><Link to="/servicios" className="transition-colors hover:text-marca-texto">Servicios e instalación</Link></li>
+            <li><Link to="/contacto" className="transition-colors hover:text-marca-texto">Contacto</Link></li>
+            <li><Link to="/contacto" className="transition-colors hover:text-marca-texto">Política de privacidad</Link></li>
+            <li><Link to="/contacto" className="transition-colors hover:text-marca-texto">PQRS</Link></li>
           </ColumnaFooter>
         </div>
 
@@ -145,7 +145,7 @@ function RedSocial({ nombre, url }: { nombre: string; url: string | null }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="rounded-marca border border-borde px-3 py-2 text-xs font-medium text-texto-medio transition-colors hover:border-marca-borde hover:text-marca"
+      className="rounded-marca border border-borde px-3 py-2 text-xs font-medium text-texto-medio transition-colors hover:border-marca-borde hover:text-marca-texto"
     >
       {nombre}
     </a>

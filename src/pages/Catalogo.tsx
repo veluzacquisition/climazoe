@@ -72,14 +72,17 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
     );
   }
 
+  // Catálogo en tono claro: las fichas, precios y filtros se leen mejor
+  // sobre blanco, y le da el respiro claro que pedía el ritmo del sitio.
   return (
-    <div className="contenedor py-10">
+    <div className="tono-claro bg-fondo">
+      <div className="contenedor py-10">
       {/* --- Encabezado --------------------------------------------------- */}
       <header>
         <nav aria-label="Ruta" className="text-sm text-texto-suave">
-          <Link to="/" className="transition-colors hover:text-marca">Inicio</Link>
+          <Link to="/" className="transition-colors hover:text-marca-texto">Inicio</Link>
           <span className="mx-2">/</span>
-          <Link to="/catalogo" className="transition-colors hover:text-marca">Catálogo</Link>
+          <Link to="/catalogo" className="transition-colors hover:text-marca-texto">Catálogo</Link>
           {nombreCategoria && (
             <>
               <span className="mx-2">/</span>
@@ -129,7 +132,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
                   onClick={() => actualizar({ categoria: null })}
                   className={`w-full rounded-marca px-3 py-2 text-left text-sm font-medium transition-colors ${
                     !categoria
-                      ? 'bg-marca-tenue text-marca'
+                      ? 'bg-marca-tenue text-marca-texto'
                       : 'text-texto-medio hover:bg-superficie hover:text-texto'
                   }`}
                 >
@@ -225,7 +228,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
                   <button
                     type="button"
                     onClick={() => setVisibles((v) => v + POR_PAGINA)}
-                    className="rounded-marca border border-borde px-6 py-3 text-sm font-semibold transition-colors hover:border-marca-borde hover:text-marca"
+                    className="rounded-marca border border-borde px-6 py-3 text-sm font-semibold transition-colors hover:border-marca-borde hover:text-marca-texto"
                   >
                     Ver más ({resultados.length - visibles} restantes)
                   </button>
@@ -233,6 +236,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
               )}
             </>
           )}
+        </div>
         </div>
       </div>
     </div>
@@ -269,7 +273,7 @@ function RamaCategoria({
           onClick={() => onElegir(nodo.slug)}
           className={`flex-1 rounded-marca px-3 py-2 text-left text-sm transition-colors ${
             esActiva
-              ? 'bg-marca-tenue font-semibold text-marca'
+              ? 'bg-marca-tenue font-semibold text-marca-texto'
               : 'text-texto-medio hover:bg-superficie hover:text-texto'
           }`}
           style={{ paddingLeft: `${0.75 + nivel * 0.75}rem` }}
@@ -283,7 +287,7 @@ function RamaCategoria({
             onClick={() => setAbierta((v) => !v)}
             aria-expanded={abierta}
             aria-label={`${abierta ? 'Contraer' : 'Expandir'} ${nodo.nombre}`}
-            className="rounded-marca px-2 py-2 text-xs text-texto-suave transition-colors hover:text-marca"
+            className="rounded-marca px-2 py-2 text-xs text-texto-suave transition-colors hover:text-marca-texto"
           >
             <span className={`inline-block transition-transform ${abierta ? 'rotate-180' : ''}`}>▾</span>
           </button>

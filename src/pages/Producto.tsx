@@ -56,18 +56,19 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
   const similares = catalogo ? relacionados(catalogo, producto) : [];
 
   return (
-    <div className="contenedor py-10">
+    <div className="tono-claro bg-fondo">
+      <div className="contenedor py-10">
       {/* --- Ruta ---------------------------------------------------------- */}
       <nav aria-label="Ruta" className="text-sm text-texto-suave">
-        <Link to="/" className="transition-colors hover:text-marca">Inicio</Link>
+        <Link to="/" className="transition-colors hover:text-marca-texto">Inicio</Link>
         <span className="mx-2">/</span>
-        <Link to="/catalogo" className="transition-colors hover:text-marca">Catálogo</Link>
+        <Link to="/catalogo" className="transition-colors hover:text-marca-texto">Catálogo</Link>
         {producto.categoria && producto.ruta[0] && (
           <>
             <span className="mx-2">/</span>
             <Link
               to={`/catalogo?categoria=${producto.categoria}`}
-              className="transition-colors hover:text-marca"
+              className="transition-colors hover:text-marca-texto"
             >
               {producto.ruta[0]}
             </Link>
@@ -109,7 +110,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
         {/* --- Información -------------------------------------------------- */}
         <div>
           {producto.ruta.length > 0 && (
-            <p className="text-xs font-medium uppercase tracking-wide text-marca">
+            <p className="text-xs font-medium uppercase tracking-wide text-marca-texto">
               {producto.ruta.join(' · ')}
             </p>
           )}
@@ -127,10 +128,10 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
               </span>
             )}
             <span
-              className={`rounded-marca px-3 py-1.5 font-medium ${
+              className={`rounded-marca px-3 py-1.5 font-semibold ${
                 producto.disponible
-                  ? 'border border-marca-borde bg-marca-tenue text-marca'
-                  : 'border border-borde bg-superficie text-texto-medio'
+                  ? 'border border-marca-borde bg-marca-tenue text-marca-texto'
+                  : 'border border-acento/40 bg-acento-tenue text-acento-texto'
               }`}
             >
               {producto.disponible ? 'Disponible' : 'Agotado — consultar'}
@@ -144,7 +145,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
                 <p className="text-sm text-texto-medio">
                   Precio {segmento === 'mayorista' ? 'para empresas' : 'para hogar'}
                 </p>
-                <p className="mt-1 text-4xl font-bold text-marca">{formatear(valor)}</p>
+                <p className="mt-1 text-4xl font-extrabold tracking-tight text-marca-texto sm:text-5xl">{formatear(valor)}</p>
               </>
             ) : (
               <>
@@ -184,7 +185,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
                         PDF
                       </span>
                       <span className="line-clamp-1 flex-1 text-texto-medio">{f.nombre}</span>
-                      <span className="text-marca">Abrir</span>
+                      <span className="text-marca-texto">Abrir</span>
                     </a>
                   </li>
                 ))}
@@ -263,7 +264,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
       {/* --- Ayuda -------------------------------------------------------------- */}
       <section className="mt-20 rounded-marca-lg border border-borde bg-superficie px-8 py-12 text-center">
         <h2 className="text-2xl font-bold">
-          ¿No sabe si este equipo es el que <span className="text-marca">necesita</span>?
+          ¿No sabe si este equipo es el que <span className="text-marca-texto">necesita</span>?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-texto-medio">
           Cuéntenos qué quiere alimentar con energía solar y le decimos
@@ -278,6 +279,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
           Hablar con un asesor
         </a>
       </section>
+      </div>
     </div>
   );
 }

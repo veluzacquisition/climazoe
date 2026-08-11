@@ -56,7 +56,7 @@ export default function Header({
               <span className="block text-[11px] uppercase tracking-wide text-texto-suave">
                 Servicio al cliente
               </span>
-              <span className="block font-semibold text-marca">{site.contacto.telefono}</span>
+              <span className="block font-semibold text-marca-texto">{site.contacto.telefono}</span>
             </a>
 
             <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
@@ -88,7 +88,7 @@ export default function Header({
               to={item.a}
               className={({ isActive }) =>
                 `px-4 py-3.5 text-sm font-medium transition-colors ${
-                  isActive ? 'text-marca' : 'text-texto-medio hover:text-texto'
+                  isActive ? 'text-marca-texto' : 'text-texto-medio hover:text-texto'
                 }`
               }
             >
@@ -210,7 +210,7 @@ function MegaMenuProductos() {
         onMouseEnter={() => setAbierto(true)}
         aria-expanded={abierto}
         className={`flex items-center gap-2 px-4 py-3.5 text-sm font-semibold transition-colors ${
-          abierto ? 'bg-marca text-marca-contraste' : 'text-texto hover:text-marca'
+          abierto ? 'bg-marca text-marca-contraste' : 'text-texto hover:text-marca-texto'
         }`}
       >
         <IconoGrilla />
@@ -233,7 +233,7 @@ function MegaMenuProductos() {
             <Link
               to="/catalogo"
               onClick={() => setAbierto(false)}
-              className="text-sm font-semibold text-marca hover:text-marca-fuerte"
+              className="text-sm font-semibold text-marca-texto hover:text-marca-fuerte"
             >
               Ver todo el catálogo →
             </Link>
@@ -256,7 +256,7 @@ function ColumnaCategoria({
       <Link
         to={`/catalogo?categoria=${nodo.slug}`}
         onClick={onNavegar}
-        className="block text-sm font-bold text-texto transition-colors hover:text-marca"
+        className="block text-sm font-bold text-texto transition-colors hover:text-marca-texto"
       >
         {nodo.nombre}
         <span className="ml-2 text-xs font-normal text-texto-suave">{nodo.total}</span>
@@ -268,7 +268,7 @@ function ColumnaCategoria({
               <Link
                 to={`/catalogo?categoria=${h.slug}`}
                 onClick={onNavegar}
-                className="text-sm text-texto-medio transition-colors hover:text-marca"
+                className="text-sm text-texto-medio transition-colors hover:text-marca-texto"
               >
                 {h.nombre}
               </Link>

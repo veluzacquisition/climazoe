@@ -23,8 +23,11 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
   const categoria = producto.ruta.join(' · ');
   const segunda = producto.imagenes[1];
 
+  // La tarjeta usa el fondo base y las franjas de producto van sobre la
+  // superficie alternativa: si ambas usaran el mismo tono, la tarjeta se
+  // fundiría con la sección y el grid perdería su retícula.
   return (
-    <article className="group flex flex-col overflow-hidden rounded-marca-lg border border-borde-suave bg-superficie transition-colors hover:border-marca-borde">
+    <article className="group flex flex-col overflow-hidden rounded-marca-lg border border-borde bg-fondo transition-colors hover:border-marca">
       <div className="relative">
         <Link
           to={`/producto/${producto.id}`}
@@ -58,7 +61,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
             de los productos, así que como badge flotante es ruido, no señal;
             va abajo, junto al precio. */}
         {!producto.disponible && (
-          <span className="pointer-events-none absolute left-3 top-3 rounded-marca bg-zoe-black/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-texto-medio backdrop-blur">
+          <span className="chip pointer-events-none absolute left-3 top-3 bg-acento text-acento-contraste">
             Agotado
           </span>
         )}
@@ -82,7 +85,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
         )}
 
         <h3 className="mt-1.5 flex-1 text-sm font-semibold leading-snug">
-          <Link to={`/producto/${producto.id}`} className="transition-colors hover:text-marca">
+          <Link to={`/producto/${producto.id}`} className="transition-colors hover:text-marca-texto">
             <span className="line-clamp-2">{producto.nombre}</span>
           </Link>
         </h3>
@@ -91,7 +94,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
             puestos en la misma línea los dos se parten en dos renglones. */}
         <div className="mt-4">
           {valor ? (
-            <p className="text-lg font-bold text-marca">{formatear(valor)}</p>
+            <p className="text-lg font-bold text-marca-texto">{formatear(valor)}</p>
           ) : (
             <p className="text-sm font-semibold text-texto-medio">Precio a cotizar</p>
           )}
@@ -106,10 +109,8 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
           href={enlaceWhatsApp(producto, segmento)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-4 inline-flex w-full items-center justify-center rounded-marca px-4 py-2.5 text-sm font-semibold transition-colors ${
-            producto.disponible
-              ? 'bg-marca text-marca-contraste hover:bg-marca-fuerte'
-              : 'border border-borde bg-superficie-alta text-texto-medio hover:border-marca-borde hover:text-marca'
+          className={`btn btn-sm mt-4 w-full ${
+            producto.disponible ? 'btn-primario' : 'btn-contorno'
           }`}
         >
           {producto.disponible ? 'Cotizar por WhatsApp' : 'Consultar disponibilidad'}

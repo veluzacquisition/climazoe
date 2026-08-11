@@ -61,12 +61,10 @@ export default function BotonCompra({
   const modo = resolverModoCompra(null);
   const tienePrecio = precioDelSegmento(producto, segmento) != null;
 
-  const base =
-    'inline-flex w-full items-center justify-center gap-2 rounded-marca font-semibold transition-colors';
-  const medida = tamano === 'compacto' ? 'px-4 py-2.5 text-sm' : 'px-6 py-4 text-base';
   // Botón primario = verde con texto negro. Blanco sobre este verde da 2.05:1
   // y es ilegible; el negro da 10.24:1.
-  const clases = `${base} ${medida} bg-marca text-marca-contraste hover:bg-marca-fuerte ${className}`;
+  const medida = tamano === 'compacto' ? 'btn-sm' : 'btn-xl';
+  const clases = `btn ${medida} btn-primario w-full ${className}`;
 
   // Sin precio de venta definido, "Comprar ahora" mentiría: hasta que se
   // carguen los precios, todo cierra por cotización.

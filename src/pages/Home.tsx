@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { filtrarProductos, useCatalogo } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
+import Seccion, { TituloSeccion } from '../components/Seccion';
 import Hero from '../components/secciones/Hero';
 import Impacto from '../components/secciones/Impacto';
 import CarruselCategorias from '../components/secciones/CarruselCategorias';
@@ -13,16 +14,29 @@ import {
   Marcas,
   Tienda,
 } from '../components/secciones/Bloques';
+import { site } from '../lib/site.config';
 import type { Segmento } from '../types/catalogo';
 
 /**
  * Home.
  *
- * Sigue el orden de bloques de una tienda de catálogo: gancho, confianza,
- * navegación por categoría, producto, y recién al final la parte
- * institucional. Todo lo que muestra sale del catálogo real; lo que depende
- * de contenido de Clima Zoe queda marcado como pendiente en vez de
- * rellenarse con texto inventado.
+ * El ritmo de tonos es deliberado: el oscuro se reserva para los momentos de
+ * fuerza —hero, cifras, cierre— y el resto va sobre claro, donde se leen
+ * mejor las fichas y los precios. Queda en torno a 65% claro / 35% oscuro,
+ * en vez del negro continuo que hacía ver el sitio apagado.
+ *
+ *   1. Hero .................. OSCURO
+ *   2. Garantías ............. claro
+ *   3. Categorías ............ claro
+ *   4. Destacados ............ claro
+ *   5. Banner asesoría ....... OSCURO
+ *   6. Impacto ............... OSCURO
+ *   7. Más productos ......... claro
+ *   8. Marcas ................ claro
+ *   9. Cómo se compra ........ claro
+ *  10. Tienda ................ OSCURO
+ *  11. Blog y galería ........ claro
+ *  12. Cierre ............... OSCURO
  */
 
 export default function Home({ segmento }: { segmento: Segmento }) {
@@ -49,7 +63,6 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       elegidos.push(p);
       if (elegidos.length === 8) break;
     }
-    // Si hay pocas categorías raíz, se completa con el resto del orden.
     for (const p of ordenados) {
       if (elegidos.length >= 8) break;
       if (!elegidos.includes(p)) elegidos.push(p);
@@ -73,6 +86,8 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <CarruselCategorias />
 
       <FranjaProductos
+        tono="claro"
+        fondo="alt"
         titulo="Productos destacados"
         bajada="Distribución, venta e instalación de sistemas solares. Le asesoramos para generar energía al menor costo."
         productos={destacados}
@@ -84,6 +99,8 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <Impacto />
 
       <FranjaProductos
+        tono="claro"
+        fondo="alt"
         titulo="También le puede servir"
         bajada="Más equipo disponible para despacho inmediato."
         productos={novedades}
@@ -96,36 +113,46 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <Tienda />
       <BlogYGaleria />
 
-      {/* --- CTA final ---------------------------------------------------- */}
-      <section className="contenedor py-16">
-        <div className="overflow-hidden rounded-marca-lg border border-borde bg-superficie px-8 py-16 text-center sm:px-14">
-          <h2 className="text-3xl font-bold sm:text-4xl">
+      {/* --- Cierre ------------------------------------------------------- */}
+      <Seccion tono="oscuro" espaciado="amplio">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
             Dejemos de <span className="text-marca">pagar recibo</span> de luz
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-texto-medio">
+          <p className="mx-auto mt-5 max-w-xl text-lg text-texto-medio">
             Escríbanos y le armamos el sistema a la medida de lo que necesita.
+            La asesoría no cuesta y no compromete a nada.
           </p>
-          <a
-            href="https://wa.me/573223919801"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-9 inline-flex rounded-marca bg-marca px-7 py-4 font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
-          >
-            Hablar con un asesor
-          </a>
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <a
+              href={`https://wa.me/${site.contacto.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-xl btn-primario"
+            >
+              Hablar con un asesor
+            </a>
+            <Link to="/catalogo" className="btn btn-xl btn-contorno">
+              Ver el catálogo
+            </Link>
+          </div>
         </div>
-      </section>
+      </Seccion>
     </>
   );
 }
 
 function FranjaProductos({
+  tono,
+  fondo = 'base',
   titulo,
   bajada,
   productos,
   cargando,
   segmento,
 }: {
+  tono: 'claro' | 'oscuro';
+  fondo?: 'base' | 'alt';
   titulo: string;
   bajada: string;
   productos: ReturnType<typeof filtrarProductos>;
@@ -135,21 +162,21 @@ function FranjaProductos({
   if (!cargando && productos.length === 0) return null;
 
   return (
-    <section className="contenedor py-12">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold sm:text-4xl">{titulo}</h2>
-          <p className="mt-3 text-texto-medio">{bajada}</p>
-        </div>
-        <Link
-          to="/catalogo"
-          className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
-        >
-          Ver catálogo completo →
-        </Link>
-      </div>
+    <Seccion tono={tono} fondo={fondo}>
+      <TituloSeccion
+        titulo={titulo}
+        bajada={bajada}
+        accion={
+          <Link
+            to="/catalogo"
+            className="text-sm font-bold text-marca-texto transition-colors hover:underline"
+          >
+            Ver catálogo completo →
+          </Link>
+        }
+      />
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {cargando
           ? Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="h-80 animate-pulse rounded-marca-lg bg-superficie" />
@@ -158,6 +185,6 @@ function FranjaProductos({
               <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
             ))}
       </div>
-    </section>
+    </Seccion>
   );
 }

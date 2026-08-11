@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCatalogo } from '../../lib/catalogo';
+import Seccion from '../Seccion';
 
 /**
  * Bloque de cifras, con los contadores animados del sitio de referencia.
@@ -27,46 +28,48 @@ export default function Impacto() {
     { valor: null, etiqueta: 'Proyectos instalados' },
   ];
 
+  // Bloque oscuro con cifras verdes: es el patrón de "control energético"
+  // —negro de fondo, número en verde— que usan los referentes del sector.
   return (
-    <section className="border-y border-borde-suave bg-superficie">
-      <div className="contenedor py-16">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">Nuestro impacto</h2>
-          <p className="mx-auto mt-3 max-w-xl text-texto-medio">
-            Energía solar instalada y funcionando en hogares, fincas y
-            negocios de todo el país.
-          </p>
-        </div>
-
-        <dl className="mt-12 grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {cifras.map((c) => (
-            <div
-              key={c.etiqueta}
-              className="rounded-marca-lg border border-borde-suave bg-fondo px-6 py-8 text-center"
-            >
-              <dt className="sr-only">{c.etiqueta}</dt>
-              <dd>
-                {c.valor === null ? (
-                  <span
-                    className="block text-2xl font-bold text-acento-texto"
-                    title="[PENDIENTE: cifra real de Clima Zoe]"
-                  >
-                    —
-                  </span>
-                ) : (
-                  <Contador hasta={c.valor} sufijo={c.sufijo} />
-                )}
-                <span className="mt-2 block text-sm text-texto-medio">{c.etiqueta}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-
-        <p className="mt-6 text-center text-xs text-texto-suave">
-          [PENDIENTE: número real de proyectos, clientes y kWp instalados por Clima Zoe]
+    <Seccion tono="oscuro" espaciado="normal">
+      <div className="text-center">
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
+          Nuestro impacto
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-texto-medio">
+          Energía solar instalada y funcionando en hogares, fincas y
+          negocios de todo el país.
         </p>
       </div>
-    </section>
+
+      <dl className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
+        {cifras.map((c) => (
+          <div
+            key={c.etiqueta}
+            className="rounded-marca-lg border border-borde bg-superficie px-6 py-9 text-center"
+          >
+            <dt className="sr-only">{c.etiqueta}</dt>
+            <dd>
+              {c.valor === null ? (
+                <span
+                  className="block text-4xl font-extrabold text-acento-texto sm:text-5xl"
+                  title="[PENDIENTE: cifra real de Clima Zoe]"
+                >
+                  —
+                </span>
+              ) : (
+                <Contador hasta={c.valor} sufijo={c.sufijo} />
+              )}
+              <span className="mt-3 block text-sm text-texto-medio">{c.etiqueta}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <p className="mt-6 text-center text-xs text-texto-suave">
+        [PENDIENTE: número real de proyectos, clientes y kWp instalados por Clima Zoe]
+      </p>
+    </Seccion>
   );
 }
 
@@ -109,7 +112,7 @@ function Contador({ hasta, sufijo = '' }: { hasta: number; sufijo?: string }) {
   }, [hasta]);
 
   return (
-    <span ref={ref} className="block text-4xl font-bold text-marca sm:text-5xl">
+    <span ref={ref} className="block text-5xl font-extrabold tracking-tight text-marca sm:text-6xl">
       {valor.toLocaleString('es-CO')}
       {sufijo}
     </span>
