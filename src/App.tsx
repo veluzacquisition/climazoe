@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Catalogo from './pages/Catalogo';
+import Producto from './pages/Producto';
 import Paleta from './pages/Paleta';
 import EnConstruccion from './pages/EnConstruccion';
 import { site } from './lib/site.config';
@@ -16,15 +18,9 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout segmento={segmento} onCambiarSegmento={setSegmento} />}>
-          <Route index element={<Home />} />
-          <Route
-            path="catalogo"
-            element={<EnConstruccion titulo="Catálogo" nota="Se conecta cuando el catálogo esté cargado en Supabase (Fase 2)." />}
-          />
-          <Route
-            path="producto/:slug"
-            element={<EnConstruccion titulo="Ficha de producto" nota="Se conecta junto con el catálogo." />}
-          />
+          <Route index element={<Home segmento={segmento} />} />
+          <Route path="catalogo" element={<Catalogo segmento={segmento} />} />
+          <Route path="producto/:slug" element={<Producto segmento={segmento} />} />
           <Route
             path="servicios"
             element={<EnConstruccion titulo="Servicios" nota="[PENDIENTE: contenido real de Clima Zoe] — venta e instalación." />}
@@ -37,7 +33,7 @@ export default function App() {
             path="contacto"
             element={<EnConstruccion titulo="Contacto" nota="[PENDIENTE: teléfono, WhatsApp, correo y dirección reales]." />}
           />
-          {/* Interna, fuera del menú: decisión de identidad con Don Carlos. */}
+          {/* Interna, fuera del menú: identidad visual documentada. */}
           <Route path="paleta" element={<Paleta />} />
           <Route path="*" element={<EnConstruccion titulo="Página no encontrada" nota="Revisá la dirección." />} />
         </Route>

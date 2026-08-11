@@ -1,4 +1,5 @@
-import type { ModoCompra, ProductoConDetalle, Segmento } from '../types/catalogo';
+import type { ModoCompra, Segmento } from '../types/catalogo';
+import type { ProductoWeb } from '../lib/catalogo';
 import { resolverModoCompra, site } from '../lib/site.config';
 import { precio as formatearPrecio } from '../lib/formato';
 
@@ -6,50 +7,46 @@ import { precio as formatearPrecio } from '../lib/formato';
  * Punto único donde el catálogo se convierte en una venta.
  *
  * Los tres modos de la Fase 4 (WhatsApp, Bold, contraentrega) viven detrás de
- * esta misma interfaz. Cambiar de modo es config —`site.modoCompraPorDefecto`
- * o la columna `modo_compra` del producto—, nunca tocar los componentes que
- * usan este botón.
+ * esta misma interfaz. Cambiar de modo es config —`site.modoCompraPorDefecto`—,
+ * nunca tocar los componentes que usan este botón.
  */
 
 interface Props {
-  producto: ProductoConDetalle;
+  producto: ProductoWeb;
   segmento: Segmento;
   className?: string;
-  /** El de la ficha de producto es grande; el de la tarjeta de grid, compacto. */
   tamano?: 'normal' | 'compacto';
 }
 
-function precioDelSegmento(producto: ProductoConDetalle, segmento: Segmento) {
-  return segmento === 'mayorista'
-    ? producto.precio_mayorista ?? producto.precio_minorista
-    : producto.precio_minorista;
+function precioDelSegmento(producto: ProductoWeb, segmento: Segmento) {
+  return producto.precios[segmento] ?? producto.precios.minorista ?? null;
 }
 
 /** Mensaje que le llega a Clima Zoe por WhatsApp, ya con el producto adentro. */
-export function mensajeWhatsApp(
-  producto: ProductoConDetalle,
-  segmento: Segmento,
-): string {
+export function mensajeWhatsApp(producto: ProductoWeb, segmento: Segmento): string {
   const valor = precioDelSegmento(producto, segmento);
   const lineas = [
     `Hola ${site.nombre}, me interesa este producto:`,
     '',
     `• ${producto.nombre}`,
   ];
-  if (producto.sku_proveedor) lineas.push(`• Ref: ${producto.sku_proveedor}`);
-  if (valor && !site.ocultarPrecios) lineas.push(`• Precio en la web: ${formatearPrecio(valor)}`);
-  if (segmento === 'mayorista') lineas.push('• Consulta como mayorista');
-  lineas.push('', `${window.location.origin}/producto/${producto.slug}`);
+  if (producto.sku) lineas.push(`• Ref: ${producto.sku}`);
+  if (valor) lineas.push(`• Precio en la web: ${formatearPrecio(valor)}`);
+  if (segmento === 'mayorista') lineas.push('• Consulta como empresa / mayorista');
+  if (!producto.disponible) lineas.push('• (Aparece agotado en la web)');
+
+  const origen = typeof window !== 'undefined' ? window.location.origin : '';
+  lineas.push('', `${origen}/producto/${producto.id}`);
   return lineas.join('\n');
 }
 
-export function enlaceWhatsApp(producto: ProductoConDetalle, segmento: Segmento): string {
+export function enlaceWhatsApp(producto: ProductoWeb, segmento: Segmento): string {
   const texto = encodeURIComponent(mensajeWhatsApp(producto, segmento));
   return `https://wa.me/${site.contacto.whatsapp}?text=${texto}`;
 }
 
 const ETIQUETAS: Record<ModoCompra, string> = {
-  whatsapp: 'Comprar por WhatsApp',
+  whatsapp: 'Cotizar por WhatsApp',
   bold: 'Comprar ahora',
   contraentrega: 'Pedir contraentrega',
   cotizacion: 'Solicitar cotización',
@@ -61,75 +58,31 @@ export default function BotonCompra({
   className = '',
   tamano = 'normal',
 }: Props) {
-  const modo = resolverModoCompra(producto.modo_compra);
-  const agotado = producto.disponibilidad === 'out_of_stock';
+  const modo = resolverModoCompra(null);
+  const tienePrecio = precioDelSegmento(producto, segmento) != null;
 
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-marca font-semibold ' +
-    'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ' +
-    'disabled:cursor-not-allowed';
-  const medida = tamano === 'compacto' ? 'px-4 py-2 text-sm w-full' : 'px-6 py-3.5 text-base w-full';
+    'inline-flex w-full items-center justify-center gap-2 rounded-marca font-semibold transition-colors';
+  const medida = tamano === 'compacto' ? 'px-4 py-2.5 text-sm' : 'px-6 py-4 text-base';
   // Botón primario = verde con texto negro. Blanco sobre este verde da 2.05:1
   // y es ilegible; el negro da 10.24:1.
-  const color = 'bg-marca text-marca-contraste hover:bg-marca-fuerte';
-  const clases = `${base} ${medida} ${color} ${className}`;
+  const clases = `${base} ${medida} bg-marca text-marca-contraste hover:bg-marca-fuerte ${className}`;
 
-  if (agotado) {
-    return (
-      <button
-        type="button"
-        disabled
-        className={`${base} ${medida} border border-borde bg-superficie text-texto-suave ${className}`}
-      >
-        Agotado
-      </button>
-    );
-  }
+  // Sin precio de venta definido, "Comprar ahora" mentiría: hasta que se
+  // carguen los precios, todo cierra por cotización.
+  const etiqueta = tienePrecio ? ETIQUETAS[modo] : ETIQUETAS.cotizacion;
 
-  const etiqueta = site.ocultarPrecios && modo !== 'whatsapp' ? ETIQUETAS.cotizacion : ETIQUETAS[modo];
-
-  switch (modo) {
-    case 'whatsapp':
-      return (
-        <a
-          href={enlaceWhatsApp(producto, segmento)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={clases}
-        >
-          <IconoWhatsApp />
-          {etiqueta}
-        </a>
-      );
-
-    case 'bold':
-      // [PENDIENTE] Checkout Bold — se activa cuando Don Carlos abra la cuenta.
-      // Hasta entonces cae a WhatsApp para no dejar el CTA muerto.
-      return (
-        <a
-          href={enlaceWhatsApp(producto, segmento)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={clases}
-        >
-          {etiqueta}
-        </a>
-      );
-
-    case 'contraentrega':
-    case 'cotizacion':
-    default:
-      return (
-        <a
-          href={enlaceWhatsApp(producto, segmento)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={clases}
-        >
-          {etiqueta}
-        </a>
-      );
-  }
+  return (
+    <a
+      href={enlaceWhatsApp(producto, segmento)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={clases}
+    >
+      <IconoWhatsApp />
+      {etiqueta}
+    </a>
+  );
 }
 
 function IconoWhatsApp() {

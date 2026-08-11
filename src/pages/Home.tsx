@@ -1,32 +1,59 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { construirArbol, filtrarProductos, useCatalogo } from '../lib/catalogo';
+import TarjetaProducto from '../components/TarjetaProducto';
 import { site } from '../lib/site.config';
+import type { Segmento } from '../types/catalogo';
 
 /**
  * Home.
  *
- * Regla de color: el verde carga la marca (nombre, precios, botones
- * primarios, estados activos); el rojo aparece en acentos puntuales y el navy
- * sólo en bordes y fondos de tarjeta. El resto es negro y espacio negativo.
+ * Las categorías y los destacados salen del catálogo real, no de una lista
+ * escrita a mano: si el scraper trae categorías nuevas, la home las muestra
+ * sin tocar código.
  *
- * Los bloques de historia, cifras y testimonios quedan marcados como
- * pendientes a propósito: ese contenido lo pasa Juan Felipe y no se inventa.
+ * Regla de color: el verde carga la marca (nombre, precios, botones
+ * primarios); el rojo es acento puntual y el navy sólo tinta superficies.
  */
 
-const CATEGORIAS_HERO = [
-  { slug: 'paneles-solares', nombre: 'Paneles solares', detalle: 'Monocristalinos de alta eficiencia' },
-  { slug: 'baterias', nombre: 'Baterías', detalle: 'Litio, gel y AGM' },
-  { slug: 'inversores', nombre: 'Inversores', detalle: 'Híbridos, on-grid y off-grid' },
-  { slug: 'iluminacion', nombre: 'Iluminación LED', detalle: 'Lámparas y reflectores solares' },
-  { slug: 'refrigeracion', nombre: 'Refrigeración solar', detalle: 'Neveras y congeladores' },
-  { slug: 'bombeo', nombre: 'Bombeo de agua', detalle: 'Bombas solares para finca' },
-];
+export default function Home({ segmento }: { segmento: Segmento }) {
+  const { datos, cargando } = useCatalogo();
 
-export default function Home() {
+  const categorias = useMemo(
+    () => (datos ? construirArbol(datos.categorias).slice(0, 8) : []),
+    [datos],
+  );
+
+  /**
+   * Destacados: se toma el mejor producto de cada categoría raíz en vez de
+   * los cuatro mejores del catálogo. Sin esa restricción la vitrina se llena
+   * con cuatro baterías de la misma familia y no muestra a qué se dedica el
+   * negocio.
+   */
+  const destacados = useMemo(() => {
+    if (!datos) return [];
+    const ordenados = filtrarProductos(
+      datos,
+      { soloDisponibles: true, orden: 'relevancia' },
+      segmento,
+    );
+    const vistas = new Set<string>();
+    const elegidos = [];
+    for (const p of ordenados) {
+      const raiz = p.ruta[0] ?? p.categoria ?? '';
+      if (vistas.has(raiz)) continue;
+      vistas.add(raiz);
+      elegidos.push(p);
+      if (elegidos.length === 4) break;
+    }
+    return elegidos;
+  }, [datos, segmento]);
+
   return (
     <>
       {/* --- Hero ------------------------------------------------------- */}
-      <section className="relative overflow-hidden">
-        <div className="contenedor grid gap-14 py-20 lg:grid-cols-2 lg:items-center lg:py-28">
+      <section>
+        <div className="contenedor grid gap-14 py-16 lg:grid-cols-2 lg:items-center lg:py-24">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca">
               <span className="size-1.5 rounded-full bg-marca" />
@@ -61,6 +88,19 @@ export default function Home() {
                 Pedir asesoría
               </a>
             </div>
+
+            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-borde-suave pt-8">
+              {[
+                { n: datos ? `${datos.productos.length}` : '—', t: 'productos' },
+                { n: datos ? `${datos.categorias.length}` : '—', t: 'categorías' },
+                { n: '7+', t: 'años' },
+              ].map((s) => (
+                <div key={s.t}>
+                  <dt className="text-2xl font-bold text-marca">{s.n}</dt>
+                  <dd className="mt-0.5 text-xs uppercase tracking-wide text-texto-suave">{s.t}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div className="flex aspect-4/3 items-center justify-center rounded-marca-lg border border-dashed border-borde bg-superficie px-6 text-center text-sm text-texto-suave">
@@ -72,27 +112,92 @@ export default function Home() {
       <div className="contenedor"><div className="regla-tenue" /></div>
 
       {/* --- Categorías -------------------------------------------------- */}
-      <section className="contenedor py-20">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold sm:text-4xl">Qué vendemos</h2>
-          <p className="mt-3 text-lg text-texto-medio">
-            Equipos para hogar, finca y empresa. Si no sabe qué necesita,
-            escríbanos y le armamos el sistema a la medida.
-          </p>
+      <section className="contenedor py-16">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold sm:text-4xl">Qué vendemos</h2>
+            <p className="mt-3 text-lg text-texto-medio">
+              Equipos para hogar, finca y empresa. Si no sabe qué necesita,
+              escríbanos y le armamos el sistema a la medida.
+            </p>
+          </div>
+          <Link
+            to="/catalogo"
+            className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
+          >
+            Ver todo →
+          </Link>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIAS_HERO.map((c) => (
-            <Link
-              key={c.slug}
-              to={`/catalogo?categoria=${c.slug}`}
-              className="group rounded-marca-lg border border-borde-suave bg-superficie p-6 transition-colors hover:border-marca-borde hover:bg-superficie-alta"
-            >
-              <h3 className="text-lg font-semibold transition-colors group-hover:text-marca">
-                {c.nombre}
-              </h3>
-              <p className="mt-1.5 text-sm text-texto-medio">{c.detalle}</p>
-            </Link>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {cargando
+            ? Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="h-28 animate-pulse rounded-marca-lg bg-superficie" />
+              ))
+            : categorias.map((c) => (
+                <Link
+                  key={c.slug}
+                  to={`/catalogo?categoria=${c.slug}`}
+                  className="group flex flex-col justify-between rounded-marca-lg border border-borde-suave bg-superficie p-5 transition-colors hover:border-marca-borde hover:bg-superficie-alta"
+                >
+                  <h3 className="font-semibold leading-snug transition-colors group-hover:text-marca">
+                    {c.nombre}
+                  </h3>
+                  <p className="mt-3 text-sm text-texto-suave">
+                    {c.total} {c.total === 1 ? 'producto' : 'productos'}
+                  </p>
+                </Link>
+              ))}
+        </div>
+      </section>
+
+      {/* --- Destacados ---------------------------------------------------- */}
+      <section className="contenedor py-10">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="text-3xl font-bold sm:text-4xl">Productos destacados</h2>
+          <Link
+            to="/catalogo"
+            className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
+          >
+            Ver catálogo completo →
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {cargando
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="h-80 animate-pulse rounded-marca-lg bg-superficie" />
+              ))
+            : destacados.map((p) => (
+                <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
+              ))}
+        </div>
+      </section>
+
+      {/* --- Cómo compramos ------------------------------------------------- */}
+      <section className="contenedor py-16">
+        <div className="grid gap-5 sm:grid-cols-3">
+          {[
+            {
+              t: 'Le asesoramos gratis',
+              d: 'Nos cuenta qué quiere alimentar y le decimos qué sistema le sirve. Sin compromiso.',
+            },
+            {
+              t: 'Cotiza por WhatsApp',
+              d: 'Le pasamos precio con instalación incluida si la necesita, y tiempo de entrega.',
+            },
+            {
+              t: 'Instalamos nosotros',
+              d: 'No solo vendemos el equipo: lo dejamos funcionando en su casa, finca o negocio.',
+            },
+          ].map((paso, i) => (
+            <div key={paso.t} className="rounded-marca-lg border border-borde-suave bg-superficie p-6">
+              <span className="inline-flex size-8 items-center justify-center rounded-full bg-marca-tenue text-sm font-bold text-marca">
+                {i + 1}
+              </span>
+              <h3 className="mt-4 font-semibold">{paso.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-texto-medio">{paso.d}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -110,10 +215,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- CTA final ----------------------------------------------------
-          Tarjeta con tinte navy en vez de un bloque verde entero: el verde
-          rinde más como acento concentrado que como superficie grande. */}
-      <section className="contenedor py-20">
+      {/* --- CTA final ---------------------------------------------------- */}
+      <section className="contenedor py-16">
         <div className="overflow-hidden rounded-marca-lg border border-borde bg-superficie px-8 py-16 text-center sm:px-14">
           <h2 className="text-3xl font-bold sm:text-4xl">
             ¿Cuánto puede <span className="text-marca">ahorrar</span> con energía solar?
