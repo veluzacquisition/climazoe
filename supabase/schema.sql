@@ -62,6 +62,10 @@ create table if not exists productos (
   precio_proveedor  numeric(12,2),
   moneda            text not null default 'COP',
 
+  -- Clave de reconciliación con el proveedor: su slug de URL, que sí es único.
+  -- El SKU NO sirve para esto: el proveedor tiene SKU repetidos entre productos
+  -- distintos (p. ej. CAR-MOR-ADP-T2/T1) y 47 productos sin SKU.
+  slug_proveedor    text unique,
   sku_proveedor     text,
   marca             text,
   disponibilidad    disponibilidad_t not null default 'in_stock',
@@ -80,7 +84,8 @@ create table if not exists productos (
 
 create index if not exists productos_categoria_idx  on productos(categoria_id);
 create index if not exists productos_activo_idx     on productos(activo) where activo;
-create unique index if not exists productos_sku_idx on productos(sku_proveedor)
+-- Índice NO único a propósito: ver el comentario en la columna.
+create index if not exists productos_sku_idx on productos(sku_proveedor)
   where sku_proveedor is not null;
 
 -- --------------------------------------------------------------------------

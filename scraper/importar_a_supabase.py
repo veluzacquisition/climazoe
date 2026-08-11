@@ -6,7 +6,9 @@ Qué hace, en orden:
   1. Crea/actualiza el árbol de `categorias` (padres antes que hijos).
   2. Sube cada imagen a Cloudinary con un `public_id` determinista, así que
      re-correr el script no duplica imágenes.
-  3. Hace upsert de `productos` por `sku_proveedor`.
+  3. Hace upsert de `productos` por `slug_proveedor` (el slug de URL del
+     proveedor). No por SKU: el proveedor repite SKU entre productos
+     distintos y deja 47 sin SKU.
 
 Reglas que respeta a propósito:
 
@@ -147,8 +149,11 @@ def subir_imagenes(cdn, producto: dict, carpeta: str, dry: bool) -> list[dict]:
 # productos
 # --------------------------------------------------------------------------
 
-def importar_productos(sb, cloudinary, productos, ids_cat, carpeta, dry, limite):
+def importar_productos(sb, cloud, productos, ids_cat, carpeta, dry, limite):
     nuevos = actualizados = 0
+    # `productos.slug` es único. Hoy no hay colisiones, pero dos productos
+    # pueden terminar con el mismo nombre en un sync futuro.
+    slugs_usados: set[str] = set()
 
     for i, p in enumerate(productos):
         if limite and i >= limite:
@@ -161,9 +166,15 @@ def importar_productos(sb, cloudinary, productos, ids_cat, carpeta, dry, limite)
         slug_cat = p.get("subcategoria") or p.get("categoria")
         categoria_id = ids_cat.get(slug_cat or "")
 
+        slug = slugificar(p["nombre"])
+        if slug in slugs_usados:
+            slug = f"{slug}-{p['id'][-8:]}"
+        slugs_usados.add(slug)
+
         fila = {
             "nombre": p["nombre"],
-            "slug": slugificar(p["nombre"]),
+            "slug": slug,
+            "slug_proveedor": p["id"],
             "categoria_id": categoria_id,
             "descripcion_corta": p.get("descripcion_corta"),
             "descripcion_larga": p.get("descripcion_larga"),
@@ -180,20 +191,20 @@ def importar_productos(sb, cloudinary, productos, ids_cat, carpeta, dry, limite)
         print(f"  [{i + 1}/{len(productos)}] {p['nombre']}")
 
         if dry:
-            subir_imagenes(cloudinary, p, carpeta, dry=True)
+            subir_imagenes(cloud, p, carpeta, dry=True)
             nuevos += 1
             continue
 
-        existente = None
-        if fila["sku_proveedor"]:
-            r = (
-                sb.table("productos")
-                .select("id")
-                .eq("sku_proveedor", fila["sku_proveedor"])
-                .limit(1)
-                .execute()
-            )
-            existente = r.data[0]["id"] if r.data else None
+        # Se reconcilia por el slug del proveedor, no por SKU: el proveedor
+        # repite SKU entre productos distintos y deja 47 sin SKU.
+        r = (
+            sb.table("productos")
+            .select("id")
+            .eq("slug_proveedor", fila["slug_proveedor"])
+            .limit(1)
+            .execute()
+        )
+        existente = r.data[0]["id"] if r.data else None
 
         if existente:
             sb.table("productos").update(fila).eq("id", existente).execute()
@@ -214,7 +225,7 @@ def importar_productos(sb, cloudinary, productos, ids_cat, carpeta, dry, limite)
             .execute()
         )
         if not ya_tiene.data:
-            for img in subir_imagenes(cloudinary, p, carpeta, dry=False):
+            for img in subir_imagenes(cloud, p, carpeta, dry=False):
                 sb.table("producto_imagenes").insert(
                     {**img, "producto_id": producto_id, "alt": p["nombre"]}
                 ).execute()
