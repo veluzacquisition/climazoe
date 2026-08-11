@@ -12,7 +12,7 @@ export default function EnConstruccion({
   return (
     <div className="contenedor py-24">
       <h1 className="text-4xl font-bold">{titulo}</h1>
-      <p className="mt-4 max-w-xl rounded-marca border border-alerta/30 bg-alerta/10 px-4 py-3 text-sm text-alerta">
+      <p className="mt-5 max-w-xl rounded-marca border border-acento/30 bg-acento-tenue px-4 py-3 text-sm text-acento-texto">
         {nota}
       </p>
     </div>

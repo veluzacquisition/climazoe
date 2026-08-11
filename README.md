@@ -24,7 +24,39 @@ Rutas útiles en desarrollo:
 | Ruta      | Qué es                                                          |
 |-----------|-----------------------------------------------------------------|
 | `/`       | Home                                                             |
-| `/paleta` | **Interna.** Las tres direcciones visuales, para decidir con Don Carlos |
+| `/paleta` | **Interna.** La identidad visual documentada: tokens, reglas de contraste y piezas reales |
+
+---
+
+## Identidad visual
+
+La paleta no se inventó: son los colores muestreados del logo que el negocio
+ya usa. Verificados contra los píxeles de `public/brand/climazoe-logo.png`
+(el verde y el rojo caen a Δ≈10 de los colores dominantes de la tipografía).
+
+| Token         | Hex       | Origen en el logo  | Papel |
+|---------------|-----------|--------------------|-------|
+| `--zoe-black` | `#000000` | Fondo              | Fondo base del sitio |
+| `--zoe-white` | `#FFFFFF` | "CLIMA"            | Texto principal |
+| `--zoe-green` | `#68CB4E` | "ZOE"              | **Protagonista**: marca, precios, botones primarios, estados activos |
+| `--zoe-red`   | `#D6492E` | "ENERGÍA SOLAR"    | Acento puntual: descuentos, alertas. Máx. 10-15% de superficie |
+| `--zoe-navy`  | `#284978` | El globo           | Sólo bordes, íconos y tinte de superficies |
+
+Reglas que salen de medir el contraste, no de estimarlo:
+
+- **Botón verde = texto negro** (10.24:1). Blanco sobre ese verde da 2.05:1 y
+  es ilegible.
+- **Navy nunca lleva texto encima sobre negro** (2.31:1, no pasa ni como UI).
+  Como relleno sí, con texto blanco (9.07:1).
+- **El rojo puro no se usa como texto sobre fondos rojizos** (cae a ~4.4:1):
+  para eso está `--acento-texto` (`#E07662`, 6.94:1).
+
+El sitio es de **tema oscuro por decisión**, igual que el logo — no hay
+variante clara. Lo que se conserva del logo es la paleta, no la ilustración:
+sin rayos de sol, sin textura de pasto, sin gradientes ni sombras pesadas.
+
+El logo se sirve en WebP (41 KB en la versión de header, contra 464 KB del
+PNG) con el PNG como respaldo. El master está en Cloudinary.
 
 ---
 
@@ -100,8 +132,9 @@ public/brand/   Logo — colocar climazoe-logo.png acá
 - **Modo de compra.** Arranca en WhatsApp. `BotonCompra` es el único lugar que
   sabe cómo se cierra una venta; cambiar a Bold o contraentrega es tocar
   `site.config.ts` o la columna `modo_compra` del producto.
-- **Paleta.** Tres direcciones como variables CSS en `src/index.css`,
-  intercambiables con `data-paleta="a|b|c"` en `<html>`.
+- **Paleta.** Los cinco tokens de marca viven en `:root` de `src/index.css` y
+  los componentes usan roles semánticos (`bg-marca`, `text-acento`) que apuntan
+  a ellos. Ver la tabla de arriba y la ruta `/paleta`.
 
 ---
 

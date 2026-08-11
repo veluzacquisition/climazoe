@@ -1,138 +1,117 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Clima Zoe — sistema visual
+   Clima Zoe — sistema visual oficial
    --------------------------------------------------------------------------
-   Tres direcciones de paleta derivadas del logo actual (verde vivo, naranja
-   "ENERGÍA SOLAR", azul del globo), llevadas a un lenguaje 2026: neutros
-   sólidos, un acento de marca y un acento de acción.
+   La paleta NO es una propuesta: son los colores muestreados del logo real
+   que ya usa el negocio. Verificado contra los píxeles del logo
+   (public/brand/climazoe-logo.png): el verde y el rojo caen a Δ≈10 de los
+   colores dominantes de la tipografía, así que el logo y la interfaz hablan
+   el mismo idioma.
 
-   Se cambia de dirección con un atributo en <html>:
-       <html data-paleta="a">   (default)
-       <html data-paleta="b">
-       <html data-paleta="c">
+   Lo que se conserva del logo es la PALETA, no la ilustración: nada de rayos
+   de sol amarillos, textura de pasto, gradientes ni sombras pesadas.
 
-   Para decidir con Don Carlos, ver la ruta /paleta del sitio.
+   El sitio es de tema oscuro por decisión, igual que el logo. No hay variante
+   clara: el negro es el fondo de marca, no una preferencia del visitante.
    ========================================================================== */
 
 :root {
-  /* --- Dirección A — "Solar Nítido" (default) -----------------------------
-     El verde del logo como color de marca sobre neutros fríos casi negros.
-     Naranja reservado sólo para acciones. Se lee tecnológico y confiable. */
-  --marca: #16a34a;
-  --marca-fuerte: #15803d;
-  --marca-suave: #dcfce7;
-  --marca-contraste: #ffffff;
+  /* --- Los 5 tokens de marca (fuente de verdad, no tocar) ---------------- */
+  --zoe-black: #000000;
+  --zoe-white: #ffffff;
+  --zoe-green: #68cb4e; /* de la palabra "ZOE" — 10.24:1 sobre negro */
+  --zoe-red:   #d6492e; /* de "ENERGÍA SOLAR" —  4.85:1 sobre negro */
+  --zoe-navy:  #284978; /* del globo —           2.31:1 sobre negro */
 
-  --accion: #f0530f;
-  --accion-fuerte: #d13f04;
-  --accion-suave: #ffedd5;
-  --accion-contraste: #ffffff;
+  /* --- Superficies -------------------------------------------------------
+     Derivadas mezclando el navy sobre negro, para que las tarjetas tengan el
+     tinte de la marca en vez de un gris neutro cualquiera. */
+  --fondo: var(--zoe-black);
+  --superficie: #070d16;      /* tarjetas sobre el fondo   — navy al 18% */
+  --superficie-alta: #0b1422; /* hover y capas elevadas    — navy al 28% */
+  --borde: #1b2a44;
+  --borde-suave: #101a2b;
 
-  --apoyo: #1b6fd4; /* azul del globo — datos, enlaces, badges informativos */
-  --apoyo-suave: #dbeafe;
+  /* --- Texto (todos verificados ≥4.5:1 sobre fondo y superficie) --------- */
+  --texto: var(--zoe-white);
+  --texto-medio: #a7b3c4; /* 9.89:1 sobre negro */
+  --texto-suave: #6e7c91; /* 4.95:1 sobre negro */
 
-  --tinta: #0b1120;
-  --tinta-media: #475569;
-  --tinta-suave: #94a3b8;
+  /* --- Roles de marca ----------------------------------------------------
+     Verde = protagonista. Es el color que la gente ya asocia con Clima Zoe,
+     así que carga el nombre, los precios, los botones primarios y los estados
+     activos. */
+  --marca: var(--zoe-green);
+  --marca-fuerte: #52a83e;              /* hover de rellenos verdes */
+  --marca-tenue: rgb(104 203 78 / 0.12); /* fondos de badge y chips */
+  --marca-borde: rgb(104 203 78 / 0.32);
+  /* Sobre relleno verde el texto va NEGRO: 10.24:1 contra 2.05:1 del blanco.
+     Blanco sobre este verde es prácticamente ilegible. */
+  --marca-contraste: var(--zoe-black);
 
-  --fondo: #ffffff;
-  --fondo-alt: #f6f8f7;
-  --fondo-hondo: #0b1120;
-  --borde: #e2e8f0;
+  /* Rojo-naranja = acento puntual, máximo 10-15% de la superficie. Descuentos,
+     alertas de stock, urgencia. Nunca compite con el verde. */
+  --acento: var(--zoe-red);
+  --acento-fuerte: #b93a22;
+  --acento-tenue: rgb(214 73 46 / 0.14);
+  --acento-contraste: var(--zoe-black); /* 4.85:1 vs 4.33:1 del blanco */
+  /* El rojo puro sobre su propio fondo tenue cae a ~4.4:1. Para TEXTO sobre
+     fondos rojizos se usa esta versión aclarada (6.94:1 sobre negro); el
+     #D6492E se reserva para rellenos sólidos. */
+  --acento-texto: #e07662;
 
-  --exito: #16a34a;
-  --alerta: #d97706;
-  --error: #dc2626;
+  /* Navy = sólo detalles. Con 2.31:1 sobre negro no sirve para texto ni para
+     UI: se usa como borde, ícono decorativo o fondo de tarjeta oscura, y en
+     ese caso el texto encima va blanco (9.07:1). */
+  --apoyo: var(--zoe-navy);
+  --apoyo-contraste: var(--zoe-white);
 
+  /* --- Estados ----------------------------------------------------------- */
+  --exito: var(--zoe-green);
+  --alerta: #e8b931;
+  --error: var(--zoe-red);
+
+  /* --- Tipografía y forma ------------------------------------------------- */
   --fuente-titulo: "Sora", ui-sans-serif, system-ui, sans-serif;
   --fuente-texto: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --radio: 0.75rem;
-  --radio-lg: 1.25rem;
-  --sombra: 0 1px 2px rgb(11 17 32 / 0.04), 0 8px 24px -12px rgb(11 17 32 / 0.12);
-  --sombra-alta: 0 2px 4px rgb(11 17 32 / 0.05), 0 20px 48px -20px rgb(11 17 32 / 0.22);
+  --radio: 0.625rem;
+  --radio-lg: 1rem;
 }
 
-/* --- Dirección B — "Campo y Sol" -------------------------------------------
-   Verde más profundo con amarillo dorado y neutros cálidos. Apunta al cliente
-   rural/agro (bombas de agua, neveras solares, zonas sin red). */
-[data-paleta="b"] {
-  --marca: #15803d;
-  --marca-fuerte: #14532d;
-  --marca-suave: #e7f2e3;
-  --marca-contraste: #ffffff;
-
-  --accion: #ca8a04;
-  --accion-fuerte: #a16207;
-  --accion-suave: #fef3c7;
-  --accion-contraste: #1c1917;
-
-  --apoyo: #0f766e;
-  --apoyo-suave: #ccfbf1;
-
-  --tinta: #1c1917;
-  --tinta-media: #57534e;
-  --tinta-suave: #a8a29e;
-
-  --fondo: #fffdf8;
-  --fondo-alt: #f5f1e8;
-  --fondo-hondo: #1c1917;
-  --borde: #e7e0d3;
-}
-
-/* --- Dirección C — "Azul Ingeniería" ---------------------------------------
-   El azul del globo pasa a primario (lectura de empresa de ingeniería) y el
-   verde queda como acento de energía. La más sobria de las tres. */
-[data-paleta="c"] {
-  --marca: #1554a8;
-  --marca-fuerte: #0f3f80;
-  --marca-suave: #dbeafe;
-  --marca-contraste: #ffffff;
-
-  --accion: #22c55e;
-  --accion-fuerte: #16a34a;
-  --accion-suave: #dcfce7;
-  --accion-contraste: #052e16;
-
-  --apoyo: #f0530f;
-  --apoyo-suave: #ffedd5;
-
-  --tinta: #0f172a;
-  --tinta-media: #475569;
-  --tinta-suave: #94a3b8;
-
-  --fondo: #ffffff;
-  --fondo-alt: #f1f5f9;
-  --fondo-hondo: #0f172a;
-  --borde: #e2e8f0;
-}
-
-/* Puente hacia las utilidades de Tailwind: `bg-marca`, `text-tinta`, etc.
-   Los valores apuntan a las variables de arriba, así que cambiar de paleta
-   en runtime recolorea todo el sitio sin recompilar. */
+/* Puente hacia las utilidades de Tailwind: `bg-marca`, `text-texto-medio`… */
 @theme inline {
-  --color-marca: var(--marca);
-  --color-marca-fuerte: var(--marca-fuerte);
-  --color-marca-suave: var(--marca-suave);
-  --color-marca-contraste: var(--marca-contraste);
-
-  --color-accion: var(--accion);
-  --color-accion-fuerte: var(--accion-fuerte);
-  --color-accion-suave: var(--accion-suave);
-  --color-accion-contraste: var(--accion-contraste);
-
-  --color-apoyo: var(--apoyo);
-  --color-apoyo-suave: var(--apoyo-suave);
-
-  --color-tinta: var(--tinta);
-  --color-tinta-media: var(--tinta-media);
-  --color-tinta-suave: var(--tinta-suave);
+  --color-zoe-black: var(--zoe-black);
+  --color-zoe-white: var(--zoe-white);
+  --color-zoe-green: var(--zoe-green);
+  --color-zoe-red: var(--zoe-red);
+  --color-zoe-navy: var(--zoe-navy);
 
   --color-fondo: var(--fondo);
-  --color-fondo-alt: var(--fondo-alt);
-  --color-fondo-hondo: var(--fondo-hondo);
+  --color-superficie: var(--superficie);
+  --color-superficie-alta: var(--superficie-alta);
   --color-borde: var(--borde);
+  --color-borde-suave: var(--borde-suave);
+
+  --color-texto: var(--texto);
+  --color-texto-medio: var(--texto-medio);
+  --color-texto-suave: var(--texto-suave);
+
+  --color-marca: var(--marca);
+  --color-marca-fuerte: var(--marca-fuerte);
+  --color-marca-tenue: var(--marca-tenue);
+  --color-marca-borde: var(--marca-borde);
+  --color-marca-contraste: var(--marca-contraste);
+
+  --color-acento: var(--acento);
+  --color-acento-fuerte: var(--acento-fuerte);
+  --color-acento-tenue: var(--acento-tenue);
+  --color-acento-contraste: var(--acento-contraste);
+  --color-acento-texto: var(--acento-texto);
+
+  --color-apoyo: var(--apoyo);
+  --color-apoyo-contraste: var(--apoyo-contraste);
 
   --color-exito: var(--exito);
   --color-alerta: var(--alerta);
@@ -143,19 +122,18 @@
 
   --radius-marca: var(--radio);
   --radius-marca-lg: var(--radio-lg);
-
-  --shadow-marca: var(--sombra);
-  --shadow-marca-alta: var(--sombra-alta);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--zoe-black);
+    color-scheme: dark;
   }
 
   body {
     background-color: var(--fondo);
-    color: var(--tinta);
+    color: var(--texto);
     font-family: var(--fuente-texto);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -163,14 +141,21 @@
 
   h1, h2, h3, h4 {
     font-family: var(--fuente-titulo);
-    color: var(--tinta);
-    letter-spacing: -0.02em;
+    color: var(--texto);
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
+  /* El verde es también el color del foco: refuerza la marca en cada
+     interacción de teclado y tiene contraste de sobra sobre negro. */
   :focus-visible {
-    outline: 2px solid var(--accion);
+    outline: 2px solid var(--marca);
     outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--marca);
+    color: var(--zoe-black);
   }
 }
 
@@ -185,5 +170,12 @@
 
   @media (min-width: 768px) {
     .contenedor { padding-inline: 2rem; }
+  }
+
+  /* Línea divisoria que se desvanece: sustituye a las sombras pesadas para
+     separar secciones sobre negro. */
+  .regla-tenue {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--borde), transparent);
   }
 }

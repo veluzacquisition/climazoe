@@ -1,106 +1,165 @@
-import { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
 
 /**
- * Página interna para decidir la identidad visual con Don Carlos.
+ * Documentación de la identidad visual (interna, fuera del menú: /paleta).
  *
- * No va en el menú: se entra por /paleta. Muestra las tres direcciones de
- * src/index.css aplicadas a piezas reales del sitio (hero, tarjeta de
- * producto, botones), porque una paleta se juzga sobre el producto armado, no
- * sobre cuadritos de color sueltos.
- *
- * Cuando esté elegida: fijar `paletaActiva` en site.config.ts, dejar sus
- * valores en :root y borrar esta página.
+ * Ya no es un comparador de opciones. La paleta está decidida porque no se
+ * inventó: son los colores muestreados del logo que el negocio ya usa. Esta
+ * página deja registrado cuáles son, por qué cada uno tiene el papel que
+ * tiene, y cómo se ven aplicados a piezas reales del sitio.
  */
 
-type Direccion = 'a' | 'b' | 'c';
-
-const DIRECCIONES: {
-  id: Direccion;
-  nombre: string;
-  resumen: string;
-  cuando: string;
-}[] = [
+const TOKENS = [
   {
-    id: 'a',
-    nombre: 'Solar Nítido',
-    resumen:
-      'El verde del logo como color de marca sobre neutros fríos casi negros, con el naranja reservado sólo para los botones de acción.',
-    cuando:
-      'La apuesta más segura: se lee moderna y técnica, y es la que menos se parece al estilo caricatura de hoy sin renunciar al verde que ya reconoce la gente.',
+    css: '--zoe-black',
+    hex: '#000000',
+    nombre: 'Negro',
+    origen: 'Fondo del logo',
+    papel: 'Fondo base de todo el sitio. No es un tema oscuro opcional: es el fondo de la marca.',
   },
   {
-    id: 'b',
-    nombre: 'Campo y Sol',
-    resumen:
-      'Verde más profundo, amarillo dorado y neutros cálidos, con fondos color hueso en vez de blanco puro.',
-    cuando:
-      'Si el cliente principal es rural o agro —bombas de agua, neveras solares, fincas sin red eléctrica—, esta habla su idioma.',
+    css: '--zoe-white',
+    hex: '#FFFFFF',
+    nombre: 'Blanco',
+    origen: 'La palabra "CLIMA"',
+    papel: 'Texto principal y títulos. 21:1 sobre negro.',
   },
   {
-    id: 'c',
-    nombre: 'Azul Ingeniería',
-    resumen:
-      'El azul del globo del logo pasa a primario y el verde queda como acento de energía.',
-    cuando:
-      'La más sobria y corporativa. Buena si el foco se va a proyectos grandes y licitaciones, pero se aleja del verde con el que ya identifican a Clima Zoe.',
+    css: '--zoe-green',
+    hex: '#68CB4E',
+    nombre: 'Verde',
+    origen: 'La palabra "ZOE"',
+    papel: 'Protagonista. Nombre de marca, precios, botones primarios y estados activos: es el color que la gente ya asocia con Clima Zoe.',
+    contraste: '10.24:1',
+  },
+  {
+    css: '--zoe-red',
+    hex: '#D6492E',
+    nombre: 'Rojo-naranja',
+    origen: '"ENERGÍA SOLAR"',
+    papel: 'Acento puntual: descuentos, alertas de stock, avisos. Máximo 10-15% de la superficie — no compite con el verde.',
+    contraste: '4.85:1',
+  },
+  {
+    css: '--zoe-navy',
+    hex: '#284978',
+    nombre: 'Navy',
+    origen: 'El globo terráqueo',
+    papel: 'Sólo detalles: bordes, íconos y el tinte de las superficies oscuras. Con 2.31:1 no sirve para texto ni para UI.',
+    contraste: '2.31:1',
   },
 ];
 
 export default function Paleta() {
-  const [activa, setActiva] = useState<Direccion>('a');
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-paleta', activa);
-    return () => document.documentElement.removeAttribute('data-paleta');
-  }, [activa]);
-
-  const dir = DIRECCIONES.find((d) => d.id === activa)!;
-
   return (
-    <div className="contenedor py-12">
-      <header className="max-w-2xl">
+    <div className="contenedor py-14">
+      <header className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-marca">
-          Interno — decisión de marca
+          Interno — identidad visual
         </p>
-        <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Direcciones visuales</h1>
-        <p className="mt-4 text-lg leading-relaxed text-tinta-media">
-          Tres caminos partiendo de los colores del logo actual. Cambiá entre
-          ellos y mirá cómo se ve el sitio armado, no sólo los colores sueltos.
+        <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
+          La paleta de <span className="text-marca">Clima Zoe</span>
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed text-texto-medio">
+          Estos colores no son una propuesta: salieron de muestrear los píxeles
+          del logo que el negocio ya usa en Facebook e Instagram. Es la única
+          dirección que corresponde a la marca real, así que es la definitiva.
+        </p>
+        <p className="mt-4 rounded-marca border border-borde bg-superficie px-4 py-3 text-sm leading-relaxed text-texto-medio">
+          <strong className="text-texto">Lo que se conserva es la paleta, no la ilustración.</strong>{' '}
+          El fondo de rayos de sol, la textura de pasto y los gradientes
+          gruesos del logo actual quedan fuera: el reconocimiento lo hacen el
+          verde y el negro, no la decoración.
         </p>
       </header>
 
-      <div className="mt-8 flex flex-wrap gap-2">
-        {DIRECCIONES.map((d) => (
-          <button
-            key={d.id}
-            type="button"
-            onClick={() => setActiva(d.id)}
-            aria-pressed={activa === d.id}
-            className={`rounded-marca border px-4 py-2.5 text-sm font-semibold transition-colors ${
-              activa === d.id
-                ? 'border-marca bg-marca text-marca-contraste'
-                : 'border-borde bg-fondo text-tinta-media hover:border-tinta-suave'
-            }`}
-          >
-            {d.nombre}
-          </button>
-        ))}
-      </div>
+      {/* --- Los cinco tokens --------------------------------------------- */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold">Los cinco tokens</h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {TOKENS.map((t) => (
+            <article
+              key={t.css}
+              className="overflow-hidden rounded-marca-lg border border-borde-suave bg-superficie"
+            >
+              {/* El ring interior hace visible el swatch negro, que si no se
+                  funde con la tarjeta. */}
+              <div
+                className="h-24 w-full border-b border-borde-suave ring-1 ring-inset ring-white/10"
+                style={{ background: t.hex }}
+              />
+              <div className="p-5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3 className="text-base font-semibold">{t.nombre}</h3>
+                  <code className="font-mono text-xs text-marca">{t.hex}</code>
+                </div>
+                <p className="mt-1 font-mono text-[11px] text-texto-suave">{t.css}</p>
+                <p className="mt-3 text-sm leading-relaxed text-texto-medio">{t.papel}</p>
+                <dl className="mt-4 flex flex-wrap gap-x-5 gap-y-1 border-t border-borde-suave pt-3 text-xs">
+                  <div className="flex gap-1.5">
+                    <dt className="text-texto-suave">Origen:</dt>
+                    <dd className="text-texto-medio">{t.origen}</dd>
+                  </div>
+                  {t.contraste && (
+                    <div className="flex gap-1.5">
+                      <dt className="text-texto-suave">Sobre negro:</dt>
+                      <dd className="text-texto-medio">{t.contraste}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-6 rounded-marca-lg border border-borde bg-fondo-alt p-6">
-        <h2 className="text-xl font-bold">{dir.nombre}</h2>
-        <p className="mt-2 max-w-3xl text-tinta-media">{dir.resumen}</p>
-        <p className="mt-3 max-w-3xl text-sm text-tinta-media">
-          <strong className="text-tinta">Cuándo elegirla:</strong> {dir.cuando}
+      {/* --- Reglas verificadas -------------------------------------------- */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold">Reglas que salen de los números</h2>
+        <p className="mt-2 max-w-2xl text-texto-medio">
+          Cada regla está calculada, no estimada a ojo. Los contrastes son
+          WCAG 2.1 contra el fondo negro.
         </p>
-        <Muestrario />
-      </div>
 
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold">Vista previa</h2>
-        <p className="mt-2 text-tinta-media">Las mismas piezas, con la paleta seleccionada arriba.</p>
-        <div className="mt-6 space-y-8">
+        <div className="mt-6 overflow-x-auto rounded-marca-lg border border-borde-suave">
+          <table className="w-full min-w-[38rem] text-left text-sm">
+            <thead className="bg-superficie text-xs uppercase tracking-wide text-texto-suave">
+              <tr>
+                <th className="px-5 py-3 font-semibold">Uso</th>
+                <th className="px-5 py-3 font-semibold">Regla</th>
+                <th className="px-5 py-3 font-semibold">Por qué</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-borde-suave">
+              {[
+                ['Botón primario', 'Verde con texto NEGRO', 'Negro da 10.24:1; blanco sobre ese verde da 2.05:1 y es ilegible'],
+                ['Precios', 'Verde', 'Es el dato que más se busca y el color que ancla la marca'],
+                ['Badge de descuento', 'Rojo con texto negro', '4.85:1 contra 4.33:1 del blanco'],
+                ['Navy', 'Bordes, íconos y tinte de tarjetas', '2.31:1 sobre negro: no pasa ni para UI'],
+                ['Texto sobre navy', 'Blanco', '9.07:1'],
+                ['Foco de teclado', 'Contorno verde', 'Refuerza la marca en cada interacción'],
+              ].map(([uso, regla, porque]) => (
+                <tr key={uso}>
+                  <td className="px-5 py-3.5 font-medium text-texto">{uso}</td>
+                  <td className="px-5 py-3.5 text-marca">{regla}</td>
+                  <td className="px-5 py-3.5 text-texto-medio">{porque}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* --- Aplicada a piezas reales --------------------------------------- */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold">Aplicada al sitio</h2>
+        <p className="mt-2 max-w-2xl text-texto-medio">
+          Las mismas piezas que se van a usar en producción: header, hero,
+          tarjeta de producto y botón de compra.
+        </p>
+
+        <div className="mt-8 space-y-6">
+          <MockHeader />
           <MockHero />
           <MockGrid />
         </div>
@@ -109,84 +168,107 @@ export default function Paleta() {
   );
 }
 
-function Muestrario() {
-  const fichas: { nombre: string; variable: string }[] = [
-    { nombre: 'Marca', variable: '--marca' },
-    { nombre: 'Marca fuerte', variable: '--marca-fuerte' },
-    { nombre: 'Acción', variable: '--accion' },
-    { nombre: 'Apoyo', variable: '--apoyo' },
-    { nombre: 'Tinta', variable: '--tinta' },
-    { nombre: 'Fondo alt', variable: '--fondo-alt' },
-  ];
-
+function Marco({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
-    <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-6">
-      {fichas.map((f) => (
-        <div key={f.variable}>
-          <div
-            className="h-16 w-full rounded-marca border border-borde"
-            style={{ background: `var(${f.variable})` }}
-          />
-          <p className="mt-1.5 text-xs font-medium text-tinta">{f.nombre}</p>
-          <p className="font-mono text-[10px] text-tinta-suave">{f.variable}</p>
-        </div>
-      ))}
+    <div>
+      <p className="mb-2 font-mono text-xs uppercase tracking-wider text-texto-suave">{titulo}</p>
+      <div className="overflow-hidden rounded-marca-lg border border-borde-suave">{children}</div>
     </div>
+  );
+}
+
+function MockHeader() {
+  return (
+    <Marco titulo="Header">
+      <div className="flex items-center justify-between gap-4 bg-fondo px-6 py-4">
+        <Logo className="h-10" />
+        <nav className="hidden items-center gap-1 md:flex">
+          <span className="rounded-marca bg-marca-tenue px-3.5 py-2 text-sm font-medium text-marca">
+            Catálogo
+          </span>
+          {['Servicios', 'Nosotros', 'Contacto'].map((t) => (
+            <span key={t} className="px-3.5 py-2 text-sm font-medium text-texto-medio">
+              {t}
+            </span>
+          ))}
+        </nav>
+        <span className="rounded-marca bg-marca px-4 py-2.5 text-sm font-semibold text-marca-contraste">
+          Asesoría gratis
+        </span>
+      </div>
+    </Marco>
   );
 }
 
 function MockHero() {
   return (
-    <div className="overflow-hidden rounded-marca-lg border border-borde">
-      <div className="bg-fondo-hondo px-8 py-16 sm:px-14 sm:py-20">
-        <Logo className="h-12" variante="oscuro" />
-        <h3 className="mt-8 max-w-2xl text-4xl font-bold text-white sm:text-5xl">
-          Energía solar que se paga sola
+    <Marco titulo="Hero">
+      <div className="bg-fondo px-8 py-16 sm:px-14">
+        <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca">
+          <span className="size-1.5 rounded-full bg-marca" />
+          Más de 7 años instalando en Colombia
+        </p>
+        <h3 className="mt-7 max-w-2xl text-4xl font-bold leading-[1.05] sm:text-5xl">
+          Energía solar
+          <br />
+          que <span className="text-marca">se paga sola</span>
         </h3>
-        <p className="mt-4 max-w-xl text-lg text-white/70">
+        <p className="mt-5 max-w-lg text-lg text-texto-medio">
           Paneles, baterías e instalación para hogares, fincas y negocios.
-          Más de 7 años montando sistemas en Colombia.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <button className="rounded-marca bg-accion px-6 py-3.5 font-semibold text-accion-contraste">
+          <span className="rounded-marca bg-marca px-6 py-3.5 font-semibold text-marca-contraste">
             Ver catálogo
-          </button>
-          <button className="rounded-marca border border-white/25 px-6 py-3.5 font-semibold text-white">
+          </span>
+          <span className="rounded-marca border border-borde px-6 py-3.5 font-semibold text-texto">
             Hablar por WhatsApp
-          </button>
+          </span>
         </div>
       </div>
-    </div>
+    </Marco>
   );
 }
 
 function MockGrid() {
   const items = [
-    { nombre: 'Panel Solar 665W Trina Vertex', cat: 'Paneles solares', precio: '$ 890.000' },
-    { nombre: 'Batería Gel Sunray 200Ah 12V', cat: 'Baterías · Gel', precio: '$ 1.565.000' },
-    { nombre: 'Inversor Híbrido 5kW', cat: 'Inversores · Híbrido', precio: '$ 3.200.000' },
+    { nombre: 'Panel Solar 665W Trina Vertex', cat: 'Paneles solares', precio: '$ 890.000', desc: null, stock: true },
+    { nombre: 'Batería Gel Sunray 200Ah 12V', cat: 'Baterías · Gel', precio: '$ 1.565.000', desc: '-15%', stock: true },
+    { nombre: 'Inversor Híbrido 5kW', cat: 'Inversores · Híbrido', precio: '$ 3.200.000', desc: null, stock: false },
   ];
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((p) => (
-        <article
-          key={p.nombre}
-          className="overflow-hidden rounded-marca-lg border border-borde bg-fondo shadow-marca"
-        >
-          <div className="flex aspect-square items-center justify-center bg-fondo-alt text-sm text-tinta-suave">
-            imagen del producto
-          </div>
-          <div className="p-5">
-            <p className="text-xs font-medium uppercase tracking-wide text-marca">{p.cat}</p>
-            <h4 className="mt-1.5 text-base font-semibold leading-snug">{p.nombre}</h4>
-            <p className="mt-3 text-xl font-bold text-tinta">{p.precio}</p>
-            <button className="mt-4 w-full rounded-marca bg-accion px-4 py-2.5 text-sm font-semibold text-accion-contraste">
-              Comprar por WhatsApp
-            </button>
-          </div>
-        </article>
-      ))}
-    </div>
+    <Marco titulo="Tarjeta de producto y botón de compra">
+      <div className="grid gap-5 bg-fondo p-6 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((p) => (
+          <article
+            key={p.nombre}
+            className="overflow-hidden rounded-marca-lg border border-borde-suave bg-superficie"
+          >
+            <div className="relative flex aspect-square items-center justify-center border-b border-borde-suave bg-superficie-alta text-sm text-texto-suave">
+              imagen del producto
+              {p.desc && (
+                <span className="absolute left-3 top-3 rounded-marca bg-acento px-2 py-1 text-xs font-bold text-acento-contraste">
+                  {p.desc}
+                </span>
+              )}
+            </div>
+            <div className="p-5">
+              <p className="text-xs font-medium uppercase tracking-wide text-texto-suave">{p.cat}</p>
+              <h4 className="mt-1.5 text-base font-semibold leading-snug">{p.nombre}</h4>
+              <p className="mt-3 text-xl font-bold text-marca">{p.precio}</p>
+              {p.stock ? (
+                <span className="mt-4 flex w-full items-center justify-center gap-2 rounded-marca bg-marca px-4 py-2.5 text-sm font-semibold text-marca-contraste">
+                  Comprar por WhatsApp
+                </span>
+              ) : (
+                <span className="mt-4 flex w-full items-center justify-center rounded-marca border border-borde bg-superficie px-4 py-2.5 text-sm font-semibold text-texto-suave">
+                  Agotado
+                </span>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </Marco>
   );
 }

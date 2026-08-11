@@ -67,14 +67,20 @@ export default function BotonCompra({
   const base =
     'inline-flex items-center justify-center gap-2 rounded-marca font-semibold ' +
     'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ' +
-    'disabled:cursor-not-allowed disabled:opacity-50';
+    'disabled:cursor-not-allowed';
   const medida = tamano === 'compacto' ? 'px-4 py-2 text-sm w-full' : 'px-6 py-3.5 text-base w-full';
-  const color = 'bg-accion text-accion-contraste hover:bg-accion-fuerte';
+  // Botón primario = verde con texto negro. Blanco sobre este verde da 2.05:1
+  // y es ilegible; el negro da 10.24:1.
+  const color = 'bg-marca text-marca-contraste hover:bg-marca-fuerte';
   const clases = `${base} ${medida} ${color} ${className}`;
 
   if (agotado) {
     return (
-      <button type="button" disabled className={clases}>
+      <button
+        type="button"
+        disabled
+        className={`${base} ${medida} border border-borde bg-superficie text-texto-suave ${className}`}
+      >
         Agotado
       </button>
     );

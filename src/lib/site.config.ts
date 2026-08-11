@@ -47,9 +47,6 @@ export const site = {
   locale: 'es-CO',
 } as const;
 
-/** Dirección de paleta activa: 'a' | 'b' | 'c' (ver src/index.css y /paleta). */
-export const paletaActiva = 'a';
-
 /**
  * El modo de compra del producto gana sobre el global; así se puede tener
  * la mayoría del catálogo en WhatsApp y sólo algunos ítems en Bold.
