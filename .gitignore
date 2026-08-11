@@ -40,3 +40,4 @@ data/raw_html/
 # Lista completa de precios del proveedor. Se regenera con el scraper en ~6 min;
 # se deja fuera del repo público a propósito. Para incluirla, borrar esta línea.
 data/catalogo_solphower.json
+.vercel
