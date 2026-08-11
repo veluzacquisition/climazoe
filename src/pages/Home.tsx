@@ -1,34 +1,37 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { construirArbol, filtrarProductos, useCatalogo } from '../lib/catalogo';
+import { filtrarProductos, useCatalogo } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
-import { site } from '../lib/site.config';
+import Hero from '../components/secciones/Hero';
+import Impacto from '../components/secciones/Impacto';
+import CarruselCategorias from '../components/secciones/CarruselCategorias';
+import {
+  BandaGarantias,
+  BannerAsesoria,
+  BlogYGaleria,
+  ComoComprar,
+  Marcas,
+  Tienda,
+} from '../components/secciones/Bloques';
 import type { Segmento } from '../types/catalogo';
 
 /**
  * Home.
  *
- * Las categorías y los destacados salen del catálogo real, no de una lista
- * escrita a mano: si el scraper trae categorías nuevas, la home las muestra
- * sin tocar código.
- *
- * Regla de color: el verde carga la marca (nombre, precios, botones
- * primarios); el rojo es acento puntual y el navy sólo tinta superficies.
+ * Sigue el orden de bloques de una tienda de catálogo: gancho, confianza,
+ * navegación por categoría, producto, y recién al final la parte
+ * institucional. Todo lo que muestra sale del catálogo real; lo que depende
+ * de contenido de Clima Zoe queda marcado como pendiente en vez de
+ * rellenarse con texto inventado.
  */
 
 export default function Home({ segmento }: { segmento: Segmento }) {
   const { datos, cargando } = useCatalogo();
 
-  const categorias = useMemo(
-    () => (datos ? construirArbol(datos.categorias).slice(0, 8) : []),
-    [datos],
-  );
-
   /**
-   * Destacados: se toma el mejor producto de cada categoría raíz en vez de
-   * los cuatro mejores del catálogo. Sin esa restricción la vitrina se llena
-   * con cuatro baterías de la misma familia y no muestra a qué se dedica el
-   * negocio.
+   * Destacados: el mejor producto de cada categoría raíz. Tomar los ocho
+   * mejores del catálogo llenaría la vitrina con baterías de la misma
+   * familia y no mostraría a qué se dedica el negocio.
    */
   const destacados = useMemo(() => {
     if (!datos) return [];
@@ -44,189 +47,66 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       if (vistas.has(raiz)) continue;
       vistas.add(raiz);
       elegidos.push(p);
-      if (elegidos.length === 4) break;
+      if (elegidos.length === 8) break;
+    }
+    // Si hay pocas categorías raíz, se completa con el resto del orden.
+    for (const p of ordenados) {
+      if (elegidos.length >= 8) break;
+      if (!elegidos.includes(p)) elegidos.push(p);
     }
     return elegidos;
   }, [datos, segmento]);
 
+  const novedades = useMemo(
+    () =>
+      datos
+        ? filtrarProductos(datos, { soloDisponibles: true, orden: 'relevancia' }, segmento)
+            .slice(8, 16)
+        : [],
+    [datos, segmento],
+  );
+
   return (
     <>
-      {/* --- Hero ------------------------------------------------------- */}
-      <section>
-        <div className="contenedor grid gap-14 py-16 lg:grid-cols-2 lg:items-center lg:py-24">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca">
-              <span className="size-1.5 rounded-full bg-marca" />
-              Más de 7 años instalando en Colombia
-            </p>
+      <Hero />
+      <BandaGarantias />
+      <CarruselCategorias />
 
-            <h1 className="mt-7 text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
-              Energía solar
-              <br />
-              que <span className="text-marca">se paga sola</span>
-            </h1>
+      <FranjaProductos
+        titulo="Productos destacados"
+        bajada="Distribución, venta e instalación de sistemas solares. Le asesoramos para generar energía al menor costo."
+        productos={destacados}
+        cargando={cargando}
+        segmento={segmento}
+      />
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-texto-medio">
-              {site.claim}. Vendemos e instalamos el sistema completo: paneles,
-              baterías, inversores y todo lo que necesita para dejar de
-              depender del recibo de luz.
-            </p>
+      <BannerAsesoria />
+      <Impacto />
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/catalogo"
-                className="rounded-marca bg-marca px-6 py-3.5 font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
-              >
-                Ver catálogo
-              </Link>
-              <a
-                href={`https://wa.me/${site.contacto.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-marca border border-borde px-6 py-3.5 font-semibold text-texto transition-colors hover:border-marca-borde hover:text-marca"
-              >
-                Pedir asesoría
-              </a>
-            </div>
+      <FranjaProductos
+        titulo="También le puede servir"
+        bajada="Más equipo disponible para despacho inmediato."
+        productos={novedades}
+        cargando={cargando}
+        segmento={segmento}
+      />
 
-            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-borde-suave pt-8">
-              {[
-                { n: datos ? `${datos.productos.length}` : '—', t: 'productos' },
-                { n: datos ? `${datos.categorias.length}` : '—', t: 'categorías' },
-                { n: '7+', t: 'años' },
-              ].map((s) => (
-                <div key={s.t}>
-                  <dt className="text-2xl font-bold text-marca">{s.n}</dt>
-                  <dd className="mt-0.5 text-xs uppercase tracking-wide text-texto-suave">{s.t}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className="flex aspect-4/3 items-center justify-center rounded-marca-lg border border-dashed border-borde bg-superficie px-6 text-center text-sm text-texto-suave">
-            [PENDIENTE: foto real de una instalación de Clima Zoe]
-          </div>
-        </div>
-      </section>
-
-      <div className="contenedor"><div className="regla-tenue" /></div>
-
-      {/* --- Categorías -------------------------------------------------- */}
-      <section className="contenedor py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Qué vendemos</h2>
-            <p className="mt-3 text-lg text-texto-medio">
-              Equipos para hogar, finca y empresa. Si no sabe qué necesita,
-              escríbanos y le armamos el sistema a la medida.
-            </p>
-          </div>
-          <Link
-            to="/catalogo"
-            className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
-          >
-            Ver todo →
-          </Link>
-        </div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cargando
-            ? Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="h-28 animate-pulse rounded-marca-lg bg-superficie" />
-              ))
-            : categorias.map((c) => (
-                <Link
-                  key={c.slug}
-                  to={`/catalogo?categoria=${c.slug}`}
-                  className="group flex flex-col justify-between rounded-marca-lg border border-borde-suave bg-superficie p-5 transition-colors hover:border-marca-borde hover:bg-superficie-alta"
-                >
-                  <h3 className="font-semibold leading-snug transition-colors group-hover:text-marca">
-                    {c.nombre}
-                  </h3>
-                  <p className="mt-3 text-sm text-texto-suave">
-                    {c.total} {c.total === 1 ? 'producto' : 'productos'}
-                  </p>
-                </Link>
-              ))}
-        </div>
-      </section>
-
-      {/* --- Destacados ---------------------------------------------------- */}
-      <section className="contenedor py-10">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-3xl font-bold sm:text-4xl">Productos destacados</h2>
-          <Link
-            to="/catalogo"
-            className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
-          >
-            Ver catálogo completo →
-          </Link>
-        </div>
-
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {cargando
-            ? Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="h-80 animate-pulse rounded-marca-lg bg-superficie" />
-              ))
-            : destacados.map((p) => (
-                <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
-              ))}
-        </div>
-      </section>
-
-      {/* --- Cómo compramos ------------------------------------------------- */}
-      <section className="contenedor py-16">
-        <div className="grid gap-5 sm:grid-cols-3">
-          {[
-            {
-              t: 'Le asesoramos gratis',
-              d: 'Nos cuenta qué quiere alimentar y le decimos qué sistema le sirve. Sin compromiso.',
-            },
-            {
-              t: 'Cotiza por WhatsApp',
-              d: 'Le pasamos precio con instalación incluida si la necesita, y tiempo de entrega.',
-            },
-            {
-              t: 'Instalamos nosotros',
-              d: 'No solo vendemos el equipo: lo dejamos funcionando en su casa, finca o negocio.',
-            },
-          ].map((paso, i) => (
-            <div key={paso.t} className="rounded-marca-lg border border-borde-suave bg-superficie p-6">
-              <span className="inline-flex size-8 items-center justify-center rounded-full bg-marca-tenue text-sm font-bold text-marca">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 font-semibold">{paso.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-texto-medio">{paso.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- Prueba social ----------------------------------------------- */}
-      <section className="contenedor py-6">
-        <div className="rounded-marca-lg border border-dashed border-acento/30 bg-acento-tenue p-8 text-center">
-          <p className="text-sm font-semibold text-acento-texto">
-            [PENDIENTE: contenido real de Clima Zoe]
-          </p>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-texto-medio">
-            Acá van proyectos realizados, número de instalaciones, fotos
-            propias y testimonios. Juan Felipe pasa este material aparte.
-          </p>
-        </div>
-      </section>
+      <Marcas />
+      <ComoComprar />
+      <Tienda />
+      <BlogYGaleria />
 
       {/* --- CTA final ---------------------------------------------------- */}
       <section className="contenedor py-16">
         <div className="overflow-hidden rounded-marca-lg border border-borde bg-superficie px-8 py-16 text-center sm:px-14">
           <h2 className="text-3xl font-bold sm:text-4xl">
-            ¿Cuánto puede <span className="text-marca">ahorrar</span> con energía solar?
+            Dejemos de <span className="text-marca">pagar recibo</span> de luz
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-texto-medio">
-            Cuéntenos cuánto paga de luz al mes y le decimos qué sistema le
-            sirve y en cuánto tiempo se paga.
+            Escríbanos y le armamos el sistema a la medida de lo que necesita.
           </p>
           <a
-            href={`https://wa.me/${site.contacto.whatsapp}`}
+            href="https://wa.me/573223919801"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-9 inline-flex rounded-marca bg-marca px-7 py-4 font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
@@ -236,5 +116,48 @@ export default function Home({ segmento }: { segmento: Segmento }) {
         </div>
       </section>
     </>
+  );
+}
+
+function FranjaProductos({
+  titulo,
+  bajada,
+  productos,
+  cargando,
+  segmento,
+}: {
+  titulo: string;
+  bajada: string;
+  productos: ReturnType<typeof filtrarProductos>;
+  cargando: boolean;
+  segmento: Segmento;
+}) {
+  if (!cargando && productos.length === 0) return null;
+
+  return (
+    <section className="contenedor py-12">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold sm:text-4xl">{titulo}</h2>
+          <p className="mt-3 text-texto-medio">{bajada}</p>
+        </div>
+        <Link
+          to="/catalogo"
+          className="text-sm font-semibold text-marca transition-colors hover:text-marca-fuerte"
+        >
+          Ver catálogo completo →
+        </Link>
+      </div>
+
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {cargando
+          ? Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="h-80 animate-pulse rounded-marca-lg bg-superficie" />
+            ))
+          : productos.map((p) => (
+              <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
+            ))}
+      </div>
+    </section>
   );
 }

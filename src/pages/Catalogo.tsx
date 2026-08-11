@@ -105,7 +105,9 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[16rem_1fr]">
         {/* --- Sidebar de categorías -------------------------------------- */}
-        <aside className="lg:sticky lg:top-28 lg:self-start">
+        {/* El header pegajoso mide 183px (cinta + fila principal + nav), así
+            que la barra lateral se ancla justo debajo. */}
+        <aside className="lg:sticky lg:top-[12rem] lg:max-h-[calc(100dvh-13rem)] lg:self-start lg:overflow-y-auto">
           <button
             type="button"
             onClick={() => setPanelAbierto((v) => !v)}

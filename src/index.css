@@ -178,4 +178,38 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--borde), transparent);
   }
+
+  /* Cinta de anuncios. El contenido se duplica en el markup y se desplaza
+     media pista, así el bucle no tiene salto. */
+  .cinta {
+    animation: cinta-correr 32s linear infinite;
+  }
+
+  .cinta-pausa:hover .cinta {
+    animation-play-state: paused;
+  }
+
+  @keyframes cinta-correr {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Carruseles: scroll horizontal nativo con anclaje. Se prefiere a una
+     librería de slider porque funciona con teclado y lectores de pantalla
+     sin trabajo extra, y no suma peso al bundle. */
+  .pista {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .pista::-webkit-scrollbar { display: none; }
+
+  .pista > * { scroll-snap-align: start; flex: 0 0 auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cinta { animation: none; }
+    .pista { scroll-behavior: auto; }
+  }
 }
