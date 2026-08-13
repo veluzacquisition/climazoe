@@ -1,14 +1,11 @@
 /**
  * Envoltorio de sección que fija el TONO.
  *
- * El sitio alterna franjas claras y oscuras en vez de ser negro de punta a
- * punta: el blanco es color de marca —el "CLIMA" del logo es blanco— y una
- * página toda oscura se lee apagada para un negocio de energía. La regla de
- * reparto es ~65% claro / ~35% oscuro, con el oscuro reservado para los
- * momentos de fuerza: el hero, las cifras y los cierres.
- *
- * Cambiar el tono no toca a los hijos: `.tono-claro` redefine las variables
- * semánticas y todo lo de adentro se adapta solo.
+ * Clima Zoe es una marca de fondo CLARO, así que el claro es el default y no
+ * hace falta declararlo. El oscuro es la excepción: se reserva para el hero
+ * —donde la oscuridad la pone la fotografía— y para una única franja de
+ * cifras. Cambiar el tono no toca a los hijos: `.tono-oscuro` redefine las
+ * variables semánticas y todo lo de adentro se adapta solo.
  */
 
 interface Props {
@@ -42,7 +39,7 @@ export default function Seccion({
   id,
 }: Props) {
   const clases = [
-    tono === 'claro' ? 'tono-claro' : '',
+    tono === 'oscuro' ? 'tono-oscuro' : '',
     fondo === 'alt' ? 'bg-superficie' : 'bg-fondo',
     ESPACIADO[espaciado],
     className,

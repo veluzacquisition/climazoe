@@ -56,7 +56,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
   const similares = catalogo ? relacionados(catalogo, producto) : [];
 
   return (
-    <div className="tono-claro bg-fondo">
+    <div className="bg-fondo">
       <div className="contenedor py-10">
       {/* --- Ruta ---------------------------------------------------------- */}
       <nav aria-label="Ruta" className="text-sm text-texto-suave">

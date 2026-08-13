@@ -86,7 +86,6 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <CarruselCategorias />
 
       <FranjaProductos
-        tono="claro"
         fondo="alt"
         titulo="Productos destacados"
         bajada="Distribución, venta e instalación de sistemas solares. Le asesoramos para generar energía al menor costo."
@@ -99,7 +98,6 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <Impacto />
 
       <FranjaProductos
-        tono="claro"
         fondo="alt"
         titulo="También le puede servir"
         bajada="Más equipo disponible para despacho inmediato."
@@ -114,7 +112,7 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <BlogYGaleria />
 
       {/* --- Cierre ------------------------------------------------------- */}
-      <Seccion tono="oscuro" espaciado="amplio">
+      <Seccion fondo="alt" espaciado="amplio">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
             Dejemos de <span className="text-marca">pagar recibo</span> de luz
@@ -143,7 +141,6 @@ export default function Home({ segmento }: { segmento: Segmento }) {
 }
 
 function FranjaProductos({
-  tono,
   fondo = 'base',
   titulo,
   bajada,
@@ -151,7 +148,6 @@ function FranjaProductos({
   cargando,
   segmento,
 }: {
-  tono: 'claro' | 'oscuro';
   fondo?: 'base' | 'alt';
   titulo: string;
   bajada: string;
@@ -162,7 +158,7 @@ function FranjaProductos({
   if (!cargando && productos.length === 0) return null;
 
   return (
-    <Seccion tono={tono} fondo={fondo}>
+    <Seccion fondo={fondo}>
       <TituloSeccion
         titulo={titulo}
         bajada={bajada}

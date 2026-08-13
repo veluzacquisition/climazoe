@@ -25,18 +25,22 @@
   --zoe-navy:  #284978; /* del globo —           2.31:1 sobre negro */
 
   /* --- Superficies -------------------------------------------------------
-     Derivadas mezclando el navy sobre negro, para que las tarjetas tengan el
-     tinte de la marca en vez de un gris neutro cualquiera. */
-  --fondo: var(--zoe-black);
-  --superficie: #070d16;      /* tarjetas sobre el fondo   — navy al 18% */
-  --superficie-alta: #0b1422; /* hover y capas elevadas    — navy al 28% */
-  --borde: #1b2a44;
-  --borde-suave: #101a2b;
+     El BLANCO es la base del sitio. Clima Zoe es una marca clara: el negro
+     aparece sólo donde aporta fuerza —el hero, sobre la fotografía— y no
+     como color de fondo general.
+
+     Los grises llevan una pizca de verde en vez de ser neutros puros, para
+     que las superficies pertenezcan a la marca y no a una plantilla. */
+  --fondo: var(--zoe-white);
+  --superficie: #f4f7f4;      /* tarjetas y franjas alternas */
+  --superficie-alta: #e9eee9; /* hover y capas elevadas */
+  --borde: #d6ded8;
+  --borde-suave: #e7ece8;
 
   /* --- Texto (todos verificados ≥4.5:1 sobre fondo y superficie) --------- */
-  --texto: var(--zoe-white);
-  --texto-medio: #a7b3c4; /* 9.89:1 sobre negro */
-  --texto-suave: #6e7c91; /* 4.95:1 sobre negro */
+  --texto: #0a0f0d;       /* 19.32:1 sobre blanco */
+  --texto-medio: #39443f; /* 10.13:1 */
+  --texto-suave: #5b6863; /*  5.83:1 */
 
   /* --- Roles de marca ----------------------------------------------------
      Verde = protagonista. Es el color que la gente ya asocia con Clima Zoe,
@@ -51,19 +55,19 @@
   --marca-tenue: rgb(104 203 78 / 0.12); /* fondos de badge y chips */
   --marca-borde: rgb(104 203 78 / 0.32);
   /* TEXTO: el mismo verde como letra sobre blanco da 2.05:1 y es ilegible,
-     así que se separa del relleno y cambia con el tono de la sección. */
-  --marca-texto: var(--zoe-green);
+     así que se separa del relleno y se oscurece. Sobre fondo oscuro vuelve
+     a ser el verde vivo (ver `.tono-oscuro`). */
+  --marca-texto: #3e7a2f; /* 5.21:1 sobre blanco */
 
   /* Rojo-naranja = acento puntual, máximo 10-15% de la superficie. Descuentos,
      alertas de stock, urgencia. Nunca compite con el verde. */
   --acento: var(--zoe-red);
   --acento-fuerte: #b93a22;
-  --acento-tenue: rgb(214 73 46 / 0.14);
+  --acento-tenue: rgb(214 73 46 / 0.09);
   --acento-contraste: var(--zoe-black); /* 4.85:1 vs 4.33:1 del blanco */
-  /* El rojo puro sobre su propio fondo tenue cae a ~4.4:1. Para TEXTO sobre
-     fondos rojizos se usa esta versión aclarada (6.94:1 sobre negro); el
-     #D6492E se reserva para rellenos sólidos. */
-  --acento-texto: #e07662;
+  /* El rojo puro como letra sobre su propio fondo tenue cae a ~4.4:1; esta
+     versión oscurecida da 5.15:1. El #D6492E queda para rellenos sólidos. */
+  --acento-texto: #c14229;
 
   /* Navy = sólo detalles. Con 2.31:1 sobre negro no sirve para texto ni para
      UI: se usa como borde, ícono decorativo o fondo de tarjeta oscura, y en
@@ -85,41 +89,39 @@
 }
 
 /* ==========================================================================
-   Tono claro
+   Tono oscuro — la EXCEPCIÓN
    --------------------------------------------------------------------------
-   El blanco es color de marca —el "CLIMA" del logo es blanco—, no sólo el
-   color del texto. Una página 100% negra se lee apagada para un negocio de
-   energía; el ritmo lo da alternar franjas claras y oscuras.
+   Clima Zoe es una marca de fondo claro. El negro no es el color del sitio:
+   es un recurso puntual, y se usa sobre todo como base de la fotografía del
+   hero, donde la oscuridad la pone la imagen y no un bloque de color.
 
-   Se cambia de tono envolviendo una sección en `.tono-claro`: acá se
-   redefinen las mismas variables semánticas, así que TODO lo que hay dentro
-   —tarjetas, bordes, textos— se adapta sin tocar los componentes.
-
-   Lo único que NO cambia es el relleno verde de los botones: ese es el
-   ancla de marca y se mantiene idéntico en ambos tonos.
+   Envolver una sección en `.tono-oscuro` redefine las mismas variables
+   semánticas, así que todo lo de adentro se adapta sin tocar componentes.
+   Lo único que no cambia es el relleno verde de los botones: ese es el ancla
+   de marca y se mantiene idéntico en los dos tonos.
    ========================================================================== */
 
-.tono-claro {
-  --fondo: var(--zoe-white);
-  --superficie: #f5f7f5;      /* tarjeta sobre blanco */
-  --superficie-alta: #eaefeb; /* hover y capas elevadas */
-  --borde: #d3dcd6;
-  --borde-suave: #e6ebe7;
+.tono-oscuro {
+  --fondo: var(--zoe-black);
+  --superficie: #0a1017;
+  --superficie-alta: #131c26;
+  --borde: #24313f;
+  --borde-suave: #18222d;
 
-  --texto: #0a0f0d;       /* 19.32:1 sobre blanco */
-  --texto-medio: #39443f; /* 10.13:1 */
-  --texto-suave: #5b6863; /*  5.83:1 — el gris del tono oscuro aquí falla */
+  --texto: var(--zoe-white);
+  --texto-medio: #c2ccd6; /* 13.4:1 sobre negro */
+  --texto-suave: #8b98a5; /*  7.5:1 */
 
-  /* Verde oscurecido sólo para LETRA: 5.21:1 sobre blanco. */
-  --marca-texto: #3e7a2f;
-  --marca-tenue: rgb(104 203 78 / 0.18);
-  --marca-borde: rgb(62 122 47 / 0.35);
+  /* Sobre negro el verde vivo sí funciona como letra: 10.24:1. */
+  --marca-texto: var(--zoe-green);
+  --marca-tenue: rgb(104 203 78 / 0.14);
+  --marca-borde: rgb(104 203 78 / 0.35);
 
-  /* Y el rojo al revés que en oscuro: acá hay que oscurecerlo (5.15:1). */
-  --acento-texto: #c14229;
-  --acento-tenue: rgb(214 73 46 / 0.09);
+  /* Y el rojo al revés que en claro: acá hay que aclararlo (6.94:1). */
+  --acento-texto: #e07662;
+  --acento-tenue: rgb(214 73 46 / 0.16);
 
-  color-scheme: light;
+  color-scheme: dark;
   background-color: var(--fondo);
   color: var(--texto);
 }
@@ -172,8 +174,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: var(--zoe-black);
-    color-scheme: dark;
+    background-color: var(--zoe-white);
+    color-scheme: light;
   }
 
   body {

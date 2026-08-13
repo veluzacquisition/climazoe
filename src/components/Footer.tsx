@@ -18,7 +18,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="mt-24 border-t border-borde-suave bg-superficie">
+    <footer className="mt-24 border-t border-borde bg-superficie">
       <div className="contenedor grid gap-10 py-16 lg:grid-cols-12">
         {/* --- Identidad y contacto -------------------------------------- */}
         <div className="lg:col-span-4">

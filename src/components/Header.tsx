@@ -36,7 +36,7 @@ export default function Header({
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-fondo">
+    <header className="sticky top-0 z-50 bg-fondo shadow-sm shadow-black/5">
       <CintaAnuncios />
 
       {/* --- Fila principal ---------------------------------------------- */}
@@ -79,7 +79,7 @@ export default function Header({
       </div>
 
       {/* --- Barra de navegación ------------------------------------------ */}
-      <nav className="hidden border-b border-borde-suave bg-superficie md:block">
+      <nav className="hidden border-b border-borde bg-superficie md:block">
         <div className="contenedor flex items-center gap-1">
           <MegaMenuProductos />
           {NAV.map((item) => (
@@ -219,7 +219,7 @@ function MegaMenuProductos() {
       </button>
 
       {abierto && (
-        <div className="absolute left-0 top-full z-50 w-[min(64rem,90vw)] rounded-b-marca-lg border border-t-0 border-borde bg-superficie p-6 shadow-2xl shadow-black/60">
+        <div className="absolute left-0 top-full z-50 w-[min(64rem,90vw)] rounded-b-marca-lg border border-t-0 border-borde bg-fondo p-6 shadow-2xl shadow-black/15">
           <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-4">
             {arbol.map((raiz) => (
               <ColumnaCategoria key={raiz.slug} nodo={raiz} onNavegar={() => setAbierto(false)} />

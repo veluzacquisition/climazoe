@@ -1,26 +1,29 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { site } from '../../lib/site.config';
+import FondoHero from './FondoHero';
 
 /**
- * Hero.
+ * Hero con la imagen DENTRO y el texto encima, como los referentes del sector
+ * (Trinity, Momentum, Solaris): la fotografía ocupa todo el bloque a sangre y
+ * el contenido va superpuesto.
  *
- * Es el único bloque donde el negro trabaja a fondo: negro pleno, tipografía
- * enorme y el verde puesto en una sola palabra por slide. Antes el titular se
- * perdía porque el verde competía con un degradado que lavaba todo el fondo;
- * ahora el fondo es negro sólido y el resplandor queda confinado detrás de la
- * imagen, no detrás del texto.
+ * Es el único punto oscuro del sitio, y la oscuridad la pone la imagen, no un
+ * bloque de color: por eso el resto de la página es clara sin contradicción.
  *
- * La mitad derecha está reservada a la fotografía: cuando lleguen las fotos
- * de instalaciones de Clima Zoe, la energía la va a poner el panel montado en
- * un techo, no un efecto de fondo. Por eso ocupa la mitad del hero desde ya.
+ * El velo sobre la foto está calculado, no puesto a ojo — hace falta un negro
+ * al 62% en el lado del texto para que el titular blanco mantenga 4.5:1 sobre
+ * cualquier foto, incluida una de mediodía. Se degrada hacia la derecha para
+ * no tapar la imagen.
+ *
+ * Para poner la foto real: reemplazar <FondoHero /> por un <img> con las
+ * mismas clases de posición. Nada más cambia.
  */
 
 interface Slide {
   etiqueta: string;
   antes: string;
   destacado: string;
-  despues?: string;
   texto: string;
   cta: { texto: string; a: string };
 }
@@ -69,29 +72,37 @@ export default function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden bg-zoe-black"
+      className="tono-oscuro relative isolate overflow-hidden"
       onMouseEnter={() => setPausado(true)}
       onMouseLeave={() => setPausado(false)}
       aria-roledescription="carrusel"
       aria-label="Destacados de Clima Zoe"
     >
-      <div className="contenedor relative grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-20">
-        {/* --- Texto ------------------------------------------------------- */}
-        <div>
-          <p className="chip border border-marca-borde bg-marca-tenue text-marca">
+      {/* --- Imagen, a sangre -------------------------------------------- */}
+      <FondoHero className="absolute inset-0 -z-20 size-full object-cover" />
+
+      {/* --- Velo: fuerte donde va el texto, y se abre para dejar ver la
+          imagen. Si el degradado tapa todo el ancho, la fotografía deja de
+          aportar y el hero vuelve a ser un rectángulo negro. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/45 to-transparent"
+      />
+
+      {/* --- Contenido, encima -------------------------------------------- */}
+      <div className="contenedor relative flex min-h-[34rem] flex-col justify-center py-16 lg:min-h-[40rem] lg:py-24">
+        <div className="max-w-2xl">
+          <p className="chip border border-marca-borde bg-black/40 text-marca backdrop-blur-sm">
             <span className="size-1.5 rounded-full bg-marca" />
             {s.etiqueta}
           </p>
 
-          {/* El salto de opacidad va sobre el bloque de texto, no sobre toda
-              la sección, para que los controles no parpadeen. */}
           <div key={activo} className="animate-[aparecer_.5s_ease-out]">
-            <h1 className="mt-6 font-extrabold leading-[0.95] tracking-[-0.03em] text-zoe-white text-[2.75rem] sm:text-6xl lg:text-7xl">
-              {s.antes}{' '}
-              <span className="text-marca">{s.destacado}</span>
+            <h1 className="mt-6 text-[2.75rem] font-extrabold leading-[0.95] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
+              {s.antes} <span className="text-marca">{s.destacado}</span>
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-texto-medio sm:text-xl">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">
               {s.texto}
             </p>
           </div>
@@ -111,65 +122,51 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="mt-5 text-sm text-texto-suave">
+          <p className="mt-5 text-sm text-white/70">
             Le respondemos por WhatsApp con precio, disponibilidad y tiempo de entrega.
           </p>
-
-          {/* --- Controles --- */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => ir(activo - 1)}
-                aria-label="Anterior"
-                className="flex size-11 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca hover:text-marca"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={() => ir(activo + 1)}
-                aria-label="Siguiente"
-                className="flex size-11 items-center justify-center rounded-full border border-borde text-texto-medio transition-colors hover:border-marca hover:text-marca"
-              >
-                ›
-              </button>
-            </div>
-
-            <div className="flex gap-2">
-              {SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => ir(i)}
-                  aria-label={`Ir al destacado ${i + 1}`}
-                  aria-current={i === activo}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === activo ? 'w-10 bg-marca' : 'w-3 bg-borde hover:bg-texto-suave'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* --- Fotografía --------------------------------------------------
-            El resplandor vive acá detrás, confinado a la imagen: así aporta
-            profundidad sin lavar el contraste del titular. */}
-        <div className="relative">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-6 rounded-full opacity-30 blur-[100px]"
-            style={{ background: 'var(--marca)' }}
-          />
-          <div className="relative flex aspect-4/3 items-center justify-center overflow-hidden rounded-marca-lg border border-dashed border-borde bg-superficie px-8 text-center">
-            <p className="text-sm text-texto-suave">
-              [PENDIENTE: foto real de una instalación de Clima Zoe]
-              <span className="mt-2 block text-xs">
-                Va a ocupar todo este espacio, a sangre. Una por slide.
-              </span>
-            </p>
+        {/* --- Controles ---------------------------------------------------- */}
+        <div className="mt-12 flex items-center gap-4">
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => ir(activo - 1)}
+              aria-label="Anterior"
+              className="flex size-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-marca hover:text-marca"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={() => ir(activo + 1)}
+              aria-label="Siguiente"
+              className="flex size-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-marca hover:text-marca"
+            >
+              ›
+            </button>
           </div>
+
+          <div className="flex gap-2">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => ir(i)}
+                aria-label={`Ir al destacado ${i + 1}`}
+                aria-current={i === activo}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === activo ? 'w-10 bg-marca' : 'w-3 bg-white/30 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
+
+          <p className="ml-auto hidden max-w-64 rounded-marca bg-black/55 px-3 py-2 text-right text-xs text-white/70 backdrop-blur-sm lg:block">
+            [PENDIENTE: este gráfico se reemplaza por la foto real de una
+            instalación de Clima Zoe]
+          </p>
         </div>
       </div>
     </section>

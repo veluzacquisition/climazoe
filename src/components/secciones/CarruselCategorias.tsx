@@ -42,7 +42,7 @@ export default function CarruselCategorias() {
   };
 
   return (
-    <Seccion tono="claro">
+    <Seccion>
       <TituloSeccion
         titulo="Categorías destacadas"
         bajada="Equipos para hogar, finca y empresa. Si no sabe qué necesita, escríbanos y le armamos el sistema a la medida."

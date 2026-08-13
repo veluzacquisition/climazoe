@@ -8,8 +8,8 @@ import Seccion, { TituloSeccion } from '../Seccion';
  * Bloques sueltos de la home. Están juntos acá porque son piezas de
  * presentación cortas; cuando alguno crezca, se saca a su propio archivo.
  *
- * Cada bloque declara su tono, así el ritmo claro/oscuro de la página se lee
- * de un vistazo en Home.tsx.
+ * El fondo claro es el default; sólo se declara el tono cuando un bloque se
+ * sale de esa base.
  */
 
 // ---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ const GARANTIAS = [
 
 export function BandaGarantias() {
   return (
-    <Seccion tono="claro" fondo="alt" espaciado="none" className="border-b border-borde">
+    <Seccion fondo="alt" espaciado="none" className="border-b border-borde">
       <div className="contenedor grid divide-y divide-borde sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
         {GARANTIAS.map((g) => (
           <div key={g.t} className="flex items-start gap-3 py-6 lg:px-6 lg:first:pl-0">
@@ -78,7 +78,7 @@ export function Marcas() {
   if (marcas.length === 0) return null;
 
   return (
-    <Seccion tono="claro" fondo="alt" espaciado="compacto">
+    <Seccion fondo="alt" espaciado="compacto">
       <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
         Marcas que manejamos
       </p>
@@ -99,7 +99,7 @@ export function Marcas() {
 }
 
 // ---------------------------------------------------------------------------
-// Banner de asesoría — bloque oscuro de "control energético"
+// Banner de asesoría
 // ---------------------------------------------------------------------------
 
 /**
@@ -109,7 +109,7 @@ export function Marcas() {
  */
 export function BannerAsesoria() {
   return (
-    <Seccion tono="oscuro" espaciado="compacto">
+    <Seccion espaciado="compacto">
       <div className="relative overflow-hidden rounded-marca-lg border border-marca-borde bg-superficie">
         <div
           aria-hidden="true"
@@ -155,7 +155,7 @@ export function ComoComprar() {
   ];
 
   return (
-    <Seccion tono="claro">
+    <Seccion>
       <TituloSeccion
         titulo="Cómo se compra"
         bajada="Tres pasos, sin letra chica y sin compromiso hasta que usted decida."
@@ -195,7 +195,7 @@ function Pendiente({ nota }: { nota: string }) {
 
 export function Tienda() {
   return (
-    <Seccion tono="oscuro">
+    <Seccion fondo="alt">
       <TituloSeccion
         titulo="Dónde estamos"
         bajada="Atendemos por WhatsApp y teléfono a todo el país."
@@ -239,7 +239,7 @@ export function Tienda() {
 
 export function BlogYGaleria() {
   return (
-    <Seccion tono="claro" fondo="alt">
+    <Seccion fondo="alt">
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
           <h2 className="text-2xl font-extrabold tracking-tight">Del blog</h2>

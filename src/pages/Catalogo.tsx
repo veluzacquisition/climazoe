@@ -75,7 +75,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
   // Catálogo en tono claro: las fichas, precios y filtros se leen mejor
   // sobre blanco, y le da el respiro claro que pedía el ritmo del sitio.
   return (
-    <div className="tono-claro bg-fondo">
+    <div className="bg-fondo">
       <div className="contenedor py-10">
       {/* --- Encabezado --------------------------------------------------- */}
       <header>
