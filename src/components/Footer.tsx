@@ -27,6 +27,9 @@ export default function Footer() {
             {site.claim}. Venta e instalación de sistemas solares en toda
             Colombia.
           </p>
+          <p className="mt-4 max-w-xs border-l-2 border-marca pl-3 text-sm font-semibold italic text-marca-texto">
+            «{site.eslogan}»
+          </p>
 
           <dl className="mt-6 space-y-3 text-sm">
             <div>
@@ -42,8 +45,25 @@ export default function Footer() {
                 </a>
               </dd>
             </div>
-            <div className="rounded-marca border border-acento/30 bg-acento-tenue px-3 py-2 text-xs text-acento-texto">
-              [PENDIENTE: dirección, correo y horario reales de Clima Zoe]
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">Correo</dt>
+              <dd>
+                <a
+                  href={`mailto:${site.contacto.email}`}
+                  className="break-all font-semibold text-texto transition-colors hover:text-marca-texto"
+                >
+                  {site.contacto.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">Dirección</dt>
+              <dd className="font-semibold text-texto">
+                {site.contacto.direccion}
+                <span className="block font-normal text-texto-medio">
+                  {site.contacto.ciudad}
+                </span>
+              </dd>
             </div>
           </dl>
 
@@ -105,7 +125,10 @@ export default function Footer() {
 
       <div className="border-t border-borde-suave">
         <div className="contenedor flex flex-col gap-2 py-5 text-xs text-texto-suave sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {site.nombre}. Todos los derechos reservados.</p>
+          <p>
+            © {new Date().getFullYear()} {site.nombre}® — {site.razonSocial},
+            NIT {site.nit}
+          </p>
           <p>Hecho en Colombia</p>
         </div>
       </div>

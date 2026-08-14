@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 import Producto from './pages/Producto';
 import Paleta from './pages/Paleta';
+import Nosotros from './pages/Nosotros';
+import Servicios from './pages/Servicios';
+import Contacto from './pages/Contacto';
 import EnConstruccion from './pages/EnConstruccion';
 import { site } from './lib/site.config';
 import type { Segmento } from './types/catalogo';
@@ -21,18 +24,9 @@ export default function App() {
           <Route index element={<Home segmento={segmento} />} />
           <Route path="catalogo" element={<Catalogo segmento={segmento} />} />
           <Route path="producto/:slug" element={<Producto segmento={segmento} />} />
-          <Route
-            path="servicios"
-            element={<EnConstruccion titulo="Servicios" nota="[PENDIENTE: contenido real de Clima Zoe] — venta e instalación." />}
-          />
-          <Route
-            path="nosotros"
-            element={<EnConstruccion titulo="Nosotros" nota="[PENDIENTE: contenido real de Clima Zoe] — historia, proyectos y fotos propias." />}
-          />
-          <Route
-            path="contacto"
-            element={<EnConstruccion titulo="Contacto" nota="[PENDIENTE: teléfono, WhatsApp, correo y dirección reales]." />}
-          />
+          <Route path="servicios" element={<Servicios />} />
+          <Route path="nosotros" element={<Nosotros />} />
+          <Route path="contacto" element={<Contacto />} />
           {/* Interna, fuera del menú: identidad visual documentada. */}
           <Route path="paleta" element={<Paleta />} />
           <Route path="*" element={<EnConstruccion titulo="Página no encontrada" nota="Revisá la dirección." />} />

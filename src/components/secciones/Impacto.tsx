@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCatalogo } from '../../lib/catalogo';
 import Seccion from '../Seccion';
+import { ANIO_INICIO_COMERCIAL, aniosDeTrayectoria } from '../../lib/site.config';
 
 /**
  * Bloque de cifras, con los contadores animados del sitio de referencia.
@@ -22,7 +23,7 @@ export default function Impacto() {
   const { datos } = useCatalogo();
 
   const cifras: Cifra[] = [
-    { valor: 7, sufijo: '+', etiqueta: 'Años de experiencia' },
+    { valor: aniosDeTrayectoria(), sufijo: '', etiqueta: 'Años vendiendo energía solar' },
     { valor: datos?.productos.length ?? null, sufijo: '', etiqueta: 'Productos en catálogo' },
     { valor: datos?.categorias.length ?? null, sufijo: '', etiqueta: 'Categorías' },
     { valor: null, etiqueta: 'Proyectos instalados' },
@@ -37,8 +38,8 @@ export default function Impacto() {
           Nuestro impacto
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-texto-medio">
-          Energía solar instalada y funcionando en hogares, fincas y
-          negocios de todo el país.
+          Energía solar instalada y funcionando en hogares, fincas y negocios,
+          desde {ANIO_INICIO_COMERCIAL}.
         </p>
       </div>
 

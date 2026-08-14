@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useCatalogo } from '../../lib/catalogo';
-import { site } from '../../lib/site.config';
+import { ANIO_INICIO_COMERCIAL, aniosDeTrayectoria, site } from '../../lib/site.config';
 import Seccion, { TituloSeccion } from '../Seccion';
 
 /**
@@ -16,11 +16,16 @@ import Seccion, { TituloSeccion } from '../Seccion';
 // Banda de garantías — validación social pegada al hero, antes del scroll
 // ---------------------------------------------------------------------------
 
+/** El dato de años se calcula: escrito a mano queda desactualizado y se
+ *  convierte en un dato falso sin que nadie lo note. */
 const GARANTIAS = [
   { t: 'Envíos a toda Colombia', d: 'Despachamos a cualquier municipio' },
   { t: 'Asesoría técnica gratis', d: 'Le decimos qué sistema necesita' },
   { t: 'Venta e instalación', d: 'Se lo dejamos funcionando' },
-  { t: 'Más de 7 años', d: 'Experiencia en energía solar' },
+  {
+    t: `${aniosDeTrayectoria()} años de trayectoria`,
+    d: `Vendiendo energía solar desde ${ANIO_INICIO_COMERCIAL}`,
+  },
 ];
 
 export function BandaGarantias() {
@@ -205,14 +210,44 @@ export function Tienda() {
           <h3 className="text-xl font-bold">{site.nombre}</h3>
           <dl className="mt-6 space-y-5">
             <div>
-              <dt className="text-xs uppercase tracking-wide text-texto-suave">Teléfono</dt>
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">
+                Teléfono / WhatsApp
+              </dt>
               <dd>
                 <a
-                  href={`tel:${site.contacto.telefono?.replace(/\s/g, '')}`}
-                  className="text-2xl font-extrabold text-marca"
+                  href={`tel:${site.contacto.telefono.replace(/\s/g, '')}`}
+                  className="text-2xl font-extrabold text-marca-texto"
                 >
                   {site.contacto.telefono}
                 </a>
+              </dd>
+              <dd className="mt-1">
+                <a
+                  href={`tel:${site.contacto.telefonoSecundario.replace(/\s/g, '')}`}
+                  className="font-semibold text-texto-medio hover:text-marca-texto"
+                >
+                  {site.contacto.telefonoSecundario}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">Correo</dt>
+              <dd>
+                <a
+                  href={`mailto:${site.contacto.email}`}
+                  className="break-all font-semibold text-texto hover:text-marca-texto"
+                >
+                  {site.contacto.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">Dirección</dt>
+              <dd className="font-semibold text-texto">
+                {site.contacto.direccion}
+                <span className="block font-normal text-texto-medio">
+                  {site.contacto.ciudad}
+                </span>
               </dd>
             </div>
           </dl>
@@ -224,13 +259,15 @@ export function Tienda() {
           >
             Escribir por WhatsApp
           </a>
-          <div className="mt-6">
-            <Pendiente nota="Dirección, correo y horario de atención." />
+          <div className="mt-6 rounded-marca border border-dashed border-acento/40 bg-acento-tenue px-4 py-3">
+            <p className="text-xs font-bold text-acento-texto">
+              [PENDIENTE: horario de atención]
+            </p>
           </div>
         </div>
 
         <div className="flex min-h-72 items-center justify-center rounded-marca-lg border border-dashed border-borde bg-superficie px-6 text-center text-sm text-texto-suave">
-          [PENDIENTE: mapa de la ubicación de Clima Zoe]
+          [PENDIENTE: mapa de {site.contacto.direccion}, {site.contacto.ciudad}]
         </div>
       </div>
     </Seccion>

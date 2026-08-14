@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { construirArbol, useCatalogo, type NodoCategoria } from '../lib/catalogo';
-import { site } from '../lib/site.config';
+import { aniosDeTrayectoria, site } from '../lib/site.config';
 import type { Segmento } from '../types/catalogo';
 
 /**
@@ -117,7 +117,7 @@ export default function Header({
 function CintaAnuncios() {
   const mensajes = [
     'Envíos a toda Colombia',
-    'Más de 7 años instalando energía solar',
+    `${aniosDeTrayectoria()} años instalando energía solar`,
     'Asesoría técnica gratuita',
     'Venta e instalación',
   ];

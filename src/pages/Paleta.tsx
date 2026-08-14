@@ -208,7 +208,7 @@ function MockHero() {
       <div className="bg-fondo px-8 py-16 sm:px-14">
         <p className="inline-flex items-center gap-2 rounded-full border border-marca-borde bg-marca-tenue px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-marca-texto">
           <span className="size-1.5 rounded-full bg-marca" />
-          Más de 7 años instalando en Colombia
+          Energía solar desde 2019
         </p>
         <h3 className="mt-7 max-w-2xl text-4xl font-bold leading-[1.05] sm:text-5xl">
           Energía solar

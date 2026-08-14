@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { site } from '../../lib/site.config';
+import { aniosDeTrayectoria, site } from '../../lib/site.config';
 import FondoHero from './FondoHero';
 
 /**
@@ -30,7 +30,7 @@ interface Slide {
 
 const SLIDES: Slide[] = [
   {
-    etiqueta: 'Más de 7 años instalando en Colombia',
+    etiqueta: `${aniosDeTrayectoria()} años instalando en Colombia`,
     antes: 'Energía solar que',
     destacado: 'se paga sola',
     texto:
