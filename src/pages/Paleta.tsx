@@ -57,7 +57,7 @@ export default function Paleta() {
         <p className="text-sm font-semibold uppercase tracking-widest text-marca-texto">
           Interno — identidad visual
         </p>
-        <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
+        <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
           La paleta de <span className="text-marca-texto">Clima Zoe</span>
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-texto-medio">

@@ -27,7 +27,7 @@ export default function WhatsAppFlotante() {
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
       {abierto && (
-        <div className="w-72 overflow-hidden rounded-marca-lg border border-borde bg-superficie shadow-2xl shadow-black/60">
+        <div className="w-72 overflow-hidden rounded-marca-lg border border-borde bg-superficie">
           <div className="flex items-center gap-3 bg-marca px-4 py-3">
             <span className="flex size-9 items-center justify-center rounded-full bg-marca-contraste/15">
               <IconoWhatsApp className="size-5 fill-marca-contraste" />
@@ -59,7 +59,7 @@ export default function WhatsAppFlotante() {
         onClick={() => setAbierto((v) => !v)}
         aria-label={abierto ? 'Cerrar chat de WhatsApp' : 'Abrir chat de WhatsApp'}
         aria-expanded={abierto}
-        className="flex size-14 items-center justify-center rounded-full bg-marca shadow-lg shadow-black/50 transition-transform hover:scale-105"
+        className="flex size-14 items-center justify-center rounded-full bg-marca transition-transform hover:scale-105"
       >
         {abierto ? (
           <span className="text-xl font-bold text-marca-contraste">✕</span>

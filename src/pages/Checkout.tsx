@@ -72,7 +72,7 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <div className="contenedor py-24 text-center">
-        <h1 className="text-3xl font-extrabold">Su carrito está vacío</h1>
+        <h1 className="text-3xl font-bold">Su carrito está vacío</h1>
         <p className="mt-3 text-texto-medio">
           Agregue productos al carrito para continuar con el pedido.
         </p>
@@ -215,7 +215,7 @@ export default function Checkout() {
         {/* --- Resumen ------------------------------------------------------ */}
         <aside className="lg:sticky lg:top-8 lg:self-start">
           <div className="rounded-marca-lg border border-borde bg-fondo p-6">
-            <h2 className="text-lg font-extrabold">Su pedido</h2>
+            <h2 className="text-lg font-bold">Su pedido</h2>
 
             <ul className="mt-5 space-y-4">
               {items.map((i) => (
@@ -224,7 +224,7 @@ export default function Checkout() {
                     {i.imagen && (
                       <img src={i.imagen} alt="" className="size-full object-contain p-1" />
                     )}
-                    <span className="absolute -right-1.5 -top-1.5 flex size-5 items-center justify-center rounded-full bg-marca text-[10px] font-extrabold text-marca-contraste">
+                    <span className="absolute -right-1.5 -top-1.5 flex size-5 items-center justify-center rounded-full bg-marca text-[10px] font-bold text-marca-contraste">
                       {i.cantidad}
                     </span>
                   </div>
@@ -254,8 +254,8 @@ export default function Checkout() {
                 <dd className="font-semibold">A coordinar</dd>
               </div>
               <div className="flex items-baseline justify-between border-t border-borde pt-3">
-                <dt className="font-extrabold">Total</dt>
-                <dd className="text-2xl font-extrabold text-marca-texto">
+                <dt className="font-bold">Total</dt>
+                <dd className="text-2xl font-bold text-marca-texto">
                   {totales.cobrable ? formatear(totales.subtotal) : '—'}
                 </dd>
               </div>
@@ -336,7 +336,7 @@ function PasoDatos({
 
   return (
     <div>
-      <h2 className="text-xl font-extrabold">Sus datos</h2>
+      <h2 className="text-xl font-bold">Sus datos</h2>
       <p className="mt-1.5 text-sm text-texto-medio">
         Los necesitamos para la factura y para coordinar la entrega.
       </p>
@@ -396,7 +396,7 @@ function PasoEntrega({
 
   return (
     <div>
-      <h2 className="text-xl font-extrabold">¿Dónde lo entregamos?</h2>
+      <h2 className="text-xl font-bold">¿Dónde lo entregamos?</h2>
       <p className="mt-1.5 text-sm text-texto-medio">
         Despachamos a todo el país. El costo del envío depende de la ciudad y
         del volumen, y se lo confirmamos antes de despachar.
@@ -459,7 +459,7 @@ function PasoPago({
 }) {
   return (
     <div>
-      <h2 className="text-xl font-extrabold">¿Cómo prefiere pagar?</h2>
+      <h2 className="text-xl font-bold">¿Cómo prefiere pagar?</h2>
       <p className="mt-1.5 text-sm text-texto-medio">
         {cobrable
           ? 'Elija el método con el que quiere completar la compra.'

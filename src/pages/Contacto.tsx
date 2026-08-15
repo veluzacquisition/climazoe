@@ -46,7 +46,7 @@ export default function Contacto() {
     <>
       <Seccion espaciado="amplio">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+          <h1 className="text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
             Hablemos de su <span className="text-marca-texto">proyecto</span>
           </h1>
           <p className="mt-6 text-xl leading-relaxed text-texto-medio">
@@ -137,7 +137,7 @@ export default function Contacto() {
                   <dd className="mt-1">
                     <a
                       href={`tel:${tel(site.contacto.telefono)}`}
-                      className="text-xl font-extrabold text-marca-texto"
+                      className="text-xl font-bold text-marca-texto"
                     >
                       {site.contacto.telefono}
                     </a>

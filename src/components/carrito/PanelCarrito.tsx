@@ -18,10 +18,10 @@ export default function PanelCarrito() {
     <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Carrito">
       <div className="absolute inset-0 bg-black/50" onClick={cerrar} aria-hidden="true" />
 
-      <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-fondo shadow-2xl">
+      <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-fondo">
         {/* --- Cabecera --------------------------------------------------- */}
         <header className="flex items-center justify-between border-b border-borde px-5 py-4">
-          <h2 className="text-lg font-extrabold">
+          <h2 className="text-lg font-bold">
             Su carrito
             {totales.unidades > 0 && (
               <span className="ml-2 text-sm font-normal text-texto-medio">
@@ -124,7 +124,7 @@ export default function PanelCarrito() {
               ) : (
                 <div className="flex items-baseline justify-between">
                   <span className="font-semibold">Subtotal</span>
-                  <span className="text-2xl font-extrabold text-marca-texto">
+                  <span className="text-2xl font-bold text-marca-texto">
                     {formatear(totales.subtotal)}
                   </span>
                 </div>

@@ -115,16 +115,13 @@ export function Marcas() {
 export function BannerAsesoria() {
   return (
     <Seccion espaciado="compacto">
-      <div className="relative overflow-hidden rounded-marca-lg border border-marca-borde bg-superficie">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full opacity-25 blur-[100px]"
-          style={{ background: 'var(--marca)' }}
-        />
-        <div className="relative grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
+      {/* Sin resplandor de fondo: el bloque se sostiene con el filete verde y
+          el color plano. La mancha difuminada es adorno de plantilla. */}
+      <div className="overflow-hidden rounded-marca-lg border-l-4 border-marca bg-superficie ring-1 ring-borde">
+        <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
             <span className="chip bg-acento text-acento-contraste">Sin costo</span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
               ¿Cuánto puede <span className="text-marca">ahorrar</span> con energía solar?
             </h2>
             <p className="mt-4 max-w-xl text-lg text-texto-medio">
@@ -171,7 +168,7 @@ export function ComoComprar() {
             key={p.t}
             className="rounded-marca-lg border border-borde bg-superficie p-7"
           >
-            <span className="inline-flex size-11 items-center justify-center rounded-full bg-marca text-lg font-extrabold text-marca-contraste">
+            <span className="inline-flex size-11 items-center justify-center rounded-full bg-marca text-lg font-bold text-marca-contraste">
               {i + 1}
             </span>
             <h3 className="mt-5 text-xl font-bold">{p.t}</h3>
@@ -216,7 +213,7 @@ export function Tienda() {
               <dd>
                 <a
                   href={`tel:${site.contacto.telefono.replace(/\s/g, '')}`}
-                  className="text-2xl font-extrabold text-marca-texto"
+                  className="text-2xl font-bold text-marca-texto"
                 >
                   {site.contacto.telefono}
                 </a>
@@ -279,7 +276,7 @@ export function BlogYGaleria() {
     <Seccion fondo="alt">
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
-          <h2 className="text-2xl font-extrabold tracking-tight">Del blog</h2>
+          <h2 className="text-xl font-bold tracking-tight">Del blog</h2>
           <p className="mt-2 text-texto-medio">
             Guías para entender qué sistema le conviene.
           </p>
@@ -289,7 +286,7 @@ export function BlogYGaleria() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-extrabold tracking-tight">Galería de proyectos</h2>
+          <h2 className="text-xl font-bold tracking-tight">Galería de proyectos</h2>
           <p className="mt-2 text-texto-medio">
             Instalaciones hechas por Clima Zoe.
           </p>

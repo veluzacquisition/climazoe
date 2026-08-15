@@ -29,7 +29,7 @@ export default function PedidoConfirmado() {
     return (
       <Seccion espaciado="amplio">
         <div className="mx-auto max-w-lg text-center">
-          <h1 className="text-3xl font-extrabold">No encontramos ese pedido</h1>
+          <h1 className="text-3xl font-bold">No encontramos ese pedido</h1>
           <p className="mt-3 text-texto-medio">
             El código <span className="font-mono font-bold">{codigo}</span> no
             está guardado en este navegador. Si ya nos escribió, su pedido
@@ -74,21 +74,21 @@ export default function PedidoConfirmado() {
             </svg>
           </span>
 
-          <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
             ¡Pedido recibido!
           </h1>
           <p className="mt-3 text-lg text-texto-medio">
             Gracias {pedido.cliente.nombre}. Su pedido quedó registrado con el
             código:
           </p>
-          <p className="mt-4 inline-block rounded-marca border border-marca-borde bg-marca-tenue px-5 py-2.5 font-mono text-xl font-extrabold text-marca-texto">
+          <p className="mt-4 inline-block rounded-marca border border-marca-borde bg-marca-tenue px-5 py-2.5 font-mono text-xl font-bold text-marca-texto">
             {pedido.codigo}
           </p>
         </div>
 
         {/* --- Qué sigue ---------------------------------------------------- */}
         <div className="mt-10 rounded-marca-lg border border-borde bg-superficie p-6 sm:p-8">
-          <h2 className="text-lg font-extrabold">Qué sigue</h2>
+          <h2 className="text-lg font-bold">Qué sigue</h2>
           <ol className="mt-5 space-y-4">
             {[
               pedido.requiereCotizacion
@@ -98,7 +98,7 @@ export default function PedidoConfirmado() {
               'Despachamos y le compartimos la guía de seguimiento.',
             ].map((t, i) => (
               <li key={t} className="flex gap-4">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-marca text-xs font-extrabold text-marca-contraste">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-marca text-xs font-bold text-marca-contraste">
                   {i + 1}
                 </span>
                 <span className="text-texto-medio">{t}</span>
@@ -116,7 +116,7 @@ export default function PedidoConfirmado() {
 
         {/* --- Detalle ------------------------------------------------------ */}
         <div className="mt-6 rounded-marca-lg border border-borde bg-fondo p-6 sm:p-8">
-          <h2 className="text-lg font-extrabold">Detalle del pedido</h2>
+          <h2 className="text-lg font-bold">Detalle del pedido</h2>
 
           <ul className="mt-5 divide-y divide-borde-suave">
             {pedido.items.map((i) => (

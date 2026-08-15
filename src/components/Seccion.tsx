@@ -67,7 +67,7 @@ export function TituloSeccion({
   return (
     <div className="flex flex-wrap items-end justify-between gap-5">
       <div className="max-w-2xl">
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
+        <h2 className="text-xl font-bold tracking-tight sm:text-3xl">
           {titulo}
         </h2>
         {bajada && <p className="mt-4 text-lg leading-relaxed text-texto-medio">{bajada}</p>}

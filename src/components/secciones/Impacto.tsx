@@ -34,7 +34,7 @@ export default function Impacto() {
   return (
     <Seccion tono="oscuro" espaciado="normal">
       <div className="text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
+        <h2 className="text-xl font-bold tracking-tight sm:text-3xl">
           Nuestro impacto
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-texto-medio">
@@ -53,7 +53,7 @@ export default function Impacto() {
             <dd>
               {c.valor === null ? (
                 <span
-                  className="block text-4xl font-extrabold text-acento-texto sm:text-5xl"
+                  className="block text-4xl font-bold text-acento-texto sm:text-5xl"
                   title="[PENDIENTE: cifra real de Clima Zoe]"
                 >
                   —
@@ -113,7 +113,7 @@ function Contador({ hasta, sufijo = '' }: { hasta: number; sufijo?: string }) {
   }, [hasta]);
 
   return (
-    <span ref={ref} className="block text-5xl font-extrabold tracking-tight text-marca sm:text-6xl">
+    <span ref={ref} className="block text-5xl font-bold tracking-tight text-marca sm:text-6xl">
       {valor.toLocaleString('es-CO')}
       {sufijo}
     </span>

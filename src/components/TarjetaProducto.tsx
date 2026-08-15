@@ -31,7 +31,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
       <div className="relative">
         <Link
           to={`/producto/${producto.id}`}
-          className="relative block aspect-square overflow-hidden bg-white"
+          className="relative block aspect-square overflow-hidden border-b border-borde bg-white"
           aria-label={producto.nombre}
         >
           {/* Fondo blanco a propósito: las fotos vienen recortadas sobre

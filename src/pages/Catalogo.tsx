@@ -91,7 +91,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
           )}
         </nav>
 
-        <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
+        <h1 className="mt-3 text-2xl font-bold sm:text-3xl">
           {nombreCategoria ?? 'Todo el catálogo'}
         </h1>
         <p className="mt-2 text-texto-medio">

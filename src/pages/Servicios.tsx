@@ -17,7 +17,7 @@ export default function Servicios() {
           <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
             Productos y servicios
           </p>
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
             Energías renovables,
             <br />
             <span className="text-marca-texto">de la asesoría al montaje</span>
@@ -56,7 +56,7 @@ export default function Servicios() {
               to={`/catalogo?categoria=${l.categoria}`}
               className="group flex flex-col rounded-marca-lg border border-borde bg-fondo p-7 transition-colors hover:border-marca"
             >
-              <span className="inline-flex size-10 items-center justify-center rounded-full bg-marca text-sm font-extrabold text-marca-contraste">
+              <span className="inline-flex size-10 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste">
                 {i + 1}
               </span>
               <h3 className="mt-5 text-xl font-bold transition-colors group-hover:text-marca-texto">
@@ -76,7 +76,7 @@ export default function Servicios() {
         <div className="grid items-center gap-10 rounded-marca-lg border border-marca-borde bg-marca-tenue p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
             <span className="chip bg-acento text-acento-contraste">Ahorre</span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
               Más de un <span className="text-marca-texto">50% en consumo</span>,
               más beneficios tributarios
             </h2>
@@ -123,7 +123,7 @@ export default function Servicios() {
             },
           ].map((p, i) => (
             <div key={p.t} className="rounded-marca-lg border border-borde bg-fondo p-6">
-              <span className="text-3xl font-extrabold text-marca-texto">
+              <span className="text-3xl font-bold text-marca-texto">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="mt-4 text-lg font-bold">{p.t}</h3>

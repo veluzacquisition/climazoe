@@ -27,7 +27,7 @@ export default function Nosotros() {
           <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
             Desde {ANIO_INICIO_COMERCIAL}
           </p>
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
             Zoe quiere decir <span className="text-marca-texto">vida</span>
           </h1>
           <p className="mt-7 text-xl leading-relaxed text-texto-medio">
@@ -86,14 +86,14 @@ export default function Nosotros() {
       <Seccion>
         <div className="grid gap-6 lg:grid-cols-2">
           <article className="rounded-marca-lg border border-borde bg-superficie p-8 sm:p-10">
-            <h2 className="text-2xl font-extrabold tracking-tight">Misión</h2>
+            <h2 className="text-xl font-bold tracking-tight">Misión</h2>
             <p className="mt-5 text-lg leading-relaxed text-texto-medio">
               {identidad.mision}
             </p>
           </article>
 
           <article className="rounded-marca-lg border border-marca-borde bg-marca-tenue p-8 sm:p-10">
-            <h2 className="text-2xl font-extrabold tracking-tight">Visión</h2>
+            <h2 className="text-xl font-bold tracking-tight">Visión</h2>
             <p className="mt-5 text-lg leading-relaxed text-texto-medio">
               {identidad.vision}
             </p>
@@ -108,7 +108,7 @@ export default function Nosotros() {
       <Seccion tono="oscuro">
         <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr]">
           <div className="text-center lg:text-left">
-            <p className="text-7xl font-extrabold tracking-tight text-marca sm:text-8xl">
+            <p className="text-7xl font-bold tracking-tight text-marca sm:text-8xl">
               {anios}
             </p>
             <p className="mt-2 text-sm uppercase tracking-wide text-texto-medio">
@@ -160,7 +160,7 @@ export default function Nosotros() {
       {/* --- Cierre ---------------------------------------------------------- */}
       <Seccion espaciado="amplio">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             ¿Damos el paso <span className="text-marca-texto">juntos</span>?
           </h2>
           <p className="mt-5 text-lg text-texto-medio">

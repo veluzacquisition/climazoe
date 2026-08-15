@@ -38,7 +38,7 @@ export default function Header({
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-fondo shadow-sm shadow-black/5">
+    <header className="sticky top-0 z-50 bg-fondo">
       <CintaAnuncios />
 
       {/* --- Fila principal ---------------------------------------------- */}
@@ -135,7 +135,7 @@ function BotonCarrito() {
     >
       <IconoCarrito className="size-5" />
       {totales.unidades > 0 && (
-        <span className="absolute -right-1.5 -top-1.5 flex min-w-5 items-center justify-center rounded-full bg-acento px-1 text-[11px] font-extrabold text-acento-contraste">
+        <span className="absolute -right-1.5 -top-1.5 flex min-w-5 items-center justify-center rounded-full bg-acento px-1 text-[11px] font-bold text-acento-contraste">
           {totales.unidades}
         </span>
       )}
@@ -248,7 +248,7 @@ function MegaMenuProductos() {
       </button>
 
       {abierto && (
-        <div className="absolute left-0 top-full z-50 w-[min(64rem,90vw)] rounded-b-marca-lg border border-t-0 border-borde bg-fondo p-6 shadow-2xl shadow-black/15">
+        <div className="absolute left-0 top-full z-50 w-[min(64rem,90vw)] rounded-b-marca-lg border border-t-0 border-borde bg-fondo p-6">
           <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-4">
             {arbol.map((raiz) => (
               <ColumnaCategoria key={raiz.slug} nodo={raiz} onNavegar={() => setAbierto(false)} />

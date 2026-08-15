@@ -24,7 +24,7 @@ export default function Logo({ className = 'h-11', tamano = 'sm' }: Props) {
   if (falló) {
     return (
       <span
-        className={`inline-flex items-baseline gap-1.5 font-titulo text-2xl font-extrabold tracking-tight ${className}`}
+        className={`inline-flex items-baseline gap-1.5 font-titulo text-xl font-bold tracking-tight ${className}`}
       >
         <span className="text-zoe-white">CLIMA</span>
         <span className="text-marca-texto">ZOE</span>

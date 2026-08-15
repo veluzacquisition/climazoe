@@ -114,7 +114,7 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       {/* --- Cierre ------------------------------------------------------- */}
       <Seccion fondo="alt" espaciado="amplio">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Dejemos de <span className="text-marca">pagar recibo</span> de luz
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-texto-medio">

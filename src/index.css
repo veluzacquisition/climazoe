@@ -12,8 +12,9 @@
    Lo que se conserva del logo es la PALETA, no la ilustración: nada de rayos
    de sol amarillos, textura de pasto, gradientes ni sombras pesadas.
 
-   El sitio es de tema oscuro por decisión, igual que el logo. No hay variante
-   clara: el negro es el fondo de marca, no una preferencia del visitante.
+   La base es CLARA (ver `.tono-oscuro` más abajo para la excepción), y la
+   forma es casi recta: radios de 4-6px y filetes de 1px en vez de esquinas
+   muy redondeadas y sombras blandas.
    ========================================================================== */
 
 :root {
@@ -80,12 +81,25 @@
   --alerta: #e8b931;
   --error: var(--zoe-red);
 
-  /* --- Tipografía y forma ------------------------------------------------- */
-  --fuente-titulo: "Sora", ui-sans-serif, system-ui, sans-serif;
+  /* --- Tipografía ---------------------------------------------------------
+     Una sola familia en todo el sitio. Dos tipografías con títulos
+     geométricos enormes es la firma visual de las plantillas genéricas; una
+     grotesca neutra bien jerarquizada se lee como comercio técnico serio,
+     que es lo que vende paneles y baterías. */
+  --fuente-titulo: "Inter", ui-sans-serif, system-ui, sans-serif;
   --fuente-texto: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --radio: 0.625rem;
-  --radio-lg: 1rem;
+  /* --- Forma --------------------------------------------------------------
+     Esquinas casi rectas, medidas contra tiendas del sector: su tarjeta usa
+     5px y su botón 4px, no 16px. El redondeo grande, sumado a sombras
+     blandas, es lo que hace que un sitio se lea como plantilla en vez de
+     como catálogo profesional. */
+  --radio: 0.25rem;      /* 4px — botones, campos, chips */
+  --radio-lg: 0.375rem;  /* 6px — tarjetas y paneles */
+
+  /* Las superficies se separan con un filete de 1px, no con sombra. La
+     sombra suave sobre fondo claro es difusa y ensucia la retícula. */
+  --sombra-panel: 0 1px 2px rgb(10 15 13 / 0.06);
 }
 
 /* ==========================================================================
@@ -189,7 +203,7 @@
   h1, h2, h3, h4 {
     font-family: var(--fuente-titulo);
     color: var(--texto);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -223,20 +237,23 @@
     line-height: 1;
     text-align: center;
     transition: background-color 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
-    padding: 1.125rem 2rem;
-    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
   }
 
   .btn:active { transform: translateY(1px); }
 
+  /* El CTA principal sigue teniendo presencia —se venden sistemas de varios
+     millones— pero sin llegar al botón-banner. */
   .btn-xl {
-    padding: 1.375rem 2.75rem;
-    font-size: 1.125rem;
+    padding: 1.0625rem 2.25rem;
+    font-size: 1rem;
   }
 
   .btn-sm {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
     font-weight: 600;
   }
 
@@ -270,11 +287,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    border-radius: 999px;
-    padding: 0.3rem 0.7rem;
+    border-radius: var(--radio);
+    padding: 0.3rem 0.6rem;
     font-size: 0.6875rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 }

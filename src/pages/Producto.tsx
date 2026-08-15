@@ -115,7 +115,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
             </p>
           )}
 
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{producto.nombre}</h1>
+          <h1 className="mt-2 text-2xl font-bold sm:text-3xl">{producto.nombre}</h1>
 
           {producto.resumen && (
             <p className="mt-4 text-lg leading-relaxed text-texto-medio">{producto.resumen}</p>
@@ -145,7 +145,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
                 <p className="text-sm text-texto-medio">
                   Precio {segmento === 'mayorista' ? 'para empresas' : 'para hogar'}
                 </p>
-                <p className="mt-1 text-4xl font-extrabold tracking-tight text-marca-texto sm:text-5xl">{formatear(valor)}</p>
+                <p className="mt-1 text-4xl font-bold tracking-tight text-marca-texto sm:text-5xl">{formatear(valor)}</p>
               </>
             ) : (
               <>
