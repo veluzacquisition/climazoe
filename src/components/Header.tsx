@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { construirArbol, useCatalogo, type NodoCategoria } from '../lib/catalogo';
 import { aniosDeTrayectoria, site } from '../lib/site.config';
+import { useCarrito } from '../lib/carrito';
+import { IconoCarrito } from './carrito/PanelCarrito';
 import type { Segmento } from '../types/catalogo';
 
 /**
@@ -61,6 +63,8 @@ export default function Header({
 
             <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
 
+            <BotonCarrito />
+
             <button
               type="button"
               onClick={() => setMenuAbierto(true)}
@@ -113,6 +117,31 @@ export default function Header({
 }
 
 // ---------------------------------------------------------------------------
+
+/** Acceso al carrito con contador de unidades. */
+function BotonCarrito() {
+  const { totales, abrir } = useCarrito();
+
+  return (
+    <button
+      type="button"
+      onClick={abrir}
+      aria-label={
+        totales.unidades > 0
+          ? `Abrir carrito, ${totales.unidades} unidades`
+          : 'Abrir carrito, vacío'
+      }
+      className="relative rounded-marca border border-borde p-2.5 transition-colors hover:border-marca hover:text-marca-texto"
+    >
+      <IconoCarrito className="size-5" />
+      {totales.unidades > 0 && (
+        <span className="absolute -right-1.5 -top-1.5 flex min-w-5 items-center justify-center rounded-full bg-acento px-1 text-[11px] font-extrabold text-acento-contraste">
+          {totales.unidades}
+        </span>
+      )}
+    </button>
+  );
+}
 
 function CintaAnuncios() {
   const mensajes = [

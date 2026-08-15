@@ -56,7 +56,7 @@ export const site = {
   },
 
   /**
-   * Modo de compra por defecto. Ver BotonCompra: cambiar a Bold o
+   * Modo de compra por defecto. Ver lib/pagos.ts: cambiar a Bold o
    * contraentrega es tocar esta línea, no los componentes.
    */
   modoCompraPorDefecto: 'whatsapp' as ModoCompra,

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import type { ProductoWeb } from '../lib/catalogo';
 import type { Segmento } from '../types/catalogo';
 import { precio as formatear } from '../lib/formato';
-import { enlaceWhatsApp } from './BotonCompra';
+import AccionesProducto from './AccionesProducto';
 
 /**
  * Tarjeta de producto del grid.
@@ -105,16 +105,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
           )}
         </div>
 
-        <a
-          href={enlaceWhatsApp(producto, segmento)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`btn btn-sm mt-4 w-full ${
-            producto.disponible ? 'btn-primario' : 'btn-contorno'
-          }`}
-        >
-          {producto.disponible ? 'Cotizar por WhatsApp' : 'Consultar disponibilidad'}
-        </a>
+        <AccionesProducto producto={producto} segmento={segmento} variante="tarjeta" />
       </div>
     </article>
   );

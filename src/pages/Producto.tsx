@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { relacionados, useProducto } from '../lib/catalogo';
-import BotonCompra from '../components/BotonCompra';
+import AccionesProducto from '../components/AccionesProducto';
 import TarjetaProducto from '../components/TarjetaProducto';
 import { precio as formatear } from '../lib/formato';
 import { site } from '../lib/site.config';
@@ -157,13 +157,9 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
               </>
             )}
 
-            <div className="mt-5">
-              <BotonCompra producto={producto} segmento={segmento} />
+            <div className="mt-6">
+              <AccionesProducto producto={producto} segmento={segmento} />
             </div>
-
-            <p className="mt-3 text-center text-xs text-texto-suave">
-              Le respondemos por WhatsApp con precio, disponibilidad y tiempo de entrega.
-            </p>
           </div>
 
           {/* --- Fichas técnicas -------------------------------------------- */}

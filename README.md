@@ -36,8 +36,8 @@ ya usa. Verificados contra los píxeles de `public/brand/climazoe-logo.png`
 
 | Token         | Hex       | Origen en el logo  | Papel |
 |---------------|-----------|--------------------|-------|
-| `--zoe-black` | `#000000` | Fondo              | Fondo base del sitio |
-| `--zoe-white` | `#FFFFFF` | "CLIMA"            | Texto principal |
+| `--zoe-black` | `#000000` | Fondo              | Excepción: hero (sobre la foto) y franja de cifras |
+| `--zoe-white` | `#FFFFFF` | "CLIMA"            | **Base del sitio**: ~84% de la superficie |
 | `--zoe-green` | `#68CB4E` | "ZOE"              | **Protagonista**: marca, precios, botones primarios, estados activos |
 | `--zoe-red`   | `#D6492E` | "ENERGÍA SOLAR"    | Acento puntual: descuentos, alertas. Máx. 10-15% de superficie |
 | `--zoe-navy`  | `#284978` | El globo           | Sólo bordes, íconos y tinte de superficies |
@@ -46,17 +46,29 @@ Reglas que salen de medir el contraste, no de estimarlo:
 
 - **Botón verde = texto negro** (10.24:1). Blanco sobre ese verde da 2.05:1 y
   es ilegible.
-- **Navy nunca lleva texto encima sobre negro** (2.31:1, no pasa ni como UI).
-  Como relleno sí, con texto blanco (9.07:1).
-- **El rojo puro no se usa como texto sobre fondos rojizos** (cae a ~4.4:1):
-  para eso está `--acento-texto` (`#E07662`, 6.94:1).
+- **El verde como TEXTO cambia con el tono.** `#68CB4E` sobre blanco da
+  2.05:1 y es ilegible, así que la letra usa `--marca-texto`: `#3E7A2F`
+  (5.21:1) en claro y el verde vivo en oscuro. El RELLENO de los botones no
+  cambia nunca — es el ancla de reconocimiento.
+- **Navy nunca lleva texto encima sobre negro** (2.31:1). Como relleno sí,
+  con texto blanco (9.07:1).
 
-El sitio es de **tema oscuro por decisión**, igual que el logo — no hay
-variante clara. Lo que se conserva del logo es la paleta, no la ilustración:
-sin rayos de sol, sin textura de pasto, sin gradientes ni sombras pesadas.
+### Tonos
 
-El logo se sirve en WebP (41 KB en la versión de header, contra 464 KB del
-PNG) con el PNG como respaldo. El master está en Cloudinary.
+Clima Zoe es una marca de **fondo claro**: el claro vive en `:root` y no hay
+que declararlo. El oscuro es la excepción `.tono-oscuro`, reservado al hero
+—donde la oscuridad la pone la fotografía— y a la franja de cifras. Medido en
+el navegador: **84% de superficie clara**.
+
+Envolver una sección en `.tono-oscuro` redefine las variables semánticas; los
+componentes no saben en qué tono están y se adaptan solos.
+
+### Logo
+
+`public/brand/climazoe-logo.*` es el logo 2026: plano, sin resplandor, con
+"CLIMA" en negro — hecho para fondo claro. El anterior queda como
+`climazoe-logo-oscuro.*` porque el nuevo desaparece sobre negro. Se sirve en
+WebP con PNG de respaldo.
 
 ---
 
@@ -146,6 +158,55 @@ producción. Un trigger lo verifica en Postgres.
 vista pública hace `coalesce` entre las dos. Hoy sólo está poblada
 `url_origen`; cuando estén las imágenes propias de Clima Zoe se rellena
 `url_cloudinary` y el sitio cambia solo, sin tocar código.
+
+---
+
+## Carrito y checkout
+
+El sitio tiene carrito propio y checkout interno; WhatsApp dejó de ser el
+botón de compra y pasó a ser un canal de consulta aparte.
+
+**Carrito** (`src/lib/carrito.tsx`): contexto de React con persistencia en
+`localStorage`, para no perder la venta si el cliente recarga. El precio se
+congela al agregar: si cambia la lista, se respeta lo que el cliente vio.
+
+**Checkout** (`src/pages/Checkout.tsx`): tres pasos —datos, entrega, pago—
+con resumen fijo al lado. Funciona en dos modos según el catálogo:
+
+| | Sin precios (hoy) | Con precios |
+|---|---|---|
+| Resumen | "A confirmar" | Subtotal y total reales |
+| Métodos | Contraentrega, transferencia, coordinar | Los mismos **+ pasarela** |
+| Cierre | Pedido en firme, total por confirmar | Cobro en línea |
+
+No se finge un total: mientras no haya lista cerrada, el pedido entra como
+solicitud en firme y un asesor confirma el monto.
+
+### Dónde se enchufa la pasarela
+
+Todo el conocimiento de pagos está en `src/lib/pagos.ts`. Conectar Bold,
+Wompi o Mercado Pago es:
+
+1. Implementar `procesar()` del método `pasarela` para que cree la orden
+   contra su API y devuelva `{ ok: true, urlExterna: respuesta.checkoutUrl }`.
+2. Poner `disponible: true`.
+
+El checkout no cambia: pide métodos con `metodosDisponibles()` y llama a
+`procesar()`. La pasarela se muestra en gris con el motivo mientras no esté
+activa, en vez de esconderse.
+
+### Pedidos
+
+`supabase/migrations/0002_pedidos.sql` tiene las tablas `pedidos` y
+`pedido_items`. Dos decisiones:
+
+- Los ítems guardan **nombre y precio congelados**: un pedido histórico debe
+  mostrar lo que el cliente compró, no lo que el producto vale hoy.
+- `anon` puede **INSERT pero no SELECT**: los pedidos tienen cédula,
+  dirección y teléfono. La lectura es de `service_role`.
+
+Mientras no haya Supabase conectado, el pedido se guarda en el navegador y se
+envía por WhatsApp con todo el detalle.
 
 ---
 

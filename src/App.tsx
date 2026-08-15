@@ -8,6 +8,9 @@ import Paleta from './pages/Paleta';
 import Nosotros from './pages/Nosotros';
 import Servicios from './pages/Servicios';
 import Contacto from './pages/Contacto';
+import Checkout from './pages/Checkout';
+import PedidoConfirmado from './pages/PedidoConfirmado';
+import { ProveedorCarrito } from './lib/carrito';
 import EnConstruccion from './pages/EnConstruccion';
 import { site } from './lib/site.config';
 import type { Segmento } from './types/catalogo';
@@ -19,6 +22,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ProveedorCarrito>
       <Routes>
         <Route element={<Layout segmento={segmento} onCambiarSegmento={setSegmento} />}>
           <Route index element={<Home segmento={segmento} />} />
@@ -28,10 +32,16 @@ export default function App() {
           <Route path="nosotros" element={<Nosotros />} />
           <Route path="contacto" element={<Contacto />} />
           {/* Interna, fuera del menú: identidad visual documentada. */}
+          <Route path="pedido/:codigo" element={<PedidoConfirmado />} />
           <Route path="paleta" element={<Paleta />} />
           <Route path="*" element={<EnConstruccion titulo="Página no encontrada" nota="Revisá la dirección." />} />
         </Route>
+
+        {/* El checkout va FUERA del Layout: tiene su propia cabecera y no
+            debe ofrecer salidas del flujo de compra. */}
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      </ProveedorCarrito>
     </BrowserRouter>
   );
 }

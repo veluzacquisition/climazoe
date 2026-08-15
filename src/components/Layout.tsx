@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import WhatsAppFlotante from './WhatsAppFlotante';
+import PanelCarrito from './carrito/PanelCarrito';
 import type { Segmento } from '../types/catalogo';
 
 export default function Layout({
@@ -19,6 +20,7 @@ export default function Layout({
       </main>
       <Footer />
       <WhatsAppFlotante />
+      <PanelCarrito />
     </div>
   );
 }
