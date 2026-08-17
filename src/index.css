@@ -5,7 +5,7 @@
    --------------------------------------------------------------------------
    La paleta NO es una propuesta: son los colores muestreados del logo real
    que ya usa el negocio. Verificado contra los píxeles del logo
-   (public/brand/climazoe-logo.png): el verde y el rojo caen a Δ≈10 de los
+   (src/assets/marca/climazoe-logo.png): el verde y el rojo caen a Δ≈10 de los
    colores dominantes de la tipografía, así que el logo y la interfaz hablan
    el mismo idioma.
 
