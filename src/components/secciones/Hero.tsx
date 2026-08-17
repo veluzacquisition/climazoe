@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { aniosDeTrayectoria, site } from '../../lib/site.config';
-import FondoHero from './FondoHero';
+import { MEDIA_HERO, imagen, imagenSrcSet, posterDeVideo, video } from '../../lib/media';
 
 /**
  * Hero con la imagen DENTRO y el texto encima, como los referentes del sector
@@ -11,14 +11,14 @@ import FondoHero from './FondoHero';
  * Es el único punto oscuro del sitio, y la oscuridad la pone la imagen, no un
  * bloque de color: por eso el resto de la página es clara sin contradicción.
  *
- * El velo sobre la foto está calculado, no puesto a ojo — hace falta un negro
- * al 62% en el lado del texto para que el titular blanco mantenga 4.5:1 sobre
- * cualquier foto, incluida una de mediodía. Se degrada hacia la derecha para
- * no tapar la imagen.
- *
- * Para poner la foto real: reemplazar <FondoHero /> por un <img> con las
- * mismas clases de posición. Nada más cambia.
+ * El velo va fuerte del lado del texto y se abre hacia la derecha. Si tapara
+ * todo el ancho, la fotografía dejaría de aportar y el hero volvería a ser un
+ * rectángulo negro.
  */
+
+type Media =
+  | { tipo: 'imagen'; id: string; alt: string }
+  | { tipo: 'video'; id: string; alt: string };
 
 interface Slide {
   etiqueta: string;
@@ -26,6 +26,7 @@ interface Slide {
   destacado: string;
   texto: string;
   cta: { texto: string; a: string };
+  media: Media;
 }
 
 const SLIDES: Slide[] = [
@@ -36,6 +37,24 @@ const SLIDES: Slide[] = [
     texto:
       'Vendemos e instalamos el sistema completo: paneles, baterías e inversores. Deje de depender del recibo de luz.',
     cta: { texto: 'Ver catálogo', a: '/catalogo' },
+    media: {
+      tipo: 'imagen',
+      id: MEDIA_HERO.panelesTecho,
+      alt: 'Arreglo de paneles solares instalado sobre un techo metálico, con montañas al fondo',
+    },
+  },
+  {
+    etiqueta: 'Venta e instalación',
+    antes: 'Se lo dejamos',
+    destacado: 'funcionando',
+    texto:
+      'No solo vendemos el equipo: lo montamos, lo conectamos y le enseñamos a operarlo. En casa, finca o negocio.',
+    cta: { texto: 'Ver servicios', a: '/servicios' },
+    media: {
+      tipo: 'video',
+      id: MEDIA_HERO.videoInstalacion,
+      alt: 'Instalación de un sistema solar en cubierta',
+    },
   },
   {
     etiqueta: 'Para finca y zonas sin red',
@@ -44,14 +63,11 @@ const SLIDES: Slide[] = [
     texto:
       'Sistemas aislados con baterías de litio y gel para fincas, casas rurales y proyectos lejos del tendido eléctrico.',
     cta: { texto: 'Ver baterías', a: '/catalogo?categoria=baterias' },
-  },
-  {
-    etiqueta: 'Para empresas y pymes',
-    antes: 'Baje el costo de',
-    destacado: 'su operación',
-    texto:
-      'Precios de mayorista para negocios, instaladores y proyectos grandes. Cambie a "Empresa" arriba para verlos.',
-    cta: { texto: 'Ver inversores', a: '/catalogo?categoria=inversores-solphower' },
+    media: {
+      tipo: 'imagen',
+      id: MEDIA_HERO.instalacion,
+      alt: 'Técnico instalando paneles solares sobre una cubierta',
+    },
   },
 ];
 
@@ -61,32 +77,72 @@ export default function Hero() {
   const [activo, setActivo] = useState(0);
   const [pausado, setPausado] = useState(false);
 
+  // Quien pidió menos movimiento no recibe ni carrusel automático ni video:
+  // se queda en el primer slide con la foto fija.
+  const [menosMovimiento, setMenosMovimiento] = useState(false);
   useEffect(() => {
-    if (pausado) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const leer = () => setMenosMovimiento(mq.matches);
+    leer();
+    mq.addEventListener('change', leer);
+    return () => mq.removeEventListener('change', leer);
+  }, []);
+
+  useEffect(() => {
+    if (pausado || menosMovimiento) return;
     const t = setInterval(() => setActivo((i) => (i + 1) % SLIDES.length), INTERVALO);
     return () => clearInterval(t);
-  }, [pausado]);
+  }, [pausado, menosMovimiento]);
 
   const ir = (i: number) => setActivo((i + SLIDES.length) % SLIDES.length);
   const s = SLIDES[activo];
 
   return (
     <section
-      className="tono-oscuro relative isolate overflow-hidden"
+      className="tono-oscuro relative isolate overflow-hidden bg-zoe-black"
       onMouseEnter={() => setPausado(true)}
       onMouseLeave={() => setPausado(false)}
       aria-roledescription="carrusel"
       aria-label="Destacados de Clima Zoe"
     >
-      {/* --- Imagen, a sangre -------------------------------------------- */}
-      <FondoHero className="absolute inset-0 -z-20 size-full object-cover" />
+      {/* --- Media, a sangre. Se montan todas y se cruzan por opacidad para
+          que el cambio de slide no muestre un hueco mientras carga. ------- */}
+      {SLIDES.map((sl, i) => (
+        <div
+          key={i}
+          aria-hidden={i !== activo}
+          className={`absolute inset-0 -z-20 transition-opacity duration-700 ${
+            i === activo ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {sl.media.tipo === 'video' ? (
+            <VideoFondo
+              id={sl.media.id}
+              alt={sl.media.alt}
+              activo={i === activo}
+              congelado={menosMovimiento}
+            />
+          ) : (
+            <img
+              src={imagen(sl.media.id, 1600)}
+              srcSet={imagenSrcSet(sl.media.id)}
+              sizes="100vw"
+              alt={sl.media.alt}
+              // La primera es el elemento más grande de la primera pantalla:
+              // se carga con prioridad y las demás no compiten con ella.
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'low'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              className="size-full object-cover"
+            />
+          )}
+        </div>
+      ))}
 
-      {/* --- Velo: fuerte donde va el texto, y se abre para dejar ver la
-          imagen. Si el degradado tapa todo el ancho, la fotografía deja de
-          aportar y el hero vuelve a ser un rectángulo negro. */}
+      {/* --- Velo ---------------------------------------------------------- */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/45 to-transparent"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/55 to-black/25"
       />
 
       {/* --- Contenido, encima -------------------------------------------- */}
@@ -102,9 +158,7 @@ export default function Hero() {
               {s.antes} <span className="text-marca">{s.destacado}</span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/85">
-              {s.texto}
-            </p>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/85">{s.texto}</p>
           </div>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -162,14 +216,64 @@ export default function Hero() {
               />
             ))}
           </div>
-
-          <p className="ml-auto hidden max-w-64 rounded-marca bg-black/55 px-3 py-2 text-right text-xs text-white/70 backdrop-blur-sm lg:block">
-            [PENDIENTE: este gráfico se reemplaza por la foto real de una
-            instalación de Clima Zoe]
-          </p>
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Video de fondo: sin sonido, en bucle y en línea.
+ *
+ *  · `muted` no es decorativo: sin él los navegadores bloquean la
+ *    reproducción automática y el slide se quedaría en el póster.
+ *  · `playsInline` evita que iOS lo abra a pantalla completa.
+ *  · Se pausa cuando su slide no está visible: un video corriendo detrás de
+ *    otro slide gasta batería y datos sin que nadie lo vea.
+ *  · Con "reducir movimiento" activo no se reproduce: se muestra el póster.
+ */
+function VideoFondo({
+  id,
+  alt,
+  activo,
+  congelado,
+}: {
+  id: string;
+  alt: string;
+  activo: boolean;
+  congelado: boolean;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const poster = posterDeVideo(id);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (activo && !congelado) {
+      // Puede fallar si el navegador bloquea el autoplay; el póster queda.
+      void v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [activo, congelado]);
+
+  if (congelado) {
+    return <img src={poster} alt={alt} className="size-full object-cover" />;
+  }
+
+  return (
+    <video
+      ref={ref}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={alt}
+      className="size-full object-cover"
+    >
+      <source src={video(id)} type="video/mp4" />
+    </video>
   );
 }
 
