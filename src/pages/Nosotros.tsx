@@ -3,7 +3,9 @@ import Seccion, { TituloSeccion } from '../components/Seccion';
 import {
   ANIO_CONSTITUCION,
   ANIO_INICIO_COMERCIAL,
+  MATRICULA_MERCANTIL,
   aniosDeTrayectoria,
+  consignas,
   frases,
   identidad,
   site,
@@ -33,6 +35,15 @@ export default function Nosotros() {
           <p className="mt-7 text-xl leading-relaxed text-texto-medio">
             {identidad.origenNombre}
           </p>
+
+          <blockquote className="mt-9 border-l-4 border-marca pl-6">
+            <p className="text-xl italic leading-relaxed text-texto sm:text-2xl">
+              {identidad.origenPersonal}
+            </p>
+            <footer className="mt-3 text-sm font-bold uppercase tracking-wide text-texto-suave">
+              El origen del nombre
+            </footer>
+          </blockquote>
         </div>
       </Seccion>
 
@@ -62,7 +73,8 @@ export default function Nosotros() {
               {[
                 ['Razón social', site.razonSocial],
                 ['NIT', site.nit],
-                ['Constituida', `${ANIO_CONSTITUCION}, Cámara de Comercio de Bogotá`],
+                ['Constituida', `7 de marzo de ${ANIO_CONSTITUCION}`],
+                ['Matrícula mercantil', `${MATRICULA_MERCANTIL} — Cámara de Comercio de Bogotá`],
                 ['Actividad comercial', `Desde junio de ${ANIO_INICIO_COMERCIAL}`],
                 ['Sede', `${site.contacto.direccion} — ${site.contacto.ciudad}`],
               ].map(([k, v]) => (
@@ -138,9 +150,21 @@ export default function Nosotros() {
       <Seccion fondo="alt">
         <TituloSeccion
           titulo="Lo que nos mueve"
-          bajada="Frases que acompañan a la marca desde el principio."
+          bajada="Consignas propias y frases que acompañan a la marca desde el principio."
         />
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          {consignas.map((c) => (
+            <p
+              key={c}
+              className="rounded-marca-lg border-l-4 border-marca bg-fondo p-6 text-lg font-semibold leading-relaxed ring-1 ring-borde"
+            >
+              {c}
+            </p>
+          ))}
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-3">
           {frases.map((f) => (
             <blockquote
               key={f.texto}

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
-import { lineasDeProducto, site } from '../lib/site.config';
+import { certificacionesDeProducto, lineasDeProducto, site } from '../lib/site.config';
 
 /**
  * Servicios y líneas de producto.
@@ -94,6 +94,26 @@ export default function Servicios() {
           >
             Calcular mi ahorro
           </a>
+        </div>
+      </Seccion>
+
+      {/* --- Certificaciones --------------------------------------------------
+          Rotuladas como certificación de los EQUIPOS, no de Clima Zoe:
+          presentarlas como propias sería atribuirse algo que no se tiene. */}
+      <Seccion fondo="alt" espaciado="compacto">
+        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
+          Los equipos que comercializamos cumplen
+        </p>
+        <div className="mt-7 flex flex-wrap items-stretch justify-center gap-3">
+          {certificacionesDeProducto.map((c) => (
+            <div
+              key={c.sigla}
+              className="rounded-marca border border-borde bg-fondo px-5 py-3 text-center"
+            >
+              <p className="text-lg font-bold text-marca-texto">{c.sigla}</p>
+              <p className="mt-0.5 text-xs text-texto-medio">{c.detalle}</p>
+            </div>
+          ))}
         </div>
       </Seccion>
 

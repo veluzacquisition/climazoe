@@ -12,6 +12,8 @@ import type { ModoCompra, Segmento } from '../types/catalogo';
 export const ANIO_INICIO_COMERCIAL = 2019;
 /** Año de constitución de la sociedad (7 de marzo de 2017). */
 export const ANIO_CONSTITUCION = 2017;
+/** Matrícula mercantil, Cámara de Comercio de Bogotá (11 de abril de 2017). */
+export const MATRICULA_MERCANTIL = '028044241';
 
 /**
  * Los años de trayectoria se calculan, no se escriben.
@@ -84,6 +86,15 @@ export const identidad = {
     '"nacer, dar vida"; los judíos alejandrinos lo tradujeron como Eva, la ' +
     'madre bíblica de todos los mortales, es decir, el símbolo de la vida.',
 
+  /**
+   * De dónde salió el nombre, en palabras del fundador. Es el fragmento más
+   * humano del documento de marca y no se reescribe ni se pule: dicho así es
+   * lo que separa una historia real de un texto de relleno.
+   */
+  origenPersonal:
+    'Después de muchas noches oscuras… alguien muy allegado a mi corazón ' +
+    'sugirió: "usted necesita un soplo de vida".',
+
   origenMarca:
     'La marca Clima Zoe nace de la inspiración que produjo el Acuerdo de ' +
     'París, la conferencia de diciembre de 2015 donde 195 países ' +
@@ -107,8 +118,19 @@ export const identidad = {
 } as const;
 
 /**
- * Frases del material de marca. Se usan rotando en el sitio; las citas van
- * con su autor porque son de terceros.
+ * Consignas propias de la marca. Son distintas de las citas: no son de
+ * terceros sino la voz de Clima Zoe, y por eso van sin autor y en primera
+ * persona. Salen del listado de frases del documento de marca.
+ */
+export const consignas = [
+  '¿Cambio climático? ¿Qué puedo hacer? Usar las tres R: reduce, recicla, reutiliza.',
+  'Tengo conciencia ecológica y pensamiento crítico. Soy persona ecológica: ahorro energía.',
+  'Ten en mente que eres parte del medio ambiente. Por eso piensa y vive ecológicamente.',
+] as const;
+
+/**
+ * Citas de terceros. Van SIEMPRE con autor: atribuirlas a la marca sería
+ * apropiarse de palabras que no son suyas.
  */
 export const frases: { texto: string; autor?: string }[] = [
   {
@@ -162,6 +184,22 @@ export const lineasDeProducto = [
     detalle: 'Protecciones AC/DC, cableado, conectores y estructuras de montaje.',
     categoria: 'protecciones',
   },
+] as const;
+
+/**
+ * Sellos que aparecen en el material comercial de la empresa.
+ *
+ * Ojo con cómo se presentan: certifican los EQUIPOS que se comercializan, no
+ * a Clima Zoe. Mostrarlos como certificaciones propias sería atribuirse algo
+ * que no se tiene, así que en el sitio van rotulados como certificación de
+ * producto.
+ */
+export const certificacionesDeProducto = [
+  { sigla: 'CE', detalle: 'Conformidad Europea' },
+  { sigla: 'IEC', detalle: 'Norma electrotécnica internacional' },
+  { sigla: 'UL', detalle: 'Underwriters Laboratories' },
+  { sigla: 'RETIE', detalle: 'Reglamento técnico colombiano' },
+  { sigla: 'PV Cycle', detalle: 'Reciclaje de módulos fotovoltaicos' },
 ] as const;
 
 /**
