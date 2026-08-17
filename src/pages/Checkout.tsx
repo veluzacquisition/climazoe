@@ -6,6 +6,7 @@ import {
   generarCodigoPedido,
   guardarPedido,
   metodosDisponibles,
+  registrarPedidoEnSupabase,
   type DatosCliente,
   type DatosEntrega,
   type Pedido,
@@ -94,6 +95,7 @@ export default function Checkout() {
     setError(null);
 
     const pedido: Pedido = {
+      // Código provisional: si Supabase responde, manda el que asigna la base.
       codigo: generarCodigoPedido(),
       items,
       cliente,
@@ -108,6 +110,11 @@ export default function Checkout() {
     };
 
     try {
+      // Se registra ANTES de procesar el pago: si la pasarela cobra, el
+      // pedido ya tiene que existir. Un fallo acá no frena la venta.
+      const codigoServidor = await registrarPedidoEnSupabase(pedido);
+      if (codigoServidor) pedido.codigo = codigoServidor;
+
       const r = await metodo.procesar(pedido);
       if (!r.ok) {
         setError(r.mensaje ?? 'No se pudo procesar el pedido. Intente de nuevo.');

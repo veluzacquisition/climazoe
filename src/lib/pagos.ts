@@ -223,9 +223,67 @@ export function metodosDisponibles(cobrable: boolean): MetodoPago[] {
 const CLAVE = 'climazoe.pedidos.v1';
 
 /**
- * Los pedidos se guardan en el navegador para poder mostrar la página de
- * confirmación tras recargar. No reemplaza a un backend: cuando exista la
- * tabla `pedidos` en Supabase, se inserta ahí y esto queda como respaldo.
+ * Registra el pedido en Supabase.
+ *
+ * Entra por la función `crear_pedido`, no escribiendo en las tablas: un
+ * pedido son dos tablas y el sitio no puede leer la cabecera insertada para
+ * colgarle los ítems —los pedidos llevan cédula y dirección, así que la
+ * lectura está prohibida—. La función hace las dos inserciones en una
+ * transacción y devuelve sólo el código.
+ *
+ * Devuelve el código que asignó la base, o null si no se pudo registrar. Un
+ * fallo acá NO cancela la venta: el pedido igual se guarda en el navegador y
+ * se envía por WhatsApp, que es como se cierra hoy. Perder el registro es
+ * malo; perder la venta es peor.
+ */
+export async function registrarPedidoEnSupabase(p: Pedido): Promise<string | null> {
+  try {
+    const { supabase } = await import('./supabase');
+    if (!supabase) return null;
+
+    const { data, error } = await supabase.rpc('crear_pedido', {
+      datos: {
+        nombre: p.cliente.nombre,
+        apellido: p.cliente.apellido,
+        email: p.cliente.email,
+        telefono: p.cliente.telefono,
+        tipo_documento: p.cliente.tipoDocumento,
+        documento: p.cliente.documento,
+        departamento: p.entrega.departamento,
+        ciudad: p.entrega.ciudad,
+        direccion: p.entrega.direccion,
+        detalle_direccion: p.entrega.detalle || null,
+        notas: p.entrega.notas || null,
+        subtotal: p.subtotal || null,
+        envio: p.envio,
+        total: p.total,
+        requiere_cotizacion: p.requiereCotizacion,
+        metodo_pago: p.metodo,
+        items: p.items.map((i) => ({
+          producto_slug: i.id,
+          nombre: i.nombre,
+          sku: i.sku,
+          imagen_url: i.imagen,
+          precio_unitario: i.precio,
+          cantidad: i.cantidad,
+        })),
+      },
+    });
+
+    if (error) {
+      console.error('[pedido] no se pudo registrar en Supabase:', error.message);
+      return null;
+    }
+    return typeof data === 'string' ? data : null;
+  } catch (e) {
+    console.error('[pedido] error al registrar:', e);
+    return null;
+  }
+}
+
+/**
+ * Copia local del pedido, para poder mostrar la página de confirmación tras
+ * recargar sin tener que leerlo del servidor (que no se permite).
  */
 export function guardarPedido(p: Pedido): void {
   try {
