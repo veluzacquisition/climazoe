@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCatalogo } from '../../lib/catalogo';
 import Seccion from '../Seccion';
+import Pendiente from '../Pendiente';
 import { ANIO_INICIO_COMERCIAL, aniosDeTrayectoria } from '../../lib/site.config';
 
 /**
@@ -54,7 +55,6 @@ export default function Impacto() {
               {c.valor === null ? (
                 <span
                   className="block text-4xl font-bold text-acento-texto sm:text-5xl"
-                  title="[PENDIENTE: cifra real de Clima Zoe]"
                 >
                   —
                 </span>
@@ -67,9 +67,9 @@ export default function Impacto() {
         ))}
       </dl>
 
-      <p className="mt-6 text-center text-xs text-texto-suave">
-        [PENDIENTE: número real de proyectos, clientes y kWp instalados por Clima Zoe]
-      </p>
+      <div className="mx-auto mt-8 max-w-xl">
+        <Pendiente nota="Número real de proyectos, clientes y kWp instalados por Clima Zoe." />
+      </div>
     </Seccion>
   );
 }

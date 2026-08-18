@@ -9,11 +9,11 @@ import CarruselCategorias from '../components/secciones/CarruselCategorias';
 import {
   BandaGarantias,
   BannerAsesoria,
-  BlogYGaleria,
   ComoComprar,
   Marcas,
   Tienda,
 } from '../components/secciones/Bloques';
+import { MEDIA_HERO, imagen, imagenSrcSet } from '../lib/media';
 import { site } from '../lib/site.config';
 import type { Segmento } from '../types/catalogo';
 
@@ -109,34 +109,57 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <Marcas />
       <ComoComprar />
       <Tienda />
-      <BlogYGaleria />
-
-      {/* --- Cierre ------------------------------------------------------- */}
-      <Seccion fondo="alt" espaciado="amplio">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Dejemos de <span className="text-marca">pagar recibo</span> de luz
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-texto-medio">
-            Escríbanos y le armamos el sistema a la medida de lo que necesita.
-            La asesoría no cuesta y no compromete a nada.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href={`https://wa.me/${site.contacto.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-xl btn-primario"
-            >
-              Hablar con un asesor
-            </a>
-            <Link to="/catalogo" className="btn btn-xl btn-contorno">
-              Ver el catálogo
-            </Link>
-          </div>
-        </div>
-      </Seccion>
+      <Cierre />
     </>
+  );
+}
+
+/**
+ * Cierre con fotografía a sangre, no una caja de texto centrada.
+ *
+ * Es el mismo recurso del hero —imagen debajo, velo, texto encima— y cierra
+ * la página con el mismo peso con el que abre.
+ */
+function Cierre() {
+  return (
+    <section className="tono-oscuro relative isolate overflow-hidden bg-zoe-black">
+      <img
+        src={imagen(MEDIA_HERO.panelesTecho, 1600)}
+        srcSet={imagenSrcSet(MEDIA_HERO.panelesTecho)}
+        sizes="100vw"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 -z-20 size-full object-cover"
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/70" />
+
+      <div className="contenedor relative py-20 text-center lg:py-28">
+        <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Dejemos de <span className="text-marca">pagar recibo</span> de luz
+        </h2>
+        <p className="mx-auto mt-5 max-w-lg text-lg text-white/80">
+          Le armamos el sistema a la medida de lo que necesita.
+        </p>
+        <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-xl btn-solar"
+          >
+            Hablar con un asesor
+          </a>
+          <Link
+            to="/catalogo"
+            className="btn btn-xl border border-white/30 text-white hover:border-white hover:bg-white/10"
+          >
+            Ver el catálogo
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 

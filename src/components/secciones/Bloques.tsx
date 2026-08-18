@@ -1,48 +1,39 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useCatalogo } from '../../lib/catalogo';
-import { ANIO_INICIO_COMERCIAL, aniosDeTrayectoria, site } from '../../lib/site.config';
-import Seccion, { TituloSeccion } from '../Seccion';
+import { site } from '../../lib/site.config';
+import { MEDIA_HERO, imagen, imagenSrcSet } from '../../lib/media';
+import Seccion from '../Seccion';
+import Pendiente from '../Pendiente';
 
 /**
- * Bloques sueltos de la home. Están juntos acá porque son piezas de
- * presentación cortas; cuando alguno crezca, se saca a su propio archivo.
+ * Bloques de la home.
  *
- * El fondo claro es el default; sólo se declara el tono cuando un bloque se
- * sale de esa base.
+ * Criterio de esta pasada: ninguna sección larga puede ser sólo texto sobre
+ * una caja. Donde hay algo que mostrar —una foto, un dato, un producto— se
+ * muestra; donde no lo hay, la sección se acorta en vez de rellenarse con
+ * párrafos.
  */
 
 // ---------------------------------------------------------------------------
-// Banda de garantías — validación social pegada al hero, antes del scroll
+// Banda de garantías
 // ---------------------------------------------------------------------------
 
-/** El dato de años se calcula: escrito a mano queda desactualizado y se
- *  convierte en un dato falso sin que nadie lo note. */
 const GARANTIAS = [
-  { t: 'Envíos a toda Colombia', d: 'Despachamos a cualquier municipio' },
-  { t: 'Asesoría técnica gratis', d: 'Le decimos qué sistema necesita' },
-  { t: 'Venta e instalación', d: 'Se lo dejamos funcionando' },
-  {
-    t: `${aniosDeTrayectoria()} años de trayectoria`,
-    d: `Vendiendo energía solar desde ${ANIO_INICIO_COMERCIAL}`,
-  },
+  { t: 'Envíos a toda Colombia', icono: <IconoCamion /> },
+  { t: 'Asesoría técnica gratis', icono: <IconoChat /> },
+  { t: 'Venta e instalación', icono: <IconoLlave /> },
+  { t: 'Equipos certificados', icono: <IconoEscudo /> },
 ];
 
 export function BandaGarantias() {
   return (
-    <Seccion fondo="alt" espaciado="none" className="border-b border-borde">
-      <div className="contenedor grid divide-y divide-borde sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
+    <Seccion tono="oscuro" espaciado="none" contenido={false}>
+      <div className="contenedor grid divide-y divide-white/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
         {GARANTIAS.map((g) => (
-          <div key={g.t} className="flex items-start gap-3 py-6 lg:px-6 lg:first:pl-0">
-            <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-marca text-marca-contraste">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="size-4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m5 12 5 5L20 7" />
-              </svg>
-            </span>
-            <div>
-              <p className="text-sm font-bold">{g.t}</p>
-              <p className="mt-0.5 text-xs text-texto-medio">{g.d}</p>
-            </div>
+          <div key={g.t} className="flex items-center gap-3 py-5 lg:justify-center lg:px-4">
+            <span className="text-marca">{g.icono}</span>
+            <p className="text-sm font-semibold text-white">{g.t}</p>
           </div>
         ))}
       </div>
@@ -51,14 +42,10 @@ export function BandaGarantias() {
 }
 
 // ---------------------------------------------------------------------------
-// Marcas
+// Marcas — se detectan sobre los nombres de producto, así que reflejan lo que
+// de verdad hay en inventario y no una lista escrita a mano.
 // ---------------------------------------------------------------------------
 
-/**
- * Las marcas no vienen como campo en el catálogo: se detectan sobre los
- * nombres de producto. Es preferible a escribir la lista a mano, porque así
- * refleja lo que de verdad hay en inventario.
- */
 const MARCAS_CONOCIDAS = [
   'Fox ESS', 'Trina Solar', 'JA Solar', 'Moreday', 'Projoy', 'Sunray',
   'Growatt', 'Deye', 'Huawei', 'Canadian Solar', 'Renesola', 'Victron',
@@ -72,9 +59,7 @@ export function Marcas() {
     if (!datos) return [];
     return MARCAS_CONOCIDAS.map((m) => ({
       nombre: m,
-      n: datos.productos.filter((p) =>
-        p.nombre.toLowerCase().includes(m.toLowerCase()),
-      ).length,
+      n: datos.productos.filter((p) => p.nombre.toLowerCase().includes(m.toLowerCase())).length,
     }))
       .filter((m) => m.n > 0)
       .sort((a, b) => b.n - a.n);
@@ -84,18 +69,17 @@ export function Marcas() {
 
   return (
     <Seccion fondo="alt" espaciado="compacto">
-      <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
-        Marcas que manejamos
-      </p>
-      <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
+          Trabajamos con
+        </p>
         {marcas.map((m) => (
           <Link
             key={m.nombre}
             to={`/catalogo?q=${encodeURIComponent(m.nombre)}`}
-            className="rounded-marca border border-borde bg-fondo px-5 py-3 text-sm font-bold text-texto-medio transition-colors hover:border-marca hover:text-marca-texto"
+            className="text-lg font-bold text-texto-suave transition-colors hover:text-marca-texto"
           >
             {m.nombre}
-            <span className="ml-2 text-xs font-normal text-texto-suave">{m.n}</span>
           </Link>
         ))}
       </div>
@@ -104,38 +88,36 @@ export function Marcas() {
 }
 
 // ---------------------------------------------------------------------------
-// Banner de asesoría
+// Banner de asesoría — el bloque amarillo del sitio
 // ---------------------------------------------------------------------------
 
 /**
- * Ocupa el lugar que en el sitio de referencia tiene la calculadora solar.
- * Se promete lo que sí podemos cumplir hoy —una asesoría por WhatsApp— en vez
- * de anunciar una calculadora que todavía no existe.
+ * Ocupa el lugar que en el sitio de referencia tiene la calculadora solar. Se
+ * promete lo que sí podemos cumplir hoy —una asesoría por WhatsApp— en vez de
+ * anunciar una calculadora que todavía no existe.
+ *
+ * Va en amarillo pleno: es el único bloque de la página con ese color, así
+ * que corta el scroll sin necesidad de ser grande.
  */
 export function BannerAsesoria() {
   return (
     <Seccion espaciado="compacto">
-      {/* Sin resplandor de fondo: el bloque se sostiene con el filete verde y
-          el color plano. La mancha difuminada es adorno de plantilla. */}
-      <div className="overflow-hidden rounded-marca-lg border-l-4 border-marca bg-superficie ring-1 ring-borde">
+      <div className="overflow-hidden rounded-marca-lg bg-solar">
         <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
-            <span className="chip bg-acento text-acento-contraste">Sin costo</span>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
-              ¿Cuánto puede <span className="text-marca">ahorrar</span> con energía solar?
-            </h2>
-            <p className="mt-4 max-w-xl text-lg text-texto-medio">
-              Cuéntenos cuánto paga de luz al mes y qué quiere alimentar.
-              Le decimos qué sistema le sirve, cuánto cuesta y en cuánto
-              tiempo se paga solo.
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/60">
+              Sin costo y sin compromiso
             </p>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-black sm:text-3xl">
+              Díganos cuánto paga de luz y le decimos cuánto ahorraría
+            </h2>
           </div>
 
           <a
             href={`https://wa.me/${site.contacto.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-xl btn-primario shrink-0"
+            className="btn btn-xl shrink-0 bg-zoe-black text-zoe-white hover:bg-zoe-black/85"
           >
             Calcular mi ahorro
           </a>
@@ -146,81 +128,95 @@ export function BannerAsesoria() {
 }
 
 // ---------------------------------------------------------------------------
-// Cómo se compra
+// Cómo se compra — foto a la izquierda, pasos a la derecha
 // ---------------------------------------------------------------------------
 
-export function ComoComprar() {
-  const pasos = [
-    { t: 'Le asesoramos', d: 'Nos cuenta qué quiere alimentar y le decimos qué sistema le sirve. Sin compromiso.' },
-    { t: 'Cotizamos', d: 'Le pasamos precio con instalación incluida si la necesita, y tiempo de entrega.' },
-    { t: 'Instalamos', d: 'No solo vendemos el equipo: lo dejamos funcionando en su casa, finca o negocio.' },
-  ];
+const PASOS = [
+  { t: 'Nos cuenta qué necesita', d: 'Su consumo y qué quiere alimentar.' },
+  { t: 'Dimensionamos el sistema', d: 'Según su consumo real, no según lo que queramos vender.' },
+  { t: 'Cotizamos', d: 'Precio con instalación y tiempo de entrega.' },
+  { t: 'Instalamos', d: 'Se lo dejamos funcionando y le enseñamos a operarlo.' },
+];
 
+export function ComoComprar() {
   return (
     <Seccion>
-      <TituloSeccion
-        titulo="Cómo se compra"
-        bajada="Tres pasos, sin letra chica y sin compromiso hasta que usted decida."
-      />
-      <div className="mt-10 grid gap-5 sm:grid-cols-3">
-        {pasos.map((p, i) => (
-          <div
-            key={p.t}
-            className="rounded-marca-lg border border-borde bg-superficie p-7"
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="overflow-hidden rounded-marca-lg border border-borde">
+          <img
+            src={imagen(MEDIA_HERO.instalacion, 960)}
+            srcSet={imagenSrcSet(MEDIA_HERO.instalacion)}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            alt="Instalación de paneles solares sobre una cubierta"
+            loading="lazy"
+            decoding="async"
+            className="aspect-4/3 w-full object-cover"
+          />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            De la llamada al sistema andando
+          </h2>
+
+          <ol className="mt-8 space-y-6">
+            {PASOS.map((p, i) => (
+              <li key={p.t} className="flex gap-4">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste">
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 className="font-bold leading-tight">{p.t}</h3>
+                  <p className="mt-1 text-sm text-texto-medio">{p.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-solar mt-9"
           >
-            <span className="inline-flex size-11 items-center justify-center rounded-full bg-marca text-lg font-bold text-marca-contraste">
-              {i + 1}
-            </span>
-            <h3 className="mt-5 text-xl font-bold">{p.t}</h3>
-            <p className="mt-2 leading-relaxed text-texto-medio">{p.d}</p>
-          </div>
-        ))}
+            Empezar por WhatsApp
+          </a>
+        </div>
       </div>
     </Seccion>
   );
 }
 
 // ---------------------------------------------------------------------------
-// Tienda, blog y galería — estructura lista, contenido pendiente
+// Contacto directo
 // ---------------------------------------------------------------------------
 
-function Pendiente({ nota }: { nota: string }) {
-  return (
-    <div className="rounded-marca-lg border border-dashed border-acento/40 bg-acento-tenue px-6 py-10 text-center">
-      <p className="text-sm font-bold text-acento-texto">
-        [PENDIENTE: contenido real de Clima Zoe]
-      </p>
-      <p className="mx-auto mt-2 max-w-md text-sm text-texto-medio">{nota}</p>
-    </div>
-  );
-}
-
 export function Tienda() {
+  const tel = (n: string) => n.replace(/\s/g, '');
+
   return (
     <Seccion fondo="alt">
-      <TituloSeccion
-        titulo="Dónde estamos"
-        bajada="Atendemos por WhatsApp y teléfono a todo el país."
-      />
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-marca-lg border border-borde bg-superficie p-8">
-          <h3 className="text-xl font-bold">{site.nombre}</h3>
-          <dl className="mt-6 space-y-5">
+      <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch">
+        <div className="rounded-marca-lg border border-borde bg-fondo p-8 sm:p-10">
+          <h2 className="text-2xl font-bold tracking-tight">Hablemos</h2>
+          <p className="mt-3 text-texto-medio">
+            Atendemos por WhatsApp y teléfono a todo el país.
+          </p>
+
+          <dl className="mt-8 space-y-6">
             <div>
               <dt className="text-xs uppercase tracking-wide text-texto-suave">
-                Teléfono / WhatsApp
+                Teléfono y WhatsApp
               </dt>
-              <dd>
+              <dd className="mt-1 flex flex-wrap items-baseline gap-x-4">
                 <a
-                  href={`tel:${site.contacto.telefono.replace(/\s/g, '')}`}
+                  href={`tel:${tel(site.contacto.telefono)}`}
                   className="text-2xl font-bold text-marca-texto"
                 >
                   {site.contacto.telefono}
                 </a>
-              </dd>
-              <dd className="mt-1">
                 <a
-                  href={`tel:${site.contacto.telefonoSecundario.replace(/\s/g, '')}`}
+                  href={`tel:${tel(site.contacto.telefonoSecundario)}`}
                   className="font-semibold text-texto-medio hover:text-marca-texto"
                 >
                   {site.contacto.telefonoSecundario}
@@ -229,18 +225,18 @@ export function Tienda() {
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-texto-suave">Correo</dt>
-              <dd>
+              <dd className="mt-1">
                 <a
                   href={`mailto:${site.contacto.email}`}
-                  className="break-all font-semibold text-texto hover:text-marca-texto"
+                  className="break-all font-semibold hover:text-marca-texto"
                 >
                   {site.contacto.email}
                 </a>
               </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wide text-texto-suave">Dirección</dt>
-              <dd className="font-semibold text-texto">
+              <dt className="text-xs uppercase tracking-wide text-texto-suave">Sede</dt>
+              <dd className="mt-1 font-semibold">
                 {site.contacto.direccion}
                 <span className="block font-normal text-texto-medio">
                   {site.contacto.ciudad}
@@ -248,53 +244,78 @@ export function Tienda() {
               </dd>
             </div>
           </dl>
+
           <a
             href={`https://wa.me/${site.contacto.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-urgente mt-6 w-full"
+            className="btn btn-solar mt-8 w-full"
           >
             Escribir por WhatsApp
           </a>
-          <div className="mt-6 rounded-marca border border-dashed border-acento/40 bg-acento-tenue px-4 py-3">
-            <p className="text-xs font-bold text-acento-texto">
-              [PENDIENTE: horario de atención]
-            </p>
+
+          <div className="mt-4">
+            <Pendiente nota="Horario de atención y mapa de la sede." />
           </div>
         </div>
 
-        <div className="flex min-h-72 items-center justify-center rounded-marca-lg border border-dashed border-borde bg-superficie px-6 text-center text-sm text-texto-suave">
-          [PENDIENTE: mapa de {site.contacto.direccion}, {site.contacto.ciudad}]
+        <div className="overflow-hidden rounded-marca-lg border border-borde">
+          <img
+            src={imagen(MEDIA_HERO.panelesTecho, 960)}
+            srcSet={imagenSrcSet(MEDIA_HERO.panelesTecho)}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            alt="Paneles solares instalados sobre un techo, con montañas al fondo"
+            loading="lazy"
+            decoding="async"
+            className="size-full min-h-72 object-cover"
+          />
         </div>
       </div>
     </Seccion>
   );
 }
 
-export function BlogYGaleria() {
-  return (
-    <Seccion fondo="alt">
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div>
-          <h2 className="text-xl font-bold tracking-tight">Del blog</h2>
-          <p className="mt-2 text-texto-medio">
-            Guías para entender qué sistema le conviene.
-          </p>
-          <div className="mt-6">
-            <Pendiente nota="Artículos propios: cómo dimensionar un sistema, litio vs. gel, cuánto se ahorra." />
-          </div>
-        </div>
+// --- Pictogramas ------------------------------------------------------------
 
-        <div>
-          <h2 className="text-xl font-bold tracking-tight">Galería de proyectos</h2>
-          <p className="mt-2 text-texto-medio">
-            Instalaciones hechas por Clima Zoe.
-          </p>
-          <div className="mt-6">
-            <Pendiente nota="Fotos propias de instalaciones y del equipo trabajando." />
-          </div>
-        </div>
-      </div>
-    </Seccion>
+const trazo = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.8,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  className: 'size-5',
+};
+
+function IconoCamion() {
+  return (
+    <svg {...trazo}>
+      <path d="M2 7h11v10H2zM13 10h4l4 3v4h-8" />
+      <circle cx="6.5" cy="18.5" r="1.8" />
+      <circle cx="17.5" cy="18.5" r="1.8" />
+    </svg>
+  );
+}
+function IconoChat() {
+  return (
+    <svg {...trazo}>
+      <path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-5.3A8 8 0 1 1 21 12Z" />
+    </svg>
+  );
+}
+function IconoLlave() {
+  return (
+    <svg {...trazo}>
+      <path d="M14.5 6.5a4 4 0 1 0 3.6 5.7L21 15l-2 2-1.5-1.5L16 17l-2-2 1.8-1.8a4 4 0 0 0-1.3-6.7Z" />
+      <path d="m3 21 7-7" />
+    </svg>
+  );
+}
+function IconoEscudo() {
+  return (
+    <svg {...trazo}>
+      <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z" />
+      <path d="m9.5 12 1.8 1.8L15 10" />
+    </svg>
   );
 }

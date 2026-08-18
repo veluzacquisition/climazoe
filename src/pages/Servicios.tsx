@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import Pendiente from '../components/Pendiente';
 import { certificacionesDeProducto, lineasDeProducto, site } from '../lib/site.config';
 
 /**
@@ -152,14 +153,8 @@ export default function Servicios() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-marca-lg border border-dashed border-acento/40 bg-acento-tenue px-6 py-8 text-center">
-          <p className="text-sm font-bold text-acento-texto">
-            [PENDIENTE: contenido real de Clima Zoe]
-          </p>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-texto-medio">
-            Fotos de instalaciones propias, tiempos de entrega y montaje, y
-            condiciones de garantía por línea de producto.
-          </p>
+        <div className="mt-8">
+          <Pendiente nota="Fotos de instalaciones propias, tiempos de entrega y montaje, y condiciones de garantía por línea de producto." />
         </div>
       </Seccion>
     </>

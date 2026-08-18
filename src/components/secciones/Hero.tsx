@@ -169,7 +169,7 @@ export default function Hero() {
               href={`https://wa.me/${site.contacto.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-xl btn-urgente"
+              className="btn btn-xl btn-solar"
             >
               <IconoWhatsApp />
               Asesoría gratis

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import Pendiente from '../components/Pendiente';
 import { site } from '../lib/site.config';
 
 /**
@@ -184,11 +185,7 @@ export default function Contacto() {
               </dl>
             </div>
 
-            <div className="rounded-marca border border-dashed border-acento/40 bg-acento-tenue px-4 py-3">
-              <p className="text-xs font-bold text-acento-texto">
-                [PENDIENTE: horario de atención]
-              </p>
-            </div>
+            <Pendiente nota="Horario de atención." />
 
             <a
               href={`https://wa.me/${site.contacto.whatsapp}`}
@@ -204,8 +201,18 @@ export default function Contacto() {
 
       <Seccion fondo="alt">
         <TituloSeccion titulo="Dónde estamos" />
-        <div className="mt-8 flex min-h-72 items-center justify-center rounded-marca-lg border border-dashed border-borde bg-fondo px-6 text-center text-sm text-texto-suave">
-          [PENDIENTE: mapa de {site.contacto.direccion}, {site.contacto.ciudad}]
+        {/* Mapa embebido de Google: no necesita clave de API y evita dejar un
+            hueco donde debería estar la ubicación. */}
+        <div className="mt-8 overflow-hidden rounded-marca-lg border border-borde">
+          <iframe
+            title={`Ubicación de ${site.nombre} en ${site.contacto.ciudad}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              `${site.contacto.direccion}, ${site.contacto.ciudad}, Colombia`,
+            )}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-80 w-full border-0"
+          />
         </div>
       </Seccion>
     </>

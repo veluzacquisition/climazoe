@@ -156,7 +156,6 @@ function RedSocial({ nombre, url }: { nombre: string; url: string | null }) {
     // Sin enlace real preferimos no poner un botón muerto.
     return (
       <span
-        title={`[PENDIENTE: ${nombre} de Clima Zoe]`}
         className="cursor-help rounded-marca border border-dashed border-borde px-3 py-2 text-xs text-texto-suave"
       >
         {nombre}

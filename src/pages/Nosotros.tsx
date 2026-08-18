@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import Pendiente from '../components/Pendiente';
 import {
   ANIO_CONSTITUCION,
   ANIO_INICIO_COMERCIAL,
@@ -133,14 +134,8 @@ export default function Nosotros() {
               sector comercial público y privado, buscando generar acciones con
               pensamiento crítico y conciencia sobre la reducción de emisiones.
             </p>
-            <div className="mt-8 rounded-marca border border-dashed border-acento/40 bg-acento-tenue px-4 py-3">
-              <p className="text-sm font-bold text-acento-texto">
-                [PENDIENTE: contenido real de Clima Zoe]
-              </p>
-              <p className="mt-1 text-sm text-texto-medio">
-                Número de proyectos instalados, kWp en operación, clientes
-                atendidos y fotos del equipo trabajando.
-              </p>
+            <div className="mt-8">
+              <Pendiente nota="Número de proyectos instalados, kWp en operación, clientes atendidos y fotos del equipo trabajando." />
             </div>
           </div>
         </div>
