@@ -19,22 +19,55 @@ import Pendiente from '../Pendiente';
 // Banda de garantías
 // ---------------------------------------------------------------------------
 
+/**
+ * Tarjetas de valor, el patrón central del sitio de referencia: cuatro
+ * razones para confiar, cada una con pictograma, titular y una línea. Antes
+ * era una franja fina de cuatro palabras; como tarjetas sostienen el peso de
+ * lo que se vende sin volverse un muro de texto.
+ */
 const GARANTIAS = [
-  { t: 'Envíos a toda Colombia', icono: <IconoCamion /> },
-  { t: 'Asesoría técnica gratis', icono: <IconoChat /> },
-  { t: 'Venta e instalación', icono: <IconoLlave /> },
-  { t: 'Equipos certificados', icono: <IconoEscudo /> },
+  {
+    t: 'Asesoría técnica',
+    s: 'Criterio antes de vender',
+    d: 'Dimensionamos según su consumo real, no según lo que queramos vender.',
+    icono: <IconoChat />,
+  },
+  {
+    t: 'Catálogo con respaldo',
+    s: 'Equipos certificados',
+    d: 'Paneles, baterías e inversores de marcas con norma CE, IEC, UL y RETIE.',
+    icono: <IconoEscudo />,
+  },
+  {
+    t: 'Envíos a toda Colombia',
+    s: 'Cobertura nacional',
+    d: 'Despachamos a cualquier municipio y coordinamos la entrega en obra.',
+    icono: <IconoCamion />,
+  },
+  {
+    t: 'Venta e instalación',
+    s: 'De principio a fin',
+    d: 'No entregamos una caja: montamos el sistema y lo dejamos funcionando.',
+    icono: <IconoLlave />,
+  },
 ];
 
 export function BandaGarantias() {
   return (
-    <Seccion tono="oscuro" espaciado="none" contenido={false}>
-      <div className="contenedor grid divide-y divide-white/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+    <Seccion>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {GARANTIAS.map((g) => (
-          <div key={g.t} className="flex items-center gap-3 py-5 lg:justify-center lg:px-4">
-            <span className="text-marca">{g.icono}</span>
-            <p className="text-sm font-semibold text-white">{g.t}</p>
-          </div>
+          <article
+            key={g.t}
+            className="rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel"
+          >
+            <span className="flex size-11 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto">
+              {g.icono}
+            </span>
+            <h3 className="mt-5 font-bold leading-snug">{g.t}</h3>
+            <p className="mt-1 text-sm font-semibold text-marca-texto">{g.s}</p>
+            <p className="mt-3 text-sm leading-relaxed text-texto-medio">{g.d}</p>
+          </article>
         ))}
       </div>
     </Seccion>

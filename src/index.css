@@ -12,9 +12,11 @@
    Lo que se conserva del logo es la PALETA, no la ilustración: nada de rayos
    de sol amarillos, textura de pasto, gradientes ni sombras pesadas.
 
-   La base es CLARA (ver `.tono-oscuro` más abajo para la excepción), y la
-   forma es casi recta: radios de 4-6px y filetes de 1px en vez de esquinas
-   muy redondeadas y sombras blandas.
+   La base es CLARA (ver `.tono-oscuro` más abajo para la excepción). La
+   forma y la escala tipográfica están medidas sobre el sitio que el dueño
+   puso como referencia: tarjetas de 12px, botones en píldora, cuerpo de 17px
+   con interlineado 1.7 y sombras mínimas. Es el lenguaje con el que se vende
+   equipo caro, y reemplaza al sistema casi recto que veníamos usando.
    ========================================================================== */
 
 :root {
@@ -96,24 +98,35 @@
   --error: var(--zoe-red);
 
   /* --- Tipografía ---------------------------------------------------------
-     Una sola familia en todo el sitio. Dos tipografías con títulos
-     geométricos enormes es la firma visual de las plantillas genéricas; una
-     grotesca neutra bien jerarquizada se lee como comercio técnico serio,
-     que es lo que vende paneles y baterías. */
-  --fuente-titulo: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --fuente-texto: "Inter", ui-sans-serif, system-ui, sans-serif;
+     Figtree, una sola familia. Es la del sitio que puso el dueño como
+     referencia: una grotesca de formas abiertas que se lee más cálida que
+     Inter sin perder seriedad técnica. Vende equipo caro a hogares y
+     empresas, no a un tablero de control.
+
+     Escala medida sobre esa referencia: título 44px, sección 28px, cuerpo
+     17px con interlineado 1.7. El cuerpo grande y aireado es lo que más
+     aporta a que un sitio se lea premium. */
+  --fuente-titulo: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --fuente-texto: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  --texto-cuerpo: 1.0625rem;   /* 17px */
+  --interlineado: 1.7;
 
   /* --- Forma --------------------------------------------------------------
-     Esquinas casi rectas, medidas contra tiendas del sector: su tarjeta usa
-     5px y su botón 4px, no 16px. El redondeo grande, sumado a sombras
-     blandas, es lo que hace que un sitio se lea como plantilla en vez de
-     como catálogo profesional. */
-  --radio: 0.25rem;      /* 4px — botones, campos, chips */
-  --radio-lg: 0.375rem;  /* 6px — tarjetas y paneles */
+     Medido sobre el sitio de referencia: tarjeta 12px, campo 8px y botón en
+     píldora (32px). Antes el sistema estaba casi recto, copiado de un
+     distribuidor de ferretería; este lenguaje —más redondo y más aireado— es
+     el que se usa para vender equipo caro.
 
-  /* Las superficies se separan con un filete de 1px, no con sombra. La
-     sombra suave sobre fondo claro es difusa y ensucia la retícula. */
-  --sombra-panel: 0 1px 2px rgb(10 15 13 / 0.06);
+     Las sombras vuelven, pero mínimas: 6% de opacidad sobre un navy, no un
+     gris. Marcan el plano sin ensuciar. */
+  --radio-campo: 0.5rem;   /*  8px — inputs y chips */
+  --radio: 0.5rem;         /*  8px — compatibilidad */
+  --radio-lg: 0.75rem;     /* 12px — tarjetas y paneles */
+  --radio-pildora: 999px;  /* botones */
+
+  --sombra-panel: 0 1px 4px rgb(17 31 50 / 0.06);
+  --sombra-card: 0 1px 2px rgb(17 31 50 / 0.04), 0 8px 24px -16px rgb(17 31 50 / 0.18);
 }
 
 /* ==========================================================================
@@ -130,15 +143,20 @@
    ========================================================================== */
 
 .tono-oscuro {
-  --fondo: var(--zoe-black);
-  --superficie: #0a1017;
-  --superficie-alta: #131c26;
-  --borde: #24313f;
-  --borde-suave: #18222d;
+  /* Navy profundo en vez de negro puro. Sale de mezclar el navy del globo
+     (#284978) al 42% sobre negro, así que es color de marca y no un azul
+     cualquiera; da 16.59:1 con blanco, casi lo mismo que el #0D1B3E del
+     referente. El negro pleno se queda sólo para el velo sobre fotografía:
+     como fondo de sección se lee duro, y estamos vendiendo equipo caro. */
+  --fondo: #111f32;
+  --superficie: #16273d;
+  --superficie-alta: #1d3049;
+  --borde: #2b3f5a;
+  --borde-suave: #1f3149;
 
   --texto: var(--zoe-white);
-  --texto-medio: #c2ccd6; /* 13.4:1 sobre negro */
-  --texto-suave: #8b98a5; /*  7.5:1 */
+  --texto-medio: #c8d2e0; /* 10.5:1 sobre el navy */
+  --texto-suave: #a9b6c8; /*  7.8:1 */
 
   /* Sobre negro el verde vivo sí funciona como letra: 10.24:1. */
   --marca-texto: var(--zoe-green);
@@ -202,6 +220,10 @@
 
   --radius-marca: var(--radio);
   --radius-marca-lg: var(--radio-lg);
+  --radius-marca-pildora: var(--radio-pildora);
+
+  --shadow-panel: var(--sombra-panel);
+  --shadow-card: var(--sombra-card);
 }
 
 @layer base {
@@ -215,6 +237,8 @@
     background-color: var(--fondo);
     color: var(--texto);
     font-family: var(--fuente-texto);
+    font-size: var(--texto-cuerpo);
+    line-height: var(--interlineado);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -251,14 +275,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.625rem;
-    border-radius: var(--radio);
-    font-weight: 700;
+    border-radius: var(--radio-pildora);
+    font-weight: 600;
     line-height: 1;
     text-align: center;
     transition: background-color 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
-    padding: 0.875rem 1.5rem;
+    padding: 0.8125rem 1.5rem;
     font-size: 0.9375rem;
-    letter-spacing: 0.01em;
   }
 
   .btn:active { transform: translateY(1px); }
@@ -266,7 +289,7 @@
   /* El CTA principal sigue teniendo presencia —se venden sistemas de varios
      millones— pero sin llegar al botón-banner. */
   .btn-xl {
-    padding: 1.0625rem 2.25rem;
+    padding: 1rem 2rem;
     font-size: 1rem;
   }
 
@@ -313,7 +336,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    border-radius: var(--radio);
+    border-radius: var(--radio-pildora);
     padding: 0.3rem 0.6rem;
     font-size: 0.6875rem;
     font-weight: 700;
@@ -342,27 +365,6 @@
     background: linear-gradient(90deg, transparent, var(--borde), transparent);
   }
 
-  /* Cinta de anuncios. El contenido se duplica en el markup y se desplaza
-     media pista, así el bucle no tiene salto. */
-  .cinta {
-    animation: cinta-correr 32s linear infinite;
-  }
-
-  .cinta-pausa:hover .cinta {
-    animation-play-state: paused;
-  }
-
-  /* Entrada del texto al cambiar de slide en el hero. */
-  @keyframes aparecer {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes cinta-correr {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-
   /* Carruseles: scroll horizontal nativo con anclaje. Se prefiere a una
      librería de slider porque funciona con teclado y lectores de pantalla
      sin trabajo extra, y no suma peso al bundle. */
@@ -378,7 +380,6 @@
   .pista > * { scroll-snap-align: start; flex: 0 0 auto; }
 
   @media (prefers-reduced-motion: reduce) {
-    .cinta { animation: none; }
     .pista { scroll-behavior: auto; }
   }
 }

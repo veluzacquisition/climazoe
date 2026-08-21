@@ -2,17 +2,21 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { construirArbol, useCatalogo, type NodoCategoria } from '../lib/catalogo';
-import { aniosDeTrayectoria, site } from '../lib/site.config';
+import { site } from '../lib/site.config';
 import { useCarrito } from '../lib/carrito';
 import { IconoCarrito } from './carrito/PanelCarrito';
 import type { Segmento } from '../types/catalogo';
 
 /**
- * Header de tres pisos, como el de una tienda de verdad:
+ * Header de dos filas:
  *
- *   1. Cinta de anuncios (envíos, asesoría).
- *   2. Fila principal: logo · buscador ancho · contacto y segmento.
- *   3. Barra de navegación con el mega-menú "Productos".
+ *   1. Logo · buscador · contacto y segmento.
+ *   2. Navegación con el mega-menú "Productos".
+ *
+ * Tenía una tercera fila con una cinta de anuncios en movimiento. Se quitó:
+ * decía lo mismo que ahora dicen las tarjetas de valor —envíos, asesoría,
+ * instalación— y sumaba peso arriba, que es justo donde el sitio de
+ * referencia es más liviano.
  *
  * El buscador va arriba y grande a propósito: en un catálogo de 213 ítems
  * repartidos en 35 categorías, buscar es más rápido que navegar el árbol.
@@ -39,8 +43,6 @@ export default function Header({
 
   return (
     <header className="sticky top-0 z-50 bg-fondo">
-      <CintaAnuncios />
-
       {/* --- Fila principal ---------------------------------------------- */}
       <div className="border-b border-borde-suave">
         <div className="contenedor flex h-20 items-center gap-4 md:h-24 md:gap-8">
@@ -83,8 +85,10 @@ export default function Header({
       </div>
 
       {/* --- Barra de navegación ------------------------------------------ */}
-      <nav className="hidden border-b border-borde bg-superficie md:block">
-        <div className="contenedor flex items-center gap-1">
+      {/* Nav en píldora centrada: es la organización del sitio de referencia
+          y pesa mucho menos que una barra de ancho completo. */}
+      <nav className="hidden border-b border-borde-suave md:block">
+        <div className="contenedor flex items-center gap-1 py-2">
           <MegaMenuProductos />
           {NAV.map((item) => (
             <NavLink
@@ -104,7 +108,7 @@ export default function Header({
             href={`https://wa.me/${site.contacto.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-auto my-1.5 rounded-marca bg-marca px-5 py-2.5 text-sm font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
+            className="btn btn-sm btn-solar ml-auto"
           >
             Asesoría gratis
           </a>
@@ -143,33 +147,6 @@ function BotonCarrito() {
   );
 }
 
-function CintaAnuncios() {
-  const mensajes = [
-    'Envíos a toda Colombia',
-    `${aniosDeTrayectoria()} años instalando energía solar`,
-    'Asesoría técnica gratuita',
-    'Venta e instalación',
-  ];
-  // La pista se duplica para que el bucle no tenga un salto visible.
-  const pista = [...mensajes, ...mensajes];
-
-  return (
-    <div className="cinta-pausa overflow-hidden border-b border-borde-suave bg-marca">
-      <div className="cinta flex w-max">
-        {pista.map((m, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-3 whitespace-nowrap px-6 py-2 text-xs font-semibold uppercase tracking-wider text-marca-contraste"
-          >
-            {m}
-            <span className="text-marca-contraste/40">◆</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function Buscador({ className = '' }: { className?: string }) {
   const navegar = useNavigate();
   const [texto, setTexto] = useState('');
@@ -195,7 +172,7 @@ function Buscador({ className = '' }: { className?: string }) {
         />
         <button
           type="submit"
-          className="shrink-0 rounded-marca bg-marca px-4 py-1.5 text-xs font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
+          className="btn btn-sm btn-primario shrink-0"
         >
           Buscar
         </button>
@@ -385,7 +362,7 @@ function MenuMovil({ abierto, onCerrar }: { abierto: boolean; onCerrar: () => vo
             href={`https://wa.me/${site.contacto.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block rounded-marca bg-marca py-3 text-center font-semibold text-marca-contraste"
+            className="btn btn-solar w-full"
           >
             Asesoría gratis por WhatsApp
           </a>

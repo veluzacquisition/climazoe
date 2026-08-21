@@ -154,7 +154,7 @@ export default function Hero() {
           </p>
 
           <div key={activo} className="animate-[aparecer_.5s_ease-out]">
-            <h1 className="mt-6 text-[2.25rem] font-bold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.75rem]">
               {s.antes} <span className="text-marca">{s.destacado}</span>
             </h1>
 

@@ -74,7 +74,7 @@ export default function PedidoConfirmado() {
             </svg>
           </span>
 
-          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="mt-6 text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
             ¡Pedido recibido!
           </h1>
           <p className="mt-3 text-lg text-texto-medio">

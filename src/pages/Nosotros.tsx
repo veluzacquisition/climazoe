@@ -30,7 +30,7 @@ export default function Nosotros() {
           <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
             Desde {ANIO_INICIO_COMERCIAL}
           </p>
-          <h1 className="mt-6 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
+          <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight sm:text-[2.75rem]">
             Zoe quiere decir <span className="text-marca-texto">vida</span>
           </h1>
           <p className="mt-7 text-xl leading-relaxed text-texto-medio">
@@ -179,7 +179,7 @@ export default function Nosotros() {
       {/* --- Cierre ---------------------------------------------------------- */}
       <Seccion espaciado="amplio">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
             ¿Damos el paso <span className="text-marca-texto">juntos</span>?
           </h2>
           <p className="mt-5 text-lg text-texto-medio">

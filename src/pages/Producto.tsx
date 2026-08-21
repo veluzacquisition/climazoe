@@ -43,7 +43,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
         </p>
         <Link
           to="/catalogo"
-          className="mt-8 inline-flex rounded-marca bg-marca px-6 py-3 font-semibold text-marca-contraste"
+          className="btn btn-primario mt-8"
         >
           Volver al catálogo
         </Link>

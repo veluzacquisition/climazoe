@@ -205,7 +205,7 @@ function FormularioSuscripcion() {
       />
       <button
         type="submit"
-        className="mt-3 w-full rounded-marca bg-marca py-3 text-sm font-semibold text-marca-contraste transition-colors hover:bg-marca-fuerte"
+        className="btn btn-primario mt-3 w-full"
       >
         Suscribirme
       </button>

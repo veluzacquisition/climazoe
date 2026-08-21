@@ -18,7 +18,7 @@ export default function Servicios() {
           <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
             Productos y servicios
           </p>
-          <h1 className="mt-6 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
+          <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight sm:text-[2.75rem]">
             Energías renovables,
             <br />
             <span className="text-marca-texto">de la asesoría al montaje</span>
@@ -77,7 +77,7 @@ export default function Servicios() {
         <div className="grid items-center gap-10 rounded-marca-lg border border-marca-borde bg-marca-tenue p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
             <span className="chip bg-acento text-acento-contraste">Ahorre</span>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-5 text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
               Más de un <span className="text-marca-texto">50% en consumo</span>,
               más beneficios tributarios
             </h2>
