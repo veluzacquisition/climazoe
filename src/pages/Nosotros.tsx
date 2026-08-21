@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
 import {
   ANIO_CONSTITUCION,
@@ -24,28 +25,23 @@ export default function Nosotros() {
 
   return (
     <>
-      {/* --- Encabezado --------------------------------------------------- */}
-      <Seccion espaciado="amplio">
-        <div className="max-w-3xl">
-          <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
-            Desde {ANIO_INICIO_COMERCIAL}
-          </p>
-          <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight sm:text-[2.75rem]">
-            Zoe quiere decir <span className="text-marca-texto">vida</span>
-          </h1>
-          <p className="mt-7 text-xl leading-relaxed text-texto-medio">
-            {identidad.origenNombre}
-          </p>
+      <EncabezadoPagina
+        etiqueta={`Desde ${ANIO_INICIO_COMERCIAL}`}
+        titulo={<>Zoe quiere decir <span className="text-marca">vida</span></>}
+        bajada={identidad.origenNombre}
+        migas={[{ texto: 'Inicio', a: '/' }, { texto: 'Nosotros' }]}
+        fondo="instalacion"
+      />
 
-          <blockquote className="mt-9 border-l-4 border-marca pl-6">
-            <p className="text-xl italic leading-relaxed text-texto sm:text-2xl">
-              {identidad.origenPersonal}
-            </p>
-            <footer className="mt-3 text-sm font-bold uppercase tracking-wide text-texto-suave">
-              El origen del nombre
-            </footer>
-          </blockquote>
-        </div>
+      <Seccion>
+        <blockquote className="mx-auto max-w-3xl border-l-4 border-marca pl-6 text-center sm:pl-8 sm:text-left">
+          <p className="text-xl italic leading-relaxed sm:text-2xl">
+            {identidad.origenPersonal}
+          </p>
+          <footer className="mt-3 text-sm font-bold uppercase tracking-wide text-texto-suave">
+            El origen del nombre
+          </footer>
+        </blockquote>
       </Seccion>
 
       {/* --- Origen de la marca -------------------------------------------- */}

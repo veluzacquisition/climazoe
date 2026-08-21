@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import {
   construirArbol,
   filtrarProductos,
@@ -8,6 +8,7 @@ import {
   type Orden,
 } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
+import EncabezadoPagina from '../components/EncabezadoPagina';
 import type { Segmento } from '../types/catalogo';
 
 /**
@@ -76,41 +77,31 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
   // sobre blanco, y le da el respiro claro que pedía el ritmo del sitio.
   return (
     <div className="bg-fondo">
-      <div className="contenedor py-10">
-      {/* --- Encabezado --------------------------------------------------- */}
-      <header>
-        <nav aria-label="Ruta" className="text-sm text-texto-suave">
-          <Link to="/" className="transition-colors hover:text-marca-texto">Inicio</Link>
-          <span className="mx-2">/</span>
-          <Link to="/catalogo" className="transition-colors hover:text-marca-texto">Catálogo</Link>
-          {nombreCategoria && (
-            <>
-              <span className="mx-2">/</span>
-              <span className="text-texto">{nombreCategoria}</span>
-            </>
-          )}
-        </nav>
-
-        <h1 className="mt-3 text-2xl font-bold sm:text-3xl">
-          {nombreCategoria ?? 'Todo el catálogo'}
-        </h1>
-        <p className="mt-2 text-texto-medio">
-          {cargando
+      <EncabezadoPagina
+        etiqueta="Catálogo"
+        titulo={nombreCategoria ?? 'Todo el catálogo'}
+        bajada={
+          cargando
             ? 'Cargando productos…'
-            : `${resultados.length} ${resultados.length === 1 ? 'producto' : 'productos'}`}
-          {datos && !datos.con_precios && (
-            <span className="ml-2 text-texto-suave">
-              · precios a cotizar mientras se cierra la lista con el proveedor
-            </span>
-          )}
-        </p>
-      </header>
+            : `${resultados.length} ${resultados.length === 1 ? 'producto disponible' : 'productos disponibles'}${
+                datos && !datos.con_precios ? ' · precios a cotizar' : ''
+              }`
+        }
+        migas={[
+          { texto: 'Inicio', a: '/' },
+          ...(nombreCategoria
+            ? [{ texto: 'Catálogo', a: '/catalogo' }, { texto: nombreCategoria }]
+            : [{ texto: 'Catálogo' }]),
+        ]}
+        alto="compacto"
+      />
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[16rem_1fr]">
+      <div className="contenedor py-10">
+      <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
         {/* --- Sidebar de categorías -------------------------------------- */}
-        {/* El header pegajoso mide 183px (cinta + fila principal + nav), así
-            que la barra lateral se ancla justo debajo. */}
-        <aside className="lg:sticky lg:top-[12rem] lg:max-h-[calc(100dvh-13rem)] lg:self-start lg:overflow-y-auto">
+        {/* El header pegajoso mide 81px desde que pasó a una sola fila; la
+            barra lateral se ancla justo debajo con un respiro. */}
+        <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100dvh-8rem)] lg:self-start lg:overflow-y-auto">
           <button
             type="button"
             onClick={() => setPanelAbierto((v) => !v)}

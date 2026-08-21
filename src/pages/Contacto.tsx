@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
 import { site } from '../lib/site.config';
 
@@ -45,18 +46,16 @@ export default function Contacto() {
 
   return (
     <>
-      <Seccion espaciado="amplio">
-        <div className="max-w-3xl">
-          <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight sm:text-[2.75rem]">
-            Hablemos de su <span className="text-marca-texto">proyecto</span>
-          </h1>
-          <p className="mt-6 text-xl leading-relaxed text-texto-medio">
-            Cuéntenos cuánto paga de luz y qué quiere alimentar. La asesoría no
-            cuesta y no compromete a nada.
-          </p>
-        </div>
+      <EncabezadoPagina
+        etiqueta="Contacto"
+        titulo={<>Hablemos de su <span className="text-marca">proyecto</span></>}
+        bajada="Cuéntenos cuánto paga de luz y qué quiere alimentar. La asesoría no cuesta y no compromete a nada."
+        migas={[{ texto: 'Inicio', a: '/' }, { texto: 'Contacto' }]}
+        alto="compacto"
+      />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_22rem]">
+      <Seccion>
+        <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
           {/* --- Formulario ------------------------------------------------ */}
           <form
             onSubmit={enviar}

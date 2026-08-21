@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
 import { certificacionesDeProducto, lineasDeProducto, site } from '../lib/site.config';
 
@@ -13,36 +14,29 @@ import { certificacionesDeProducto, lineasDeProducto, site } from '../lib/site.c
 export default function Servicios() {
   return (
     <>
-      <Seccion espaciado="amplio">
-        <div className="max-w-3xl">
-          <p className="chip border border-marca-borde bg-marca-tenue text-marca-texto">
-            Productos y servicios
-          </p>
-          <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight sm:text-[2.75rem]">
-            Energías renovables,
-            <br />
-            <span className="text-marca-texto">de la asesoría al montaje</span>
-          </h1>
-          <p className="mt-7 text-xl leading-relaxed text-texto-medio">
-            Comercializamos e instalamos sistemas de energía limpia para
-            hogares, fincas, comercios e industria, y orientamos a cada cliente
-            en el ahorro de energía antes de venderle nada.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={`https://wa.me/${site.contacto.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-xl btn-primario"
-            >
-              Pedir asesoría gratis
-            </a>
-            <Link to="/catalogo" className="btn btn-xl btn-contorno">
-              Ver catálogo
-            </Link>
-          </div>
+      <EncabezadoPagina
+        etiqueta="Productos y servicios"
+        titulo={<>Energías renovables, <span className="text-marca">de la asesoría al montaje</span></>}
+        bajada="Comercializamos e instalamos sistemas de energía limpia para hogares, fincas, comercios e industria."
+        migas={[{ texto: 'Inicio', a: '/' }, { texto: 'Servicios' }]}
+      >
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-xl btn-solar"
+          >
+            Pedir asesoría gratis
+          </a>
+          <Link
+            to="/catalogo"
+            className="btn btn-xl border border-white/30 text-white hover:border-white hover:bg-white/10"
+          >
+            Ver catálogo
+          </Link>
         </div>
-      </Seccion>
+      </EncabezadoPagina>
 
       {/* --- Líneas de producto -------------------------------------------- */}
       <Seccion fondo="alt">
