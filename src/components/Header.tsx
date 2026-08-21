@@ -40,83 +40,102 @@ export default function Header({
   onCambiarSegmento: (s: Segmento) => void;
 }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [buscadorAbierto, setBuscadorAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-fondo">
-      {/* --- Fila principal ---------------------------------------------- */}
-      <div className="border-b border-borde-suave">
-        <div className="contenedor flex h-20 items-center gap-4 md:h-24 md:gap-8">
-          <Link to="/" className="shrink-0" aria-label={`${site.nombre} — inicio`}>
-            <Logo className="h-12 md:h-16" />
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-borde-suave bg-fondo/95 backdrop-blur">
+      {/* Una sola fila, como la referencia: logo, navegación en píldora
+          centrada y acciones a la derecha. El buscador pasa a un icono que
+          abre un panel — con dos filas el encabezado pesaba el doble que el
+          del sitio que se tomó como modelo, y arriba es donde más se nota. */}
+      <div className="contenedor flex h-20 items-center justify-between gap-4">
+        <Link to="/" className="shrink-0" aria-label={`${site.nombre} — inicio`}>
+          <Logo className="h-11 md:h-12" />
+        </Link>
 
-          <Buscador className="hidden flex-1 md:block" />
-
-          <div className="ml-auto flex items-center gap-3 md:ml-0">
-            <a
-              href={`tel:${site.contacto.telefono?.replace(/\s/g, '')}`}
-              className="hidden text-right lg:block"
-            >
-              <span className="block text-[11px] uppercase tracking-wide text-texto-suave">
-                Servicio al cliente
-              </span>
-              <span className="block font-semibold text-marca-texto">{site.contacto.telefono}</span>
-            </a>
-
-            <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
-
-            <BotonCarrito />
-
-            <button
-              type="button"
-              onClick={() => setMenuAbierto(true)}
-              aria-label="Abrir menú"
-              className="rounded-marca border border-borde p-2.5 md:hidden"
-            >
-              <IconoMenu />
-            </button>
-          </div>
-        </div>
-
-        {/* Buscador móvil, debajo de la fila principal */}
-        <div className="contenedor pb-3 md:hidden">
-          <Buscador />
-        </div>
-      </div>
-
-      {/* --- Barra de navegación ------------------------------------------ */}
-      {/* Nav en píldora centrada: es la organización del sitio de referencia
-          y pesa mucho menos que una barra de ancho completo. */}
-      <nav className="hidden border-b border-borde-suave md:block">
-        <div className="contenedor flex items-center gap-1 py-2">
+        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
           <MegaMenuProductos />
           {NAV.map((item) => (
             <NavLink
               key={item.a}
               to={item.a}
               className={({ isActive }) =>
-                `px-4 py-3.5 text-sm font-medium transition-colors ${
-                  isActive ? 'text-marca-texto' : 'text-texto-medio hover:text-texto'
+                `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
+                  isActive
+                    ? 'bg-fondo text-texto shadow-panel'
+                    : 'text-texto-medio hover:text-texto'
                 }`
               }
             >
               {item.texto}
             </NavLink>
           ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setBuscadorAbierto(true)}
+            aria-label="Buscar productos"
+            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde text-texto-medio transition-colors hover:border-marca hover:text-marca-texto"
+          >
+            <IconoLupa />
+          </button>
+
+          <div className="hidden sm:block">
+            <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
+          </div>
+
+          <BotonCarrito />
 
           <a
             href={`https://wa.me/${site.contacto.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-sm btn-solar ml-auto"
+            className="btn btn-sm btn-solar hidden md:inline-flex"
           >
-            Asesoría gratis
+            Contacto
           </a>
-        </div>
-      </nav>
 
+          <button
+            type="button"
+            onClick={() => setMenuAbierto(true)}
+            aria-label="Abrir menú"
+            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde lg:hidden"
+          >
+            <IconoMenu />
+          </button>
+        </div>
+      </div>
+
+      {buscadorAbierto && <PanelBuscador onCerrar={() => setBuscadorAbierto(false)} />}
       <MenuMovil abierto={menuAbierto} onCerrar={() => setMenuAbierto(false)} />
     </header>
+  );
+}
+
+/** Panel de búsqueda a pantalla completa, que reemplaza la fila del buscador. */
+function PanelBuscador({ onCerrar }: { onCerrar: () => void }) {
+  useEffect(() => {
+    const escape = (e: KeyboardEvent) => e.key === 'Escape' && onCerrar();
+    document.addEventListener('keydown', escape);
+    return () => document.removeEventListener('keydown', escape);
+  }, [onCerrar]);
+
+  return (
+    <div className="absolute inset-x-0 top-full border-b border-borde bg-fondo shadow-panel">
+      <div className="contenedor flex items-center gap-3 py-4">
+        <Buscador className="flex-1" alEnviar={onCerrar} autoFoco />
+        <button
+          type="button"
+          onClick={onCerrar}
+          aria-label="Cerrar búsqueda"
+          className="shrink-0 text-sm font-semibold text-texto-medio hover:text-texto"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -147,7 +166,15 @@ function BotonCarrito() {
   );
 }
 
-function Buscador({ className = '' }: { className?: string }) {
+function Buscador({
+  className = '',
+  alEnviar,
+  autoFoco = false,
+}: {
+  className?: string;
+  alEnviar?: () => void;
+  autoFoco?: boolean;
+}) {
   const navegar = useNavigate();
   const [texto, setTexto] = useState('');
 
@@ -158,6 +185,7 @@ function Buscador({ className = '' }: { className?: string }) {
       onSubmit={(e) => {
         e.preventDefault();
         navegar(`/catalogo?q=${encodeURIComponent(texto.trim())}`);
+        alEnviar?.();
       }}
     >
       <div className="flex items-center gap-2 rounded-marca border border-borde bg-superficie px-4 focus-within:border-marca-borde">
@@ -166,6 +194,7 @@ function Buscador({ className = '' }: { className?: string }) {
           type="search"
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
+          autoFocus={autoFoco}
           placeholder="Buscar: batería litio, panel 550W, inversor híbrido…"
           aria-label="Buscar productos"
           className="w-full bg-transparent py-3 text-sm text-texto placeholder:text-texto-suave focus:outline-none"

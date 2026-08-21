@@ -139,15 +139,13 @@ export default function Hero() {
         </div>
       ))}
 
-      {/* --- Velo ---------------------------------------------------------- */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/55 to-black/25"
-      />
+      {/* --- Velo. Centrado y parejo, no en degradado lateral: el contenido
+          ahora va al centro y necesita el mismo fondo a los dos lados. ---- */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/65" />
 
-      {/* --- Contenido, encima -------------------------------------------- */}
-      <div className="contenedor relative flex min-h-[34rem] flex-col justify-center py-16 lg:min-h-[40rem] lg:py-24">
-        <div className="max-w-2xl">
+      {/* --- Contenido, centrado como en la referencia -------------------- */}
+      <div className="contenedor relative flex min-h-[34rem] flex-col items-center justify-center py-20 text-center lg:min-h-[38rem] lg:py-28">
+        <div className="mx-auto max-w-3xl">
           <p className="chip border border-marca-borde bg-black/40 text-marca backdrop-blur-sm">
             <span className="size-1.5 rounded-full bg-marca" />
             {s.etiqueta}
@@ -158,10 +156,12 @@ export default function Hero() {
               {s.antes} <span className="text-marca">{s.destacado}</span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/85">{s.texto}</p>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+              {s.texto}
+            </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <Link to={s.cta.a} className="btn btn-xl btn-primario">
               {s.cta.texto}
             </Link>
@@ -176,13 +176,10 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="mt-5 text-sm text-white/70">
-            Le respondemos por WhatsApp con precio, disponibilidad y tiempo de entrega.
-          </p>
         </div>
 
         {/* --- Controles ---------------------------------------------------- */}
-        <div className="mt-12 flex items-center gap-4">
+        <div className="mt-14 flex items-center justify-center gap-4">
           <div className="flex gap-2">
             <button
               type="button"

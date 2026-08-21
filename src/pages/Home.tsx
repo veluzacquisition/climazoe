@@ -4,17 +4,15 @@ import { filtrarProductos, useCatalogo } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
 import Seccion, { TituloSeccion } from '../components/Seccion';
 import Hero from '../components/secciones/Hero';
-import Impacto from '../components/secciones/Impacto';
 import CarruselCategorias from '../components/secciones/CarruselCategorias';
 import {
   BandaGarantias,
+  Intro,
   BannerAsesoria,
   ComoComprar,
   Marcas,
   Tienda,
 } from '../components/secciones/Bloques';
-import { MEDIA_HERO, imagen, imagenSrcSet } from '../lib/media';
-import { site } from '../lib/site.config';
 import type { Segmento } from '../types/catalogo';
 
 /**
@@ -70,101 +68,35 @@ export default function Home({ segmento }: { segmento: Segmento }) {
     return elegidos;
   }, [datos, segmento]);
 
-  const novedades = useMemo(
-    () =>
-      datos
-        ? filtrarProductos(datos, { soloDisponibles: true, orden: 'relevancia' }, segmento)
-            .slice(8, 16)
-        : [],
-    [datos, segmento],
-  );
 
   return (
     <>
       <Hero />
+      <Intro />
       <BandaGarantias />
+      <Marcas />
       <CarruselCategorias />
 
       <FranjaProductos
         fondo="alt"
+        etiqueta="Catálogo"
         titulo="Productos destacados"
-        bajada="Distribución, venta e instalación de sistemas solares. Le asesoramos para generar energía al menor costo."
+        bajada="Equipo disponible para despacho inmediato."
         productos={destacados}
         cargando={cargando}
         segmento={segmento}
       />
 
-      <BannerAsesoria />
-      <Impacto />
-
-      <FranjaProductos
-        fondo="alt"
-        titulo="También le puede servir"
-        bajada="Más equipo disponible para despacho inmediato."
-        productos={novedades}
-        cargando={cargando}
-        segmento={segmento}
-      />
-
-      <Marcas />
       <ComoComprar />
       <Tienda />
-      <Cierre />
+      <BannerAsesoria />
     </>
-  );
-}
-
-/**
- * Cierre con fotografía a sangre, no una caja de texto centrada.
- *
- * Es el mismo recurso del hero —imagen debajo, velo, texto encima— y cierra
- * la página con el mismo peso con el que abre.
- */
-function Cierre() {
-  return (
-    <section className="tono-oscuro relative isolate overflow-hidden bg-zoe-black">
-      <img
-        src={imagen(MEDIA_HERO.panelesTecho, 1600)}
-        srcSet={imagenSrcSet(MEDIA_HERO.panelesTecho)}
-        sizes="100vw"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 -z-20 size-full object-cover"
-      />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/70" />
-
-      <div className="contenedor relative py-20 text-center lg:py-28">
-        <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Dejemos de <span className="text-marca">pagar recibo</span> de luz
-        </h2>
-        <p className="mx-auto mt-5 max-w-lg text-lg text-white/80">
-          Le armamos el sistema a la medida de lo que necesita.
-        </p>
-        <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-          <a
-            href={`https://wa.me/${site.contacto.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-xl btn-solar"
-          >
-            Hablar con un asesor
-          </a>
-          <Link
-            to="/catalogo"
-            className="btn btn-xl border border-white/30 text-white hover:border-white hover:bg-white/10"
-          >
-            Ver el catálogo
-          </Link>
-        </div>
-      </div>
-    </section>
   );
 }
 
 function FranjaProductos({
   fondo = 'base',
+  etiqueta,
   titulo,
   bajada,
   productos,
@@ -172,6 +104,7 @@ function FranjaProductos({
   segmento,
 }: {
   fondo?: 'base' | 'alt';
+  etiqueta?: string;
   titulo: string;
   bajada: string;
   productos: ReturnType<typeof filtrarProductos>;
@@ -183,6 +116,7 @@ function FranjaProductos({
   return (
     <Seccion fondo={fondo}>
       <TituloSeccion
+        etiqueta={etiqueta}
         titulo={titulo}
         bajada={bajada}
         accion={

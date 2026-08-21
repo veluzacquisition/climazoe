@@ -17,12 +17,16 @@ export default function Footer() {
     [datos],
   );
 
+  // Navy profundo, como el de la referencia: cierra la página con peso y
+  // separa lo institucional del contenido comercial.
   return (
-    <footer className="mt-24 border-t border-borde bg-superficie">
+    <footer className="tono-oscuro mt-24 bg-fondo">
       <div className="contenedor grid gap-10 py-16 lg:grid-cols-12">
         {/* --- Identidad y contacto -------------------------------------- */}
         <div className="lg:col-span-4">
-          <Logo className="h-14" tamano="lg" />
+          <span className="inline-block rounded-marca-lg bg-white px-4 py-3">
+            <Logo className="h-12" tamano="lg" />
+          </span>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-texto-medio">
             {site.claim}. Venta e instalación de sistemas solares en toda
             Colombia.

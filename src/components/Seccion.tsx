@@ -56,10 +56,14 @@ export default function Seccion({
 
 /** Encabezado de sección: título grande, bajada y enlace opcional a la derecha. */
 export function TituloSeccion({
+  etiqueta,
   titulo,
   bajada,
   accion,
 }: {
+  /** Rótulo corto en verde sobre el título. Es la firma del referente y
+   *  ordena la lectura sin sumar una frase entera. */
+  etiqueta?: string;
   titulo: React.ReactNode;
   bajada?: string;
   accion?: React.ReactNode;
@@ -67,6 +71,11 @@ export function TituloSeccion({
   return (
     <div className="flex flex-wrap items-end justify-between gap-5">
       <div className="max-w-2xl">
+        {etiqueta && (
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">
+            {etiqueta}
+          </p>
+        )}
         <h2 className="text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
           {titulo}
         </h2>

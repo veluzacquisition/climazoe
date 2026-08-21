@@ -52,6 +52,31 @@ const GARANTIAS = [
   },
 ];
 
+/**
+ * Bloque de posicionamiento, centrado y corto.
+ *
+ * Es la pieza que el sitio de referencia pone justo debajo del hero: un
+ * párrafo que dice a qué se dedica la empresa y una frase suelta, en negrita,
+ * que resume la promesa. Ordena la entrada antes de que empiece el producto.
+ */
+export function Intro() {
+  return (
+    <Seccion espaciado="normal">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-lg leading-relaxed text-texto-medio">
+          {site.nombre} comercializa e instala sistemas de energía solar
+          fotovoltaica en toda Colombia: paneles, baterías, inversores,
+          iluminación y material eléctrico para hogares, fincas, comercios e
+          industria.
+        </p>
+        <p className="mt-7 text-xl font-bold leading-snug sm:text-2xl">
+          No entregamos una caja. Acompañamos el proyecto de principio a fin.
+        </p>
+      </div>
+    </Seccion>
+  );
+}
+
 export function BandaGarantias() {
   return (
     <Seccion>
@@ -188,7 +213,10 @@ export function ComoComprar() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">
+            Cómo trabajamos
+          </p>
+          <h2 className="text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
             De la llamada al sistema andando
           </h2>
 
@@ -231,7 +259,12 @@ export function Tienda() {
     <Seccion fondo="alt">
       <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch">
         <div className="rounded-marca-lg border border-borde bg-fondo p-8 sm:p-10">
-          <h2 className="text-2xl font-bold tracking-tight">Hablemos</h2>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">
+            Contacto
+          </p>
+          <h2 className="text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
+            Hablemos
+          </h2>
           <p className="mt-3 text-texto-medio">
             Atendemos por WhatsApp y teléfono a todo el país.
           </p>

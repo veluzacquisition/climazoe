@@ -45,6 +45,7 @@ export default function CarruselCategorias() {
   return (
     <Seccion>
       <TituloSeccion
+        etiqueta="Catálogo"
         titulo="Qué necesita para su proyecto"
         accion={
           <div className="flex gap-2">
