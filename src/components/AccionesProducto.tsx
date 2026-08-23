@@ -21,8 +21,14 @@ import { precio as formatear } from '../lib/formato';
 interface Props {
   producto: ProductoWeb;
   segmento: Segmento;
-  /** 'ficha' muestra selector de cantidad; 'tarjeta' es la versión compacta. */
-  variante?: 'ficha' | 'tarjeta';
+  /**
+   * 'ficha'   — selector de cantidad, para la página de producto.
+   * 'tarjeta' — apilado a lo ancho, para tarjetas verticales.
+   * 'fila'    — en línea y compacto, para la tarjeta horizontal del catálogo,
+   *             donde el alto es escaso y dos botones apilados descuadraban
+   *             la rejilla entera.
+   */
+  variante?: 'ficha' | 'tarjeta' | 'fila';
 }
 
 export default function AccionesProducto({
@@ -38,6 +44,31 @@ export default function AccionesProducto({
     agregar(producto, segmento, cantidad);
     navegar('/checkout');
   };
+
+  if (variante === 'fila') {
+    return (
+      <div className="flex items-center gap-1.5">
+        <button
+          type="button"
+          onClick={() => agregar(producto, segmento)}
+          className="btn btn-sm btn-primario px-3.5"
+        >
+          Añadir
+        </button>
+        <a
+          href={enlaceConsulta(producto, segmento)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          aria-label="Preguntar por WhatsApp"
+          title="Preguntar por WhatsApp"
+          className="flex size-9 items-center justify-center rounded-marca border border-borde text-texto-medio transition-colors hover:border-marca-borde hover:text-marca-texto"
+        >
+          <IconoWhatsApp className="size-4" />
+        </a>
+      </div>
+    );
+  }
 
   if (variante === 'tarjeta') {
     return (

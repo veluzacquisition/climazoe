@@ -5,6 +5,7 @@ import { site } from '../../lib/site.config';
 import { MEDIA_HERO, imagen, imagenSrcSet } from '../../lib/media';
 import Seccion from '../Seccion';
 import Pendiente from '../Pendiente';
+import Revelar from '../Revelar';
 
 /**
  * Bloques de la home.
@@ -80,13 +81,13 @@ export function Intro() {
 export function BandaGarantias() {
   return (
     <Seccion>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <Revelar className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" paso={80}>
         {GARANTIAS.map((g) => (
           <article
             key={g.t}
-            className="rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel"
+            className="group h-full rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:border-apoyo hover:shadow-card motion-reduce:transform-none"
           >
-            <span className="flex size-11 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto">
+            <span className="flex size-11 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none">
               {g.icono}
             </span>
             <h3 className="mt-5 font-bold leading-snug">{g.t}</h3>
@@ -94,7 +95,7 @@ export function BandaGarantias() {
             <p className="mt-3 text-sm leading-relaxed text-texto-medio">{g.d}</p>
           </article>
         ))}
-      </div>
+      </Revelar>
     </Seccion>
   );
 }
@@ -115,12 +116,22 @@ export function Marcas() {
 
   const marcas = useMemo(() => {
     if (!datos) return [];
-    return MARCAS_CONOCIDAS.map((m) => ({
-      nombre: m,
-      n: datos.productos.filter((p) => p.nombre.toLowerCase().includes(m.toLowerCase())).length,
-    }))
-      .filter((m) => m.n > 0)
-      .sort((a, b) => b.n - a.n);
+    // Dos formas de detectar marca, porque los dos proveedores la entregan
+    // distinto: Fibra Andina la trae en un campo propio y Solphower sólo la
+    // mete dentro del nombre del producto. Sin lo primero, marcas con decenas
+    // de equipos —Must Solar, Deye, Hoymiles— no salían en la franja.
+    const cuenta = new Map<string, number>();
+    for (const p of datos.productos) {
+      if (p.marca) {
+        cuenta.set(p.marca, (cuenta.get(p.marca) ?? 0) + 1);
+        continue;
+      }
+      const encontrada = MARCAS_CONOCIDAS.find((m) =>
+        p.nombre.toLowerCase().includes(m.toLowerCase()),
+      );
+      if (encontrada) cuenta.set(encontrada, (cuenta.get(encontrada) ?? 0) + 1);
+    }
+    return [...cuenta].map(([nombre, n]) => ({ nombre, n })).sort((a, b) => b.n - a.n);
   }, [datos]);
 
   if (marcas.length === 0) return null;
@@ -220,7 +231,7 @@ export function ComoComprar() {
             De la llamada al sistema andando
           </h2>
 
-          <ol className="mt-8 space-y-6">
+          <Revelar como="ul" className="mt-8 space-y-6" paso={110}>
             {PASOS.map((p, i) => (
               <li key={p.t} className="flex gap-4">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste">
@@ -232,7 +243,7 @@ export function ComoComprar() {
                 </div>
               </li>
             ))}
-          </ol>
+          </Revelar>
 
           <a
             href={`https://wa.me/${site.contacto.whatsapp}`}

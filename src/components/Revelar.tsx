@@ -74,7 +74,21 @@ export default function Revelar({
     );
 
     observador.observe(nodo);
-    return () => observador.disconnect();
+
+    // Seguro. El contenido no puede quedarse invisible porque el observador
+    // no dispare —una pestaña en segundo plano, un navegador que lo implemente
+    // raro, un contenedor con scroll propio—. Pasados 4 segundos se muestra
+    // igual; si el bloque sigue fuera de pantalla nadie nota la diferencia, y
+    // si algo falló, al menos se ve.
+    const seguro = window.setTimeout(() => {
+      setEstado('entrando');
+      observador.disconnect();
+    }, 4000);
+
+    return () => {
+      window.clearTimeout(seguro);
+      observador.disconnect();
+    };
   }, []);
 
   const clase =
@@ -90,7 +104,7 @@ export default function Revelar({
         ) : (
           <div
             key={(hijo as { key?: string }).key ?? i}
-            className={`h-full ${clase}`}
+            className={clase || undefined}
             style={{ '--retraso': `${Math.min(i * paso, maximo)}ms` } as React.CSSProperties}
           >
             {hijo as React.ReactNode}

@@ -440,3 +440,24 @@
     .aparecer-listo { animation: none; }
   }
 }
+
+@layer utilities {
+  /* Entrada del hero.
+     
+     Va con animación pura, sin JavaScript: el hero está siempre sobre el
+     pliegue, así que no hay nada que observar y un efecto que dependa de JS
+     sólo añadiría un parpadeo al cargar. Cada pieza pone su `--retraso`. */
+  .entra-hero {
+    animation: entrar-hero 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--retraso, 0ms);
+  }
+
+  @keyframes entrar-hero {
+    from { opacity: 0; transform: translateY(0.75rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .entra-hero { animation: none; }
+  }
+}

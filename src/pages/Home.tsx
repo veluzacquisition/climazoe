@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { filtrarProductos, useCatalogo } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
 import Seccion, { TituloSeccion } from '../components/Seccion';
+import Revelar from '../components/Revelar';
 import Hero from '../components/secciones/Hero';
 import CarruselCategorias from '../components/secciones/CarruselCategorias';
 import {
@@ -59,10 +60,10 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       if (vistas.has(raiz)) continue;
       vistas.add(raiz);
       elegidos.push(p);
-      if (elegidos.length === 8) break;
+      if (elegidos.length === 6) break;
     }
     for (const p of ordenados) {
-      if (elegidos.length >= 8) break;
+      if (elegidos.length >= 6) break;
       if (!elegidos.includes(p)) elegidos.push(p);
     }
     return elegidos;
@@ -129,15 +130,19 @@ function FranjaProductos({
         }
       />
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {cargando
-          ? Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-80 animate-pulse rounded-marca-lg bg-superficie" />
-            ))
-          : productos.map((p) => (
-              <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
-            ))}
-      </div>
+      {cargando ? (
+        <div className="mt-10 grid items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-36 animate-pulse rounded-marca-lg bg-superficie" />
+          ))}
+        </div>
+      ) : (
+        <Revelar className="mt-10 grid items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          {productos.map((p) => (
+            <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
+          ))}
+        </Revelar>
+      )}
     </Seccion>
   );
 }

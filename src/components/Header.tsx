@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
-import { construirArbol, useCatalogo, type NodoCategoria } from '../lib/catalogo';
+import { construirArbol, useCatalogo } from '../lib/catalogo';
 import { site } from '../lib/site.config';
 import { useCarrito } from '../lib/carrito';
 import { IconoCarrito } from './carrito/PanelCarrito';
@@ -25,15 +25,14 @@ import type { Segmento } from '../types/catalogo';
  * espacio lo ocupa el teléfono y el CTA de asesoría.
  */
 
-// "Inicio" no está a propósito: el logo ya lleva a la portada y es la
-// convención que todo el mundo conoce. Con la calculadora adentro, la fila del
-// header pedía 1212px y se desbordaba en cualquier portátil de 13"; el enlace
-// redundante era lo primero que sobraba.
+// Los cinco enlaces que pidió el dueño, en su orden. La calculadora no va
+// acá: vive como llamada a la acción en la portada y en el pie, para no
+// volver a desbordar la fila.
 const NAV = [
+  { a: '/', texto: 'Inicio' },
   { a: '/nosotros', texto: 'Nosotros' },
-  { a: '/catalogo', texto: 'Catálogo' },
+  { a: '/catalogo', texto: 'Tienda Solar' },
   { a: '/servicios', texto: 'Servicios' },
-  { a: '/calculadora', texto: 'Calculadora' },
   { a: '/contacto', texto: 'Contacto' },
 ];
 
@@ -45,10 +44,26 @@ export default function Header({
   onCambiarSegmento: (s: Segmento) => void;
 }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [desplazado, setDesplazado] = useState(false);
+
+  useEffect(() => {
+    const alDesplazar = () => setDesplazado(window.scrollY > 8);
+    alDesplazar();
+    window.addEventListener('scroll', alDesplazar, { passive: true });
+    return () => window.removeEventListener('scroll', alDesplazar);
+  }, []);
   const [buscadorAbierto, setBuscadorAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-borde-suave bg-fondo/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 bg-fondo/95 backdrop-blur transition-[border-color] duration-300 ${
+        // Sin línea mientras se está arriba del todo: el hero empieza en
+        // blanco puro y la idea es que barra y sección se lean como una sola
+        // pieza. La línea aparece al bajar, que es cuando hace falta separar
+        // el encabezado del contenido que pasa por debajo.
+        desplazado ? 'border-b border-borde-suave' : 'border-b border-transparent'
+      }`}
+    >
       {/* Una sola fila, como la referencia: logo, navegación en píldora
           centrada y acciones a la derecha. El buscador pasa a un icono que
           abre un panel — con dos filas el encabezado pesaba el doble que el
@@ -58,15 +73,14 @@ export default function Header({
           <Logo className="h-14 md:h-16" />
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 xl:flex">
-          <MegaMenuProductos />
+        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
           {NAV.map((item) => (
             <NavLink
               key={item.a}
               to={item.a}
               end={item.a === '/'}
               className={({ isActive }) =>
-                `rounded-marca-pildora px-3 py-2 text-sm font-semibold transition-colors xl:px-4 ${
+                `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
                   isActive
                     ? 'bg-fondo text-texto shadow-panel'
                     : 'text-texto-medio hover:text-texto'
@@ -90,7 +104,7 @@ export default function Header({
 
           {/* Debajo de xl vive dentro del menú: acá no cabe junto a la
               navegación completa. */}
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
           </div>
 
@@ -109,7 +123,7 @@ export default function Header({
             type="button"
             onClick={() => setMenuAbierto(true)}
             aria-label="Abrir menú"
-            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde xl:hidden"
+            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde lg:hidden"
           >
             <IconoMenu />
           </button>
@@ -223,110 +237,6 @@ function Buscador({
   );
 }
 
-/** Mega-menú con el árbol completo de categorías, en columnas. */
-function MegaMenuProductos() {
-  const { datos } = useCatalogo();
-  const [abierto, setAbierto] = useState(false);
-  const contenedor = useRef<HTMLDivElement>(null);
-
-  const arbol = useMemo(
-    () => (datos ? construirArbol(datos.categorias) : []),
-    [datos],
-  );
-
-  // Se cierra al hacer clic fuera o con Escape: sin esto el panel queda
-  // colgado tapando la página al navegar con teclado.
-  useEffect(() => {
-    if (!abierto) return;
-    const fuera = (e: MouseEvent) => {
-      if (!contenedor.current?.contains(e.target as Node)) setAbierto(false);
-    };
-    const escape = (e: KeyboardEvent) => e.key === 'Escape' && setAbierto(false);
-    document.addEventListener('mousedown', fuera);
-    document.addEventListener('keydown', escape);
-    return () => {
-      document.removeEventListener('mousedown', fuera);
-      document.removeEventListener('keydown', escape);
-    };
-  }, [abierto]);
-
-  return (
-    <div ref={contenedor} className="relative" onMouseLeave={() => setAbierto(false)}>
-      <button
-        type="button"
-        onClick={() => setAbierto((v) => !v)}
-        onMouseEnter={() => setAbierto(true)}
-        aria-expanded={abierto}
-        className={`flex items-center gap-2 px-4 py-3.5 text-sm font-semibold transition-colors ${
-          abierto ? 'bg-marca text-marca-contraste' : 'text-texto hover:text-marca-texto'
-        }`}
-      >
-        <IconoGrilla />
-        Productos
-        <span className={`text-[10px] transition-transform ${abierto ? 'rotate-180' : ''}`}>▾</span>
-      </button>
-
-      {abierto && (
-        <div className="absolute left-0 top-full z-50 w-[min(64rem,90vw)] rounded-b-marca-lg border border-t-0 border-borde bg-fondo p-6">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-4">
-            {arbol.map((raiz) => (
-              <ColumnaCategoria key={raiz.slug} nodo={raiz} onNavegar={() => setAbierto(false)} />
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center justify-between border-t border-borde-suave pt-4">
-            <p className="text-sm text-texto-suave">
-              {datos?.productos.length ?? 0} productos en {datos?.categorias.length ?? 0} categorías
-            </p>
-            <Link
-              to="/catalogo"
-              onClick={() => setAbierto(false)}
-              className="text-sm font-semibold text-marca-texto hover:text-marca-fuerte"
-            >
-              Ver todo el catálogo →
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ColumnaCategoria({
-  nodo,
-  onNavegar,
-}: {
-  nodo: NodoCategoria;
-  onNavegar: () => void;
-}) {
-  return (
-    <div>
-      <Link
-        to={`/catalogo?categoria=${nodo.slug}`}
-        onClick={onNavegar}
-        className="block text-sm font-bold text-texto transition-colors hover:text-marca-texto"
-      >
-        {nodo.nombre}
-        <span className="ml-2 text-xs font-normal text-texto-suave">{nodo.total}</span>
-      </Link>
-      {nodo.hijos.length > 0 && (
-        <ul className="mt-2.5 space-y-1.5">
-          {nodo.hijos.slice(0, 6).map((h) => (
-            <li key={h.slug}>
-              <Link
-                to={`/catalogo?categoria=${h.slug}`}
-                onClick={onNavegar}
-                className="text-sm text-texto-medio transition-colors hover:text-marca-texto"
-              >
-                {h.nombre}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
 
 function MenuMovil({
   abierto,
@@ -356,7 +266,7 @@ function MenuMovil({
   if (!abierto) return null;
 
   return (
-    <div className="fixed inset-0 z-50 xl:hidden">
+    <div className="fixed inset-0 z-50 lg:hidden">
       <div
         className="absolute inset-0 bg-black/70"
         onClick={onCerrar}
@@ -473,15 +383,6 @@ const IconoLupa = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-5 shrink-0 text-texto-suave">
     <circle cx="11" cy="11" r="7" />
     <path d="m20 20-3.5-3.5" strokeLinecap="round" />
-  </svg>
-);
-
-const IconoGrilla = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-    <rect x="3" y="3" width="7" height="7" rx="1.5" />
-    <rect x="14" y="3" width="7" height="7" rx="1.5" />
-    <rect x="3" y="14" width="7" height="7" rx="1.5" />
-    <rect x="14" y="14" width="7" height="7" rx="1.5" />
   </svg>
 );
 
