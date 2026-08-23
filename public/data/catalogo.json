@@ -3,52 +3,142 @@
  "con_precios": false,
  "categorias": [
   {
-   "slug": "bateria-inversor-integrado",
-   "nombre": "Batería + Inversor Integrado",
-   "parent": "controladores",
-   "conteo": 2
+   "slug": "paneles-solares",
+   "nombre": "Paneles Solares",
+   "parent": null,
+   "conteo": 10
   },
   {
-   "slug": "electrolineras",
-   "nombre": "Electrolineras",
-   "parent": "movilidad-electrica",
-   "conteo": 1
+   "slug": "inversores",
+   "nombre": "Inversores",
+   "parent": null,
+   "conteo": 76
   },
   {
-   "slug": "estructura-para-baterias",
-   "nombre": "Estructuras",
+   "slug": "baterias",
+   "nombre": "Baterías",
+   "parent": null,
+   "conteo": 31
+  },
+  {
+   "slug": "controladores-mppt",
+   "nombre": "Controladores MPPT",
+   "parent": null,
+   "conteo": 9
+  },
+  {
+   "slug": "medidores",
+   "nombre": "Medidores",
+   "parent": null,
+   "conteo": 5
+  },
+  {
+   "slug": "monitoreo",
+   "nombre": "Monitoreo y comunicación",
+   "parent": null,
+   "conteo": 4
+  },
+  {
+   "slug": "protecciones",
+   "nombre": "Protecciones AC/DC",
+   "parent": null,
+   "conteo": 65
+  },
+  {
+   "slug": "estructura-para-paneles",
+   "nombre": "Estructura",
+   "parent": null,
+   "conteo": 24
+  },
+  {
+   "slug": "conectores",
+   "nombre": "Cable y Conectores",
+   "parent": null,
+   "conteo": 16
+  },
+  {
+   "slug": "lamparas",
+   "nombre": "Lámparas",
+   "parent": null,
+   "conteo": 6
+  },
+  {
+   "slug": "colectores-solares",
+   "nombre": "Calentador Solar",
+   "parent": null,
+   "conteo": 3
+  },
+  {
+   "slug": "movilidad-electrica",
+   "nombre": "Movilidad Eléctrica",
+   "parent": null,
+   "conteo": 24
+  },
+  {
+   "slug": "off-grid",
+   "nombre": "Off Grid",
+   "parent": "inversores",
+   "conteo": 22
+  },
+  {
+   "slug": "breaker-dc",
+   "nombre": "Breaker DC",
+   "parent": "protecciones",
+   "conteo": 22
+  },
+  {
+   "slug": "dps-ac",
+   "nombre": "DPS AC",
+   "parent": "protecciones",
+   "conteo": 12
+  },
+  {
+   "slug": "hibrido",
+   "nombre": "Híbrido",
+   "parent": "inversores",
+   "conteo": 11
+  },
+  {
+   "slug": "litio",
+   "nombre": "Litio",
    "parent": "baterias",
-   "conteo": 2
+   "conteo": 11
+  },
+  {
+   "slug": "dps-dc",
+   "nombre": "DPS DC",
+   "parent": "protecciones",
+   "conteo": 10
+  },
+  {
+   "slug": "grid-tied",
+   "nombre": "On Grid",
+   "parent": "inversores",
+   "conteo": 9
+  },
+  {
+   "slug": "conector-recto",
+   "nombre": "Cable",
+   "parent": "conectores",
+   "conteo": 9
+  },
+  {
+   "slug": "conector-y",
+   "nombre": "Conectores",
+   "parent": "conectores",
+   "conteo": 7
+  },
+  {
+   "slug": "breaker-ac",
+   "nombre": "Breaker AC",
+   "parent": "protecciones",
+   "conteo": 7
   },
   {
    "slug": "caja-de-proteccion",
    "nombre": "Caja de Protección",
    "parent": "protecciones",
    "conteo": 6
-  },
-  {
-   "slug": "cable-adaptador",
-   "nombre": "Cable Adaptador",
-   "parent": "movilidad-electrica",
-   "conteo": 1
-  },
-  {
-   "slug": "carga-rapida",
-   "nombre": "CCS1 a CCS2",
-   "parent": "movilidad-electrica",
-   "conteo": 1
-  },
-  {
-   "slug": "gbt",
-   "nombre": "GBT",
-   "parent": "movilidad-electrica",
-   "conteo": 2
-  },
-  {
-   "slug": "tipo-2",
-   "nombre": "Tipo 2",
-   "parent": "movilidad-electrica",
-   "conteo": 1
   },
   {
    "slug": "adaptadores",
@@ -69,70 +159,10 @@
    "conteo": 5
   },
   {
-   "slug": "movilidad-electrica",
-   "nombre": "Movilidad Eléctrica",
-   "parent": null,
-   "conteo": 24
-  },
-  {
-   "slug": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
-   "nombre": "Controladores",
-   "parent": "controladores",
-   "conteo": 6
-  },
-  {
-   "slug": "estructura-para-paneles",
-   "nombre": "Estructura",
-   "parent": null,
-   "conteo": 24
-  },
-  {
-   "slug": "colectores-solares",
-   "nombre": "Calentador Solar",
-   "parent": null,
-   "conteo": 3
-  },
-  {
-   "slug": "protecciones",
-   "nombre": "Protecciones AC/DC",
-   "parent": null,
-   "conteo": 65
-  },
-  {
-   "slug": "lamparas",
-   "nombre": "Lámparas",
-   "parent": null,
-   "conteo": 6
-  },
-  {
-   "slug": "controladores",
-   "nombre": "Inversores y Controladores",
-   "parent": null,
-   "conteo": 52
-  },
-  {
-   "slug": "hibrido",
-   "nombre": "Híbrido",
-   "parent": "controladores",
-   "conteo": 11
-  },
-  {
-   "slug": "grid-tied",
-   "nombre": "On Grid",
-   "parent": "controladores",
-   "conteo": 9
-  },
-  {
-   "slug": "off-grid",
-   "nombre": "Off Grid",
-   "parent": "controladores",
-   "conteo": 22
-  },
-  {
-   "slug": "inversores-solphower",
-   "nombre": "Inversores",
-   "parent": "controladores",
-   "conteo": 2
+   "slug": "fusibles-y-portafusibles-dc",
+   "nombre": "Fusibles y Portafusibles DC",
+   "parent": "protecciones",
+   "conteo": 4
   },
   {
    "slug": "agm-gel",
@@ -141,64 +171,22 @@
    "conteo": 3
   },
   {
-   "slug": "litio",
-   "nombre": "Litio",
+   "slug": "bateria-inversor-integrado",
+   "nombre": "Batería + Inversor Integrado",
+   "parent": "inversores",
+   "conteo": 2
+  },
+  {
+   "slug": "estructura-para-baterias",
+   "nombre": "Estructuras",
    "parent": "baterias",
-   "conteo": 11
+   "conteo": 2
   },
   {
-   "slug": "baterias",
-   "nombre": "Baterías",
-   "parent": null,
-   "conteo": 19
-  },
-  {
-   "slug": "conector-y",
-   "nombre": "Conectores",
-   "parent": "conectores",
-   "conteo": 7
-  },
-  {
-   "slug": "conector-recto",
-   "nombre": "Cable",
-   "parent": "conectores",
-   "conteo": 9
-  },
-  {
-   "slug": "conectores",
-   "nombre": "Cable y Conectores",
-   "parent": null,
-   "conteo": 16
-  },
-  {
-   "slug": "dps-ac",
-   "nombre": "DPS AC",
-   "parent": "protecciones",
-   "conteo": 12
-  },
-  {
-   "slug": "breaker-ac",
-   "nombre": "Breaker AC",
-   "parent": "protecciones",
-   "conteo": 7
-  },
-  {
-   "slug": "fusibles-y-portafusibles-dc",
-   "nombre": "Fusibles y Portafusibles DC",
-   "parent": "protecciones",
-   "conteo": 4
-  },
-  {
-   "slug": "dps-dc",
-   "nombre": "DPS DC",
-   "parent": "protecciones",
-   "conteo": 10
-  },
-  {
-   "slug": "breaker-dc",
-   "nombre": "Breaker DC",
-   "parent": "protecciones",
-   "conteo": 22
+   "slug": "gbt",
+   "nombre": "GBT",
+   "parent": "movilidad-electrica",
+   "conteo": 2
   },
   {
    "slug": "protecciones-en-dc",
@@ -207,10 +195,28 @@
    "conteo": 2
   },
   {
-   "slug": "paneles-solares",
-   "nombre": "Paneles Solares",
-   "parent": null,
-   "conteo": 4
+   "slug": "electrolineras",
+   "nombre": "Electrolineras",
+   "parent": "movilidad-electrica",
+   "conteo": 1
+  },
+  {
+   "slug": "cable-adaptador",
+   "nombre": "Cable Adaptador",
+   "parent": "movilidad-electrica",
+   "conteo": 1
+  },
+  {
+   "slug": "carga-rapida",
+   "nombre": "CCS1 a CCS2",
+   "parent": "movilidad-electrica",
+   "conteo": 1
+  },
+  {
+   "slug": "tipo-2",
+   "nombre": "Tipo 2",
+   "parent": "movilidad-electrica",
+   "conteo": 1
   }
  ],
  "productos": [
@@ -239,16 +245,17 @@
      "nombre": "Bateria litio monobloque 25.6V 200AH - SRP.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzEzOTE3NiwicHVyIjoiYmxvYl9pZCJ9fQ==--e6836dd3a7ca340c471cb60296b537bdd08c1254/Bateria%20litio%20monobloque%2025.6V%20200AH%20-%20SRP.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "sistema-todo-power-q-bateria-inversor-integrado",
    "nombre": "Sistema Todo Power Q : Batería + Inversor Integrado",
    "sku": "Power Q",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "bateria-inversor-integrado",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Batería + Inversor Integrado"
    ],
    "resumen": "Power Q es la última generación de sistemas integrados de almacenamiento de energía residencial. Con hasta 80 kWh de capacidad total de respaldo.",
@@ -267,7 +274,8 @@
      "nombre": "Power Q.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjIyNiwicHVyIjoiYmxvYl9pZCJ9fQ==--1c53e46bc23a50dad7c671b747aa36a9699a9cfb/Power%20Q.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-almacenamiento-de-alta-tension-fox-ess-cq7",
@@ -300,7 +308,8 @@
      "nombre": "CQ7 Data Sheet.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjE2NiwicHVyIjoiYmxvYl9pZCJ9fQ==--3863ed0d1bce1639489f9976bb0d1d587e7d7285/CQ7%20Data%20Sheet.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-almacenamiento-de-alta-voltaje-fox-ess-cq16",
@@ -329,16 +338,17 @@
      "nombre": "Ficha técnica de CQ16.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjEzMCwicHVyIjoiYmxvYl9pZCJ9fQ==--b719aee6e212115cf1b0a2bcff8fa23bd3e4bbf5/Ficha%20t%C3%A9cnica%20de%20CQ16.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-hibrido-trifasico-fox-ess-h3-plus-400v",
    "nombre": "Inversor Híbrido Trifásico Fox ESS H3 Plus 400V",
    "sku": "H3 Plus 400v",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "El H3 Plus es un inversor híbrido trifásico de última generación, diseñado para aplicaciones comerciales que exigen alto rendimiento, eficiencia.",
@@ -358,16 +368,17 @@
      "nombre": "H3 PLUS  400v.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjA4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--39c31d5a487c29e946df2a8e00dcee55237469f3/H3%20PLUS%20%20400v.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-hibrido-trifasico-fox-ess-h3-plus-220v",
    "nombre": "Inversor Híbrido Trifásico Fox ESS H3 Plus 220V",
    "sku": "H3 Plus 220V",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "El H3 Plus es un inversor híbrido trifásico de última generación, diseñado para aplicaciones comerciales que exigen alto rendimiento, eficiencia.",
@@ -387,16 +398,17 @@
      "nombre": "H3-Plus-220V.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NTkyOCwicHVyIjoiYmxvYl9pZCJ9fQ==--8674f3bc7b473af7c428b2738f0d4c081bd62f29/H3-Plus-220V.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-hibrido-trifasico-fox-ess-h3-plus-480v",
    "nombre": "Inversor Híbrido Trifásico Fox ESS H3 Plus 480V",
    "sku": "H3 PLUS",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "El H3 Plus es un inversor híbrido trifásico de última generación, diseñado para aplicaciones comerciales que exigen alto rendimiento, eficiencia.",
@@ -416,16 +428,17 @@
      "nombre": "H3-Plus-480V.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NTg5OSwicHVyIjoiYmxvYl9pZCJ9fQ==--b76fb05f236bceb47d540e4c3945952c4b88235f/H3-Plus-480V.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "sistema-todo-en-uno-g-max-plus-bateria-inversor-integrado",
    "nombre": "Sistema Todo en Uno G-Max Plus: Batería + Inversor Integrado",
    "sku": "G-Max Plus",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "bateria-inversor-integrado",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Batería + Inversor Integrado"
    ],
    "resumen": "G-MAX PLUS es un sistema todo en uno con batería e inversor integrados, que brinda energía confiable, respaldo y eficiencia en un solo equipo compacto",
@@ -444,7 +457,8 @@
      "nombre": "G-Max Plus Data Sheet.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4MTg0MCwicHVyIjoiYmxvYl9pZCJ9fQ==--1db6ba220121387455a36bbd6eb42b9b15aeed88/G-Max%20Plus%20Data%20Sheet.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dc-breaker-projoy-2p-1200v-175a-160a-pebs-l-175",
@@ -480,7 +494,8 @@
      "nombre": "ficha tecncia projoy PEBS-L-175_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA3OTMzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--1951048e9a812404302c520a0f220750e0e048c7/ficha%20tecncia%20projoy%20PEBS-L-175_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dc-breaker-projoy-2p-750v-175a-pebs-h-175",
@@ -507,7 +522,8 @@
      "nombre": "ficha PEBS-H-175_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA3OTMzOSwicHVyIjoiYmxvYl9pZCJ9fQ==--7ce72e55cb191987846cfce978c5c51e8f969b8c/ficha%20PEBS-H-175_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-1-a-gb-t",
@@ -539,7 +555,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAyNzg0NywicHVyIjoiYmxvYl9pZCJ9fQ==--7363f456f4fd92c6356cdc667322e98a565e77f8/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/gbt%20tipo1.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ccs1-a-gbt-carga-rapida-dc-para-vehiculos",
@@ -561,7 +578,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAyNDY5OCwicHVyIjoiYmxvYl9pZCJ9fQ==--079cb989067ba768c99abd20831a787ffc5ca5bc/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/FOTOS.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-dc-tipo-ccs2-a-tipo-gbt",
@@ -583,7 +601,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAyNDY3NiwicHVyIjoiYmxvYl9pZCJ9fQ==--7e6c5b7fca9dbf19ebeeffbe5985c7a926ab9771/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--bd5a2de8e0d11957373f04c83dd708213bfe6ce6/GBT-CCS2-pehodnik-za-zarejdane-na-kitajski-koli-v-evropa.webp?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-dc-tipo-ccs2-a-tipo-ccs1",
@@ -614,7 +633,8 @@
    "videos": [
     "https://www.youtube.com/embed/-PHIgi8UatM"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "accesorio-para-conexion-en-paralelo-para-baterias-fox-ess",
@@ -664,16 +684,17 @@
      "nombre": "FICHA PARRALEO BATERIAS FOOX ESS Junction Box.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxODM1MywicHVyIjoiYmxvYl9pZCJ9fQ==--b5941be1d3a089eb042a5467cd14140b7b31410f/FICHA%20PARRALEO%20BATERIAS%20FOOX%20ESS%20Junction%20Box.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "accesorio-para-conexion-en-paralelo-para-inversores-h3-pro",
    "nombre": "Accesorio para Conexión en Paralelo para Inversores H3 Pro",
    "sku": "INV-FOX-H3-LINK",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Accesorio Para Conexión En Paralelo Para Inversores H3 PRO FOX ESS",
@@ -713,16 +734,17 @@
      "nombre": "AI-Link.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA2OTM5MSwicHVyIjoiYmxvYl9pZCJ9fQ==--1a528708f8f88051bc85011ba6c1e217a9f97f0f/AI-Link.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "accesorio-para-conexion-en-paralelo-para-inversores-h1-fox",
    "nombre": "Accesorio para Conexión en Paralelo para Inversores H1 Fox",
    "sku": "INV-FOX-H1-HUB",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "El FOX HUB (AI Link) de Fox ESS es un dispositivo avanzado de gestión energética (EMS – Energy Management System) diseñado para optimizar",
@@ -762,7 +784,8 @@
      "nombre": "ficha tenica sesorio hum US-FOX-HUB-G2-Datasheet-1103.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxNjUxNSwicHVyIjoiYmxvYl9pZCJ9fQ==--67b43021465d4a7c15d1c035295122b8943d4839/ficha%20tenica%20sesorio%20hum%20US-FOX-HUB-G2-Datasheet-1103.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "fusible-moreday-20a-25a-35a-10x85mm",
@@ -795,7 +818,8 @@
      "nombre": "Moreday DC FUSE Link sheet .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxMjI2NiwicHVyIjoiYmxvYl9pZCJ9fQ==--ba6e0bdfc547ba0f4466048b067f72dcb1ebad9a/Moreday%20DC%20FUSE%20Link%20sheet%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-gbt-a-tipo-2",
@@ -824,7 +848,8 @@
    "videos": [
     "https://www.youtube.com/embed/-PHIgi8UatM"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "dps-2p-800v-leader-40ka",
@@ -853,7 +878,8 @@
      "nombre": "DC SPD LAINER.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDQzMSwicHVyIjoiYmxvYl9pZCJ9fQ==--9dfd776b000f32946bf3ff45c47d2f1be7e53654/DC%20SPD%20LAINER.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "combo-ev-moreday-cargador-7-kw-tipo-gbt-adaptador-t1-gbt",
@@ -889,7 +915,8 @@
      "nombre": "manual cargador portail_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDM0MywicHVyIjoiYmxvYl9pZCJ9fQ==--48ee7c347c8d96fe57bb622189930470fcd628fb/manual%20cargador%20portail_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "medidor-de-potencia-fotovoltaico",
@@ -926,7 +953,8 @@
      "nombre": "UT673PV User Manual--Spanish.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDE4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--a6a000ad107b367913a309ffa8e9abc4d9ecfd14/UT673PV%20User%20Manual--Spanish.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "pinza-amperimetrica-digital-ut216c",
@@ -958,7 +986,8 @@
      "nombre": "MANUAL UT216C.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDA3NCwicHVyIjoiYmxvYl9pZCJ9fQ==--a95ca988aa58bdc65a7ffe1ced5fb3b1d14d59c4/MANUAL%20UT216C.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "ponchadora-mc4-leader-a-2546b",
@@ -983,7 +1012,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3Mzk5MywicHVyIjoiYmxvYl9pZCJ9fQ==--97ff8ee6f6d6670b811ce4188ecb535d1c4bd4c2/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/111.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "kit-ponchadora-profesional-moreday",
@@ -1017,7 +1047,8 @@
      "nombre": "Moreday tool  datasheet_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3Mzk4NSwicHVyIjoiYmxvYl9pZCJ9fQ==--c7800de44887fffbd133a19b9db9ed1fdc86ef82/Moreday%20tool%20%20datasheet_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "interruptor-transferencias-aut-moreday",
@@ -1039,7 +1070,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjg4MjIwNywicHVyIjoiYmxvYl9pZCJ9fQ==--49684d04e38f19fe841194e80499245c98920fa9/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--bd5a2de8e0d11957373f04c83dd708213bfe6ce6/CATALOGO%20ECUADOR%202025%20(29).webp?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "electrolinera-mddc-para-vehiculos-electricos-dc-30-240-kw",
@@ -1070,7 +1102,8 @@
      "nombre": "MDDC electrolinera.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDMwMSwicHVyIjoiYmxvYl9pZCJ9fQ==--99e47ab703287316e3b4e3121b35e43b45fbadf1/MDDC%20electrolinera.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-3p-400v-16-20-32-40-50-63a-moreday",
@@ -1099,7 +1132,8 @@
      "nombre": "Moreday AC MCB WITH CURVE (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjgyMjA2OCwicHVyIjoiYmxvYl9pZCJ9fQ==--6b269ec3d3933621c6608bb88b86c2be9a96464d/Moreday%20AC%20MCB%20WITH%20CURVE%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-600v-80a-125a-moreday",
@@ -1128,7 +1162,8 @@
      "nombre": "Moreday DC MCB with curve (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjgyMTkyOSwicHVyIjoiYmxvYl9pZCJ9fQ==--8f95a26b25c8ee85cd019b787f1b78ee07a51313/Moreday%20DC%20MCB%20with%20curve%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-1p-250v-80a-125a-moreday",
@@ -1157,7 +1192,8 @@
      "nombre": "Moreday DC MCB with curve (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjgyMTc4NiwicHVyIjoiYmxvYl9pZCJ9fQ==--39f9cfa572765d204277179483304ab90d2fa62f/Moreday%20DC%20MCB%20with%20curve%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "combo-ev-moreday-cargador-7-kw-tipo-2-adaptador-ccs1",
@@ -1203,7 +1239,8 @@
      "nombre": "EV portable charger datasheet MOREDAY (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjgwMzYwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--59d68d4ff1928e3f996f45e7b3bd724cad43baf2/EV%20portable%20charger%20datasheet%20MOREDAY%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-2p-400v-16-20-32-40-50-63a-moreday",
@@ -1233,7 +1270,8 @@
      "nombre": "Moreday AC MCB WITH CURVE (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc4MjI5MSwicHVyIjoiYmxvYl9pZCJ9fQ==--ba5d7ff581a620026360e06bdc34f142567fbe60/Moreday%20AC%20MCB%20WITH%20CURVE%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-4-polos-1000vdc-20-a-50-moreday",
@@ -1269,7 +1307,8 @@
      "nombre": "Moreday DC MCB with curve (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc4MTY3MiwicHVyIjoiYmxvYl9pZCJ9fQ==--d3b3c85500bf45694d93e9897e7362077499f0d4/Moreday%20DC%20MCB%20with%20curve%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-1-polos-250-vdc-16-a-63-moreday",
@@ -1307,16 +1346,17 @@
      "nombre": "Moreday DC MCB with curve (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc4MTU2MSwicHVyIjoiYmxvYl9pZCJ9fQ==--b8adfb4013b2406e2556810c0cb56322ef2a746d/Moreday%20DC%20MCB%20with%20curve%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-s2000-g2",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase S2000 G2",
    "sku": "INV-FOX-S2000",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor marca FOX, On Grid monofásico Fase dividida 2000W G2 disponible en Bogotá",
@@ -1347,7 +1387,8 @@
      "nombre": "Manual de Usuario Serie Monofásica  S-G2, español.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjMwNywicHVyIjoiYmxvYl9pZCJ9fQ==--a4ac9f157a633b4203b05c5b71d09c178682bc15/Manual%20de%20Usuario%20Serie%20Monof%C3%A1sica%20%20S-G2,%20espa%C3%B1ol.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-almacenamiento-de-alta-tension-fox-ess-ep12",
@@ -1412,7 +1453,8 @@
      "nombre": "FICHA PARRALEO BATERIAS FOOX ESS Junction Box.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxODQ0OCwicHVyIjoiYmxvYl9pZCJ9fQ==--cfd530910cf5dffec51e4c48379385b6772ce0a5/FICHA%20PARRALEO%20BATERIAS%20FOOX%20ESS%20Junction%20Box.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-almacenamiento-de-alta-tension-fox-ess-ep6",
@@ -1454,16 +1496,17 @@
      "nombre": "ES-EP6-Datasheet-Latin-America-V1.0-20251117 (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc1NTc2NCwicHVyIjoiYmxvYl9pZCJ9fQ==--0bd3f195bdc49fee7b922194ca447069623e545a/ES-EP6-Datasheet-Latin-America-V1.0-20251117%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-hibrido-h1-us-fox-ess-3-8-5-7-7-6-9-6-11-4kw",
    "nombre": "Inversor Híbrido H1 US Fox ESS 3.8 / 5.7 / 7.6 / 9.6/ 11.4kW",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Inversor Híbrido Monofásico Fox ESS Serie US – 3.8 kW a 11.4kW | Energía Eficiente y Conectada",
@@ -1500,16 +1543,17 @@
      "nombre": "ficha tenica sesorio hum US-FOX-HUB-G2-Datasheet-1103.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxNjUxNiwicHVyIjoiYmxvYl9pZCJ9fQ==--d8d4f7a3cd76b3a75fa46d248ae27818c90b56ea/ficha%20tenica%20sesorio%20hum%20US-FOX-HUB-G2-Datasheet-1103.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-hibrido-trifasico-fox-ess-h3-pro-11-5-kw-17-3-kw",
    "nombre": "Inversor Híbrido Trifásico Fox ESS H3 Pro – 11.5kW /17.3kW",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "El FOX ESS H3 Pro es un inversor híbrido trifásico de alto rendimiento, diseñado para ofrecer máxima eficiencia, seguridad y conectividad en sistemas",
@@ -1544,7 +1588,8 @@
      "nombre": "FICHA TECNICCA PARALO ASESORIO FOX ESS H3 PRO AI-Link.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzAxNzcyMiwicHVyIjoiYmxvYl9pZCJ9fQ==--77c57eb148695d5f6e384b604727233a8008154c/FICHA%20TECNICCA%20PARALO%20ASESORIO%20FOX%20ESS%20H3%20PRO%20AI-Link.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "interruptores-de-caja-moldeada-mccb-moreday-1000v-1500v",
@@ -1571,7 +1616,8 @@
      "nombre": "Moreday MCCB with curve FN.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUzMzIxOSwicHVyIjoiYmxvYl9pZCJ9fQ==--6185f5b936ad0f7e4af2f4bb7f91dae9c69a346d/Moreday%20MCCB%20with%20curve%20FN.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2-polos-600vdc-16-a-63-moreday",
@@ -1609,7 +1655,8 @@
      "nombre": "Operating and Maintenance Instructions for DCAC Miniature Circuit Breakers.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUzNzU0OCwicHVyIjoiYmxvYl9pZCJ9fQ==--4a3b4d4621900497fcf5880c915e09b2d030e927/Operating%20and%20Maintenance%20Instructions%20for%20DCAC%20Miniature%20Circuit%20Breakers.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-mdb1le-63-ac-rcbo-moreday",
@@ -1636,7 +1683,8 @@
      "nombre": "RCBO 63A datasheet FINAL (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY5NDY1NywicHVyIjoiYmxvYl9pZCJ9fQ==--a347529a1c9e81c086abbf619a94fd3f2be5cbc0/RCBO%2063A%20datasheet%20FINAL%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-1p-230v-10-16-20-32-40a-moreday",
@@ -1663,7 +1711,8 @@
      "nombre": "Moreday AC MCB WITH CURVE (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY1OTc0OCwicHVyIjoiYmxvYl9pZCJ9fQ==--6f7aba01d5e6e1e7f49bab0bd9960b28563a0784/Moreday%20AC%20MCB%20WITH%20CURVE%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-800vdc-20-a-32-a-moreday",
@@ -1690,7 +1739,8 @@
      "nombre": "Moreday MDB2Z datasheet (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc2OTYxNSwicHVyIjoiYmxvYl9pZCJ9fQ==--5147cd4c3d7e57ca8334c8f89e4cfe97e90565fb/Moreday%20MDB2Z%20datasheet%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-16-20-25a-600v-projoy-ul",
@@ -1720,7 +1770,8 @@
      "nombre": "PEBS-S Series SPANISH (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY0NzY0NiwicHVyIjoiYmxvYl9pZCJ9fQ==--4e34e5baa49086a9c43afe0c81a762e41a031b49/PEBS-S%20Series%20SPANISH%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-80a-800v-projoy-ul",
@@ -1751,7 +1802,8 @@
      "nombre": "PEBS-S Series SPANISH (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY0NzY0NCwicHVyIjoiYmxvYl9pZCJ9fQ==--5c30a64f058a67d8a39bf97e420a2651f7cbcd53/PEBS-S%20Series%20SPANISH%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-1-a-tipo-2",
@@ -1782,7 +1834,8 @@
      "nombre": "Tipo 1 - tipo 2-compressed_1.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ1NTI4NiwicHVyIjoiYmxvYl9pZCJ9fQ==--15845dd01c59754b0b1bf6ac2967cfe8f6cbc33d/Tipo%201%20-%20tipo%202-compressed_1.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "kit-ponchadora-profesional",
@@ -1807,16 +1860,17 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjMyOTkwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--52d754ca2fc420d5ce106a9341bbd4ca16db2652/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/kit%20ponchador.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-monofasico-serie-vl-15kw-20kw-30kw-37kw",
    "nombre": "Inversor Solar Fox Monofásico Serie Vl 15kW/20kW/30kW/37kW",
    "sku": "INV-FOX-VL15",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor Solar Fox Monofásico Serie VL",
@@ -1837,7 +1891,8 @@
      "nombre": "ES-VL-datasheet-V1.2-20251119.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc1NDc1NiwicHVyIjoiYmxvYl9pZCJ9fQ==--2426ddccff67083548bf7c63b003f86d5944a59b/ES-VL-datasheet-V1.2-20251119.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "gancho-para-teja-espanola",
@@ -1860,7 +1915,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIyNDI5MCwicHVyIjoiYmxvYl9pZCJ9fQ==--cddbe970949446b46322996b7d3ae6505a16944a/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/3.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-srp-litio-monobloque-25-6v-100ah",
@@ -1887,7 +1943,8 @@
      "nombre": "Multi-purpose-LFP-Battery-0410 (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY4OTQ4NCwicHVyIjoiYmxvYl9pZCJ9fQ==--b70407f72813b8d894c267c51c0dfc1d1741b572/Multi-purpose-LFP-Battery-0410%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "rail-clamp-03-epr-rc03",
@@ -1913,7 +1970,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-4700-25-34-mm",
@@ -1940,7 +1998,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-3570-25-34-mm",
@@ -1966,7 +2025,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-2370-25-34-mm",
@@ -1993,7 +2053,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-sunray-litio-rack-51-2v-100ah-con-pantalla-lcd",
@@ -2025,16 +2086,16 @@
      "nombre": "Ficha Técnica Batería Litio RACK con pantalla final.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ1NTYxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--197dad0cbe0e32652f687c68f3761dbc8e758af4/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Litio%20RACK%20con%20pantalla%20final.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-mac-12ktl3-xl-wifi-x-growatt",
    "nombre": "Inversor Mac 12ktl3-Xl (Wifi-X) Growatt",
    "sku": "INVER-MAC-12K",
-   "categoria": "controladores",
-   "subcategoria": "inversores-solphower",
+   "categoria": "inversores",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
     "Inversores"
    ],
    "resumen": "INVERSOR MAC 12KTL3-XL (WiFi-X)",
@@ -2047,16 +2108,16 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxNDg0NSwicHVyIjoiYmxvYl9pZCJ9fQ==--a6c936094fc92bd53e771706b12d35f3dd5b6261/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--bd5a2de8e0d11957373f04c83dd708213bfe6ce6/INVERSOR%20MAC%2012KTL3-XL%20(WiFi-X).webp?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-sph-4000tl-5000tl-6000tllbl-us-sm-us",
    "nombre": "Inversor Sph 4000tl/5000tl/ 6000tllbl US (Sm-Us)",
    "sku": null,
-   "categoria": "controladores",
-   "subcategoria": "inversores-solphower",
+   "categoria": "inversores",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
     "Inversores"
    ],
    "resumen": "INVERSOR SPH 4000TL-BL US (SM-US)",
@@ -2069,7 +2130,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxNDgxOSwicHVyIjoiYmxvYl9pZCJ9fQ==--a481578871fe62420ef041398e1923f9a4b759b7/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--bd5a2de8e0d11957373f04c83dd708213bfe6ce6/INVERSOR%20SPH%204000TL-BL%20US%20(SM-US).webp?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "dps-3p-1500vdc-moreday-tipo-2",
@@ -2099,7 +2161,8 @@
      "nombre": "MOREDAY DC SPD DATASHEET_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjc4NiwicHVyIjoiYmxvYl9pZCJ9fQ==--3a4fbb6f3545fe39b1d13bf08f68aafedcdce113/MOREDAY%20DC%20SPD%20DATASHEET_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "carport-para-vehiculos",
@@ -2120,7 +2183,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxNDY5OSwicHVyIjoiYmxvYl9pZCJ9fQ==--b5a8ff037418be4c55a50d3bfd4f44b68f75e434/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/Copia%20de%20DPS%20DC.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-srp-litio-monobloque-25-6v-200ah",
@@ -2142,7 +2206,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxNDc2NywicHVyIjoiYmxvYl9pZCJ9fQ==--7cd26f299d4ea44924799a91d1fd7ecf1e8a8900/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/4945309393285656145.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-srp-litio-monobloque-12-8v-100ah",
@@ -2169,7 +2234,8 @@
      "nombre": "Multi-purpose-LFP-Battery-0410 (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY4OTQ4MywicHVyIjoiYmxvYl9pZCJ9fQ==--f8cb248d19727f37bbc022d44371a17b7cc33030/Multi-purpose-LFP-Battery-0410%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dc-breaker-projoy-2p-600v-16a-20a-25a-80a",
@@ -2198,16 +2264,17 @@
      "nombre": "Datasheet -PEBS-S -80 600V PROJOY DC Miniature Circuit Breaker（TUV)V2024o1o3_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA0ODc3NSwicHVyIjoiYmxvYl9pZCJ9fQ==--33bd5f777a1b35f3f894bff61769356a9e5b45ba/Datasheet%20-PEBS-S%20-80%20600V%20PROJOY%20DC%20Miniature%20Circuit%20Breaker%EF%BC%88TUV)V2024o1o3_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-1500w-12v-mppt-40a",
    "nombre": "Inversor Cargador Sunray 1500W 12V MPPT 40A",
    "sku": "INV-SUNR-1500W-12V-40MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Cargador OP SUNRAY 1500W/120VAC/12VVDC/MPPT 40A + RS485, inversor solar, inversor para paneles solares",
@@ -2225,7 +2292,8 @@
      "nombre": "Ficha Técnica Hybrid Solar Inverter SMALL.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxMTA0MywicHVyIjoiYmxvYl9pZCJ9fQ==--96cd839979c8bacd9c2105a1026b831eaa1e298a/Ficha%20T%C3%A9cnica%20Hybrid%20Solar%20Inverter%20SMALL.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "contrapeso-para-estructura-en-placa",
@@ -2250,7 +2318,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "triangulo-epr-eco1-para-montaje-de-placas-solares",
@@ -2278,17 +2347,17 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "controlador-sunray-mppt-60a-12-24-48vdc",
    "nombre": "Controlador Sunray MPPT 60A 12/24/48vdc",
    "sku": "CON-SUNR-60A-MPPT",
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador SUNRAY MPPT 60A 12/24/48VDC, controlador solar, controlador KIT solar",
    "descripcion": "Controlador Sunray MPPT 60A 12/24/48VDC - Máxima Eficiencia y Potencia para tu Sistema Solar El Controlador Sunray MPPT 60A es la opción perfecta para quienes buscan un alto rendimiento y eficiencia en sus sistemas solares. Con una capacidad de carga de 60A, este controlador utiliza la tecnología Maximum Power Point Tracking (MPPT) para maximizar la conversión de energía solar, optimizando la carga de tus baterías y mejorando el rendimiento general de tu sistema. Características principales: Capacidad de carga de 60A : Ideal para sistemas solares grandes, proporcionando control preciso y eficiente sobre la carga de baterías de mayor capacidad. Compatibilidad con voltajes de 12V, 24V y 48VDC : Ofrece flexibilidad para adaptarse a diversas configuraciones de sistemas solares, desde residenciales hasta comerciales. Tecnología MPPT avanzada : Ajusta constantemente el punto de máxima potencia de los paneles solares, asegurando una conversión energética óptima, incluso en condiciones de luz variables. Pantalla LCD de fácil lectura : Proporciona visualización en tiempo real de los parámetros más importantes, como el voltaje, la corriente, el estado de la carga y más. Protección avanzada : Incluye medidas de seguridad como protección contra sobrecarga, sobrecalentamiento, cortocircuitos y polaridad inversa, garantizando un funcionamiento seguro y prolongado. Instalación sencilla : Con una interfaz fácil de usar, la configuración y montaje del controlador es rápido y sencillo. Beneficios: Rendimiento superior : La tecnología MPPT mejora la eficiencia del sistema, maximizando la cantidad de energía que se convierte en carga útil para las baterías. Mayor vida útil de las baterías : Proporciona una carga controlada, evitando daños por sobrecarga y prolongando la vida útil de las baterías. Versatilidad : Compatible con sistemas solares de 12V, 24V y 48V, adaptándose a proyectos de diferentes tamaños y necesidades energéticas. Monitoreo y control eficiente : Con la pantalla LCD, puedes monitorear el estado y el rendimiento del sistema de manera clara y precisa. Aplicaciones ideales: Sistemas solares residenciales de gran capacidad. Instalaciones comerciales y de grandes dimensiones. Sistemas de energía autónoma y de respaldo en zonas rurales o remotas.",
@@ -2308,7 +2377,8 @@
      "nombre": "Ficha Técnica Controlador.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIwNzUwMCwicHVyIjoiYmxvYl9pZCJ9fQ==--31204c99f6d2b8e8a96fc3ee3fc4d7b09b077c98/Ficha%20T%C3%A9cnica%20Controlador.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "estructura-para-montaje-sobre-muro-para-bateria-rack",
@@ -2334,7 +2404,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjIxMTc3NiwicHVyIjoiYmxvYl9pZCJ9fQ==--ed941b19db1816bda009c5b124a517307f6778e5/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/4.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "estructura-para-montaje-sobre-piso-para-baterias-rack",
@@ -2360,7 +2431,8 @@
    "videos": [
     "https://www.youtube.com/embed/t78DnNWtRug"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-litio-rack-sunray-51-2v-100ah",
@@ -2392,7 +2464,8 @@
      "nombre": "Ficha Técnica Batería Litio RACK (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjM0MCwicHVyIjoiYmxvYl9pZCJ9fQ==--af89257699de9d34d1b091384630924b77027078/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Litio%20RACK%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-4-puestos-para-protecciones-ac-dc",
@@ -2419,7 +2492,8 @@
    "videos": [
     "https://www.youtube.com/embed/IDXNX10Oatw"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-6-puestos-para-protecciones-ac-dc",
@@ -2446,7 +2520,8 @@
    "videos": [
     "https://www.youtube.com/embed/IDXNX10Oatw"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-10-mm-rojo",
@@ -2483,7 +2558,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI3MiwicHVyIjoiYmxvYl9pZCJ9fQ==--1ca625866fa0ba55a1a8c8e94cc88ca633f750f6/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-10-mm-negro",
@@ -2520,7 +2596,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI3MywicHVyIjoiYmxvYl9pZCJ9fQ==--083faff4eefe1bf3257da7d4bcf2aa7fa7279440/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-adaptador-tipo-1-tipo-2-gbt",
@@ -2544,7 +2621,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjE5NTQ5NCwicHVyIjoiYmxvYl9pZCJ9fQ==--d012242a881a23f7ac66bfab8847884649055fea/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/Mesa%20de%20trabajo%201.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-dc-tipo-ccs1-a-tipo-ccs2",
@@ -2578,7 +2656,8 @@
      "nombre": "CSS1 to CSS2 datasheet .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ1NDAwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--e164b4eadc56d25d73f085d2404c26eb7777a422/CSS1%20to%20CSS2%20datasheet%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-2-a-tipo-1",
@@ -2603,7 +2682,8 @@
    "videos": [
     "https://www.youtube.com/embed/-PHIgi8UatM"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-2-a-tipo-gb-t",
@@ -2629,7 +2709,8 @@
    "videos": [
     "https://www.youtube.com/embed/-PHIgi8UatM"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-2-wallbox-moreday-7kw-110-240v-32a-ip54",
@@ -2664,7 +2745,8 @@
      "nombre": "MDAC332EN-MDAC132EN.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5ODYyMywicHVyIjoiYmxvYl9pZCJ9fQ==--475db7361937758533def2abf140dcc213db4025/MDAC332EN-MDAC132EN.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-gbt-wallbox-moreday-7kw-110-240v-32a-ip54",
@@ -2699,7 +2781,8 @@
      "nombre": "MDAC EN Series EV Charging Station User Manual.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjE0NywicHVyIjoiYmxvYl9pZCJ9fQ==--c69f645a955a8d72a4590154c90c183b936472ec/MDAC%20EN%20Series%20EV%20Charging%20Station%20User%20Manual.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "adaptador-ev-tipo-gb-t-a-tipo-1",
@@ -2725,7 +2808,8 @@
    "videos": [
     "https://www.youtube.com/embed/-PHIgi8UatM"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-1-portatil-moreday-3-5kw-110-240v-16a-ip65",
@@ -2760,7 +2844,8 @@
      "nombre": "manual cargador portail_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjIxMSwicHVyIjoiYmxvYl9pZCJ9fQ==--240284768c4811578beb6d2cddb137307f597ab7/manual%20cargador%20portail_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-2-portatil-moreday-3-5kw-110-240v-16a-ip65",
@@ -2796,7 +2881,8 @@
      "nombre": "EV portable charger datasheet MOREDAY (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjIwNywicHVyIjoiYmxvYl9pZCJ9fQ==--123989a2ff11d49f9fee18ff5429434a7619332c/EV%20portable%20charger%20datasheet%20MOREDAY%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-2-portatil-moreday-7kw-110-240v-32a-ip65",
@@ -2831,7 +2917,8 @@
      "nombre": "manual cargador portail_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjIwMCwicHVyIjoiYmxvYl9pZCJ9fQ==--fd8f117853de2fcfce3967f5649d55534d0b4485/manual%20cargador%20portail_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-gbt-portatil-moreday-3-5kw-110-240v-16a-ip6",
@@ -2867,7 +2954,8 @@
      "nombre": "manual cargador portail_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjIwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--31647d95fb05c1f8aab6a3936822cbb140141d89/manual%20cargador%20portail_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-gbt-portatil-moreday-7kw-110-240v-32a-ip65",
@@ -2902,7 +2990,8 @@
      "nombre": "manual cargador portail_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5NjIwMSwicHVyIjoiYmxvYl9pZCJ9fQ==--855a2fd6edcaa5c14bab192d521c838043f23bdc/manual%20cargador%20portail_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-1-wallbox-moreday-7kw-110-240v-32a-negro",
@@ -2941,7 +3030,8 @@
      "nombre": "MDAC332EN-MDAC132EN.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5ODYxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--68d9038d6688f103602fe6977ebaee4844727f0a/MDAC332EN-MDAC132EN.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-2-wallbox-moreday-7kw-110-240v-32a-negro",
@@ -2980,7 +3070,8 @@
      "nombre": "MDAC332EN-MDAC132EN.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5ODYwNywicHVyIjoiYmxvYl9pZCJ9fQ==--defac7dd12db0cb6164430bade198247d7791415/MDAC332EN-MDAC132EN.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cargador-ev-tipo-gbt-wallbox-moreday-7kw-110-240v-32a-negro",
@@ -3019,7 +3110,8 @@
      "nombre": "MDAC332EN-MDAC132EN.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjc5ODYwNiwicHVyIjoiYmxvYl9pZCJ9fQ==--58522af62436846eb61419c6e92679870f02bac8/MDAC332EN-MDAC132EN.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-24-puestos-para-protecciones-ac-dc",
@@ -3050,7 +3142,8 @@
      "nombre": "DC Juntion box datasheet (1)-compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUxODg0NywicHVyIjoiYmxvYl9pZCJ9fQ==--37191821f564ffc18036e38d608479d470df8213/DC%20Juntion%20box%20datasheet%20(1)-compressed%C2%A0(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-18-puestos-para-protecciones-ac-dc",
@@ -3081,7 +3174,8 @@
      "nombre": "DC Juntion box datasheet (1)-compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUxODg3MiwicHVyIjoiYmxvYl9pZCJ9fQ==--1ccc94630ec5f5cd9ef40b12b754220a3a692a7d/DC%20Juntion%20box%20datasheet%20(1)-compressed%C2%A0(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-12-puestos-para-protecciones-ac-dc",
@@ -3111,7 +3205,8 @@
      "nombre": "DC Juntion box datasheet (1)-compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUxODg3MywicHVyIjoiYmxvYl9pZCJ9fQ==--8b93d8352305f0b34c3fcbea485dd4e44470ded3/DC%20Juntion%20box%20datasheet%20(1)-compressed%C2%A0(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "caja-de-distribucion-de-8-puestos-para-protecciones-ac-dc",
@@ -3141,16 +3236,17 @@
      "nombre": "DC Juntion box datasheet (1)-compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjUxODg3NSwicHVyIjoiYmxvYl9pZCJ9fQ==--55efb3bfca461be1f72604e65d2379ddb1937191/DC%20Juntion%20box%20datasheet%20(1)-compressed%C2%A0(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-1500w-24v-mppt-40a",
    "nombre": "Inversor Cargador Sunray 1500W 24V MPPT 40A",
    "sku": "INV-SUNR-1500W-24V-40MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Cargador OP SUNRAY 1500W/120VAC/24VDC/MPPT 40A + RS485, inversor solar, inversor para paneles solares",
@@ -3168,16 +3264,17 @@
      "nombre": "Ficha Técnica Hybrid Solar Inverter SMALL.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjQ0NSwicHVyIjoiYmxvYl9pZCJ9fQ==--2642ffe0c2a1767d498023c8a1ae8fa95583b82e/Ficha%20T%C3%A9cnica%20Hybrid%20Solar%20Inverter%20SMALL.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-1000w-24v-mppt-40a",
    "nombre": "Inversor Cargador Sunray 1000W 24V MPPT 40A",
    "sku": "INV-SUNR-1000W-24V-40MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Cargador OP SUNRAY 1000W/120VAC/24VDC/MPPT 40A + RS485, inversor solar, inversor para paneles solares",
@@ -3195,16 +3292,17 @@
      "nombre": "Ficha Técnica Hybrid Solar Inverter SMALL.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjQzNywicHVyIjoiYmxvYl9pZCJ9fQ==--55cb4f03caf2baacfb1b74cdb7423b33a6033044/Ficha%20T%C3%A9cnica%20Hybrid%20Solar%20Inverter%20SMALL.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-1000w-12v-mppt-40a",
    "nombre": "Inversor Cargador Sunray 1000W 12V MPPT 40A",
    "sku": "INV-SUNR-1000W-12V-40MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Cargador OP SUNRAY 1000W/120VAC/12VDC/MPPT 40A + RS485, inversor solar, inversor para paneles solares",
@@ -3222,16 +3320,17 @@
      "nombre": "Ficha Técnica Hybrid Solar Inverter SMALL.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjQyNCwicHVyIjoiYmxvYl9pZCJ9fQ==--9603b775b321df18eaefd8c57b49423180e5a393/Ficha%20T%C3%A9cnica%20Hybrid%20Solar%20Inverter%20SMALL.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-onda-pura-sunray-1500w-24v",
    "nombre": "Inversor Onda Pura Sunray 1500W 24V",
    "sku": "INV-SUNR-1500W-24V",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid Onda Pura SUNRAY 1500W 24VDC/120VAC Incluye puerto RS485",
@@ -3250,16 +3349,17 @@
      "nombre": "Ficha Técnica Inversor Small.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjM3NSwicHVyIjoiYmxvYl9pZCJ9fQ==--a801021c1dc6f274e20ef8852bccd13b966b16ec/Ficha%20T%C3%A9cnica%20Inversor%20Small.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-onda-pura-sunray-1000w-24v",
    "nombre": "Inversor Onda Pura Sunray 1000W 24V",
    "sku": "INV-SUNR-1000W-24V",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid Onda Pura SUNRAY 1000W 24VDC/120VAC Incluye puerto RS485",
@@ -3278,16 +3378,17 @@
      "nombre": "Ficha Técnica Inversor Small.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjM1NCwicHVyIjoiYmxvYl9pZCJ9fQ==--ffe8a418894d531cf6565d59f2ea5dfef8aa581e/Ficha%20T%C3%A9cnica%20Inversor%20Small.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-onda-pura-sunray-1000w-12v",
    "nombre": "Inversor Onda Pura Sunray 1000W 12V",
    "sku": "INV-SUNR-1000W-12V",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid Onda Pura SUNRAY 1000W 12VDC/120VAC Incluye puerto RS485",
@@ -3307,7 +3408,8 @@
      "nombre": "Ficha Técnica Inversor Small.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjE3NCwicHVyIjoiYmxvYl9pZCJ9fQ==--59258560ec27922897d559b7ccb5e36435fd29f7/Ficha%20T%C3%A9cnica%20Inversor%20Small.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "panel-solar-665w-trina-solar-vertex-21-6-eficiencia",
@@ -3333,17 +3435,17 @@
      "nombre": "DT-M-0012 C Datasheet_Vertex 665W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDQ4OCwicHVyIjoiYmxvYl9pZCJ9fQ==--be11af290b790683a145ac4dbba27d0ab67d60dc/DT-M-0012%20C%20Datasheet_Vertex%20665W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "controlador-sunray-mppt-100a-12-24-48vdc-rs485",
    "nombre": "Controlador Sunray MPPT 100A 12/24/48vdc RS485",
    "sku": "CON-SUNR-100A-MPPT",
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador SUNRAY MPPT 100A 12/24/48VDC incluye RS485, controlador solar, controlador KIT solar",
    "descripcion": null,
@@ -3363,17 +3465,17 @@
      "nombre": "Ficha Técnica Controlador.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDM4OCwicHVyIjoiYmxvYl9pZCJ9fQ==--6839aa8630e3e412c6bda05d7ada98d3a19f28ad/Ficha%20T%C3%A9cnica%20Controlador.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "controlador-sunray-mppt-80a-12-24-48vdc-rs485",
    "nombre": "Controlador Sunray MPPT 80A 12/24/48vdc RS485",
    "sku": "CON-SUNR-80A-MPPT",
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador SUNRAY MPPT 80A 12/24/48VDC incluye puerto RS485, controlador solar, controlador KIT solar",
    "descripcion": null,
@@ -3393,17 +3495,17 @@
      "nombre": "Ficha Técnica Controlador.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDM1MSwicHVyIjoiYmxvYl9pZCJ9fQ==--f8d3a32dc643381785728751fc4730e27ec6b5a3/Ficha%20T%C3%A9cnica%20Controlador.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "controlador-sunray-mppt-50a-12-24-48vdc",
    "nombre": "Controlador Sunray MPPT 50A 12/24/48vdc",
    "sku": "CON-SUNR-50A-MPPT",
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador SUNRAY MPPT 40A 12/24/48VDC, controlador solar, controlador KIT solar",
    "descripcion": "Controlador Sunray MPPT 40A 12/24/48VDC - Optimiza la Carga de tu Sistema Solar Maximiza la eficiencia de tu sistema solar con el Controlador Sunray MPPT 40A . Este controlador de carga con tecnología Maximum Power Point Tracking (MPPT) está diseñado para ofrecer el mejor rendimiento, asegurando una carga rápida y eficiente de tus baterías, incluso en condiciones de luz variable. Características principales: Capacidad de carga de 40A : Ideal para sistemas solares de mediana a gran escala, proporcionando un control preciso de la carga. Compatibilidad con voltajes de 12V, 24V y 48VDC : Adaptable a diferentes configuraciones de sistemas solares, ofreciendo flexibilidad en su uso. Tecnología MPPT : Aprovecha al máximo la energía disponible al ajustar continuamente el punto de máxima potencia de los paneles solares, lo que mejora la eficiencia y reduce las pérdidas. Pantalla LCD : Permite visualizar en tiempo real el estado del sistema, incluyendo parámetros de carga, voltaje y corriente. Protección avanzada : Cuenta con protecciones contra sobrecarga, sobrecalentamiento, cortocircuito y polaridad inversa, garantizando un funcionamiento seguro y prolongado. Fácil instalación y configuración : Con una interfaz intuitiva, el controlador es sencillo de instalar y configurar para una integración rápida en tu sistema solar. Beneficios: Eficiencia mejorada : La tecnología MPPT aumenta la eficiencia en la conversión de energía, maximizando la carga de las baterías. Mayor vida útil de las baterías : Proporciona una carga más equilibrada y controlada, lo que extiende la vida útil de las baterías del sistema. Versatilidad : Compatible con sistemas solares de diferentes voltajes (12V, 24V y 48V), ofreciendo una amplia gama de aplicaciones. Fácil monitoreo : La pantalla LCD te permite monitorear el rendimiento y el estado del sistema en tiempo real, asegurando un control total sobre tu sistema energético. Aplicaciones ideales: Sistemas de energía solar residencial y comercial. Sistemas autónomos y de respaldo energético. Instalaciones en áreas rurales o remotas.",
@@ -3423,17 +3525,17 @@
      "nombre": "Ficha Técnica Controlador.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDMwMiwicHVyIjoiYmxvYl9pZCJ9fQ==--45a4d4a2e2fb64301c640e5f0a99cc8e78c4861f/Ficha%20T%C3%A9cnica%20Controlador.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "controlador-sunray-mppt-40a-12-24-48vdc",
    "nombre": "Controlador Sunray MPPT 40A 12/24/48vdc",
    "sku": "CON-SUNR-40A-MPPT",
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador SUNRAY MPPT 40A 12/24/48VDC, controlador solar, controlador KIT solar",
    "descripcion": "Controlador Sunray MPPT 40A 12/24/48VDC - Optimiza la Carga de tu Sistema Solar Maximiza la eficiencia de tu sistema solar con el Controlador Sunray MPPT 40A . Este controlador de carga con tecnología Maximum Power Point Tracking (MPPT) está diseñado para ofrecer el mejor rendimiento, asegurando una carga rápida y eficiente de tus baterías, incluso en condiciones de luz variable. Características principales: Capacidad de carga de 40A : Ideal para sistemas solares de mediana a gran escala, proporcionando un control preciso de la carga. Compatibilidad con voltajes de 12V, 24V y 48VDC : Adaptable a diferentes configuraciones de sistemas solares, ofreciendo flexibilidad en su uso. Tecnología MPPT : Aprovecha al máximo la energía disponible al ajustar continuamente el punto de máxima potencia de los paneles solares, lo que mejora la eficiencia y reduce las pérdidas. Pantalla LCD : Permite visualizar en tiempo real el estado del sistema, incluyendo parámetros de carga, voltaje y corriente. Protección avanzada : Cuenta con protecciones contra sobrecarga, sobrecalentamiento, cortocircuito y polaridad inversa, garantizando un funcionamiento seguro y prolongado. Fácil instalación y configuración : Con una interfaz intuitiva, el controlador es sencillo de instalar y configurar para una integración rápida en tu sistema solar. Beneficios: Eficiencia mejorada : La tecnología MPPT aumenta la eficiencia en la conversión de energía, maximizando la carga de las baterías. Mayor vida útil de las baterías : Proporciona una carga más equilibrada y controlada, lo que extiende la vida útil de las baterías del sistema. Versatilidad : Compatible con sistemas solares de diferentes voltajes (12V, 24V y 48V), ofreciendo una amplia gama de aplicaciones. Fácil monitoreo : La pantalla LCD te permite monitorear el rendimiento y el estado del sistema en tiempo real, asegurando un control total sobre tu sistema energético. Aplicaciones ideales: Sistemas de energía solar residencial y comercial. Sistemas autónomos y de respaldo energético. Instalaciones en áreas rurales o remotas.",
@@ -3453,16 +3555,17 @@
      "nombre": "Ficha Técnica Controlador.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDI3NywicHVyIjoiYmxvYl9pZCJ9fQ==--4b4cdee241fba951001ea0004ba5479e8fcf77fe/Ficha%20T%C3%A9cnica%20Controlador.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-sunray-r10-hibrido-on-off-10kw",
    "nombre": "Inversor Sunray R10 Híbrido (On/Off) 10kW",
    "sku": "INV-SUN-R10KLNA",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Inversor cargador con exportación a Red On-Off SUNRAY de 10kW, inversor solar R10KLNA",
@@ -3484,16 +3587,17 @@
      "nombre": "Split Phase SUNRAY REVO ON-OFF Hybrid Inverter 5KW 6KW 8KW 10KW_.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NDIyMiwicHVyIjoiYmxvYl9pZCJ9fQ==--ad2186b5ff15d519d00e8ba38cf6386935f4c8db/Split%20Phase%20SUNRAY%20REVO%20ON-OFF%20Hybrid%20Inverter%205KW%206KW%208KW%2010KW_.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-sunray-r16-hibrido-on-off-16kw",
    "nombre": "Inversor Sunray R16 Híbrido (On/Off) 16kW",
    "sku": "INV-SUN-R16KLNA",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Inversor cargador con exportación a Red On-Off SUNRAY de 16kW, inversor solar",
@@ -3513,16 +3617,17 @@
      "nombre": "12-16kW Split-phase Hybrid Inverter v1.7_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY5NDY0MSwicHVyIjoiYmxvYl9pZCJ9fQ==--b7bc925226b3ca75ca638aad802d25060f699369/12-16kW%20Split-phase%20Hybrid%20Inverter%20v1.7_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-sunray-hibrido-split-phase-10kw",
    "nombre": "Inversor Sunray Híbrido Split Phase 10kW",
    "sku": "INV-SUN-SRP-ONOFF-10K",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Inversor ON/OFF SUNRAY 10KW SPLIT PHASE con certificación UL",
@@ -3540,16 +3645,17 @@
      "nombre": "SUNRAY Hybrid Inverter - Split Phase 5K~10K_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0Mzk1NCwicHVyIjoiYmxvYl9pZCJ9fQ==--8dbd9a11a187c3207625d11451091d0f4d06aac5/SUNRAY%20Hybrid%20Inverter%20-%20Split%20Phase%205K~10K_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-sunray-hibrido-split-phase-6kw",
    "nombre": "Inversor Sunray Híbrido Split Phase 6kW",
    "sku": "INV-SUN-SRP-ONOFF-6K",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "hibrido",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Híbrido"
    ],
    "resumen": "Inversor ON/OFF SUNRAY 6KW SPLIT PHASE con certificación UL",
@@ -3567,16 +3673,17 @@
      "nombre": "SUNRAY Hybrid Inverter - Split Phase 5K~10K_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0MzczOCwicHVyIjoiYmxvYl9pZCJ9fQ==--95914fc15b89f5a988391b6537faa76b1f22d86b/SUNRAY%20Hybrid%20Inverter%20-%20Split%20Phase%205K~10K_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-12000w-48v-mppt150a-rs485-split-phase",
    "nombre": "Inversor Cargador 12000W 48V Mppt150A RS485 Split Phase",
    "sku": "INV-SUNR-12000W-48V-150MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor solar, inversor híbrido, Inversor solar SUNRAY, convertidor solar, de 12000W 48V MPPT150A incluye puerto RS485 para kit solar",
@@ -3598,16 +3705,17 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjQxNywicHVyIjoiYmxvYl9pZCJ9fQ==--3db397769340b9e970f117b1b9f60e87f5cc3e6a/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-8000w-48v-mppt120a-rs485-split-phas",
    "nombre": "Inversor Cargador Sunray 8000W 48V Mppt120A RS485 Split Phas",
    "sku": "INV-SUNR-8000W-48V-120MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor solar, inversor híbrido, Inversor solar SUNRAY, convertidor solar, de 8000W 48V MPPT 120A incluye puerto RS485 para kit solar",
@@ -3629,16 +3737,17 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjQxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--a4537e38763e737abb454c8aaaa755c93a942d02/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-6000w-48v-mppt80a-rs485-split-phase",
    "nombre": "Inversor Cargador Sunray 6000W 48V Mppt80A RS485 Split Phase",
    "sku": "INV-SUNR-6000W-48V-80MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor solar, inversor híbrido, Inversor solar SUNRAY, convertidor solar, de 6000W 48V MPPT 80A incluye puerto RS485 para kit solar",
@@ -3660,16 +3769,17 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjQxMSwicHVyIjoiYmxvYl9pZCJ9fQ==--a156646bba77f5dea05513a4096f12edb6bced76/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-4000w-48v-mppt-80a-rs485",
    "nombre": "Inversor Cargador Sunray 4000W 48V MPPT 80A RS485",
    "sku": "INV-SUNR-4000W-48V-80MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor cargador SUNRAY 4000W/120VAC/48VDC/MPPT 80A+RS485 Single Phase, Inversor solar, inversor híbrido, convertidor solar incluye puerto RS485",
@@ -3691,16 +3801,17 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjQwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--f0d881c1cde5d105a158153a748b15121989a010/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-3000w-48v-mppt-80a-rs485",
    "nombre": "Inversor Cargador Sunray 3000W 48V MPPT 80A RS485",
    "sku": "INV-SUNR-3000W-48V-80MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor solar, inversor híbrido, Inversor solar SUNRAY, convertidor solar, de 3000W 48V MPPT 80A incluye puerto RS485 para kit solar",
@@ -3722,7 +3833,8 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjM5NywicHVyIjoiYmxvYl9pZCJ9fQ==--5e9d55bab2d5a8acdbb698d28897f5b8e19eeefe/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-gel-sunray-200ah-12v",
@@ -3751,7 +3863,8 @@
      "nombre": "Ficha Técnica Batería Gel 200 AH.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkzNDU4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--e5a2b594454664262441ec3a6c9ed7e3e4c71b6e/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Gel%20200%20AH.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-gel-sunray-150ah-12v",
@@ -3782,7 +3895,8 @@
      "nombre": "Ficha Técnica Batería Gel 150 AH.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkxMTk5OCwicHVyIjoiYmxvYl9pZCJ9fQ==--9171271514db2cbf1de8e253c94d6c3c552065ed/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Gel%20150%20AH.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-litio-sunray-51-2v-100ah-200ah",
@@ -3815,7 +3929,8 @@
      "nombre": "Batería De Litio Sunray 51.2v 100ah 200ah final_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjY1ODA2OCwicHVyIjoiYmxvYl9pZCJ9fQ==--31c78921e2fb95faa8631267281b03e791f0a3a4/Bater%C3%ADa%20De%20Litio%20Sunray%2051.2v%20100ah%20200ah%20final_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-t1-t2-de-2p-3p-275vac-20-40ka-moreday",
@@ -3842,7 +3957,8 @@
      "nombre": "MOREDAY DPS AC Fichas tecnicas (3).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjg3MywicHVyIjoiYmxvYl9pZCJ9fQ==--7a2317f74d3d737d95b51404a7157aa657e17652/MOREDAY%20DPS%20AC%20Fichas%20tecnicas%20(3).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-tipo-2-de-2-polos-240v-275v-20-40ka-moreday-con-retie",
@@ -3870,7 +3986,8 @@
      "nombre": "MOREDAY DPS AC Fichas tecnicas (3).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU1ODcwNCwicHVyIjoiYmxvYl9pZCJ9fQ==--a51144e616d5529bb8d4a43070135501c6799780/MOREDAY%20DPS%20AC%20Fichas%20tecnicas%20(3).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-3-polos-480v-tipo-2-30-60ka-moreday",
@@ -3893,7 +4010,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwMzk5MywicHVyIjoiYmxvYl9pZCJ9fQ==--bbb9d2d51b1380fba4e2b20244de45e42c5795a9/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/134.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-3p-4p-240-vac-480vac-tipo-2-20-40ka-moreday",
@@ -3917,7 +4035,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwMzgyNywicHVyIjoiYmxvYl9pZCJ9fQ==--a553a2260d6f9cc30cc7fbe1ff641da18e6d6927/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/126.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-1-polo-130vac-tipo-2-20-40ka-moreday",
@@ -3946,7 +4065,8 @@
      "nombre": "MOREDAY DPS AC Fichas tecnicas (3).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU1ODcwMywicHVyIjoiYmxvYl9pZCJ9fQ==--b5c7b008c5eb24c7e176e68d08f9cb8136903f8b/MOREDAY%20DPS%20AC%20Fichas%20tecnicas%20(3).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-t1-t2-440vac-2p-3p-4p-projoy",
@@ -3974,7 +4094,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwNSwicHVyIjoiYmxvYl9pZCJ9fQ==--fce67af78b5feaf3766d025f4732dcfaee2e6fd5/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-440v-tipo-2-de-4-polos-marca-projoy",
@@ -4003,7 +4124,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwNCwicHVyIjoiYmxvYl9pZCJ9fQ==--01a0127f36877a114fceb288df025e8c33882538/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-440v-tipo-2-de-3-polos-marca-projoy",
@@ -4031,7 +4153,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3Mzc5MywicHVyIjoiYmxvYl9pZCJ9fQ==--392e1b403b38ceb10d6f050857071966b1c13d18/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-320a-400a-630a-800a-1000vdc-caja-moldeada",
@@ -4060,7 +4183,8 @@
      "nombre": "Datasheet_PEMC Series DC MCCB 1000V 2P_V3.2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwMTMzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--fb7c3c4cc5c4e7b4eacfc156d536c6c5c6b79c49/Datasheet_PEMC%20Series%20DC%20MCCB%201000V%202P_V3.2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-125a-140a-160a-200a-250a-500vdc-caja-moldeada",
@@ -4088,7 +4212,8 @@
      "nombre": "BREAKER DC CAJA MOLDEADEA 125A-250A Español.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwMDk0NiwicHVyIjoiYmxvYl9pZCJ9fQ==--e8da571ea11f09979dd500d4ddcd0ff12c43965f/BREAKER%20DC%20CAJA%20MOLDEADEA%20125A-250A%20Espa%C3%B1ol.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "fusible-20a-1500vdc-10x85-incluye-portafusible",
@@ -4131,7 +4256,8 @@
      "nombre": "MDPV-30 32 PV Fuse & fuse holder .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjg0NzAxMiwicHVyIjoiYmxvYl9pZCJ9fQ==--03e7a428a9047f72afd3837e43f8b33e97d25a4c/MDPV-30%2032%20PV%20Fuse%20&%20fuse%20holder%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-t1-t2-1000vdc-moreday-para-instalaciones-fotovoltaicas",
@@ -4161,7 +4287,8 @@
      "nombre": "MOREDAY DC SPD DATASHEET_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjc4NywicHVyIjoiYmxvYl9pZCJ9fQ==--fcd28afd5359fcef459a4bbcc4b49c53603a4b78/MOREDAY%20DC%20SPD%20DATASHEET_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-t1-t2-600vdc-moreday-para-sistemas-fotovoltaicos",
@@ -4190,7 +4317,8 @@
      "nombre": "MOREDAY DC SPD DATASHEET_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjc4OSwicHVyIjoiYmxvYl9pZCJ9fQ==--b2d6369ed56aad3ae147675150882bdff0d1aed6/MOREDAY%20DC%20SPD%20DATASHEET_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-t1-t2-1000vdc-projoy-para-instalaciones-fotovoltaicas",
@@ -4220,7 +4348,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgxMCwicHVyIjoiYmxvYl9pZCJ9fQ==--380abdf2bd79f42785a9425536291f00b260916e/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-t1-t2-600vdc-projoy-para-instalaciones-fotovoltaicas",
@@ -4249,7 +4378,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--b0b4325e04d3481f2167715f620ccd0226f78684/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-3p-1000vdc-tipo-2-moreday-para-sistemas-fotovoltaicos-co",
@@ -4303,7 +4433,8 @@
      "nombre": "MOREDAY DC SPD DATASHEET_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjc4NSwicHVyIjoiYmxvYl9pZCJ9fQ==--9321119d04ff3261b13550b25b26af39e8e5d75e/MOREDAY%20DC%20SPD%20DATASHEET_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-tipo-1-2-de-2p-3p-240vac-moreday",
@@ -4330,16 +4461,17 @@
      "nombre": "MOREDAY DPS AC Fichas tecnicas (3).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjg2MywicHVyIjoiYmxvYl9pZCJ9fQ==--8e9f1dd4430fda9746867c040de4d2a85176954c/MOREDAY%20DPS%20AC%20Fichas%20tecnicas%20(3).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-g10-5",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase G10.5",
    "sku": "INV-FOX-G10,5",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor solar marca FOX ESS tipo On Grid Monofásico Fase dividida con tres MPPT G10.5 potencia de entrada 15750W",
@@ -4359,16 +4491,17 @@
      "nombre": "Serie G 7-10kW (3MPPT)..pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTcyNjAzNCwicHVyIjoiYmxvYl9pZCJ9fQ==--41461027aa396369b1134663144105d3816b56e1/Serie%20G%207-10kW%20(3MPPT)..pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-g8000",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase G8000",
    "sku": "INV-FOX-G8",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor solar marca FOX ESS tipo On Grid Monofásico Fase dividida con tres MPPT G8000 potencia de entrada 12000W",
@@ -4388,16 +4521,17 @@
      "nombre": "Serie G 7-10kW (3MPPT)..pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTcyNjAwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--119bcc8585bd566a0ba943923e77da4b5619fef4/Serie%20G%207-10kW%20(3MPPT)..pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-f6000-g2",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase F6000 G2",
    "sku": "INV-FOX-F6000",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor solar marca FOX, On Grid monofásico Fase dividida 6000W G2, doble MPPT disponible en Bogotá",
@@ -4423,16 +4557,17 @@
      "nombre": "Manual de Usuario de Inversor monofásico F-G2, español.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjI5NSwicHVyIjoiYmxvYl9pZCJ9fQ==--93b9b28141a748d18ca7c380442f418e8faf943b/Manual%20de%20Usuario%20de%20Inversor%20monof%C3%A1sico%20F-G2,%20espa%C3%B1ol.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-f4600-g2",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase F4600 G2",
    "sku": "INV-FOX-F4600",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor solar marca FOX, On Grid monofásico Fase dividida 4600W G2, doble MPPT disponible en Bogotá",
@@ -4458,16 +4593,17 @@
      "nombre": "Manual de Usuario de Inversor monofásico F-G2, español.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjI5OCwicHVyIjoiYmxvYl9pZCJ9fQ==--05c3aaf0b709111a019534bcf2d9cc48ea4d5bc7/Manual%20de%20Usuario%20de%20Inversor%20monof%C3%A1sico%20F-G2,%20espa%C3%B1ol.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-fox-on-grid-monofasico-split-phase-s3000-g2",
    "nombre": "Inversor Solar Fox On Grid Monofásico Split Phase S3000 G2",
    "sku": "INV-FOX-S3000",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor marca FOX, On Grid monofásico Fase dividida 3000W G2 disponible en Bogotá",
@@ -4498,16 +4634,17 @@
      "nombre": "Manual de Usuario Serie Monofásica  S-G2, español.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA4NjMwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--6874e05091bb3ddc13e12bd5dc53272b5de0c9c8/Manual%20de%20Usuario%20Serie%20Monof%C3%A1sica%20%20S-G2,%20espa%C3%B1ol.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-cargador-sunray-2000w-mppt-60a-rs485",
    "nombre": "Inversor Cargador Sunray 2000W MPPT 60A RS485",
    "sku": "INV-SUNR-2000W-24V-60MPPT",
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor solar SUNRAY, convertidor solar, de 2000W 24V MPPT 60A para kit solar en Bogotá, Medellín, Cali, Cartagena, Barranquilla",
@@ -4529,7 +4666,8 @@
      "nombre": "Ficha Técnica Low Frecuency Solar Inverter SunRay (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MjM4OSwicHVyIjoiYmxvYl9pZCJ9fQ==--4234c2b9e99a4a5bdadcd0919b5142eb2e8a85f4/Ficha%20T%C3%A9cnica%20Low%20Frecuency%20Solar%20Inverter%20SunRay%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-solar-dc-moreday-2p-600vdc-20-40ka",
@@ -4583,7 +4721,8 @@
      "nombre": "MOREDAY DC SPD DATASHEET_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzA5Mjc4NCwicHVyIjoiYmxvYl9pZCJ9fQ==--42de46a149f1819f1fe8bbfeaff55c8241feeec2/MOREDAY%20DC%20SPD%20DATASHEET_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-litio-sunray-monobloque-25-6-v-120-150-ah",
@@ -4615,7 +4754,8 @@
      "nombre": "Ficha Técnica Batería Litio 25.6 V.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTYxMzkyMSwicHVyIjoiYmxvYl9pZCJ9fQ==--839ff3e09dc190a7af92906bee7d1afb706d8190/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Litio%2025.6%20V.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-de-litio-sunray-monobloque-12-8-v-120-150-200-ah",
@@ -4646,7 +4786,8 @@
      "nombre": "Ficha Técnica Batería Litio 12.8 V 100-120-150-200 AH.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTYxMzg3MiwicHVyIjoiYmxvYl9pZCJ9fQ==--4e2009a99e7e7fe7895a9e9525434bec3d7b2c82/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Litio%2012.8%20V%20100-120-150-200%20AH.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "bateria-gel-sunray-12v-250-ah",
@@ -4675,7 +4816,8 @@
      "nombre": "Ficha Técnica Batería Gel 250 AH.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ0ODMxMCwicHVyIjoiYmxvYl9pZCJ9fQ==--49c9d7eab230c611435b0c1a7cbd94a47fb62b11/Ficha%20T%C3%A9cnica%20Bater%C3%ADa%20Gel%20250%20AH.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-2p-6-10-16-20-25-32-40-50-63a-230-440v-projoy",
@@ -4703,7 +4845,8 @@
      "nombre": "Datasheet_PEM AC Miniature Circuit Breaker_V2.1-compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODExOSwicHVyIjoiYmxvYl9pZCJ9fQ==--6db8f06a57a068eac900599a95e111efed4052cb/Datasheet_PEM%20AC%20Miniature%20Circuit%20Breaker_V2.1-compressed%C2%A0(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-mc4-tipo-t-3-a-1-rigido-par-retie",
@@ -4743,7 +4886,8 @@
      "nombre": "Ficha Técnica Tipo y 3 a 1 Rígido.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4NTExOSwicHVyIjoiYmxvYl9pZCJ9fQ==--4d54b233cfa2ddaa54eea46a3f51f8c2ddf3f60c/Ficha%20T%C3%A9cnica%20Tipo%20y%203%20a%201%20R%C3%ADgido.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-solar-mc4-tipo-y-3-a-1-flexible-par-retie",
@@ -4772,7 +4916,8 @@
      "nombre": "FICHAS TECNICAS SUNRAY (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4NTI4NSwicHVyIjoiYmxvYl9pZCJ9fQ==--ae41079579d6c05e7d0428c31a138d72e45208c0/FICHAS%20TECNICAS%20SUNRAY%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-solar-mc4-tipo-y-flexible-par-con-retie",
@@ -4818,7 +4963,8 @@
      "nombre": "Conector Tipo Y Flexible.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4MjkzMSwicHVyIjoiYmxvYl9pZCJ9fQ==--cd82251ed4e142742de9cf980e9a8f5bafffeb86/Conector%20Tipo%20Y%20Flexible.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-mc4-tipo-s-para-combiner-box-con-retie",
@@ -4846,7 +4992,8 @@
      "nombre": "Conector Tipo S para Combiner.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4MjQzNSwicHVyIjoiYmxvYl9pZCJ9fQ==--e57ad868b170095ecf3cd1a05296fd91052c08be/Conector%20Tipo%20S%20para%20Combiner.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-6-mm-rojo",
@@ -4886,7 +5033,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--769fe3b876650bbf80d8eab0e8d29d954c6af15c/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-6-mm-negro",
@@ -4926,7 +5074,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI3NiwicHVyIjoiYmxvYl9pZCJ9fQ==--89976a2667778239d36ea120f3a6eb68659b2522/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-4-mm-negro",
@@ -4966,7 +5115,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI4MCwicHVyIjoiYmxvYl9pZCJ9fQ==--b0b1fdbedd331aaea53554066c35780c7b6c73d2/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "cable-solar-fotovoltaico-4-mm-rojo",
@@ -5007,7 +5157,8 @@
      "nombre": "LEADER TUV Solar Cable-2.5MM2-240MM2.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDI4MSwicHVyIjoiYmxvYl9pZCJ9fQ==--e4f526b4e1d3bb2288e82d6f82fe671f71b0c1f2/LEADER%20TUV%20Solar%20Cable-2.5MM2-240MM2.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "riel-aluminio-l970x26x44mm-al6005-t5-stainless-steel-sus304",
@@ -5030,7 +5181,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-aluminio-2350x25x34mm-al6005-t5-stainless-steel-sus304",
@@ -5053,7 +5205,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "mini-riel",
@@ -5074,7 +5227,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjg5NywicHVyIjoiYmxvYl9pZCJ9fQ==--7414a9d99490c29922792ad8375832daf9dd4601/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.01_22252386.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "accesorio-standing-seam",
@@ -5095,7 +5249,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjkwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--468365cf1998bdfa3b95da0f1f42c3f8218a2d4a/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.01_2864983f.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "tornillo-fijacion-madera",
@@ -5116,7 +5271,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjkyMCwicHVyIjoiYmxvYl9pZCJ9fQ==--9ce4de92b7f62fce0e9f7c0e5a873a9c3de71f0d/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.02_e7a9bc78.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "ground-lug",
@@ -5139,7 +5295,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "ground-clip",
@@ -5160,7 +5317,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjg3MywicHVyIjoiYmxvYl9pZCJ9fQ==--9521a2bde8dce9c6fb7666995eb83c375e59dcfe/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.02_819bbb70.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-conector",
@@ -5181,7 +5339,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjkzOCwicHVyIjoiYmxvYl9pZCJ9fQ==--9a926c4fd03b7038b60728a1ef3beb52ad9869af/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.02_9ffd3e30.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "end-clamp-conector-lateral-para-panel-30mm",
@@ -5204,7 +5363,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "hanger-bolt",
@@ -5225,7 +5385,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjk0OSwicHVyIjoiYmxvYl9pZCJ9fQ==--1d8b4568f0f3945b0cde5de54acef3f639ffcab1/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.03_a3aac889.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "l-feet",
@@ -5246,7 +5407,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMxNjk3NSwicHVyIjoiYmxvYl9pZCJ9fQ==--bca32f61324fce430325b9a61705b4432fc7a232/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/Imagen%20de%20WhatsApp%202023-10-24%20a%20las%2017.15.02_6925ec39.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "panel-solar-rene-solar-555w-monocristalino-21-48-eficiencia",
@@ -5272,7 +5434,8 @@
      "nombre": "RENE SOLA 555W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjgzNCwicHVyIjoiYmxvYl9pZCJ9fQ==--4165081952d4db376a49220fd36498041aa9fdd5/RENE%20SOLA%20555W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "panel-solar-trina-solar-575w-vertex-mono-halfcell",
@@ -5298,7 +5461,8 @@
      "nombre": "TRINA SOLAR 575W .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTQyODM4LCJwdXIiOiJibG9iX2lkIn19--8eeaafa8ff418cd9e01ee2a4c37c0bc65e148f13/TRINA%20SOLAR%20575W%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-4-polos-275v-tipo-2-marca-projoy",
@@ -5327,7 +5491,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwMywicHVyIjoiYmxvYl9pZCJ9fQ==--3f177727aea685f0846443f4c224ea98532f9ccb/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-3p-275v-projoy-con-retie",
@@ -5356,7 +5521,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwMiwicHVyIjoiYmxvYl9pZCJ9fQ==--8ee6732095c961c4392c40854a84cc083d8e1a10/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-ac-2p-275v-projoy-con-retie",
@@ -5385,7 +5551,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3Mzc4NSwicHVyIjoiYmxvYl9pZCJ9fQ==--15e925e63ee9e42d19b017601c25b3835bc09c55/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "end-clamp-conector-lateral-para-panel-35mm",
@@ -5406,7 +5573,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTQzNjI0LCJwdXIiOiJibG9iX2lkIn19--799a0810392dbcaff1752d512df0f1e4353ae84b/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/END%201.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "mid-clamp-conector-medio-para-panel-35mm",
@@ -5429,7 +5597,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-aluminio-2560x26x44mm-al6005-t5-stainless-steel-sus304",
@@ -5455,7 +5624,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-aluminio-3405x25x34mm-al6005-t5-stainless-steel-sus304",
@@ -5479,7 +5649,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTQzNTYxLCJwdXIiOiJibG9iX2lkIn19--8c52123909f96b372ee01642036d58d9d9919b8f/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/RIEL%204.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "riel-aluminio-4200x25x34mm-al6005-t5-stainless-steel-sus304",
@@ -5505,7 +5676,8 @@
    "videos": [
     "https://www.youtube.com/embed/zPhoNiutfAg"
    ],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "dps-dc-1000vdc-con-retie-projoy-dps-solar",
@@ -5533,7 +5705,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--8ea6a994a6c320d2f6000e175e273147ba4cf537/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-4p-1000vdc-16a-20a-25a-32a-40a-50a-63a-projoy",
@@ -5562,7 +5735,8 @@
      "nombre": "Datasheet_PEBS-H-63 DC Miniature Circuit BreakerV202308(250V) (1)-compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE0OSwicHVyIjoiYmxvYl9pZCJ9fQ==--9a1e2a1bc74d843d5f79f3566a34ff3c7e9a2162/Datasheet_PEBS-H-63%20DC%20Miniature%20Circuit%20BreakerV202308(250V)%20(1)-compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-3p-16a-20a-25a-32a-40a-50a-63a-750vdc-projoy",
@@ -5591,7 +5765,8 @@
      "nombre": "Datasheet_PEBS-H-63 DC Miniature Circuit BreakerV202308(250V) (1)-compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE0NiwicHVyIjoiYmxvYl9pZCJ9fQ==--3c93f4f1b93c8aef6cdd21ee891ef57d3a5294b2/Datasheet_PEBS-H-63%20DC%20Miniature%20Circuit%20BreakerV202308(250V)%20(1)-compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-tipo-mc4-1500w-para-cable-10mm2-retie",
@@ -5626,7 +5801,8 @@
      "nombre": "PV-BN101A_Installation_Manual_EN_ES_20241125_V1 MC4_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjk3NDQ0NSwicHVyIjoiYmxvYl9pZCJ9fQ==--80e515d18f017f47a55bb5698c15e8645fd48a19/PV-BN101A_Installation_Manual_EN_ES_20241125_V1%20MC4_compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "dps-dc-600vdc-con-retie-projoy-dps-solar",
@@ -5654,7 +5830,8 @@
      "nombre": "Ficha Tecnica Protector (2).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MzgwNywicHVyIjoiYmxvYl9pZCJ9fQ==--344d2311a7604be77c0f917cf07d8842747428f9/Ficha%20Tecnica%20Protector%20(2).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "portafusible-moreday-10x38mm-con-retie",
@@ -5688,7 +5865,8 @@
      "nombre": "MDPV-30 32 PV Fuse & fuse holder (1) (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjgwNDM1MSwicHVyIjoiYmxvYl9pZCJ9fQ==--0d04b1bcdf8b855dfc06e018d76a625dd7892af0/MDPV-30%2032%20PV%20Fuse%20&%20fuse%20holder%20(1)%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-projoy-2p-500v-125a-160a-200a-250a-ip66",
@@ -5739,7 +5917,8 @@
      "nombre": "Ficha tecnica PEMC Series DC.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ3MDAwMywicHVyIjoiYmxvYl9pZCJ9fQ==--313bf6c19c6de78e09241ada88cba58a19d8aa65/Ficha%20tecnica%20PEMC%20Series%20DC.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-1p-63a-80a-100a-125a-80vdc-projoy",
@@ -5767,7 +5946,8 @@
      "nombre": "Datasheet_PEBS-L-125 DC Miniature Circuit Breaker 202308 (1)_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE3NywicHVyIjoiYmxvYl9pZCJ9fQ==--9a054a5efa6b4396ee0a034df18a814109afe481/Datasheet_PEBS-L-125%20DC%20Miniature%20Circuit%20Breaker%20202308%20(1)_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "calentador-de-agua-solar-de-300-litros",
@@ -5788,7 +5968,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzQ3NTM0LCJwdXIiOiJibG9iX2lkIn19--97ec39601de511de70ae4300c9e2c98911251650/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--4c8246f38d6a005909dd0de2178395230092291d/WhatsApp%20Image%202022-06-09%20at%2010.57.22%20AM%20(3).jpeg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "calentador-de-agua-solar-de-200-litros",
@@ -5809,7 +5990,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzQ3NTE3LCJwdXIiOiJibG9iX2lkIn19--79ec2c00eaf43c46489cdcacd6c8400f0a27090c/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--4c8246f38d6a005909dd0de2178395230092291d/WhatsApp%20Image%202022-06-09%20at%2010.57.22%20AM%20(4).jpeg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "calentador-de-agua-solar-de-150-litros",
@@ -5830,7 +6012,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzQ3NTA2LCJwdXIiOiJibG9iX2lkIn19--60c6978c2edc0198d1e235c79d8c410444392531/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2ZpdCI6WzgwMCw4MDBdfSwicHVyIjoidmFyaWF0aW9uIn19--4c8246f38d6a005909dd0de2178395230092291d/WhatsApp%20Image%202022-06-09%20at%2010.57.22%20AM%20(5).jpeg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-3p-16-20-25-32-40-50-63a-230-440v-projoy",
@@ -5859,17 +6042,17 @@
      "nombre": "Breaker Ac Projoy.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODEzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--9ddb3bd7a66f568c278f287ee921c13195acf7fb/Breaker%20Ac%20Projoy.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "growatt-controlador-sc-48100-mpv",
    "nombre": "Growatt Controlador Sc 48100 - Mpv",
    "sku": null,
-   "categoria": "controladores",
-   "subcategoria": "controladores-a064e3a3-c285-406c-9427-4e54e6dabf1d",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
    "ruta": [
-    "Inversores y Controladores",
-    "Controladores"
+    "Controladores MPPT"
    ],
    "resumen": "Controlador Growatt disponibilidad inmediata, Colombia.",
    "descripcion": "· Protección de polaridad inversa de la batería · Módulo de control remoto Wifi/GPRS (opcional) · BTS para compensación de batería · La carga en varias etapas optimiza el rendimiento de la batería",
@@ -5886,16 +6069,17 @@
      "nombre": "Growatt SC 4860 -48120 Datasheet.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTAwMzMxLCJwdXIiOiJibG9iX2lkIn19--40f63e67234e152c878769dd6f82f8a6c39a103b/Growatt%20SC%204860%20-48120%20Datasheet.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-spf-3000-tl-lvm-es-wifi-f-growatt",
    "nombre": "Inversor Spf 3000 Tl Lvm-Es (WiFi -F) Growatt",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor SPF Growatt",
@@ -5913,7 +6097,8 @@
      "nombre": "SPF 3000TL LVM-ES.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTk4MzcsInB1ciI6ImJsb2JfaWQifX0=--6e2a9ceef5c34a1df9ee9b3533184e3d7e600afb/SPF%203000TL%20LVM-ES.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-63a-80a-100a-125a-160vdc-projoy",
@@ -5941,16 +6126,17 @@
      "nombre": "Datasheet_PEBS-L-125 DC Miniature Circuit Breaker 202308 (1)_compressed (1).pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--4e38509333108605cd1f49ba992141b7d3f2139e/Datasheet_PEBS-L-125%20DC%20Miniature%20Circuit%20Breaker%20202308%20(1)_compressed%20(1).pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-pure-sine-wave-epever-ip-1500w-21",
    "nombre": "Inversor Pure Sine Wave EPEVER Ip 1500W -21",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Epever, disponibilidad inmediata, Colombia",
@@ -5965,16 +6151,17 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTk2NTgsInB1ciI6ImJsb2JfaWQifX0=--1bda85ca430c9bf75ed6c517c70aee5a9e2c1946/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/epever%201500w%20%20(3).png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-pure-sine-wave-epever-ip-2000w-21",
    "nombre": "Inversor Pure Sine Wave EPEVER Ip 2000W -21",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Epever, disponibilidad inmediata, Colombia",
@@ -5989,16 +6176,17 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTk2MzIsInB1ciI6ImJsb2JfaWQifX0=--55bbd1554682b8526098a2fb6ba57ffd83174349/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/2000%20w.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-pure-sine-wave-epever-ip-1000w-21",
    "nombre": "Inversor Pure Sine Wave EPEVER Ip 1000W -21",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Epever, disponibilidad inmediata, Colombia",
@@ -6013,16 +6201,17 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTk1MjEsInB1ciI6ImJsb2JfaWQifX0=--30fcb9f770308c251bbd9e8536fcca087a24c039/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/WhatsApp_Image_2022-04-01_at_3.02.32_PM__1_-removebg-preview.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-pure-sine-wave-epever-ip-4000w-41-plus",
    "nombre": "Inversor Pure Sine Wave EPEVER Ip 4000W - 41-Plus",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Epever , disponibilidad inmediata, Colombia",
@@ -6038,7 +6227,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTk1MTcsInB1ciI6ImJsb2JfaWQifX0=--a51057863f176d8a38936b63f38c4cd571c3fd6c/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/WhatsApp_Image_2022-04-01_at_3.46.37_PM__1_-removebg-preview.png?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-ac-1p-230-440-6-10-16-20-25-32-40-50-63a-projoy",
@@ -6066,7 +6256,8 @@
      "nombre": "Breaker Ac Projoy.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODEzNSwicHVyIjoiYmxvYl9pZCJ9fQ==--e6c9ab030f1fa87d7fc9f57fa4906d40b48d1d30/Breaker%20Ac%20Projoy.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-1p-10-16-20-25-32-40-50-63a-250v-projoy",
@@ -6095,7 +6286,8 @@
      "nombre": "Datasheet_PEBS-H-63 DC Miniature Circuit BreakerV202308(250V) (1)-compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE0MiwicHVyIjoiYmxvYl9pZCJ9fQ==--9fb53c46dbabbb366fcd64fb581b36c89211f1a9/Datasheet_PEBS-H-63%20DC%20Miniature%20Circuit%20BreakerV202308(250V)%20(1)-compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-dc-2p-10-16-20-25-32-40-50-63a-500v-projoy",
@@ -6125,7 +6317,8 @@
      "nombre": "Datasheet_PEBS-H-63 DC Miniature Circuit BreakerV202308(250V) (1)-compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjQ2ODE0NCwicHVyIjoiYmxvYl9pZCJ9fQ==--66c51f1f79d9f856d73a7adaa82e5e2f3d84bab5/Datasheet_PEBS-H-63%20DC%20Miniature%20Circuit%20BreakerV202308(250V)%20(1)-compressed.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "breaker-weg-1p-230-400v-6a-10a-25a-63a",
@@ -6147,7 +6340,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTY4NjgsInB1ciI6ImJsb2JfaWQifX0=--cfaa7b27daee71bff69201b666a1872099678823/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/WEG.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-all-in-one-con-sensor-bd-x-100w",
@@ -6156,7 +6350,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en Colombia, Bogotá, 100W 160lm/w (total:10000-16000lm) batería de litio 3000 cliclos",
@@ -6196,7 +6389,8 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  100W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyNTEsInB1ciI6ImJsb2JfaWQifX0=--0fd78b94de88fe68a5bcb10b77e04a7ba1c84320/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%20100W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-all-in-one-con-sensor-bd-x-80w",
@@ -6205,7 +6399,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en Colombia, Bogotá, 80W 160lm/w (total:8000-12800lm) batería de litio 3000 cliclos, garantía 3",
@@ -6245,7 +6438,8 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  80W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyNDcsInB1ciI6ImJsb2JfaWQifX0=--20ce28f15536c9722c34ca0c0e85e383ece6be7a/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%2080W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-all-in-one-con-sensor-bd-x-60w",
@@ -6254,7 +6448,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en Colombia, Bogotá, 60W 160lm/w (total:3000-9600lm) batería de litio 3000 cliclos, garantía 3a",
@@ -6294,7 +6487,8 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  60W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyNDMsInB1ciI6ImJsb2JfaWQifX0=--cf97e6e7e3f5449f8f1151f2b23107c98ffaf0d1/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%2060W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-all-in-one-con-sensor-bd-x-40w",
@@ -6303,7 +6497,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en colombia, Bogotá, 40W 160lm/w (total:3000-6500lm) batería de litio 3000 cliclos, garantía 3a",
@@ -6343,7 +6536,8 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  40W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyMjMsInB1ciI6ImJsb2JfaWQifX0=--6d4352486f9c6c1fc84ce7a0c66dfabaaeafee94/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%2040W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-all-in-one-con-sensor-bd-x-30w",
@@ -6352,7 +6546,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en colombia, Bogotá, 30W 160lm/w (total:3000-4800lm) batería de litio 3000 cliclos, garantía 3a",
@@ -6392,7 +6585,8 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  30W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyMTgsInB1ciI6ImJsb2JfaWQifX0=--c073d2d7b39cbd7100bb15fa9bf49fddf971a72e/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%2030W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "lampara-iluminacion-solar-todo-de-uno-con-sensor-bd-x-20w",
@@ -6401,7 +6595,6 @@
    "categoria": "iluminacion-d1ecc3d8-e2dc-4316-88a9-8301f24d05e8",
    "subcategoria": "lamparas",
    "ruta": [
-    "Iluminación",
     "Lámparas"
    ],
    "resumen": "Iluminación exterior, alumbrado público, lámpara solar en colombia, Bogotá, 20W 160lm/w (total:2000-3200lm) batería de litio 3000 cliclos, garantía 3a",
@@ -6441,16 +6634,17 @@
      "nombre": "Specificatin of BD-X All In One solar street light  -  20W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTYyMTEsInB1ciI6ImJsb2JfaWQifX0=--2970020f84c6c1dc8482c8e92596ceadcc312268/Specificatin%20of%20BD-X%20All%20In%20One%20solar%20street%20light%20%20-%20%2020W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-sma-stp20000tl",
    "nombre": "Inversor Solar Sma Stp20000tl",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Inversor SMA Sunny Tripower STP20000TL",
@@ -6469,16 +6663,17 @@
      "nombre": "SMA Sunny Tripower inverter, STP12000TL-US-10 thru STP30000TL-US-10, DUS154122 -DS.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NDUsInB1ciI6ImJsb2JfaWQifX0=--84655899f4e3010971bf1501db75a66711b796ca/SMA%20Sunny%20Tripower%20inverter,%20STP12000TL-US-10%20thru%20STP30000TL-US-10,%20DUS154122%20-DS.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "microinversor-solar-240v-208v",
    "nombre": "Microinversor Solar 240V/208V",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "grid-tied",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "On Grid"
    ],
    "resumen": "Microinversor ENPHASE-SIEMENS M215 + Cable troncal 240V/208V",
@@ -6497,16 +6692,17 @@
      "nombre": "M215-IG-DS-ES-LAC.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NDgsInB1ciI6ImJsb2JfaWQifX0=--794a723fdab5c22805eb2a9b45fb2a4a77d5c94d/M215-IG-DS-ES-LAC.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-safesave-off-grid-3000w",
    "nombre": "Inversor Solar Safesave Off-Grid 3000W",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid SAFE SAVE 12/24VDC-120VAC 3000W Onda Pura",
@@ -6521,16 +6717,17 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NjQsInB1ciI6ImJsb2JfaWQifX0=--71b8791a9669fe1683852d76fc83690260a0453a/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--cef66509c9cdc75663c0eefd9421db1d2ea4fead/productos-inversor-off-grid-1500w.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-safesave-off-grid-2500w",
    "nombre": "Inversor Solar Safesave Off-Grid 2500W",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid SAFE SAVE 12/24VDC-120VAC 2500W Onda Pura",
@@ -6550,16 +6747,17 @@
      "nombre": "Safesave catalog-Pure Sine Wave Inverter (2)_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NjgsInB1ciI6ImJsb2JfaWQifX0=--81b22725128c940cdb9e4ad562bc374d3f6c63a5/Safesave%20catalog-Pure%20Sine%20Wave%20Inverter%20(2)_compressed.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-safesaveoff-grid-1500w",
    "nombre": "Inversor Solar Safesaveoff-Grid 1500W",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid SAFE SAVE 12/24VDC-120VAC 1500W Onda Pura",
@@ -6579,16 +6777,17 @@
      "nombre": "Safesave catalog-Pure Sine Wave Inverter (2)_compressed.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NzIsInB1ciI6ImJsb2JfaWQifX0=--9386c0bd45afd3585dbcece6e9f2cabe8a62c4fc/Safesave%20catalog-Pure%20Sine%20Wave%20Inverter%20(2)_compressed.pdf?locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "inversor-solar-onda-pura-off-grid-500w",
    "nombre": "Inversor Solar Onda Pura Off-Grid 500W",
    "sku": null,
-   "categoria": "controladores",
+   "categoria": "inversores",
    "subcategoria": "off-grid",
    "ruta": [
-    "Inversores y Controladores",
+    "Inversores",
     "Off Grid"
    ],
    "resumen": "Inversor Off Grid TMO 12VDC-120VAC 500W Onda Pura",
@@ -6601,7 +6800,8 @@
     "https://solphower.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjU5NTIsInB1ciI6ImJsb2JfaWQifX0=--8292c8c823028e367ae54fb9626b758b3c709d8e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/httpssolphower.caxtor.coesproductosinversor-off-grid-500w.jpg?locale=es"
    ],
    "videos": [],
-   "fichas": []
+   "fichas": [],
+   "fuente": "solphower"
   },
   {
    "id": "conector-solar-mc4-tipo-t-rigido-par-con-retie",
@@ -6631,7 +6831,8 @@
      "nombre": "Conector Tipo Y rígido.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4Mjg3MywicHVyIjoiYmxvYl9pZCJ9fQ==--a770a29aba7b562b6a093924c7d799e77367584d/Conector%20Tipo%20Y%20r%C3%ADgido.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "conector-mc4-normal-par-con-retie-cable-4-6mm",
@@ -6663,7 +6864,8 @@
      "nombre": "Ficha Técnica Conector MC4 Normal .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTU4MjM3MCwicHVyIjoiYmxvYl9pZCJ9fQ==--9dcd6afd6a9a6518ed409a45b6e8af9b916a979e/Ficha%20T%C3%A9cnica%20Conector%20MC4%20Normal%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "fusible-moreday-15a-20a-25a-32a-10x38mm",
@@ -6693,7 +6895,8 @@
      "nombre": "Moreday DC FUSE Link sheet .pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6Mjg0NzAwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--8c905e0023e51faef216e92cfd236d73fb5d0373/Moreday%20DC%20FUSE%20Link%20sheet%20.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "moulded-breaker-dc-4p-100a-benny-para-energia-solar",
@@ -6732,7 +6935,8 @@
      "nombre": "DC-breaker-BD-Datasheet.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjE2NDUsInB1ciI6ImJsb2JfaWQifX0=--7bb1b598199e99cdd39c71c727d3a58145d94638/DC-breaker-BD-Datasheet.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
   },
   {
    "id": "panel-solar-fotovoltaico-trina-solar-425w-21-8-eficiencia",
@@ -6758,7 +6962,1651 @@
      "nombre": "TRINA SOLAR VERTEX 425W.pdf",
      "url": "https://solphower.co/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTk0NjY2NSwicHVyIjoiYmxvYl9pZCJ9fQ==--e70047f63a4d49d4a1fd86901a03d8ae5ae3ccff/TRINA%20SOLAR%20VERTEX%20425W.pdf?disposition=inline&locale=es"
     }
-   ]
+   ],
+   "fuente": "solphower"
+  },
+  {
+   "id": "luxen-lnct-585nd",
+   "nombre": "Luxen LNCT-585ND",
+   "sku": "LNCT-585ND",
+   "marca": "Luxen",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar bifacial de doble vidrio tipo N de 585 W, formato rectangular, 132 medias celdas.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/luxen-lnct-585nd.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LNCT-585ND",
+     "url": "https://luxensolar.com/wp-content/uploads/2024/11/565-585W_ND_30mm_FB_M10R_2278_1134mm_LNCT.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "luxen-lnvh-630nd",
+   "nombre": "Luxen LNVH-630ND",
+   "sku": "LNVH-630ND",
+   "marca": "Luxen",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar monocristalino bifacial de doble vidrio de 630 W, 156 medias celdas M10, celda tipo N.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/luxen-lnvh-630nd.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LNVH-630ND",
+     "url": "https://luxensolar.com/wp-content/uploads/2024/11/LUXEN-M10-156-LNVH-620-640N-DG-2465-1134-33.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "luxen-lnet-690nd",
+   "nombre": "Luxen LNET-690ND",
+   "sku": "LNET-690ND",
+   "marca": "Luxen",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar monocristalino bifacial de doble vidrio de 690 W, 132 medias celdas M12/210 mm, celda N-TOPCon.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/luxen-lnet-690nd.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LNET-690ND",
+     "url": "https://luxensolar.com/wp-content/uploads/2025/09/690-720W_ND_33mm_G12_2384_1303mm_LNET.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "luxen-lnet-710nd",
+   "nombre": "Luxen LNET-710ND",
+   "sku": "LNET-710ND",
+   "marca": "Luxen",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar monocristalino bifacial de doble vidrio de 710 W, 132 medias celdas G12/210 mm, celda tipo N.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/luxen-lnet-710nd.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LNET-710ND",
+     "url": "https://luxensolar.com/wp-content/uploads/2025/09/690-720W_ND_33mm_G12_2384_1303mm_LNET.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "osda-oda630-33v-mhdrz",
+   "nombre": "Osda ODA630-33V-MHDRz",
+   "sku": "ODA630-33V-MHDRz",
+   "marca": "Osda",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar bifacial TOPCon de 630 W, 2382 × 1134 × 30 mm.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/osda-oda630-33v-mhdrz.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica ODA630-33V-MHDRz",
+     "url": "https://www.osdasol.com/public/upload/20260224/7e49c1f0df9f921b78548f4c7e59a96d.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "osda-oda710-33v-mhd",
+   "nombre": "Osda ODA710-33V-MHD",
+   "sku": "ODA710-33V-MHD",
+   "marca": "Osda",
+   "categoria": "paneles-solares",
+   "subcategoria": null,
+   "ruta": [
+    "Paneles Solares"
+   ],
+   "resumen": "Panel solar bifacial TOPCon de 710 W, 2384 × 1303 × 30 mm.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/osda-oda710-33v-mhd.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica ODA710-33V-MHD",
+     "url": "https://www.osdasol.com/public/upload/20250905/b5f71d22a3ca7e35577fd6a60ee3229f.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "afore-hns6000tl",
+   "nombre": "Afore HNS6000TL",
+   "sku": "HNS6000TL",
+   "marca": "Afore",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor fotovoltaico de conexión a red monofásico de 6 kW, 2 MPPT, con seccionador DC, WiFi y AFCI, 220 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/afore-hns6000tl.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica HNS6000TL",
+     "url": "https://www.aforenergy.com/product/single-phase-3-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "afore-hns10000tl",
+   "nombre": "Afore HNS10000TL",
+   "sku": "HNS10000TL",
+   "marca": "Afore",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor fotovoltaico de conexión a red monofásico de 10 kW, 2 MPPT, con seccionador DC, WiFi y AFCI, 220 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/afore-hns10000tl.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica HNS10000TL",
+     "url": "https://www.aforenergy.com/product/single-phase-7-10kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "afore-bnt060kta",
+   "nombre": "Afore BNT060KTA",
+   "sku": "BNT060KTA",
+   "marca": "Afore",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor fotovoltaico de conexión a red trifásico de 60 kW, con seccionador DC, WiFi y AFCI, 220 V CA.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/afore-bnt060kta.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica BNT060KTA",
+     "url": "https://www.aforenergy.com/product/three-phase-pv-string-inverter-40-60-kw-low-voltage-series/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-5k-sg01lp1-us",
+   "nombre": "Deye SUN-5K-SG01LP1-US",
+   "sku": "SUN-5K-SG01LP1-US",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido de fase dividida de 5 kW, 120/240 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-5k-sg01lp1-us.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-5K-SG01LP1-US",
+     "url": "https://deye.com/product/sun-5-6-7-6-8k-sg01lp1-us/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-8k-sg02lp2-us-am2-p",
+   "nombre": "Deye SUN-8K-SG02LP2-US-AM2-P",
+   "sku": "SUN-8K-SG02LP2-US-AM2-P",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido de fase dividida de 8 kW, 120/240 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-8k-sg02lp2-us-am2-p.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-8K-SG02LP2-US-AM2-P",
+     "url": "https://www.deyeinverter.com/product/split-phase-hybrid-inverter-1/SUN5-6-7-6-8-10-12KSG02LP2USAM2-AM3-3167.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-12k-sg05lp2-us-sm3",
+   "nombre": "Deye SUN-12K-SG05LP2-US-SM3",
+   "sku": "SUN-12K-SG05LP2-US-SM3",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido de fase dividida de 12 kW, 120/240 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-12k-sg05lp2-us-sm3.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-15k-sg01hp3-us-am2",
+   "nombre": "Deye SUN-15K-SG01HP3-US-AM2",
+   "sku": "SUN-15K-SG01HP3-US-AM2",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido trifásico de 15 kW, 120/208 V, compatible con batería de alto voltaje.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-15k-sg01hp3-us-am2.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-15K-SG01HP3-US-AM2",
+     "url": "https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/SUN8-10-12-15KSG01HP2USAM2.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-30k-sg01hp3-us-bm4",
+   "nombre": "Deye SUN-30K-SG01HP3-US-BM4",
+   "sku": "SUN-30K-SG01HP3-US-BM4",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido trifásico de 30 kW, 120/208 V, compatible con batería de alto voltaje.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-30k-sg01hp3-us-bm4.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-30K-SG01HP3-US-BM4",
+     "url": "https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/sun29-9-30-35-40-50ksg01hp3eubm3-4-29-950kw-three-phase-2-3-4-mppt-hybrid-inverter-hv-battery-supported-339.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-60k-sg01hp3-us-bm4-277v",
+   "nombre": "Deye SUN-60K-SG01HP3-US-BM4-277V",
+   "sku": "SUN-60K-SG01HP3-US-BM4-277V",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor híbrido trifásico de 60 kW, 277/480 V, compatible con batería de alto voltaje.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-60k-sg01hp3-us-bm4-277v.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-10k-g05-lv",
+   "nombre": "Deye SUN-10K-G05-LV",
+   "sku": "SUN-10K-G05-LV",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor on-grid trifásico de 10 kW, 120/208 V - 127/220 V, con monitoreo WiFi.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-10k-g05-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-10K-G05-LV",
+     "url": "https://www.deyeinverter.com/product/three-phase-lv/sun10-12-15kg02lv-sun10-12-15-18-20-21kg04lv-1015kw-three-phase-2-mppt-low-voltage-127-220vac.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-sun-15k-g05-lv",
+   "nombre": "Deye SUN-15K-G05-LV",
+   "sku": "SUN-15K-G05-LV",
+   "marca": "Deye",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor string trifásico de bajo voltaje de 15 kW.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-sun-15k-g05-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SUN-15K-G05-LV",
+     "url": "https://www.deyeinverter.com/product/three-phase-lv/sun10-12-15kg02lv-sun10-12-15-18-20-21kg04lv-1015kw-three-phase-2-mppt-low-voltage-127-220vac.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-hms-800-2t-lv",
+   "nombre": "Hoymiles HMS-800-2T-LV",
+   "sku": "HMS-800-2T-LV",
+   "marca": "Hoymiles",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Microinversor monofásico HMS-800-2T-LV.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-hms-800-2t-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica HMS-800-2T-LV",
+     "url": "https://www.hoymiles.com/products/hms-600-700-800-900-1000-2t.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-hms-2000-4t",
+   "nombre": "Hoymiles HMS-2000-4T",
+   "sku": "HMS-2000-4T",
+   "marca": "Hoymiles",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Microinversor HMS-2000 de 4 entradas.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-hms-2000-4t.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica HMS-2000-4T",
+     "url": "https://www.hoymiles.com/products/hms-1600-1800-2000-eu.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-hmt-2000-4t-208",
+   "nombre": "Hoymiles HMT-2000-4T-208",
+   "sku": "HMT-2000-4T-208",
+   "marca": "Hoymiles",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Microinversor trifásico HMT-2000-4T-208.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-hmt-2000-4t-208.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica HMT-2000-4T-208",
+     "url": "https://www.hoymiles.com/us/products/hmt-1600-1800-2000-4t-208-na.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "livoltek-gt3-20kl-t",
+   "nombre": "Livoltek GT3-20KL-T",
+   "sku": "GT3-20KL-T",
+   "marca": "Livoltek",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor on-grid trifásico de 20 kW.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/livoltek-gt3-20kl-t.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "livoltek-gt3-25kl-t",
+   "nombre": "Livoltek GT3-25KL-T",
+   "sku": "GT3-25KL-T",
+   "marca": "Livoltek",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor on-grid trifásico de 25 kW.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/livoltek-gt3-25kl-t.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "livoltek-gt3-30kl-q",
+   "nombre": "Livoltek GT3-30KL-Q",
+   "sku": "GT3-30KL-Q",
+   "marca": "Livoltek",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor on-grid trifásico de 30 kW.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/livoltek-gt3-30kl-q.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-ph11-4048-lv",
+   "nombre": "Must Solar PH11-4048 LV",
+   "sku": "PH11-4048 LV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar híbrido para exterior IP66, conexión a red y fuera de red, doble MPPT.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-ph11-4048-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PH11-4048 LV",
+     "url": "https://www.mustpower.com/product/ph1100-pro-series-3-6-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv18-1012-lv",
+   "nombre": "Must Solar PV18-1012-LV",
+   "sku": "PV18-1012-LV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de 1000 W, 12 VDC, PV VOC 102 V, onda sinusoidal pura, con puerto USB.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv18-1012-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV18-1012-LV",
+     "url": "https://www.mustpower.com/product/pv1800-lv-1-3kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv29-1524-lhp",
+   "nombre": "Must Solar PV29-1524-LHP",
+   "sku": "PV29-1524-LHP",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de 1.5 kW, 24 VDC, onda sinusoidal pura, con MPPT integrado.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv29-1524-lhp.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV29-1524-LHP",
+     "url": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv18-2024-lv",
+   "nombre": "Must Solar PV18-2024-LV",
+   "sku": "PV18-2024-LV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de 2000 W, 24 VDC, PV VOC 160 V, onda sinusoidal pura, con puerto USB.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv18-2024-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV18-2024-LV",
+     "url": "https://www.mustsolar.com/product/pv1800-lv-series-ac120v-1-3kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv18-3024-lv",
+   "nombre": "Must Solar PV18-3024-LV",
+   "sku": "PV18-3024-LV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de 3000 W, 24 VDC, PV VOC 450 V, onda sinusoidal pura, con puerto USB y MPPT integrado.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv18-3024-lv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV18-3024-LV",
+     "url": "https://www.mustsolar.com/product/pv1800-lv-series-ac120v-1-3kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv29-3024-lhp",
+   "nombre": "Must Solar PV29-3024-LHP",
+   "sku": "PV29-3024-LHP",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de 3000 W, 24 VDC, PV VOC 245 V, con doble salida CA.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv29-3024-lhp.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV29-3024-LHP",
+     "url": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv33-3024-tlv",
+   "nombre": "Must Solar PV33-3024-TLV",
+   "sku": "PV33-3024-TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de fase dividida de 3 kW, 24 VDC, PV VOC 145 V, salida HOT1+N+HOT2.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv33-3024-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV33-3024-TLV",
+     "url": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv29-3048-lhp",
+   "nombre": "Must Solar PV29-3048-LHP",
+   "sku": "PV29-3048-LHP",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor de baja frecuencia de 3 kW, 120 VCA, MPPT de 80 A, PV 245 V, 48 VDC.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv29-3048-lhp.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV29-3048-LHP",
+     "url": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv33-3048-tlv",
+   "nombre": "Must Solar PV33-3048-TLV",
+   "sku": "PV33-3048-TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de fase dividida de 3 kW, 48 VDC, 120/220 VAC, con MPPT de 80 A.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv33-3048-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV33-3048-TLV",
+     "url": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv33-6048-tlv",
+   "nombre": "Must Solar PV33-6048-TLV",
+   "sku": "PV33-6048-TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de fase dividida de 6 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv33-6048-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV33-6048-TLV",
+     "url": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv36-8048-tlv",
+   "nombre": "Must Solar PV36-8048-TLV",
+   "sku": "PV36-8048-TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de fase dividida de 8 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv36-8048-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV36-8048-TLV",
+     "url": "https://www.mustsolar.com/product/pv3600-tlv-series-ac110-220v-8-12kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv39-8048-tlv",
+   "nombre": "Must Solar PV39-8048 TLV",
+   "sku": "PV39-8048 TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar off-grid de fase dividida de 8 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv39-8048-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV39-8048 TLV",
+     "url": "https://www.mustpower.com/product/pv3900-tlv-8-12kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pv39-12048-tlv",
+   "nombre": "Must Solar PV39-12048-TLV",
+   "sku": "PV39-12048-TLV",
+   "marca": "Must Solar",
+   "categoria": "inversores",
+   "subcategoria": null,
+   "ruta": [
+    "Inversores"
+   ],
+   "resumen": "Inversor solar de baja frecuencia de 12 kW, PV 250 V, MPPT de 200 A, 48 VDC, con función en paralelo.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pv39-12048-tlv.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PV39-12048-TLV",
+     "url": "https://www.mustpower.com/product/pv3900-tlv-8-12kw/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-gb-l-pro-pack4-1-2",
+   "nombre": "Deye GB-L-Pro-Pack4.1-2",
+   "sku": "GB-L-Pro-Pack4.1-2",
+   "marca": "Deye",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Módulo de batería de alto voltaje de 4.09 kWh, serie V.Pro.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-gb-l-pro-pack4-1-2.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica GB-L-Pro-Pack4.1-2",
+     "url": "https://deye.com/wp-content/uploads/2026/02/deye-gb-l-pro-series_brochure-20260124_eu.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "deye-gb-lbs-gb-lbase-pro",
+   "nombre": "Deye GB-LBS+GB-LBase-Pro",
+   "sku": "GB-LBS+GB-LBase-Pro",
+   "marca": "Deye",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Caja de control para clúster de baterías de alto voltaje + base para módulo de batería, serie V.Pro.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/deye-gb-lbs-gb-lbase-pro.webp"
+   ],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp15-12100",
+   "nombre": "Must Solar LP15-12100",
+   "sku": "LP15-12100",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 100 Ah y 12.8 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp15-12100.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP15-12100",
+     "url": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp15-12200",
+   "nombre": "Must Solar LP15-12200",
+   "sku": "LP15-12200",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 200 Ah y 12.8 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp15-12200.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP15-12200",
+     "url": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp16-24100",
+   "nombre": "Must Solar LP16-24100",
+   "sku": "LP16-24100",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 100 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp16-24100.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP16-24100",
+     "url": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp15-24125",
+   "nombre": "Must Solar LP15-24125",
+   "sku": "LP15-24125",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 125 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp15-24125.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP15-24125",
+     "url": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp15-24200",
+   "nombre": "Must Solar LP15-24200",
+   "sku": "LP15-24200",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 200 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp15-24200.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP15-24200",
+     "url": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp16-24200",
+   "nombre": "Must Solar LP16-24200",
+   "sku": "LP16-24200",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 200 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp16-24200.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP16-24200",
+     "url": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp16-48100",
+   "nombre": "Must Solar LP16-48100",
+   "sku": "LP16-48100",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 100 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp16-48100.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP16-48100",
+     "url": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp16-48200",
+   "nombre": "Must Solar LP16-48200",
+   "sku": "LP16-48200",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 200 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp16-48200.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP16-48200",
+     "url": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-lp16-48300",
+   "nombre": "Must Solar LP16-48300",
+   "sku": "LP16-48300",
+   "marca": "Must Solar",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Batería de litio LiFePO4 de 300 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-lp16-48300.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica LP16-48300",
+     "url": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "soluna-eos-5k-w",
+   "nombre": "Soluna EOS-5K-W",
+   "sku": "EOS-5K-W",
+   "marca": "Soluna",
+   "categoria": "baterias",
+   "subcategoria": null,
+   "ruta": [
+    "Baterías"
+   ],
+   "resumen": "Módulo de batería EOS-5K de 51.2 V y 100 Ah, con WiFi y soporte.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/soluna-eos-5k-w.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica EOS-5K-W",
+     "url": "https://soluna.co/wp-content/uploads/2022/06/Soluna-EOS-5K-Pack.pdf"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pc18-6025f",
+   "nombre": "Must Solar PC18-6025F",
+   "sku": "PC18-6025F",
+   "marca": "Must Solar",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
+   "ruta": [
+    "Controladores MPPT"
+   ],
+   "resumen": "Controlador de carga solar MPPT de 60 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/36/48 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pc18-6025f.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PC18-6025F",
+     "url": "https://www.mustpower.com/product/pc1800f-60a-100a/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pc18-8025f-250v",
+   "nombre": "Must Solar PC18-8025F-250V",
+   "sku": "PC18-8025F-250V",
+   "marca": "Must Solar",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
+   "ruta": [
+    "Controladores MPPT"
+   ],
+   "resumen": "Controlador de carga solar MPPT de 80 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/36/48 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pc18-8025f-250v.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PC18-8025F-250V",
+     "url": "https://www.mustpower.com/product/pc1800f-60a-100a/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "must-solar-pc18-10025f",
+   "nombre": "Must Solar PC18-10025F",
+   "sku": "PC18-10025F",
+   "marca": "Must Solar",
+   "categoria": "controladores-mppt",
+   "subcategoria": null,
+   "ruta": [
+    "Controladores MPPT"
+   ],
+   "resumen": "Controlador de carga solar MPPT de 100 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/48 V.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/must-solar-pc18-10025f.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica PC18-10025F",
+     "url": "https://www.mustpower.com/product/pc1800f-60a-100a/"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "eastron-sdm630mct",
+   "nombre": "Eastron SDM630MCT",
+   "sku": "SDM630MCT",
+   "marca": "Eastron",
+   "categoria": "medidores",
+   "subcategoria": null,
+   "ruta": [
+    "Medidores"
+   ],
+   "resumen": "Medidor de energía trifásico vía TC SDM630MCT-ETL.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/eastron-sdm630mct.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica SDM630MCT",
+     "url": "https://www.eastroneurope.com/products/view/sdm630mctmid"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtsu-666-sp-100a",
+   "nombre": "Hoymiles DTSU-666-SP-100A",
+   "sku": "DTSU-666-SP-100A",
+   "marca": "Hoymiles",
+   "categoria": "medidores",
+   "subcategoria": null,
+   "ruta": [
+    "Medidores"
+   ],
+   "resumen": "Medidor inteligente DTSU 666 de fase dividida 120/240 V vía TC, 2 × 100 A / 40 mA.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtsu-666-sp-100a.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTSU-666-SP-100A",
+     "url": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtsu-666-sp-250a",
+   "nombre": "Hoymiles DTSU-666-SP-250A",
+   "sku": "DTSU-666-SP-250A",
+   "marca": "Hoymiles",
+   "categoria": "medidores",
+   "subcategoria": null,
+   "ruta": [
+    "Medidores"
+   ],
+   "resumen": "Medidor inteligente DTSU 666 de fase dividida 120/240 V vía TC, 2 × 250 A / 50 mA.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtsu-666-sp-250a.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTSU-666-SP-250A",
+     "url": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtsu-666-tp-250a",
+   "nombre": "Hoymiles DTSU-666-TP-250A",
+   "sku": "DTSU-666-TP-250A",
+   "marca": "Hoymiles",
+   "categoria": "medidores",
+   "subcategoria": null,
+   "ruta": [
+    "Medidores"
+   ],
+   "resumen": "Medidor inteligente DTSU 666 trifásico 230/400 V vía TC, 3 × 250 A / 50 mA.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtsu-666-tp-250a.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTSU-666-TP-250A",
+     "url": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "livoltek-lhe34drr12",
+   "nombre": "Livoltek LHE34DRR12",
+   "sku": "LHE34DRR12",
+   "marca": "Livoltek",
+   "categoria": "medidores",
+   "subcategoria": null,
+   "ruta": [
+    "Medidores"
+   ],
+   "resumen": "Medidor inteligente de 4 hilos, conexión indirecta hasta 120 A, incluye TC.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [],
+   "videos": [],
+   "fichas": [],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtu-lite-s",
+   "nombre": "Hoymiles DTU-Lite-S",
+   "sku": "DTU-Lite-S",
+   "marca": "Hoymiles",
+   "categoria": "monitoreo",
+   "subcategoria": null,
+   "ruta": [
+    "Monitoreo y comunicación"
+   ],
+   "resumen": "Unidad de transferencia de datos DTU-Lite S con WiFi.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtu-lite-s.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTU-Lite-S",
+     "url": "https://www.hoymiles.com/products/dtu-lite-s.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtu-pro-c",
+   "nombre": "Hoymiles DTU-PRO-C",
+   "sku": "DTU-PRO-C",
+   "marca": "Hoymiles",
+   "categoria": "monitoreo",
+   "subcategoria": null,
+   "ruta": [
+    "Monitoreo y comunicación"
+   ],
+   "resumen": "Unidad de transferencia de datos DTU-Pro S con WiFi, versión C.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtu-pro-c.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTU-PRO-C",
+     "url": "https://www.hoymiles.com/us/products/dtu-pro-c.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtu-pro-mi-1500",
+   "nombre": "Hoymiles DTU-PRO-MI-1500",
+   "sku": "DTU-PRO-MI-1500",
+   "marca": "Hoymiles",
+   "categoria": "monitoreo",
+   "subcategoria": null,
+   "ruta": [
+    "Monitoreo y comunicación"
+   ],
+   "resumen": "Unidad de transferencia de datos (DTU-Pro) con WiFi para MI-1500.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtu-pro-mi-1500.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTU-PRO-MI-1500",
+     "url": "https://www.hoymiles.com/us/products/dtu-pro.html"
+    }
+   ],
+   "fuente": "fibraandina"
+  },
+  {
+   "id": "hoymiles-dtu-w-100",
+   "nombre": "Hoymiles DTU-W-100",
+   "sku": "DTU-W-100",
+   "marca": "Hoymiles",
+   "categoria": "monitoreo",
+   "subcategoria": null,
+   "ruta": [
+    "Monitoreo y comunicación"
+   ],
+   "resumen": "Unidad de transferencia de datos DTU-W-100.",
+   "descripcion": null,
+   "specs": {},
+   "precios": {},
+   "disponible": true,
+   "unidad": null,
+   "imagenes": [
+    "/productos/hoymiles-dtu-w-100.webp"
+   ],
+   "videos": [],
+   "fichas": [
+    {
+     "nombre": "Ficha técnica DTU-W-100",
+     "url": "https://www.hoymiles.com/in/products/dtu-w100-g100.html"
+    }
+   ],
+   "fuente": "fibraandina"
   }
  ]
 }

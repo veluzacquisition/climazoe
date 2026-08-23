@@ -53,6 +53,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
 
   const valor = producto.precios[segmento] ?? producto.precios.minorista ?? null;
   const specs = Object.entries(producto.specs);
+  const esFicha = producto.fuente === 'fibraandina';
   const similares = catalogo ? relacionados(catalogo, producto) : [];
 
   return (
@@ -80,11 +81,23 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
         {/* --- Galería ------------------------------------------------------ */}
         <div>
           <div className="overflow-hidden rounded-marca-lg border border-borde-suave bg-white">
-            <img
-              src={producto.imagenes[imagenActiva]}
-              alt={producto.nombre}
-              className="aspect-square w-full object-contain p-8"
-            />
+            {producto.imagenes.length === 0 ? (
+              /* Hay productos que el proveedor publica sin foto. Un <img> con
+                 src vacío pinta el icono de imagen rota del navegador, que
+                 parece una página caída. */
+              <div className="flex aspect-square w-full flex-col items-center justify-center gap-3 bg-superficie text-texto-suave">
+                <span className="text-sm font-semibold">Foto en camino</span>
+                <span className="text-xs">
+                  La ficha técnica del fabricante sí está disponible
+                </span>
+              </div>
+            ) : (
+              <img
+                src={producto.imagenes[imagenActiva]}
+                alt={producto.nombre}
+                className="aspect-square w-full object-contain p-8"
+              />
+            )}
           </div>
 
           {producto.imagenes.length > 1 && (
@@ -121,26 +134,58 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
             <p className="mt-4 text-lg leading-relaxed text-texto-medio">{producto.resumen}</p>
           )}
 
+          {/* Sin distintivo de existencias: el inventario del proveedor no
+              es el nuestro, y marcar "agotado" con un dato que no se refresca
+              espanta ventas que sí se pueden cumplir. Si no hay, se dice al
+              cotizar. */}
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
+            {producto.marca && (
+              <span className="rounded-marca border border-apoyo/30 bg-apoyo-tenue px-3 py-1.5 font-semibold text-apoyo">
+                {producto.marca}
+              </span>
+            )}
             {producto.sku && (
               <span className="rounded-marca border border-borde bg-superficie px-3 py-1.5 text-texto-medio">
                 Ref: <span className="font-mono text-texto">{producto.sku}</span>
               </span>
             )}
-            <span
-              className={`rounded-marca px-3 py-1.5 font-semibold ${
-                producto.disponible
-                  ? 'border border-marca-borde bg-marca-tenue text-marca-texto'
-                  : 'border border-acento/40 bg-acento-tenue text-acento-texto'
-              }`}
-            >
-              {producto.disponible ? 'Disponible' : 'Agotado — consultar'}
-            </span>
           </div>
 
-          {/* --- Precio y compra ------------------------------------------- */}
+          {/* --- Precio y compra -------------------------------------------
+              Los equipos de línea técnica —paneles, inversores, baterías,
+              MPPT y medidores— no van al carrito: se dimensionan para el
+              proyecto, y meter uno solo a un carrito no significa nada. Ahí
+              la acción es cotizar y leer la ficha del fabricante. */}
           <div className="mt-8 rounded-marca-lg border border-borde bg-superficie p-6">
-            {valor ? (
+            {esFicha ? (
+              <>
+                <p className="text-lg font-semibold">Equipo bajo cotización</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-texto-medio">
+                  Le dimensionamos el sistema completo y le pasamos el precio
+                  con instalación si la necesita.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={enlaceCotizar(producto)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primario flex-1"
+                  >
+                    Cotizar por WhatsApp
+                  </a>
+                  {producto.fichas[0] && (
+                    <a
+                      href={producto.fichas[0].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-contorno flex-1"
+                    >
+                      Ver ficha técnica
+                    </a>
+                  )}
+                </div>
+              </>
+            ) : valor ? (
               <>
                 <p className="text-sm text-texto-medio">
                   Precio {segmento === 'mayorista' ? 'para empresas' : 'para hogar'}
@@ -157,9 +202,11 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
               </>
             )}
 
-            <div className="mt-6">
-              <AccionesProducto producto={producto} segmento={segmento} />
-            </div>
+            {!esFicha && (
+              <div className="mt-6">
+                <AccionesProducto producto={producto} segmento={segmento} />
+              </div>
+            )}
           </div>
 
           {/* --- Fichas técnicas -------------------------------------------- */}
@@ -278,4 +325,12 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
       </div>
     </div>
   );
+}
+
+/** WhatsApp con el modelo ya escrito: nadie debería tener que teclearlo. */
+function enlaceCotizar(producto: { nombre: string; sku: string | null }): string {
+  const texto = `Hola, quiero cotizar el ${producto.nombre}${
+    producto.sku ? ` (ref. ${producto.sku})` : ''
+  }.`;
+  return `https://wa.me/${site.contacto.whatsapp}?text=${encodeURIComponent(texto)}`;
 }

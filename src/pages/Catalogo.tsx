@@ -9,6 +9,7 @@ import {
 } from '../lib/catalogo';
 import TarjetaProducto from '../components/TarjetaProducto';
 import EncabezadoPagina from '../components/EncabezadoPagina';
+import Revelar from '../components/Revelar';
 import type { Segmento } from '../types/catalogo';
 
 /**
@@ -37,6 +38,9 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
   const categoria = params.get('categoria');
   const busqueda = params.get('q') ?? '';
   const orden = (params.get('orden') as Orden) ?? 'relevancia';
+  // Ya no hay casilla en la interfaz —el distintivo "agotado" se retiró
+  // porque el inventario del proveedor no es el nuestro— pero el parámetro
+  // se sigue respetando: hay enlaces con ?disponibles=1 circulando.
   const soloDisponibles = params.get('disponibles') === '1';
 
   const actualizar = (cambios: Record<string, string | null>) => {
@@ -96,12 +100,40 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
         alto="compacto"
       />
 
+      {/* --- Pestañas de categoría ---------------------------------------
+          Las categorías raíz como píldoras horizontales, encima de todo y
+          pegadas bajo el header. En el sitio de referencia esta barra ES la
+          navegación del catálogo, y resuelve lo que la barra lateral hace
+          mal en celular: acá no hay que desplegar nada para ver qué se
+          vende. La lateral se queda para bajar al detalle en escritorio. */}
+      <div className="sticky top-24 z-30 border-b border-borde-suave bg-fondo/90 backdrop-blur">
+        <div className="contenedor">
+          <div className="pista gap-2 py-3">
+            <PestanaCategoria
+              texto="Todo"
+              conteo={datos?.productos.length}
+              activa={!categoria}
+              onClick={() => actualizar({ categoria: null })}
+            />
+            {arbol.map((nodo) => (
+              <PestanaCategoria
+                key={nodo.slug}
+                texto={nodo.nombre}
+                conteo={nodo.total}
+                activa={categoria === nodo.slug}
+                onClick={() => actualizar({ categoria: nodo.slug })}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="contenedor py-10">
       <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
         {/* --- Sidebar de categorías -------------------------------------- */}
         {/* El header pegajoso mide 81px desde que pasó a una sola fila; la
             barra lateral se ancla justo debajo con un respiro. */}
-        <aside className="lg:sticky lg:top-28 lg:max-h-[calc(100dvh-9rem)] lg:self-start lg:overflow-y-auto">
+        <aside className="lg:sticky lg:top-44 lg:max-h-[calc(100dvh-13rem)] lg:self-start lg:overflow-y-auto">
           <button
             type="button"
             onClick={() => setPanelAbierto((v) => !v)}
@@ -159,16 +191,6 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
             </label>
 
             <label className="flex items-center gap-2 text-sm text-texto-medio">
-              <input
-                type="checkbox"
-                checked={soloDisponibles}
-                onChange={(e) => actualizar({ disponibles: e.target.checked ? '1' : null })}
-                className="size-4 accent-[var(--marca)]"
-              />
-              Solo disponibles
-            </label>
-
-            <label className="flex items-center gap-2 text-sm text-texto-medio">
               <span className="sr-only sm:not-sr-only">Ordenar</span>
               <select
                 value={orden}
@@ -208,11 +230,14 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
             </div>
           ) : (
             <>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <Revelar
+                key={`${categoria ?? 'todo'}-${busqueda}-${orden}`}
+                className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              >
                 {resultados.slice(0, visibles).map((p) => (
                   <TarjetaProducto key={p.id} producto={p} segmento={segmento} />
                 ))}
-              </div>
+              </Revelar>
 
               {visibles < resultados.length && (
                 <div className="mt-10 text-center">
@@ -231,6 +256,43 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/** Píldora de categoría de la barra superior. */
+function PestanaCategoria({
+  texto,
+  conteo,
+  activa,
+  onClick,
+}: {
+  texto: string;
+  conteo?: number;
+  activa: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-current={activa ? 'true' : undefined}
+      className={`inline-flex items-center gap-2 whitespace-nowrap rounded-marca-pildora border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
+        activa
+          ? 'border-apoyo bg-apoyo text-zoe-white shadow-panel'
+          : 'border-borde bg-fondo text-texto-medio hover:border-apoyo hover:text-apoyo'
+      }`}
+    >
+      {texto}
+      {conteo != null && (
+        <span
+          className={`text-xs font-bold tabular-nums ${
+            activa ? 'text-zoe-white/70' : 'text-texto-suave'
+          }`}
+        >
+          {conteo}
+        </span>
+      )}
+    </button>
   );
 }
 

@@ -409,3 +409,34 @@
     .pista { scroll-behavior: auto; }
   }
 }
+
+@layer utilities {
+  /* Entrada escalonada de las rejillas de producto.
+     
+     La tarjeta arranca abajo y translúcida, y `Revelar` le quita `.aparecer`
+     cuando el bloque entra en pantalla. El retraso lo pone cada tarjeta con
+     `--retraso`, así el grid se arma en cascada en vez de aparecer de golpe:
+     es lo que hace que 24 productos no se sientan un muro.
+
+     Sin JS —o con JS que falle— la tarjeta se ve normal: el estado oculto lo
+     pone la clase, no el CSS base. */
+  .aparecer {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  .aparecer-listo {
+    animation: subir-entrando 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--retraso, 0ms);
+  }
+
+  @keyframes subir-entrando {
+    from { opacity: 0; transform: translateY(1.25rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aparecer { opacity: 1; transform: none; }
+    .aparecer-listo { animation: none; }
+  }
+}

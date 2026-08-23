@@ -1,0 +1,607 @@
+{
+ "fuente": "https://fibraandina.com/energia",
+ "totales": {
+  "productos": 60
+ },
+ "productos": [
+  {
+   "id": "luxen-lnct-585nd",
+   "modelo": "LNCT-585ND",
+   "marca": "Luxen",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar bifacial de doble vidrio tipo N de 585 W, formato rectangular, 132 medias celdas.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LNCT-585ND.png",
+   "ficha_tecnica": "https://luxensolar.com/wp-content/uploads/2024/11/565-585W_ND_30mm_FB_M10R_2278_1134mm_LNCT.pdf",
+   "imagen_local": "/productos/luxen-lnct-585nd.webp"
+  },
+  {
+   "id": "luxen-lnvh-630nd",
+   "modelo": "LNVH-630ND",
+   "marca": "Luxen",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar monocristalino bifacial de doble vidrio de 630 W, 156 medias celdas M10, celda tipo N.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LNVH-630ND.png",
+   "ficha_tecnica": "https://luxensolar.com/wp-content/uploads/2024/11/LUXEN-M10-156-LNVH-620-640N-DG-2465-1134-33.pdf",
+   "imagen_local": "/productos/luxen-lnvh-630nd.webp"
+  },
+  {
+   "id": "luxen-lnet-690nd",
+   "modelo": "LNET-690ND",
+   "marca": "Luxen",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar monocristalino bifacial de doble vidrio de 690 W, 132 medias celdas M12/210 mm, celda N-TOPCon.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LNET-690ND.png",
+   "ficha_tecnica": "https://luxensolar.com/wp-content/uploads/2025/09/690-720W_ND_33mm_G12_2384_1303mm_LNET.pdf",
+   "imagen_local": "/productos/luxen-lnet-690nd.webp"
+  },
+  {
+   "id": "luxen-lnet-710nd",
+   "modelo": "LNET-710ND",
+   "marca": "Luxen",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar monocristalino bifacial de doble vidrio de 710 W, 132 medias celdas G12/210 mm, celda tipo N.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LNET-710ND.png",
+   "ficha_tecnica": "https://luxensolar.com/wp-content/uploads/2025/09/690-720W_ND_33mm_G12_2384_1303mm_LNET.pdf",
+   "imagen_local": "/productos/luxen-lnet-710nd.webp"
+  },
+  {
+   "id": "osda-oda630-33v-mhdrz",
+   "modelo": "ODA630-33V-MHDRz",
+   "marca": "Osda",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar bifacial TOPCon de 630 W, 2382 × 1134 × 30 mm.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/ODA630-33V-MHDRz.png",
+   "ficha_tecnica": "https://www.osdasol.com/public/upload/20260224/7e49c1f0df9f921b78548f4c7e59a96d.pdf",
+   "imagen_local": "/productos/osda-oda630-33v-mhdrz.webp"
+  },
+  {
+   "id": "osda-oda710-33v-mhd",
+   "modelo": "ODA710-33V-MHD",
+   "marca": "Osda",
+   "categoria": "Paneles Solares",
+   "specs": "Panel solar bifacial TOPCon de 710 W, 2384 × 1303 × 30 mm.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/ODA710-33V-MHD.png",
+   "ficha_tecnica": "https://www.osdasol.com/public/upload/20250905/b5f71d22a3ca7e35577fd6a60ee3229f.pdf",
+   "imagen_local": "/productos/osda-oda710-33v-mhd.webp"
+  },
+  {
+   "id": "afore-hns6000tl",
+   "modelo": "HNS6000TL",
+   "marca": "Afore",
+   "categoria": "Inversores",
+   "specs": "Inversor fotovoltaico de conexión a red monofásico de 6 kW, 2 MPPT, con seccionador DC, WiFi y AFCI, 220 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/HNS6000TL.png",
+   "ficha_tecnica": "https://www.aforenergy.com/product/single-phase-3-6kw/",
+   "imagen_local": "/productos/afore-hns6000tl.webp"
+  },
+  {
+   "id": "afore-hns10000tl",
+   "modelo": "HNS10000TL",
+   "marca": "Afore",
+   "categoria": "Inversores",
+   "specs": "Inversor fotovoltaico de conexión a red monofásico de 10 kW, 2 MPPT, con seccionador DC, WiFi y AFCI, 220 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/HNS10000TL.png",
+   "ficha_tecnica": "https://www.aforenergy.com/product/single-phase-7-10kw/",
+   "imagen_local": "/productos/afore-hns10000tl.webp"
+  },
+  {
+   "id": "afore-bnt060kta",
+   "modelo": "BNT060KTA",
+   "marca": "Afore",
+   "categoria": "Inversores",
+   "specs": "Inversor fotovoltaico de conexión a red trifásico de 60 kW, con seccionador DC, WiFi y AFCI, 220 V CA.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/BNT060KTA.png",
+   "ficha_tecnica": "https://www.aforenergy.com/product/three-phase-pv-string-inverter-40-60-kw-low-voltage-series/",
+   "imagen_local": "/productos/afore-bnt060kta.webp"
+  },
+  {
+   "id": "deye-sun-5k-sg01lp1-us",
+   "modelo": "SUN-5K-SG01LP1-US",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido de fase dividida de 5 kW, 120/240 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-5K-SG01LP1-US.png",
+   "ficha_tecnica": "https://deye.com/product/sun-5-6-7-6-8k-sg01lp1-us/",
+   "imagen_local": "/productos/deye-sun-5k-sg01lp1-us.webp"
+  },
+  {
+   "id": "deye-sun-8k-sg02lp2-us-am2-p",
+   "modelo": "SUN-8K-SG02LP2-US-AM2-P",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido de fase dividida de 8 kW, 120/240 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-8K-SG02LP2-US-AM2-P.png",
+   "ficha_tecnica": "https://www.deyeinverter.com/product/split-phase-hybrid-inverter-1/SUN5-6-7-6-8-10-12KSG02LP2USAM2-AM3-3167.html",
+   "imagen_local": "/productos/deye-sun-8k-sg02lp2-us-am2-p.webp"
+  },
+  {
+   "id": "deye-sun-12k-sg05lp2-us-sm3",
+   "modelo": "SUN-12K-SG05LP2-US-SM3",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido de fase dividida de 12 kW, 120/240 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/sun-12k-sg05lp2-us-sm3.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/deye-sun-12k-sg05lp2-us-sm3.webp"
+  },
+  {
+   "id": "deye-sun-15k-sg01hp3-us-am2",
+   "modelo": "SUN-15K-SG01HP3-US-AM2",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido trifásico de 15 kW, 120/208 V, compatible con batería de alto voltaje.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-15K-SG01HP3-US-AM2.png",
+   "ficha_tecnica": "https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/SUN8-10-12-15KSG01HP2USAM2.html",
+   "imagen_local": "/productos/deye-sun-15k-sg01hp3-us-am2.webp"
+  },
+  {
+   "id": "deye-sun-30k-sg01hp3-us-bm4",
+   "modelo": "SUN-30K-SG01HP3-US-BM4",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido trifásico de 30 kW, 120/208 V, compatible con batería de alto voltaje.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-30K-SG01HP3-US-BM4.png",
+   "ficha_tecnica": "https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/sun29-9-30-35-40-50ksg01hp3eubm3-4-29-950kw-three-phase-2-3-4-mppt-hybrid-inverter-hv-battery-supported-339.html",
+   "imagen_local": "/productos/deye-sun-30k-sg01hp3-us-bm4.webp"
+  },
+  {
+   "id": "deye-sun-60k-sg01hp3-us-bm4-277v",
+   "modelo": "SUN-60K-SG01HP3-US-BM4-277V",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor híbrido trifásico de 60 kW, 277/480 V, compatible con batería de alto voltaje.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/sun-60k-sg01hp3-us-bm4-277v.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/deye-sun-60k-sg01hp3-us-bm4-277v.webp"
+  },
+  {
+   "id": "deye-sun-10k-g05-lv",
+   "modelo": "SUN-10K-G05-LV",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor on-grid trifásico de 10 kW, 120/208 V - 127/220 V, con monitoreo WiFi.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-10K-G05-LV.png",
+   "ficha_tecnica": "https://www.deyeinverter.com/product/three-phase-lv/sun10-12-15kg02lv-sun10-12-15-18-20-21kg04lv-1015kw-three-phase-2-mppt-low-voltage-127-220vac.html",
+   "imagen_local": "/productos/deye-sun-10k-g05-lv.webp"
+  },
+  {
+   "id": "deye-sun-15k-g05-lv",
+   "modelo": "SUN-15K-G05-LV",
+   "marca": "Deye",
+   "categoria": "Inversores",
+   "specs": "Inversor string trifásico de bajo voltaje de 15 kW.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SUN-15K-G05-LV.png",
+   "ficha_tecnica": "https://www.deyeinverter.com/product/three-phase-lv/sun10-12-15kg02lv-sun10-12-15-18-20-21kg04lv-1015kw-three-phase-2-mppt-low-voltage-127-220vac.html",
+   "imagen_local": "/productos/deye-sun-15k-g05-lv.webp"
+  },
+  {
+   "id": "hoymiles-hms-800-2t-lv",
+   "modelo": "HMS-800-2T-LV",
+   "marca": "Hoymiles",
+   "categoria": "Inversores",
+   "specs": "Microinversor monofásico HMS-800-2T-LV.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/HMS-800-2T-LV.png",
+   "ficha_tecnica": "https://www.hoymiles.com/products/hms-600-700-800-900-1000-2t.html",
+   "imagen_local": "/productos/hoymiles-hms-800-2t-lv.webp"
+  },
+  {
+   "id": "hoymiles-hms-2000-4t",
+   "modelo": "HMS-2000-4T",
+   "marca": "Hoymiles",
+   "categoria": "Inversores",
+   "specs": "Microinversor HMS-2000 de 4 entradas.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/HMS-2000-4T.png",
+   "ficha_tecnica": "https://www.hoymiles.com/products/hms-1600-1800-2000-eu.html",
+   "imagen_local": "/productos/hoymiles-hms-2000-4t.webp"
+  },
+  {
+   "id": "hoymiles-hmt-2000-4t-208",
+   "modelo": "HMT-2000-4T-208",
+   "marca": "Hoymiles",
+   "categoria": "Inversores",
+   "specs": "Microinversor trifásico HMT-2000-4T-208.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/HMT-2000-4T-208.png",
+   "ficha_tecnica": "https://www.hoymiles.com/us/products/hmt-1600-1800-2000-4t-208-na.html",
+   "imagen_local": "/productos/hoymiles-hmt-2000-4t-208.webp"
+  },
+  {
+   "id": "livoltek-gt3-20kl-t",
+   "modelo": "GT3-20KL-T",
+   "marca": "Livoltek",
+   "categoria": "Inversores",
+   "specs": "Inversor on-grid trifásico de 20 kW.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/gt3-20kl-t.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/livoltek-gt3-20kl-t.webp"
+  },
+  {
+   "id": "livoltek-gt3-25kl-t",
+   "modelo": "GT3-25KL-T",
+   "marca": "Livoltek",
+   "categoria": "Inversores",
+   "specs": "Inversor on-grid trifásico de 25 kW.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/gt3-25kl-t.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/livoltek-gt3-25kl-t.webp"
+  },
+  {
+   "id": "livoltek-gt3-30kl-q",
+   "modelo": "GT3-30KL-Q",
+   "marca": "Livoltek",
+   "categoria": "Inversores",
+   "specs": "Inversor on-grid trifásico de 30 kW.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/gt3-30kl-q.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/livoltek-gt3-30kl-q.webp"
+  },
+  {
+   "id": "must-solar-ph11-4048-lv",
+   "modelo": "PH11-4048 LV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar híbrido para exterior IP66, conexión a red y fuera de red, doble MPPT.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PH11-4048 LV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/ph1100-pro-series-3-6-6kw/",
+   "imagen_local": "/productos/must-solar-ph11-4048-lv.webp"
+  },
+  {
+   "id": "must-solar-pv18-1012-lv",
+   "modelo": "PV18-1012-LV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de 1000 W, 12 VDC, PV VOC 102 V, onda sinusoidal pura, con puerto USB.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV18-1012-LV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv1800-lv-1-3kw/",
+   "imagen_local": "/productos/must-solar-pv18-1012-lv.webp"
+  },
+  {
+   "id": "must-solar-pv29-1524-lhp",
+   "modelo": "PV29-1524-LHP",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de 1.5 kW, 24 VDC, onda sinusoidal pura, con MPPT integrado.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV29-1524-LHP.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/",
+   "imagen_local": "/productos/must-solar-pv29-1524-lhp.webp"
+  },
+  {
+   "id": "must-solar-pv18-2024-lv",
+   "modelo": "PV18-2024-LV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de 2000 W, 24 VDC, PV VOC 160 V, onda sinusoidal pura, con puerto USB.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV18-2024-LV.png",
+   "ficha_tecnica": "https://www.mustsolar.com/product/pv1800-lv-series-ac120v-1-3kw/",
+   "imagen_local": "/productos/must-solar-pv18-2024-lv.webp"
+  },
+  {
+   "id": "must-solar-pv18-3024-lv",
+   "modelo": "PV18-3024-LV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de 3000 W, 24 VDC, PV VOC 450 V, onda sinusoidal pura, con puerto USB y MPPT integrado.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV18-3024-LV.png",
+   "ficha_tecnica": "https://www.mustsolar.com/product/pv1800-lv-series-ac120v-1-3kw/",
+   "imagen_local": "/productos/must-solar-pv18-3024-lv.webp"
+  },
+  {
+   "id": "must-solar-pv29-3024-lhp",
+   "modelo": "PV29-3024-LHP",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de 3000 W, 24 VDC, PV VOC 245 V, con doble salida CA.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV29-3024-LHP.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/",
+   "imagen_local": "/productos/must-solar-pv29-3024-lhp.webp"
+  },
+  {
+   "id": "must-solar-pv33-3024-tlv",
+   "modelo": "PV33-3024-TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de fase dividida de 3 kW, 24 VDC, PV VOC 145 V, salida HOT1+N+HOT2.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV33-3024-TLV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/",
+   "imagen_local": "/productos/must-solar-pv33-3024-tlv.webp"
+  },
+  {
+   "id": "must-solar-pv29-3048-lhp",
+   "modelo": "PV29-3048-LHP",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor de baja frecuencia de 3 kW, 120 VCA, MPPT de 80 A, PV 245 V, 48 VDC.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV29-3048-LHP.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv2900-lhp-1-6kw/",
+   "imagen_local": "/productos/must-solar-pv29-3048-lhp.webp"
+  },
+  {
+   "id": "must-solar-pv33-3048-tlv",
+   "modelo": "PV33-3048-TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de fase dividida de 3 kW, 48 VDC, 120/220 VAC, con MPPT de 80 A.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV33-3048-TLV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/",
+   "imagen_local": "/productos/must-solar-pv33-3048-tlv.webp"
+  },
+  {
+   "id": "must-solar-pv33-6048-tlv",
+   "modelo": "PV33-6048-TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de fase dividida de 6 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV33-6048-TLV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv3300-tlv-3kw-6kw/",
+   "imagen_local": "/productos/must-solar-pv33-6048-tlv.webp"
+  },
+  {
+   "id": "must-solar-pv36-8048-tlv",
+   "modelo": "PV36-8048-TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de fase dividida de 8 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV36-8048-TLV.png",
+   "ficha_tecnica": "https://www.mustsolar.com/product/pv3600-tlv-series-ac110-220v-8-12kw/",
+   "imagen_local": "/productos/must-solar-pv36-8048-tlv.webp"
+  },
+  {
+   "id": "must-solar-pv39-8048-tlv",
+   "modelo": "PV39-8048 TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar off-grid de fase dividida de 8 kW, 48 VDC, PV VOC 250 V, salida HOT1+N+HOT2.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV39-8048 TLV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv3900-tlv-8-12kw/",
+   "imagen_local": "/productos/must-solar-pv39-8048-tlv.webp"
+  },
+  {
+   "id": "must-solar-pv39-12048-tlv",
+   "modelo": "PV39-12048-TLV",
+   "marca": "Must Solar",
+   "categoria": "Inversores",
+   "specs": "Inversor solar de baja frecuencia de 12 kW, PV 250 V, MPPT de 200 A, 48 VDC, con función en paralelo.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PV39-12048-TLV.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pv3900-tlv-8-12kw/",
+   "imagen_local": "/productos/must-solar-pv39-12048-tlv.webp"
+  },
+  {
+   "id": "deye-gb-l-pro-pack4-1-2",
+   "modelo": "GB-L-Pro-Pack4.1-2",
+   "marca": "Deye",
+   "categoria": "Baterías",
+   "specs": "Módulo de batería de alto voltaje de 4.09 kWh, serie V.Pro.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/GB-L-Pro-Pack4.1-2.png",
+   "ficha_tecnica": "https://deye.com/wp-content/uploads/2026/02/deye-gb-l-pro-series_brochure-20260124_eu.pdf",
+   "imagen_local": "/productos/deye-gb-l-pro-pack4-1-2.webp"
+  },
+  {
+   "id": "deye-gb-lbs-gb-lbase-pro",
+   "modelo": "GB-LBS+GB-LBase-Pro",
+   "marca": "Deye",
+   "categoria": "Baterías",
+   "specs": "Caja de control para clúster de baterías de alto voltaje + base para módulo de batería, serie V.Pro.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/GB-LBS+GB-LBase-Pro.png",
+   "ficha_tecnica": null,
+   "imagen_local": "/productos/deye-gb-lbs-gb-lbase-pro.webp"
+  },
+  {
+   "id": "must-solar-lp15-12100",
+   "modelo": "LP15-12100",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 100 Ah y 12.8 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP15-12100.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/",
+   "imagen_local": "/productos/must-solar-lp15-12100.webp"
+  },
+  {
+   "id": "must-solar-lp15-12200",
+   "modelo": "LP15-12200",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 200 Ah y 12.8 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP15-12200.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/",
+   "imagen_local": "/productos/must-solar-lp15-12200.webp"
+  },
+  {
+   "id": "must-solar-lp16-24100",
+   "modelo": "LP16-24100",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 100 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP16-24100.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/",
+   "imagen_local": "/productos/must-solar-lp16-24100.webp"
+  },
+  {
+   "id": "must-solar-lp15-24125",
+   "modelo": "LP15-24125",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 125 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP15-24125.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/",
+   "imagen_local": "/productos/must-solar-lp15-24125.webp"
+  },
+  {
+   "id": "must-solar-lp15-24200",
+   "modelo": "LP15-24200",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 200 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP15-24200.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1500-lifepo4-battery-12v-24v/",
+   "imagen_local": "/productos/must-solar-lp15-24200.webp"
+  },
+  {
+   "id": "must-solar-lp16-24200",
+   "modelo": "LP16-24200",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 200 Ah y 25.6 V, con placa de protección electrónica y Bluetooth.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP16-24200.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/",
+   "imagen_local": "/productos/must-solar-lp16-24200.webp"
+  },
+  {
+   "id": "must-solar-lp16-48100",
+   "modelo": "LP16-48100",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 100 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP16-48100.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/",
+   "imagen_local": "/productos/must-solar-lp16-48100.webp"
+  },
+  {
+   "id": "must-solar-lp16-48200",
+   "modelo": "LP16-48200",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 200 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP16-48200.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/",
+   "imagen_local": "/productos/must-solar-lp16-48200.webp"
+  },
+  {
+   "id": "must-solar-lp16-48300",
+   "modelo": "LP16-48300",
+   "marca": "Must Solar",
+   "categoria": "Baterías",
+   "specs": "Batería de litio LiFePO4 de 300 Ah y 51.2 V, con función WiFi y comunicación BMS.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LP16-48300.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/lp1600-lifepo4-battery-2-5kwh-30kwh/",
+   "imagen_local": "/productos/must-solar-lp16-48300.webp"
+  },
+  {
+   "id": "soluna-eos-5k-w",
+   "modelo": "EOS-5K-W",
+   "marca": "Soluna",
+   "categoria": "Baterías",
+   "specs": "Módulo de batería EOS-5K de 51.2 V y 100 Ah, con WiFi y soporte.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/EOS-5K-W.png",
+   "ficha_tecnica": "https://soluna.co/wp-content/uploads/2022/06/Soluna-EOS-5K-Pack.pdf",
+   "imagen_local": "/productos/soluna-eos-5k-w.webp"
+  },
+  {
+   "id": "must-solar-pc18-6025f",
+   "modelo": "PC18-6025F",
+   "marca": "Must Solar",
+   "categoria": "Controladores MPPT",
+   "specs": "Controlador de carga solar MPPT de 60 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/36/48 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PC18-6025F.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pc1800f-60a-100a/",
+   "imagen_local": "/productos/must-solar-pc18-6025f.webp"
+  },
+  {
+   "id": "must-solar-pc18-8025f-250v",
+   "modelo": "PC18-8025F-250V",
+   "marca": "Must Solar",
+   "categoria": "Controladores MPPT",
+   "specs": "Controlador de carga solar MPPT de 80 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/36/48 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PC18-8025F-250V.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pc1800f-60a-100a/",
+   "imagen_local": "/productos/must-solar-pc18-8025f-250v.webp"
+  },
+  {
+   "id": "must-solar-pc18-10025f",
+   "modelo": "PC18-10025F",
+   "marca": "Must Solar",
+   "categoria": "Controladores MPPT",
+   "specs": "Controlador de carga solar MPPT de 100 A, PV VOC 250 V, enfriamiento por ventilador, 12/24/48 V.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/PC18-10025F.png",
+   "ficha_tecnica": "https://www.mustpower.com/product/pc1800f-60a-100a/",
+   "imagen_local": "/productos/must-solar-pc18-10025f.webp"
+  },
+  {
+   "id": "eastron-sdm630mct",
+   "modelo": "SDM630MCT",
+   "marca": "Eastron",
+   "categoria": "Medidores",
+   "specs": "Medidor de energía trifásico vía TC SDM630MCT-ETL.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/SDM630MCT.png",
+   "ficha_tecnica": "https://www.eastroneurope.com/products/view/sdm630mctmid",
+   "imagen_local": "/productos/eastron-sdm630mct.webp"
+  },
+  {
+   "id": "hoymiles-dtsu-666-sp-100a",
+   "modelo": "DTSU-666-SP-100A",
+   "marca": "Hoymiles",
+   "categoria": "Medidores",
+   "specs": "Medidor inteligente DTSU 666 de fase dividida 120/240 V vía TC, 2 × 100 A / 40 mA.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTSU-666-SP-100A.png",
+   "ficha_tecnica": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html",
+   "imagen_local": "/productos/hoymiles-dtsu-666-sp-100a.webp"
+  },
+  {
+   "id": "hoymiles-dtsu-666-sp-250a",
+   "modelo": "DTSU-666-SP-250A",
+   "marca": "Hoymiles",
+   "categoria": "Medidores",
+   "specs": "Medidor inteligente DTSU 666 de fase dividida 120/240 V vía TC, 2 × 250 A / 50 mA.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTSU-666-SP-250A.png",
+   "ficha_tecnica": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html",
+   "imagen_local": "/productos/hoymiles-dtsu-666-sp-250a.webp"
+  },
+  {
+   "id": "hoymiles-dtsu-666-tp-250a",
+   "modelo": "DTSU-666-TP-250A",
+   "marca": "Hoymiles",
+   "categoria": "Medidores",
+   "specs": "Medidor inteligente DTSU 666 trifásico 230/400 V vía TC, 3 × 250 A / 50 mA.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTSU-666-TP-250A.png",
+   "ficha_tecnica": "https://www.chintglobal.com/global/en/products/instruments-meters/electricity-meter/dtsu666.html",
+   "imagen_local": "/productos/hoymiles-dtsu-666-tp-250a.webp"
+  },
+  {
+   "id": "livoltek-lhe34drr12",
+   "modelo": "LHE34DRR12",
+   "marca": "Livoltek",
+   "categoria": "Medidores",
+   "specs": "Medidor inteligente de 4 hilos, conexión indirecta hasta 120 A, incluye TC.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/LHE34DRR12.png",
+   "ficha_tecnica": null
+  },
+  {
+   "id": "hoymiles-dtu-lite-s",
+   "modelo": "DTU-Lite-S",
+   "marca": "Hoymiles",
+   "categoria": "Unidades de Tráfico",
+   "specs": "Unidad de transferencia de datos DTU-Lite S con WiFi.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTU-Lite-S.png",
+   "ficha_tecnica": "https://www.hoymiles.com/products/dtu-lite-s.html",
+   "imagen_local": "/productos/hoymiles-dtu-lite-s.webp"
+  },
+  {
+   "id": "hoymiles-dtu-pro-c",
+   "modelo": "DTU-PRO-C",
+   "marca": "Hoymiles",
+   "categoria": "Unidades de Tráfico",
+   "specs": "Unidad de transferencia de datos DTU-Pro S con WiFi, versión C.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTU-PRO-C.png",
+   "ficha_tecnica": "https://www.hoymiles.com/us/products/dtu-pro-c.html",
+   "imagen_local": "/productos/hoymiles-dtu-pro-c.webp"
+  },
+  {
+   "id": "hoymiles-dtu-pro-mi-1500",
+   "modelo": "DTU-PRO-MI-1500",
+   "marca": "Hoymiles",
+   "categoria": "Unidades de Tráfico",
+   "specs": "Unidad de transferencia de datos (DTU-Pro) con WiFi para MI-1500.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTU-PRO-MI-1500.png",
+   "ficha_tecnica": "https://www.hoymiles.com/us/products/dtu-pro.html",
+   "imagen_local": "/productos/hoymiles-dtu-pro-mi-1500.webp"
+  },
+  {
+   "id": "hoymiles-dtu-w-100",
+   "modelo": "DTU-W-100",
+   "marca": "Hoymiles",
+   "categoria": "Unidades de Tráfico",
+   "specs": "Unidad de transferencia de datos DTU-W-100.",
+   "imagen": "https://pub-68bd311341cc4d328e77ef3fdec4969b.r2.dev/images/energia/DTU-W-100.png",
+   "ficha_tecnica": "https://www.hoymiles.com/in/products/dtu-w100-g100.html",
+   "imagen_local": "/productos/hoymiles-dtu-w-100.webp"
+  }
+ ]
+}

@@ -18,6 +18,10 @@ export interface ProductoWeb {
   id: string;
   nombre: string;
   sku: string | null;
+  /** Marca del fabricante. Sólo la traen los productos de Fibra Andina. */
+  marca?: string | null;
+  /** De qué proveedor salió la ficha. Cambia cómo se muestra la tarjeta. */
+  fuente?: 'solphower' | 'fibraandina';
   categoria: string | null;
   subcategoria: string | null;
   ruta: string[];
@@ -139,14 +143,19 @@ export function construirArbol(categorias: CategoriaWeb[]): NodoCategoria[] {
     else raices.push(nodo);
   }
 
-  // El conteo de una categoría padre en los datos ya incluye a sus hijas
-  // (viene del breadcrumb del producto), así que `total` no se suma: se
-  // ordena por él y se ordenan las hijas igual.
-  const ordenar = (lista: NodoCategoria[]) => {
+  // El conteo de una categoría padre ya incluye a sus hijas (viene del
+  // breadcrumb del producto), así que `total` no se suma.
+  //
+  // Las RAÍCES conservan el orden en que vienen: el generador ya las ordenó
+  // por prioridad de negocio —panel, inversor, batería, MPPT, medidor— y
+  // reordenarlas por cantidad acá abriría el catálogo con protecciones
+  // eléctricas sólo porque hay 65. Las hijas sí se ordenan por volumen,
+  // que dentro de una categoría es lo que se espera.
+  const ordenarHijas = (lista: NodoCategoria[]) => {
     lista.sort((a, b) => b.total - a.total || a.nombre.localeCompare(b.nombre));
-    lista.forEach((n) => ordenar(n.hijos));
+    lista.forEach((n) => ordenarHijas(n.hijos));
   };
-  ordenar(raices);
+  raices.forEach((n) => ordenarHijas(n.hijos));
 
   return raices;
 }
@@ -248,13 +257,44 @@ export function filtrarProductos(
       // final se desempata por riqueza de ficha.
       ordenada.sort(
         (a, b) =>
-          Number(b.disponible) - Number(a.disponible) ||
-          pesoCategoria(b) - pesoCategoria(a) ||
-          riqueza(b) - riqueza(a),
+          pesoCategoria(b) - pesoCategoria(a) || riqueza(b) - riqueza(a),
       );
+      return intercalarProveedores(ordenada);
   }
 
   return ordenada;
+}
+
+/**
+ * Reparte los dos proveedores a lo largo del listado.
+ *
+ * Las fichas de Solphower traen más campos —descripción larga, tabla de
+ * specs, varias fotos— así que `riqueza` las pone a todas primero y las de
+ * Fibra Andina caen al fondo: en Inversores, ninguno de sus 30 equipos
+ * alcanzaba la primera página. Eso deja dos catálogos pegados, no uno.
+ *
+ * Acá se conserva el orden interno de cada proveedor —el bueno sigue
+ * arriba dentro de su grupo— pero se van tomando en la proporción en que
+ * existen, de modo que cualquier página muestre las dos marcas. No es un
+ * desempate estético: sin esto, media línea de producto queda invisible.
+ */
+function intercalarProveedores(lista: ProductoWeb[]): ProductoWeb[] {
+  const a = lista.filter((p) => p.fuente !== 'fibraandina');
+  const b = lista.filter((p) => p.fuente === 'fibraandina');
+  if (!a.length || !b.length) return lista;
+
+  const mezcla: ProductoWeb[] = [];
+  let i = 0;
+  let j = 0;
+  while (i < a.length || j < b.length) {
+    // Se avanza por el que vaya "más atrasado" en su propia lista, medido en
+    // fracción consumida. Con 46 y 30 sale ~3 de uno por cada 2 del otro.
+    const avanceA = i / a.length;
+    const avanceB = j / b.length;
+    if (j >= b.length || (i < a.length && avanceA <= avanceB)) mezcla.push(a[i++]);
+    else mezcla.push(b[j++]);
+  }
+  return mezcla;
 }
 
 /**
@@ -264,18 +304,20 @@ export function filtrarProductos(
  */
 const PESO_CATEGORIA: Record<string, number> = {
   'paneles-solares': 100,
-  baterias: 90,
-  litio: 90,
-  'agm-gel': 85,
-  'inversores-solphower': 80,
-  hibrido: 80,
-  'grid-tied': 75,
-  'off-grid': 75,
-  'bateria-inversor-integrado': 75,
-  controladores: 60,
-  'colectores-solares': 60,
-  lamparas: 55,
-  reflectores: 55,
+  inversores: 95,
+  hibrido: 95,
+  'grid-tied': 90,
+  'off-grid': 90,
+  'bateria-inversor-integrado': 88,
+  baterias: 85,
+  litio: 85,
+  'agm-gel': 80,
+  'controladores-mppt': 75,
+  medidores: 65,
+  monitoreo: 60,
+  'colectores-solares': 55,
+  lamparas: 50,
+  reflectores: 50,
   'movilidad-electrica': 40,
 };
 
@@ -289,12 +331,18 @@ function pesoCategoria(p: ProductoWeb): number {
   return esAccesorio ? base - 25 : base;
 }
 
+/**
+ * Qué tan completa está la ficha. Cuenta PRESENCIA de información, no
+ * volumen: cinco fotos de un breaker no lo hacen mejor listado que un
+ * inversor con una foto y su PDF. Por eso las imágenes topan en 2.
+ */
 function riqueza(p: ProductoWeb): number {
   return (
-    p.imagenes.length +
+    Math.min(p.imagenes.length, 2) +
+    (p.resumen ? 2 : 0) +
     (p.descripcion ? 2 : 0) +
     (Object.keys(p.specs).length ? 2 : 0) +
-    (p.fichas.length ? 1 : 0)
+    (p.fichas.length ? 2 : 0)
   );
 }
 
