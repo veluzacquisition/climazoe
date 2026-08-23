@@ -25,11 +25,15 @@ import type { Segmento } from '../types/catalogo';
  * espacio lo ocupa el teléfono y el CTA de asesoría.
  */
 
+// "Inicio" no está a propósito: el logo ya lleva a la portada y es la
+// convención que todo el mundo conoce. Con la calculadora adentro, la fila del
+// header pedía 1212px y se desbordaba en cualquier portátil de 13"; el enlace
+// redundante era lo primero que sobraba.
 const NAV = [
-  { a: '/', texto: 'Inicio' },
   { a: '/nosotros', texto: 'Nosotros' },
   { a: '/catalogo', texto: 'Catálogo' },
   { a: '/servicios', texto: 'Servicios' },
+  { a: '/calculadora', texto: 'Calculadora' },
   { a: '/contacto', texto: 'Contacto' },
 ];
 
@@ -54,7 +58,7 @@ export default function Header({
           <Logo className="h-14 md:h-16" />
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
+        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 xl:flex">
           <MegaMenuProductos />
           {NAV.map((item) => (
             <NavLink
@@ -62,7 +66,7 @@ export default function Header({
               to={item.a}
               end={item.a === '/'}
               className={({ isActive }) =>
-                `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
+                `rounded-marca-pildora px-3 py-2 text-sm font-semibold transition-colors xl:px-4 ${
                   isActive
                     ? 'bg-fondo text-texto shadow-panel'
                     : 'text-texto-medio hover:text-texto'
@@ -84,7 +88,9 @@ export default function Header({
             <IconoLupa />
           </button>
 
-          <div className="hidden sm:block">
+          {/* Debajo de xl vive dentro del menú: acá no cabe junto a la
+              navegación completa. */}
+          <div className="hidden xl:block">
             <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
           </div>
 
@@ -103,7 +109,7 @@ export default function Header({
             type="button"
             onClick={() => setMenuAbierto(true)}
             aria-label="Abrir menú"
-            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde lg:hidden"
+            className="flex size-10 items-center justify-center rounded-marca-pildora border border-borde xl:hidden"
           >
             <IconoMenu />
           </button>
@@ -111,7 +117,12 @@ export default function Header({
       </div>
 
       {buscadorAbierto && <PanelBuscador onCerrar={() => setBuscadorAbierto(false)} />}
-      <MenuMovil abierto={menuAbierto} onCerrar={() => setMenuAbierto(false)} />
+      <MenuMovil
+        abierto={menuAbierto}
+        onCerrar={() => setMenuAbierto(false)}
+        segmento={segmento}
+        onCambiarSegmento={onCambiarSegmento}
+      />
     </header>
   );
 }
@@ -317,7 +328,17 @@ function ColumnaCategoria({
   );
 }
 
-function MenuMovil({ abierto, onCerrar }: { abierto: boolean; onCerrar: () => void }) {
+function MenuMovil({
+  abierto,
+  onCerrar,
+  segmento,
+  onCambiarSegmento,
+}: {
+  abierto: boolean;
+  onCerrar: () => void;
+  segmento: Segmento;
+  onCambiarSegmento: (s: Segmento) => void;
+}) {
   const { datos } = useCatalogo();
   const arbol = useMemo(
     () => (datos ? construirArbol(datos.categorias) : []),
@@ -335,7 +356,7 @@ function MenuMovil({ abierto, onCerrar }: { abierto: boolean; onCerrar: () => vo
   if (!abierto) return null;
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden">
+    <div className="fixed inset-0 z-50 xl:hidden">
       <div
         className="absolute inset-0 bg-black/70"
         onClick={onCerrar}
@@ -355,6 +376,13 @@ function MenuMovil({ abierto, onCerrar }: { abierto: boolean; onCerrar: () => vo
         </div>
 
         <nav className="flex-1 overflow-y-auto p-4">
+          <div className="mb-5 rounded-marca border border-borde bg-superficie p-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-texto-suave">
+              Estoy comprando como
+            </p>
+            <SelectorSegmento valor={segmento} onCambiar={onCambiarSegmento} />
+          </div>
+
           <ul className="space-y-1">
             {NAV.map((i) => (
               <li key={i.a}>
