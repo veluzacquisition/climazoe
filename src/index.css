@@ -26,6 +26,11 @@
   --zoe-green: #68cb4e; /* de la palabra "ZOE" — 10.24:1 sobre negro */
   --zoe-red:   #d6492e; /* de "ENERGÍA SOLAR" —  4.85:1 sobre negro */
   --zoe-navy:  #284978; /* del globo —           2.31:1 sobre negro */
+  /* Azul rey, muestreado del globo del emblema y del logo original
+     (#0060D8 / #0048FC). Es el color institucional de la marca: como letra
+     sobre blanco da 5.73:1 y con blanco encima otros 5.73:1, así que sirve
+     igual de texto y de relleno. */
+  --zoe-blue: #0060d8;
   /* Amarillo solar. Muestreado del resplandor del globo del emblema
      (#F8F800, 3.527 px) y calentado un punto hacia ámbar: el amarillo puro
      tiene R=G y en relleno grande se lee neón en vez de solar. Con negro
@@ -40,15 +45,18 @@
      Los grises llevan una pizca de verde en vez de ser neutros puros, para
      que las superficies pertenezcan a la marca y no a una plantilla. */
   --fondo: var(--zoe-white);
-  --superficie: #f4f7f4;      /* tarjetas y franjas alternas */
-  --superficie-alta: #e9eee9; /* hover y capas elevadas */
-  --borde: #d6ded8;
-  --borde-suave: #e7ece8;
+  /* Las superficies llevan el azul rey diluido, no un gris. Es lo que da el
+     "azul suave" y la sensación de brillo: un gris neutro apaga, un azul al
+     6% ilumina y ancla la página a la marca. */
+  --superficie: #edf4fc;      /* azul rey al 6%  — franjas alternas */
+  --superficie-alta: #e0ecfa; /* azul rey al 12% — hover y capas */
+  --borde: #ccdff7;
+  --borde-suave: #e0ecfa;
 
   /* --- Texto (todos verificados ≥4.5:1 sobre fondo y superficie) --------- */
-  --texto: #0a0f0d;       /* 19.32:1 sobre blanco */
-  --texto-medio: #39443f; /* 10.13:1 */
-  --texto-suave: #5b6863; /*  5.83:1 */
+  --texto: #0c1b2e;       /* 17.33:1 sobre blanco */
+  --texto-medio: #3a4a61; /*  9.01:1 */
+  --texto-suave: #5e7089; /*  5.05:1 */
 
   /* --- Roles de marca ----------------------------------------------------
      Verde = protagonista. Es el color que la gente ya asocia con Clima Zoe,
@@ -86,10 +94,14 @@
   --solar-fuerte: #e6c400;
   --solar-contraste: var(--zoe-black);
 
-  /* Navy = sólo detalles. Con 2.31:1 sobre negro no sirve para texto ni para
-     UI: se usa como borde, ícono decorativo o fondo de tarjeta oscura, y en
-     ese caso el texto encima va blanco (9.07:1). */
-  --apoyo: var(--zoe-navy);
+  /* Azul institucional. Reparto de papeles para que tres acentos no se
+     peleen: el AZUL es la marca y la estructura —enlaces, encabezados,
+     secciones profundas—, el VERDE es catálogo y disponibilidad, y el
+     AMARILLO es conversación. Cada uno tiene un trabajo y no invade el otro. */
+  --apoyo: var(--zoe-blue);
+  --apoyo-fuerte: #004dad;
+  --apoyo-tenue: rgb(0 96 216 / 0.08);
+  --apoyo-borde: rgb(0 96 216 / 0.28);
   --apoyo-contraste: var(--zoe-white);
 
   /* --- Estados ----------------------------------------------------------- */
@@ -148,15 +160,18 @@
      cualquiera; da 16.59:1 con blanco, casi lo mismo que el #0D1B3E del
      referente. El negro pleno se queda sólo para el velo sobre fotografía:
      como fondo de sección se lee duro, y estamos vendiendo equipo caro. */
-  --fondo: #111f32;
-  --superficie: #16273d;
-  --superficie-alta: #1d3049;
-  --borde: #2b3f5a;
-  --borde-suave: #1f3149;
+  --fondo: #002452;            /* azul rey profundo — 15.28:1 con blanco */
+  --superficie: #012f68;
+  --superficie-alta: #0a3d7d;
+  --borde: #1c4d8f;
+  --borde-suave: #123f78;
 
   --texto: var(--zoe-white);
-  --texto-medio: #c8d2e0; /* 10.5:1 sobre el navy */
-  --texto-suave: #a9b6c8; /*  7.8:1 */
+  --texto-medio: #cfe0f5; /* 11.4:1 sobre el azul profundo */
+  --texto-suave: #a8c2e4; /*  8.0:1 */
+
+  --apoyo-tenue: rgb(255 255 255 / 0.08);
+  --apoyo-borde: rgb(255 255 255 / 0.22);
 
   /* Sobre negro el verde vivo sí funciona como letra: 10.24:1. */
   --marca-texto: var(--zoe-green);
@@ -180,6 +195,7 @@
   --color-zoe-red: var(--zoe-red);
   --color-zoe-navy: var(--zoe-navy);
   --color-zoe-yellow: var(--zoe-yellow);
+  --color-zoe-blue: var(--zoe-blue);
 
   --color-fondo: var(--fondo);
   --color-superficie: var(--superficie);
@@ -209,6 +225,9 @@
   --color-solar-contraste: var(--solar-contraste);
 
   --color-apoyo: var(--apoyo);
+  --color-apoyo-fuerte: var(--apoyo-fuerte);
+  --color-apoyo-tenue: var(--apoyo-tenue);
+  --color-apoyo-borde: var(--apoyo-borde);
   --color-apoyo-contraste: var(--apoyo-contraste);
 
   --color-exito: var(--exito);
@@ -320,6 +339,13 @@
     color: var(--solar-contraste);
   }
   .btn-solar:hover { background-color: var(--solar-fuerte); }
+
+  /* Azul: acciones institucionales — explorar, ver, navegar. */
+  .btn-azul {
+    background-color: var(--apoyo);
+    color: var(--apoyo-contraste);
+  }
+  .btn-azul:hover { background-color: var(--apoyo-fuerte); }
 
   /* Secundario: sólo contorno, para no competir con el primario. */
   .btn-contorno {

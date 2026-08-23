@@ -18,15 +18,20 @@ export const MATRICULA_MERCANTIL = '028044241';
 /**
  * Los años de trayectoria se calculan, no se escriben.
  *
- * Un "7+" fijo en el código queda desactualizado sin que nadie lo note y
- * termina siendo un dato falso en el sitio. Se cuenta desde el inicio de la
- * actividad comercial, que es la cifra defendible frente a un cliente: la
- * sociedad existe desde 2017, pero vende energía solar desde 2019.
+ * Un número fijo en el código queda desactualizado sin que nadie lo note y
+ * termina siendo un dato falso en el sitio.
+ *
+ * Se cuenta desde la CONSTITUCIÓN de la sociedad (marzo de 2017), que es lo
+ * que pidió Don Carlos: la empresa existe desde entonces. Ojo con la
+ * diferencia — la actividad comercial en energía solar arranca en junio de
+ * 2019, así que "X años de trayectoria" y "X años vendiendo energía solar"
+ * NO son el mismo número. Donde se hable de venta o instalación hay que
+ * pasar ANIO_INICIO_COMERCIAL explícitamente.
  */
-export function aniosDeTrayectoria(desde = ANIO_INICIO_COMERCIAL): number {
+export function aniosDeTrayectoria(desde = ANIO_CONSTITUCION): number {
   const hoy = new Date();
-  // Junio es el mes de aniversario; antes de junio todavía no se cumplió.
-  const cumplio = hoy.getMonth() >= 5;
+  // Marzo es el mes de aniversario; antes de marzo todavía no se cumplió.
+  const cumplio = hoy.getMonth() >= 2;
   return hoy.getFullYear() - desde - (cumplio ? 0 : 1);
 }
 

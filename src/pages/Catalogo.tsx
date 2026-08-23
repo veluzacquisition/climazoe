@@ -101,7 +101,7 @@ export default function Catalogo({ segmento }: { segmento: Segmento }) {
         {/* --- Sidebar de categorías -------------------------------------- */}
         {/* El header pegajoso mide 81px desde que pasó a una sola fila; la
             barra lateral se ancla justo debajo con un respiro. */}
-        <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100dvh-8rem)] lg:self-start lg:overflow-y-auto">
+        <aside className="lg:sticky lg:top-28 lg:max-h-[calc(100dvh-9rem)] lg:self-start lg:overflow-y-auto">
           <button
             type="button"
             onClick={() => setPanelAbierto((v) => !v)}

@@ -21,7 +21,7 @@ import {
  * falta son las fotos propias.
  */
 export default function Nosotros() {
-  const anios = aniosDeTrayectoria();
+  const anios = aniosDeTrayectoria(ANIO_INICIO_COMERCIAL);
 
   return (
     <>

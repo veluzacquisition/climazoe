@@ -26,9 +26,10 @@ import type { Segmento } from '../types/catalogo';
  */
 
 const NAV = [
+  { a: '/', texto: 'Inicio' },
+  { a: '/nosotros', texto: 'Nosotros' },
   { a: '/catalogo', texto: 'Catálogo' },
   { a: '/servicios', texto: 'Servicios' },
-  { a: '/nosotros', texto: 'Nosotros' },
   { a: '/contacto', texto: 'Contacto' },
 ];
 
@@ -48,9 +49,9 @@ export default function Header({
           centrada y acciones a la derecha. El buscador pasa a un icono que
           abre un panel — con dos filas el encabezado pesaba el doble que el
           del sitio que se tomó como modelo, y arriba es donde más se nota. */}
-      <div className="contenedor flex h-20 items-center justify-between gap-4">
+      <div className="contenedor flex h-24 items-center justify-between gap-4">
         <Link to="/" className="shrink-0" aria-label={`${site.nombre} — inicio`}>
-          <Logo className="h-11 md:h-12" />
+          <Logo className="h-14 md:h-16" />
         </Link>
 
         <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
@@ -59,6 +60,7 @@ export default function Header({
             <NavLink
               key={item.a}
               to={item.a}
+              end={item.a === '/'}
               className={({ isActive }) =>
                 `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
                   isActive

@@ -1,85 +1,31 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { aniosDeTrayectoria, site } from '../../lib/site.config';
+import { site } from '../../lib/site.config';
 import { MEDIA_HERO, imagen, imagenSrcSet, posterDeVideo, video } from '../../lib/media';
 
 /**
- * Hero con la imagen DENTRO y el texto encima, como los referentes del sector
- * (Trinity, Momentum, Solaris): la fotografía ocupa todo el bloque a sangre y
- * el contenido va superpuesto.
+ * Hero estático.
  *
- * Es el único punto oscuro del sitio, y la oscuridad la pone la imagen, no un
- * bloque de color: por eso el resto de la página es clara sin contradicción.
+ * Era un carrusel de tres mensajes; ahora es uno solo. Un carrusel obliga al
+ * visitante a esperar para leer y reparte la atención entre tres promesas: en
+ * la primera pantalla conviene decir una cosa y decirla bien.
  *
- * El velo va fuerte del lado del texto y se abre hacia la derecha. Si tapara
- * todo el ancho, la fotografía dejaría de aportar y el hero volvería a ser un
- * rectángulo negro.
+ * La imagen ocupa el bloque a sangre y el contenido va centrado encima, como
+ * en el sitio de referencia. El velo está calculado para que el titular
+ * blanco mantenga contraste sobre cualquier zona de la foto.
+ *
+ * Para cambiar la foto por el video: poner MEDIA.tipo en 'video'.
  */
 
-type Media =
-  | { tipo: 'imagen'; id: string; alt: string }
-  | { tipo: 'video'; id: string; alt: string };
-
-interface Slide {
-  etiqueta: string;
-  antes: string;
-  destacado: string;
-  texto: string;
-  cta: { texto: string; a: string };
-  media: Media;
-}
-
-const SLIDES: Slide[] = [
-  {
-    etiqueta: `${aniosDeTrayectoria()} años instalando en Colombia`,
-    antes: 'Energía solar que',
-    destacado: 'se paga sola',
-    texto:
-      'Vendemos e instalamos el sistema completo: paneles, baterías e inversores. Deje de depender del recibo de luz.',
-    cta: { texto: 'Ver catálogo', a: '/catalogo' },
-    media: {
-      tipo: 'imagen',
-      id: MEDIA_HERO.panelesTecho,
-      alt: 'Arreglo de paneles solares instalado sobre un techo metálico, con montañas al fondo',
-    },
-  },
-  {
-    etiqueta: 'Venta e instalación',
-    antes: 'Se lo dejamos',
-    destacado: 'funcionando',
-    texto:
-      'No solo vendemos el equipo: lo montamos, lo conectamos y le enseñamos a operarlo. En casa, finca o negocio.',
-    cta: { texto: 'Ver servicios', a: '/servicios' },
-    media: {
-      tipo: 'video',
-      id: MEDIA_HERO.videoInstalacion,
-      alt: 'Instalación de un sistema solar en cubierta',
-    },
-  },
-  {
-    etiqueta: 'Para finca y zonas sin red',
-    antes: 'Luz donde',
-    destacado: 'no llega la red',
-    texto:
-      'Sistemas aislados con baterías de litio y gel para fincas, casas rurales y proyectos lejos del tendido eléctrico.',
-    cta: { texto: 'Ver baterías', a: '/catalogo?categoria=baterias' },
-    media: {
-      tipo: 'imagen',
-      id: MEDIA_HERO.instalacion,
-      alt: 'Técnico instalando paneles solares sobre una cubierta',
-    },
-  },
-];
-
-const INTERVALO = 7000;
+const MEDIA: { tipo: 'imagen' | 'video'; id: string; alt: string } = {
+  tipo: 'imagen',
+  id: MEDIA_HERO.panelesTecho,
+  alt: 'Arreglo de paneles solares sobre un techo, con montañas al fondo',
+};
 
 export default function Hero() {
-  const [activo, setActivo] = useState(0);
-  const [pausado, setPausado] = useState(false);
-
-  // Quien pidió menos movimiento no recibe ni carrusel automático ni video:
-  // se queda en el primer slide con la foto fija.
   const [menosMovimiento, setMenosMovimiento] = useState(false);
+
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     const leer = () => setMenosMovimiento(mq.matches);
@@ -88,131 +34,60 @@ export default function Hero() {
     return () => mq.removeEventListener('change', leer);
   }, []);
 
-  useEffect(() => {
-    if (pausado || menosMovimiento) return;
-    const t = setInterval(() => setActivo((i) => (i + 1) % SLIDES.length), INTERVALO);
-    return () => clearInterval(t);
-  }, [pausado, menosMovimiento]);
-
-  const ir = (i: number) => setActivo((i + SLIDES.length) % SLIDES.length);
-  const s = SLIDES[activo];
-
   return (
-    <section
-      className="tono-oscuro relative isolate overflow-hidden bg-zoe-black"
-      onMouseEnter={() => setPausado(true)}
-      onMouseLeave={() => setPausado(false)}
-      aria-roledescription="carrusel"
-      aria-label="Destacados de Clima Zoe"
-    >
-      {/* --- Media, a sangre. Se montan todas y se cruzan por opacidad para
-          que el cambio de slide no muestre un hueco mientras carga. ------- */}
-      {SLIDES.map((sl, i) => (
-        <div
-          key={i}
-          aria-hidden={i !== activo}
-          className={`absolute inset-0 -z-20 transition-opacity duration-700 ${
-            i === activo ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {sl.media.tipo === 'video' ? (
-            <VideoFondo
-              id={sl.media.id}
-              alt={sl.media.alt}
-              activo={i === activo}
-              congelado={menosMovimiento}
-            />
-          ) : (
-            <img
-              src={imagen(sl.media.id, 1600)}
-              srcSet={imagenSrcSet(sl.media.id)}
-              sizes="100vw"
-              alt={sl.media.alt}
-              // La primera es el elemento más grande de la primera pantalla:
-              // se carga con prioridad y las demás no compiten con ella.
-              loading={i === 0 ? 'eager' : 'lazy'}
-              fetchPriority={i === 0 ? 'high' : 'low'}
-              decoding={i === 0 ? 'sync' : 'async'}
-              className="size-full object-cover"
-            />
-          )}
-        </div>
-      ))}
+    <section className="tono-oscuro relative isolate overflow-hidden bg-fondo">
+      {MEDIA.tipo === 'video' ? (
+        <VideoFondo id={MEDIA.id} alt={MEDIA.alt} congelado={menosMovimiento} />
+      ) : (
+        <img
+          src={imagen(MEDIA.id, 1600)}
+          srcSet={imagenSrcSet(MEDIA.id)}
+          sizes="100vw"
+          alt={MEDIA.alt}
+          // Es el elemento más grande de la primera pantalla: se pide con
+          // prioridad para que no aparezca el fondo plano y luego salte.
+          fetchPriority="high"
+          decoding="sync"
+          className="absolute inset-0 -z-20 size-full object-cover"
+        />
+      )}
 
-      {/* --- Velo. Centrado y parejo, no en degradado lateral: el contenido
-          ahora va al centro y necesita el mismo fondo a los dos lados. ---- */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/65" />
+      {/* Velo en azul de marca, no negro: tiñe la foto hacia el azul rey y
+          deja el hero dentro de la paleta en vez de apagarlo a gris. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[#002452]/78"
+      />
 
-      {/* --- Contenido, centrado como en la referencia -------------------- */}
-      <div className="contenedor relative flex min-h-[34rem] flex-col items-center justify-center py-20 text-center lg:min-h-[38rem] lg:py-28">
-        <div className="mx-auto max-w-3xl">
-          <p className="chip border border-marca-borde bg-black/40 text-marca backdrop-blur-sm">
-            <span className="size-1.5 rounded-full bg-marca" />
-            {s.etiqueta}
-          </p>
+      <div className="contenedor relative flex min-h-[32rem] flex-col items-center justify-center py-20 text-center lg:min-h-[36rem] lg:py-28">
+        <p className="chip border border-white/25 bg-white/10 text-white backdrop-blur-sm">
+          <span className="size-1.5 rounded-full bg-marca" />
+          Proyectos de energía solar
+        </p>
 
-          <div key={activo} className="animate-[aparecer_.5s_ease-out]">
-            <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.75rem]">
-              {s.antes} <span className="text-marca">{s.destacado}</span>
-            </h1>
+        <h1 className="mx-auto mt-6 max-w-4xl text-[2rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.75rem]">
+          Soluciones de <span className="text-marca">energía solar</span> para
+          hogar, empresas e industria
+        </h1>
 
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/85">
-              {s.texto}
-            </p>
-          </div>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
+          Construimos proyectos de energía fotovoltaica a su alcance y a la
+          medida.
+        </p>
 
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link to={s.cta.a} className="btn btn-xl btn-primario">
-              {s.cta.texto}
-            </Link>
-            <a
-              href={`https://wa.me/${site.contacto.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-xl btn-solar"
-            >
-              <IconoWhatsApp />
-              Asesoría gratis
-            </a>
-          </div>
-
-        </div>
-
-        {/* --- Controles ---------------------------------------------------- */}
-        <div className="mt-14 flex items-center justify-center gap-4">
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => ir(activo - 1)}
-              aria-label="Anterior"
-              className="flex size-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-marca hover:text-marca"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              onClick={() => ir(activo + 1)}
-              aria-label="Siguiente"
-              className="flex size-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-marca hover:text-marca"
-            >
-              ›
-            </button>
-          </div>
-
-          <div className="flex gap-2">
-            {SLIDES.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => ir(i)}
-                aria-label={`Ir al destacado ${i + 1}`}
-                aria-current={i === activo}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === activo ? 'w-10 bg-marca' : 'w-3 bg-white/30 hover:bg-white/60'
-                }`}
-              />
-            ))}
-          </div>
+        <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link to="/catalogo" className="btn btn-xl btn-primario">
+            Explorar
+          </Link>
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-xl btn-solar"
+          >
+            <IconoWhatsApp />
+            Asesoría gratis
+          </a>
         </div>
       </div>
     </section>
@@ -222,22 +97,17 @@ export default function Hero() {
 /**
  * Video de fondo: sin sonido, en bucle y en línea.
  *
- *  · `muted` no es decorativo: sin él los navegadores bloquean la
- *    reproducción automática y el slide se quedaría en el póster.
- *  · `playsInline` evita que iOS lo abra a pantalla completa.
- *  · Se pausa cuando su slide no está visible: un video corriendo detrás de
- *    otro slide gasta batería y datos sin que nadie lo vea.
- *  · Con "reducir movimiento" activo no se reproduce: se muestra el póster.
+ * `muted` no es decorativo — sin él los navegadores bloquean la reproducción
+ * automática y quedaría el póster fijo. Con "reducir movimiento" activo no se
+ * reproduce: se muestra un fotograma.
  */
 function VideoFondo({
   id,
   alt,
-  activo,
   congelado,
 }: {
   id: string;
   alt: string;
-  activo: boolean;
   congelado: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -246,16 +116,14 @@ function VideoFondo({
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    if (activo && !congelado) {
-      // Puede fallar si el navegador bloquea el autoplay; el póster queda.
-      void v.play().catch(() => {});
-    } else {
-      v.pause();
-    }
-  }, [activo, congelado]);
+    if (congelado) v.pause();
+    else void v.play().catch(() => {});
+  }, [congelado]);
 
   if (congelado) {
-    return <img src={poster} alt={alt} className="size-full object-cover" />;
+    return (
+      <img src={poster} alt={alt} className="absolute inset-0 -z-20 size-full object-cover" />
+    );
   }
 
   return (
@@ -265,9 +133,10 @@ function VideoFondo({
       muted
       loop
       playsInline
+      autoPlay
       preload="metadata"
       aria-label={alt}
-      className="size-full object-cover"
+      className="absolute inset-0 -z-20 size-full object-cover"
     >
       <source src={video(id)} type="video/mp4" />
     </video>

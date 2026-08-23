@@ -24,7 +24,9 @@ export default function Impacto() {
   const { datos } = useCatalogo();
 
   const cifras: Cifra[] = [
-    { valor: aniosDeTrayectoria(), sufijo: '', etiqueta: 'Años vendiendo energía solar' },
+    // Ojo: acá se cuenta desde la actividad comercial, no desde la
+    // constitución, porque la etiqueta habla de VENDER.
+    { valor: aniosDeTrayectoria(ANIO_INICIO_COMERCIAL), sufijo: '', etiqueta: 'Años vendiendo energía solar' },
     { valor: datos?.productos.length ?? null, sufijo: '', etiqueta: 'Productos en catálogo' },
     { valor: datos?.categorias.length ?? null, sufijo: '', etiqueta: 'Categorías' },
     { valor: null, etiqueta: 'Proyectos instalados' },
