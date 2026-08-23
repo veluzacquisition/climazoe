@@ -56,6 +56,19 @@ export const site = {
     horario: null as string | null,
   },
 
+  /**
+   * Enlace del evento de Calendly para agendar asesoría.
+   *
+   * Mientras esté en null, el botón de "Agendar" sale visible pero
+   * deshabilitado, con la razón a la vista. Se prefiere eso a esconderlo:
+   * el hueco recuerda que falta, y el día que llegue el enlace se pega acá y
+   * queda funcionando en todas las páginas a la vez.
+   *
+   * [PENDIENTE: Don Carlos debe crear el evento de 20 minutos y pasar la URL,
+   *  del tipo https://calendly.com/<cuenta>/asesoria-solar]
+   */
+  calendly: null as string | null,
+
   redes: {
     /** [PENDIENTE: URLs exactas de los perfiles] */
     instagram: null as string | null,

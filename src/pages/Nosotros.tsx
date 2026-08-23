@@ -107,7 +107,7 @@ export default function Nosotros() {
       {/* --- Misión y visión ------------------------------------------------ */}
       <Seccion>
         <div className="grid gap-6 lg:grid-cols-2">
-          <article className="rounded-marca-lg border border-borde bg-superficie p-8 sm:p-10">
+          <article className="acento-tarjeta group relative overflow-hidden rounded-marca-lg border border-borde bg-superficie p-8 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:sombra-flotante motion-reduce:transform-none sm:p-10">
             <h2 className="text-xl font-bold tracking-tight">Misión</h2>
             <p className="mt-5 text-lg leading-relaxed text-texto-medio">
               {identidad.mision}

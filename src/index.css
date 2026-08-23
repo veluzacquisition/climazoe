@@ -461,3 +461,77 @@
     .entra-hero { animation: none; }
   }
 }
+
+@layer utilities {
+  /* --- Profundidad ------------------------------------------------------
+     Tres alturas, no una. Un sitio donde todas las cajas tienen el mismo
+     borde de 1px se lee plano por más contenido que tenga: lo que da
+     sensación de calidad es que las cosas estén a distancias distintas del
+     papel. `panel` para lo que reposa, `flotante` para lo que se levanta al
+     pasar el mouse, `elevado` para lo que manda en la sección. */
+  .sombra-flotante {
+    box-shadow:
+      0 2px 4px rgb(17 31 50 / 0.04),
+      0 12px 28px -12px rgb(17 31 50 / 0.16);
+  }
+
+  .sombra-elevada {
+    box-shadow:
+      0 2px 6px rgb(17 31 50 / 0.05),
+      0 24px 56px -20px rgb(17 31 50 / 0.22);
+  }
+
+  /* --- Resplandores de sección ------------------------------------------
+     Manchas de color muy diluidas detrás del contenido. Rompen el blanco
+     plano sin meter una imagen ni un borde más. Van con `pointer-events:none`
+     y `aria-hidden`: son papel pintado, no contenido.
+
+     Se usan en el elemento decorativo, no en la sección: así el degradado
+     puede desbordar por el lado sin forzar scroll horizontal —de ahí el
+     `overflow:hidden` obligatorio en el padre—. */
+  .resplandor {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    pointer-events: none;
+  }
+
+  .resplandor-marca { background: rgb(104 203 78 / 0.16); }
+  .resplandor-apoyo { background: rgb(0 96 216 / 0.10); }
+  .resplandor-solar { background: rgb(250 214 0 / 0.14); }
+
+  /* --- Malla de puntos ---------------------------------------------------
+     Textura de fondo para los bloques de color pleno, donde un resplandor no
+     se vería. Se desvanece hacia abajo para que no compita con el texto. */
+  .malla-puntos {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+
+  /* --- Barra de acento de tarjeta ----------------------------------------
+     Una línea de color que crece desde la izquierda al pasar el mouse. Es el
+     detalle que convierte un rectángulo con borde en una tarjeta que
+     responde, y cuesta cero peso. */
+  .acento-tarjeta::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--marca), var(--apoyo));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .acento-tarjeta::after,
+  .acento-tarjeta:hover::after {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .acento-tarjeta::after { transition: none; }
+  }
+}

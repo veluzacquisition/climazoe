@@ -18,6 +18,12 @@ interface Props {
   espaciado?: 'normal' | 'amplio' | 'compacto' | 'none';
   /** Envuelve el contenido en `.contenedor`. */
   contenido?: boolean;
+  /**
+   * Manchas de color difuminadas detrás del contenido. Rompen el blanco
+   * plano sin meter una imagen. Son decorativas: no llevan contenido y no
+   * reciben el puntero.
+   */
+  resplandores?: React.ReactNode;
   className?: string;
   id?: string;
 }
@@ -36,12 +42,17 @@ export default function Seccion({
   espaciado = 'normal',
   contenido = true,
   className = '',
+  resplandores,
   id,
 }: Props) {
   const clases = [
     tono === 'oscuro' ? 'tono-oscuro' : '',
     fondo === 'alt' ? 'bg-superficie' : 'bg-fondo',
     ESPACIADO[espaciado],
+    // `isolate` + `overflow-hidden` sólo cuando hay decoración: el
+    // desenfoque de los resplandores se sale del borde y forzaría scroll
+    // horizontal, y sin contexto de apilamiento taparían el contenido.
+    resplandores ? 'relative isolate overflow-hidden' : '',
     className,
   ]
     .filter(Boolean)
@@ -49,6 +60,11 @@ export default function Seccion({
 
   return (
     <section id={id} className={clases}>
+      {resplandores && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          {resplandores}
+        </div>
+      )}
       {contenido ? <div className="contenedor">{children}</div> : children}
     </section>
   );
@@ -72,14 +88,20 @@ export function TituloSeccion({
     <div className="flex flex-wrap items-end justify-between gap-5">
       <div className="max-w-2xl">
         {etiqueta && (
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">
+          /* El rótulo va precedido de una raya corta, como en el sitio de
+             referencia. Ancla el bloque al margen izquierdo y da un punto de
+             color antes de que empiece el texto. */
+          <p className="mb-3 flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">
+            <span aria-hidden="true" className="h-0.5 w-7 rounded-full bg-marca" />
             {etiqueta}
           </p>
         )}
-        <h2 className="text-2xl font-bold leading-[1.25] tracking-tight sm:text-[1.75rem]">
+        <h2 className="text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] sm:text-[2.125rem]">
           {titulo}
         </h2>
-        {bajada && <p className="mt-3 max-w-2xl text-texto-medio">{bajada}</p>}
+        {bajada && (
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-texto-medio">{bajada}</p>
+        )}
       </div>
       {accion}
     </div>

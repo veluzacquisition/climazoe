@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Seccion, { TituloSeccion } from '../components/Seccion';
 import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
+import BotonAgendar from '../components/BotonAgendar';
 import { site } from '../lib/site.config';
 
 /**
@@ -181,6 +182,8 @@ export default function Contacto() {
             </div>
 
             <Pendiente nota="Horario de atención." />
+
+            <BotonAgendar className="btn btn-contorno w-full" texto="Agendar asesoría" />
 
             <a
               href={`https://wa.me/${site.contacto.whatsapp}`}

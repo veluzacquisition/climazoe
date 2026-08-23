@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useCatalogo } from '../../lib/catalogo';
-import { site } from '../../lib/site.config';
+import { ANIO_INICIO_COMERCIAL, aniosDeTrayectoria, site } from '../../lib/site.config';
 import { MEDIA_HERO, imagen, imagenSrcSet } from '../../lib/media';
 import Seccion from '../Seccion';
 import Pendiente from '../Pendiente';
 import Revelar from '../Revelar';
+import BotonAgendar from '../BotonAgendar';
 
 /**
  * Bloques de la home.
@@ -62,18 +63,29 @@ const GARANTIAS = [
  */
 export function Intro() {
   return (
-    <Seccion espaciado="normal">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="text-lg leading-relaxed text-texto-medio">
+    <Seccion
+      espaciado="normal"
+      resplandores={
+        <>
+          <span className="resplandor resplandor-marca -left-24 top-0 size-72" />
+          <span className="resplandor resplandor-apoyo -right-20 bottom-0 size-80" />
+        </>
+      }
+    >
+      <Revelar className="mx-auto max-w-3xl text-center" paso={130}>
+        <p className="text-lg leading-relaxed text-texto-medio sm:text-xl">
           {site.nombre} comercializa e instala sistemas de energía solar
           fotovoltaica en toda Colombia: paneles, baterías, inversores,
           iluminación y material eléctrico para hogares, fincas, comercios e
           industria.
         </p>
-        <p className="mt-7 text-xl font-bold leading-snug sm:text-2xl">
-          No entregamos una caja. Acompañamos el proyecto de principio a fin.
+        <p className="mt-8 text-2xl font-bold leading-[1.25] tracking-[-0.02em] sm:text-[1.75rem]">
+          No entregamos una caja.{' '}
+          <span className="text-marca-texto">
+            Acompañamos el proyecto de principio a fin.
+          </span>
         </p>
-      </div>
+      </Revelar>
     </Seccion>
   );
 }
@@ -81,16 +93,26 @@ export function Intro() {
 export function BandaGarantias() {
   return (
     <Seccion>
-      <Revelar className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" paso={80}>
-        {GARANTIAS.map((g) => (
+      <Revelar className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" paso={90}>
+        {GARANTIAS.map((g, i) => (
           <article
             key={g.t}
-            className="group h-full rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:border-apoyo hover:shadow-card motion-reduce:transform-none"
+            className="acento-tarjeta group relative h-full overflow-hidden rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel transition-all duration-300 hover:-translate-y-1.5 hover:border-transparent hover:sombra-flotante motion-reduce:transform-none"
           >
-            <span className="flex size-11 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none">
-              {g.icono}
-            </span>
-            <h3 className="mt-5 font-bold leading-snug">{g.t}</h3>
+            <div className="flex items-start justify-between">
+              <span className="flex size-12 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto transition-all duration-300 group-hover:bg-marca group-hover:text-marca-contraste motion-reduce:transition-none">
+                {g.icono}
+              </span>
+              {/* El número no ordena una secuencia —no hay pasos acá— sino que
+                  da ritmo a la fila y ancla la esquina que si no queda vacía. */}
+              <span
+                aria-hidden="true"
+                className="text-2xl font-bold tabular-nums text-borde transition-colors duration-300 group-hover:text-marca-tenue"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 className="mt-6 text-lg font-bold leading-snug">{g.t}</h3>
             <p className="mt-1 text-sm font-semibold text-marca-texto">{g.s}</p>
             <p className="mt-3 text-sm leading-relaxed text-texto-medio">{g.d}</p>
           </article>
@@ -138,20 +160,26 @@ export function Marcas() {
 
   return (
     <Seccion fondo="alt" espaciado="compacto">
-      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
-          Trabajamos con
-        </p>
+      <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
+        Trabajamos con {marcas.length} marcas
+      </p>
+      {/* Fichas en vez de una lista de palabras sueltas. Cada una lleva
+          cuántos productos hay de esa marca: convierte un adorno en un dato
+          y en un atajo de búsqueda. */}
+      <Revelar className="mt-7 flex flex-wrap items-center justify-center gap-2.5" paso={35}>
         {marcas.map((m) => (
           <Link
             key={m.nombre}
             to={`/catalogo?q=${encodeURIComponent(m.nombre)}`}
-            className="text-lg font-bold text-texto-suave transition-colors hover:text-marca-texto"
+            className="group inline-flex items-center gap-2 rounded-marca-pildora border border-borde bg-fondo px-4 py-2 text-sm font-bold text-texto-medio shadow-panel transition-all duration-200 hover:-translate-y-0.5 hover:border-apoyo hover:text-apoyo hover:sombra-flotante motion-reduce:transform-none"
           >
             {m.nombre}
+            <span className="rounded-marca-pildora bg-superficie-alta px-1.5 py-0.5 text-[11px] tabular-nums text-texto-suave transition-colors group-hover:bg-apoyo-tenue group-hover:text-apoyo">
+              {m.n}
+            </span>
           </Link>
         ))}
-      </div>
+      </Revelar>
     </Seccion>
   );
 }
@@ -171,25 +199,36 @@ export function Marcas() {
 export function BannerAsesoria() {
   return (
     <Seccion espaciado="compacto">
-      <div className="overflow-hidden rounded-marca-lg bg-solar">
+      <div className="relative isolate overflow-hidden rounded-marca-lg bg-solar">
+        {/* Textura de puntos en negro translúcido: sobre amarillo pleno un
+            resplandor no se vería, y un color plano de este tamaño pide algo
+            que lo rompa. */}
+        <div
+          aria-hidden="true"
+          className="malla-puntos pointer-events-none absolute inset-0 -z-10 text-black/10"
+        />
         <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/60">
               Sin costo y sin compromiso
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-black sm:text-3xl">
+            <h2 className="mt-3 max-w-2xl text-2xl font-bold leading-[1.2] tracking-[-0.02em] text-black sm:text-[2rem]">
               Díganos cuánto paga de luz y le decimos cuánto ahorraría
             </h2>
           </div>
 
-          <a
-            href={`https://wa.me/${site.contacto.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-xl shrink-0 bg-zoe-black text-zoe-white hover:bg-zoe-black/85"
+          <Link
+            to="/calculadora"
+            className="btn btn-xl group shrink-0 bg-zoe-black text-zoe-white transition-transform hover:bg-zoe-black/85 hover:scale-[1.03] motion-reduce:transform-none"
           >
             Calcular mi ahorro
-          </a>
+            <span
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+            >
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </Seccion>
@@ -211,16 +250,30 @@ export function ComoComprar() {
   return (
     <Seccion>
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="overflow-hidden rounded-marca-lg border border-borde">
-          <img
-            src={imagen(MEDIA_HERO.instalacion, 960)}
-            srcSet={imagenSrcSet(MEDIA_HERO.instalacion)}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            alt="Instalación de paneles solares sobre una cubierta"
-            loading="lazy"
-            decoding="async"
-            className="aspect-4/3 w-full object-cover"
-          />
+        <div className="relative">
+          <div className="overflow-hidden rounded-marca-lg border border-borde sombra-elevada">
+            <img
+              src={imagen(MEDIA_HERO.instalacion, 960)}
+              srcSet={imagenSrcSet(MEDIA_HERO.instalacion)}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              alt="Instalación de paneles solares sobre una cubierta"
+              loading="lazy"
+              decoding="async"
+              className="aspect-4/3 w-full object-cover"
+            />
+          </div>
+
+          {/* Ficha flotante sobre la esquina de la foto. Es lo que rompe el
+              rectángulo y da la sensación de capas; el dato sale de
+              site.config, no está escrito a mano. */}
+          <div className="absolute -bottom-6 -right-4 hidden rounded-marca-lg border border-borde bg-fondo p-5 sombra-elevada sm:block lg:-right-8">
+            <p className="text-3xl font-bold tracking-tight text-apoyo">
+              {aniosDeTrayectoria(ANIO_INICIO_COMERCIAL)} años
+            </p>
+            <p className="mt-1 max-w-[9rem] text-xs leading-snug text-texto-medio">
+              instalando energía solar en Colombia
+            </p>
+          </div>
         </div>
 
         <div>
@@ -231,15 +284,21 @@ export function ComoComprar() {
             De la llamada al sistema andando
           </h2>
 
-          <Revelar como="ul" className="mt-8 space-y-6" paso={110}>
+          {/* Un hilo une los círculos: sin él son cuatro viñetas sueltas;
+              con él se leen como un recorrido, que es lo que son. */}
+          <Revelar
+            como="ul"
+            className="relative mt-8 space-y-7 before:absolute before:bottom-8 before:left-[1.0625rem] before:top-8 before:w-px before:bg-borde before:content-['']"
+            paso={110}
+          >
             {PASOS.map((p, i) => (
-              <li key={p.t} className="flex gap-4">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste">
+              <li key={p.t} className="relative flex gap-4">
+                <span className="relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste ring-4 ring-[var(--fondo)]">
                   {i + 1}
                 </span>
                 <div>
                   <h3 className="font-bold leading-tight">{p.t}</h3>
-                  <p className="mt-1 text-sm text-texto-medio">{p.d}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-texto-medio">{p.d}</p>
                 </div>
               </li>
             ))}
@@ -331,12 +390,16 @@ export function Tienda() {
             Escribir por WhatsApp
           </a>
 
+          <div className="mt-3">
+            <BotonAgendar className="btn btn-contorno w-full" texto="O agendar una llamada" />
+          </div>
+
           <div className="mt-4">
             <Pendiente nota="Horario de atención y mapa de la sede." />
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-marca-lg border border-borde">
+        <div className="overflow-hidden rounded-marca-lg border border-borde sombra-elevada">
           <img
             src={imagen(MEDIA_HERO.panelesTecho, 960)}
             srcSet={imagenSrcSet(MEDIA_HERO.panelesTecho)}
