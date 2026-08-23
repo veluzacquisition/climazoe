@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
 import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
-import { certificacionesDeProducto, lineasDeProducto, site } from '../lib/site.config';
+import { certificacionesDeProducto, lineasDeProducto, servicios, site } from '../lib/site.config';
+import Revelar from '../components/Revelar';
 
 /**
  * Servicios y líneas de producto.
@@ -38,18 +39,60 @@ export default function Servicios() {
         </div>
       </EncabezadoPagina>
 
+      {/* --- Servicios ------------------------------------------------------
+          Va PRIMERO, antes de las líneas de producto: la página se llamaba
+          "Servicios" y sólo listaba mercancía. Instalar, mantener y limpiar
+          es la mitad del negocio y no aparecía por ningún lado. */}
+      <Seccion>
+        <TituloSeccion
+          etiqueta="Servicios"
+          titulo="Qué hacemos"
+          bajada="No solo vendemos el equipo: lo dimensionamos, lo montamos y lo mantenemos funcionando."
+        />
+        <Revelar className="mt-10 grid gap-5 sm:grid-cols-2">
+          {servicios.map((s) => (
+            <article
+              key={s.titulo}
+              className="group flex h-full gap-5 rounded-marca-lg border border-borde bg-fondo p-7 transition-all duration-300 hover:-translate-y-1 hover:border-apoyo hover:shadow-panel motion-reduce:transform-none"
+            >
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-marca bg-apoyo-tenue text-apoyo">
+                <IconoServicio nombre={s.icono} />
+              </span>
+              <div>
+                <h3 className="text-lg font-bold leading-snug transition-colors group-hover:text-apoyo">
+                  {s.titulo}
+                </h3>
+                <p className="mt-2 leading-relaxed text-texto-medio">{s.detalle}</p>
+              </div>
+            </article>
+          ))}
+        </Revelar>
+
+        <div className="mt-8 text-center">
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-solar"
+          >
+            Pedir una visita técnica
+          </a>
+        </div>
+      </Seccion>
+
       {/* --- Líneas de producto -------------------------------------------- */}
       <Seccion fondo="alt">
         <TituloSeccion
+          etiqueta="Catálogo"
           titulo="Qué comercializamos"
           bajada="Cinco líneas de producto, todas con asesoría técnica incluida."
         />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Revelar className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {lineasDeProducto.map((l, i) => (
             <Link
               key={l.titulo}
               to={`/catalogo?categoria=${l.categoria}`}
-              className="group flex flex-col rounded-marca-lg border border-borde bg-fondo p-7 transition-colors hover:border-marca"
+              className="group flex h-full flex-col rounded-marca-lg border border-borde bg-fondo p-7 transition-colors hover:border-marca"
             >
               <span className="inline-flex size-10 items-center justify-center rounded-full bg-marca text-sm font-bold text-marca-contraste">
                 {i + 1}
@@ -63,7 +106,7 @@ export default function Servicios() {
               </span>
             </Link>
           ))}
-        </div>
+        </Revelar>
       </Seccion>
 
       {/* --- Ahorro ---------------------------------------------------------- */}
@@ -152,5 +195,46 @@ export default function Servicios() {
         </div>
       </Seccion>
     </>
+  );
+}
+
+/** Iconos de línea de los servicios. Trazo, no relleno: pesan menos visualmente. */
+function IconoServicio({ nombre }: { nombre: string }) {
+  const trazos: Record<string, React.ReactNode> = {
+    // Panel sobre techo
+    planta: <path d="M3 20h18M5 20V9l7-4 7 4v11M9 20v-5h6v5M4.5 9.5h15" />,
+    // Llave de ajuste
+    mantenimiento: (
+      <path d="M14.7 6.3a4 4 0 0 0 5 5l-8.1 8.1a2.5 2.5 0 0 1-3.6-3.6l8.1-8.1a4 4 0 0 0-1.4-1.4Z" />
+    ),
+    // Gota y brillo
+    limpieza: (
+      <>
+        <path d="M12 3.5S6.5 9.8 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.8 12 3.5 12 3.5Z" />
+        <path d="M9.8 14.5a2.2 2.2 0 0 0 2.2 2.2" />
+      </>
+    ),
+    // Bombillo
+    asesoria: (
+      <>
+        <path d="M9.5 18h5M10 21h4" />
+        <path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.2.9 2h5.2c0-.8.3-1.5.9-2A6 6 0 0 0 12 3Z" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="size-6"
+    >
+      {trazos[nombre] ?? trazos.asesoria}
+    </svg>
   );
 }

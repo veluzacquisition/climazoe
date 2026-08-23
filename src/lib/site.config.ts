@@ -100,6 +100,16 @@ export const identidad = {
     'Después de muchas noches oscuras… alguien muy allegado a mi corazón ' +
     'sugirió: "usted necesita un soplo de vida".',
 
+  /**
+   * La misma frase, partida en dos, para poder destacar el remate en la
+   * página. Se guarda acá y no en el componente para que el texto de marca
+   * viva en un solo archivo: si Don Carlos cambia una palabra, se cambia una
+   * vez. `origenPersonal` de arriba es la versión de una sola línea.
+   */
+  origenPersonalIntro:
+    'Después de muchas noches oscuras… alguien muy allegado a mi corazón sugirió:',
+  origenPersonalRemate: 'usted necesita un soplo de vida',
+
   origenMarca:
     'La marca Clima Zoe nace de la inspiración que produjo el Acuerdo de ' +
     'París, la conferencia de diciembre de 2015 donde 195 países ' +
@@ -188,6 +198,48 @@ export const lineasDeProducto = [
     titulo: 'Material eléctrico industrial',
     detalle: 'Protecciones AC/DC, cableado, conectores y estructuras de montaje.',
     categoria: 'protecciones',
+  },
+] as const;
+
+/**
+ * Los servicios que presta la empresa.
+ *
+ * Ojo con la diferencia frente a `lineasDeProducto`: eso es lo que se VENDE
+ * —paneles, baterías, inversores—; esto es lo que se HACE. La página de
+ * servicios mostraba sólo lo primero, que es como tener una ferretería sin
+ * decir que también instala.
+ *
+ * Los cuatro salen de lo que Don Carlos confirmó que la empresa ejecuta hoy.
+ * No se inventan servicios para llenar la cuadrícula.
+ */
+export const servicios = [
+  {
+    titulo: 'Instalación de plantas solares a la medida',
+    detalle:
+      'Diseñamos y montamos el sistema completo según su consumo real: ' +
+      'paneles, inversor, baterías, protecciones y estructura.',
+    icono: 'planta',
+  },
+  {
+    titulo: 'Mantenimiento de sistemas fotovoltaicos',
+    detalle:
+      'Revisión de inversores, baterías, conexiones y protecciones para que ' +
+      'el sistema siga entregando lo que debe entregar.',
+    icono: 'mantenimiento',
+  },
+  {
+    titulo: 'Limpieza de paneles solares',
+    detalle:
+      'El polvo y la mugre le quitan generación a un arreglo sano. La ' +
+      'limpieza periódica recupera el rendimiento sin cambiar nada.',
+    icono: 'limpieza',
+  },
+  {
+    titulo: 'Asesoría técnica fotovoltaica',
+    detalle:
+      'Le decimos qué necesita y qué no antes de que compre. Capacitar y ' +
+      'orientar es parte de la misión, no un servicio aparte.',
+    icono: 'asesoria',
   },
 ] as const;
 

@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import Seccion, { TituloSeccion } from '../components/Seccion';
 import EncabezadoPagina from '../components/EncabezadoPagina';
 import Pendiente from '../components/Pendiente';
+import Revelar from '../components/Revelar';
 import {
   ANIO_CONSTITUCION,
   ANIO_INICIO_COMERCIAL,
-  MATRICULA_MERCANTIL,
   aniosDeTrayectoria,
   consignas,
   frases,
@@ -33,15 +33,32 @@ export default function Nosotros() {
         fondo="instalacion"
       />
 
-      <Seccion>
-        <blockquote className="mx-auto max-w-3xl border-l-4 border-marca pl-6 text-center sm:pl-8 sm:text-left">
-          <p className="text-xl italic leading-relaxed sm:text-2xl">
-            {identidad.origenPersonal}
-          </p>
-          <footer className="mt-3 text-sm font-bold uppercase tracking-wide text-texto-suave">
+      {/* --- Soplo de vida ---------------------------------------------------
+          Es el fragmento más humano del documento de marca y estaba metido en
+          una cita lateral como si fuera un pie de página. De acá salió el
+          nombre de la empresa; se le da el peso que tiene y no se reescribe:
+          dicho así es lo que separa una historia real de un texto de relleno. */}
+      <Seccion tono="oscuro" espaciado="amplio">
+        <Revelar className="mx-auto max-w-4xl text-center" paso={140}>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-texto-suave">
             El origen del nombre
-          </footer>
-        </blockquote>
+          </p>
+          <blockquote className="mt-8">
+            <p className="text-2xl font-semibold leading-[1.35] tracking-tight sm:text-4xl">
+              {identidad.origenPersonalIntro}{' '}
+              <span className="text-marca">
+                «{identidad.origenPersonalRemate}»
+              </span>
+              .
+            </p>
+          </blockquote>
+          <p className="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-texto-medio">
+            De ahí salió el nombre. <strong className="text-texto">Zoe es
+            soplo de vida</strong> — y es lo que buscamos dejar en cada
+            instalación: una casa, una finca o un negocio que vuelve a
+            respirar con su propia energía.
+          </p>
+        </Revelar>
       </Seccion>
 
       {/* --- Origen de la marca -------------------------------------------- */}
@@ -62,30 +79,26 @@ export default function Nosotros() {
             </p>
           </div>
 
-          <div className="rounded-marca-lg border border-borde bg-fondo p-8">
-            <h3 className="text-sm font-bold uppercase tracking-wide text-texto-suave">
-              La empresa
-            </h3>
-            <dl className="mt-6 space-y-5 text-sm">
-              {[
-                ['Razón social', site.razonSocial],
-                ['NIT', site.nit],
-                ['Constituida', `7 de marzo de ${ANIO_CONSTITUCION}`],
-                ['Matrícula mercantil', `${MATRICULA_MERCANTIL} — Cámara de Comercio de Bogotá`],
-                ['Actividad comercial', `Desde junio de ${ANIO_INICIO_COMERCIAL}`],
-                ['Sede', `${site.contacto.direccion} — ${site.contacto.ciudad}`],
-              ].map(([k, v]) => (
-                <div key={k} className="border-b border-borde-suave pb-4 last:border-0 last:pb-0">
-                  <dt className="text-xs uppercase tracking-wide text-texto-suave">{k}</dt>
-                  <dd className="mt-1 font-semibold text-texto">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-6 text-sm leading-relaxed text-texto-medio">
+          {/* Sin ficha de la sociedad: razón social, NIT y matrícula
+              mercantil son datos de trámite, no razones para confiar en una
+              empresa de energía solar. Lo que sí importa —desde cuándo
+              trabajamos y desde dónde— queda dicho en prosa. */}
+          <div className="rounded-marca-lg border border-apoyo/25 bg-apoyo-tenue p-8 sm:p-10">
+            <p className="text-5xl font-bold tracking-tight text-apoyo">
+              {aniosDeTrayectoria()} años
+            </p>
+            <p className="mt-3 text-lg font-semibold">construyendo Clima Zoe</p>
+            <p className="mt-5 leading-relaxed text-texto-medio">
+              La sociedad se constituyó en marzo de {ANIO_CONSTITUCION}, después
+              de participar en talleres de capacitación en proyectos
+              fotovoltaicos, eólicos y de energías limpias con impacto social.
+              Desde junio de {ANIO_INICIO_COMERCIAL} vendemos e instalamos
+              energía solar, y desde entonces trabajamos desde{' '}
+              {site.contacto.ciudad}.
+            </p>
+            <p className="mt-5 leading-relaxed text-texto-medio">
               La marca <strong className="text-texto">Clima Zoe®</strong> está
-              registrada. Iniciamos actividad tras participar en talleres de
-              capacitación en proyectos fotovoltaicos, eólicos y de energías
-              limpias con impacto social.
+              registrada.
             </p>
           </div>
         </div>

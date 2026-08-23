@@ -174,13 +174,9 @@ export default function Contacto() {
                   </dd>
                 </div>
 
-                <div className="border-t border-borde-suave pt-4">
-                  <dt className="text-xs uppercase tracking-wide text-texto-suave">Empresa</dt>
-                  <dd className="mt-1 text-texto-medio">
-                    {site.razonSocial}
-                    <span className="block">NIT {site.nit}</span>
-                  </dd>
-                </div>
+                {/* Sin razón social ni NIT: al que va a escribir por WhatsApp
+                    no le sirven, y en una página de contacto son ruido legal.
+                    Siguen en el pie, que es donde corresponden. */}
               </dl>
             </div>
 
