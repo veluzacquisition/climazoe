@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { construirArbol, useCatalogo } from '../lib/catalogo';
@@ -31,7 +31,10 @@ import type { Segmento } from '../types/catalogo';
 const NAV = [
   { a: '/', texto: 'Inicio' },
   { a: '/nosotros', texto: 'Nosotros' },
-  { a: '/catalogo', texto: 'Tienda Solar' },
+  // Lleva pestañita desplegable con las categorías, como la "TIENDA SOLAR"
+  // de ecozaque: desde cualquier página se puede saltar a una línea concreta
+  // sin pasar antes por la portada del catálogo.
+  { a: '/catalogo', texto: 'Tienda Solar', desplegable: true },
   { a: '/servicios', texto: 'Servicios' },
   { a: '/contacto', texto: 'Contacto' },
 ];
@@ -73,23 +76,27 @@ export default function Header({
           <Logo className="h-14 md:h-16" />
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.a}
-              to={item.a}
-              end={item.a === '/'}
-              className={({ isActive }) =>
-                `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-fondo text-texto shadow-panel'
-                    : 'text-texto-medio hover:text-texto'
-                }`
-              }
-            >
-              {item.texto}
-            </NavLink>
-          ))}
+        <nav className="relative hidden items-center gap-1 rounded-marca-pildora border border-borde bg-superficie p-1 lg:flex">
+          {NAV.map((item) =>
+            item.desplegable ? (
+              <PestanaTienda key={item.a} texto={item.texto} a={item.a} />
+            ) : (
+              <NavLink
+                key={item.a}
+                to={item.a}
+                end={item.a === '/'}
+                className={({ isActive }) =>
+                  `rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
+                    isActive
+                      ? 'bg-fondo text-texto shadow-panel'
+                      : 'text-texto-medio hover:text-texto'
+                  }`
+                }
+              >
+                {item.texto}
+              </NavLink>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -142,6 +149,93 @@ export default function Header({
 }
 
 /** Panel de búsqueda a pantalla completa, que reemplaza la fila del buscador. */
+/**
+ * "Tienda Solar" con su pestañita de categorías.
+ *
+ * Es el patrón de ecozaque: la entrada de tienda del menú despliega las
+ * líneas de producto, así que desde cualquier página se salta directo a
+ * "Baterías" sin pasar por la portada del catálogo.
+ *
+ * Se abre con clic y no con hover: en un menú que también es enlace, el
+ * hover dispara el panel cuando uno sólo iba de paso al siguiente elemento.
+ * Cierra con Escape, con clic fuera y al navegar.
+ */
+function PestanaTienda({ texto, a }: { texto: string; a: string }) {
+  const { datos } = useCatalogo();
+  const [abierto, setAbierto] = useState(false);
+  const caja = useRef<HTMLDivElement>(null);
+
+  const raices = useMemo(
+    () => (datos ? construirArbol(datos.categorias) : []),
+    [datos],
+  );
+
+  useEffect(() => {
+    if (!abierto) return;
+    const fuera = (e: MouseEvent) => {
+      if (!caja.current?.contains(e.target as Node)) setAbierto(false);
+    };
+    const escape = (e: KeyboardEvent) => e.key === 'Escape' && setAbierto(false);
+    document.addEventListener('mousedown', fuera);
+    document.addEventListener('keydown', escape);
+    return () => {
+      document.removeEventListener('mousedown', fuera);
+      document.removeEventListener('keydown', escape);
+    };
+  }, [abierto]);
+
+  return (
+    <div ref={caja} className="relative">
+      <button
+        type="button"
+        onClick={() => setAbierto((v) => !v)}
+        aria-expanded={abierto}
+        aria-haspopup="true"
+        className={`inline-flex items-center gap-1.5 rounded-marca-pildora px-4 py-2 text-sm font-semibold transition-colors ${
+          abierto ? 'bg-fondo text-texto shadow-panel' : 'text-texto-medio hover:text-texto'
+        }`}
+      >
+        {texto}
+        <span
+          aria-hidden="true"
+          className={`text-[10px] transition-transform duration-200 ${abierto ? 'rotate-180' : ''}`}
+        >
+          ▾
+        </span>
+      </button>
+
+      {abierto && (
+        <div className="absolute left-1/2 top-full z-50 mt-3 w-[34rem] -translate-x-1/2 rounded-marca-lg border border-borde bg-fondo p-4 sombra-elevada">
+          <ul className="grid grid-cols-2 gap-1">
+            {raices.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  to={`/catalogo?categoria=${c.slug}`}
+                  onClick={() => setAbierto(false)}
+                  className="flex items-center justify-between gap-3 rounded-marca px-3 py-2 text-sm font-semibold text-texto-medio transition-colors hover:bg-superficie hover:text-apoyo"
+                >
+                  <span className="truncate">{c.nombre}</span>
+                  <span className="shrink-0 text-xs tabular-nums text-texto-suave">
+                    {c.total}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            to={a}
+            onClick={() => setAbierto(false)}
+            className="mt-3 flex items-center justify-center gap-1.5 border-t border-borde-suave pt-3 text-sm font-bold text-apoyo transition-colors hover:text-apoyo-fuerte"
+          >
+            Ver todo el catálogo
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function PanelBuscador({ onCerrar }: { onCerrar: () => void }) {
   useEffect(() => {
     const escape = (e: KeyboardEvent) => e.key === 'Escape' && onCerrar();

@@ -282,6 +282,97 @@ export async function registrarPedidoEnSupabase(p: Pedido): Promise<string | nul
 }
 
 /**
+ * Guarda una solicitud de cotización nacida en la calculadora solar.
+ *
+ * Reutiliza `crear_pedido` en vez de montar una tabla y una función aparte:
+ * es una intención de compra con contacto, exactamente lo mismo que un pedido
+ * salvo que no lleva carrito. Va con `requiere_cotizacion: true` y una única
+ * línea que describe el sistema estimado, así el equipo la ve en el mismo
+ * sitio donde ve todo lo demás.
+ *
+ * Devuelve `false` si no se pudo guardar; quien llama debe ofrecer WhatsApp
+ * como salida en vez de tragarse la solicitud en silencio.
+ */
+export async function registrarSolicitudSolar(datos: {
+  nombre: string;
+  email: string;
+  telefono: string;
+  mensaje: string;
+  /** Los campos tal cual los llenó el visitante, para dejarlos en las notas. */
+  formulario: {
+    sistema: string;
+    consumo: string;
+    precioKwh: string;
+    area: string;
+    porcentaje: string;
+    instalacion: string;
+    departamento: string;
+  };
+  resultado: {
+    paneles: number;
+    potenciaKwp: number;
+    ahorroMensual: number;
+    inversion: number;
+    retorno: number | null;
+  };
+}): Promise<boolean> {
+  try {
+    const { supabase } = await import('./supabase');
+    if (!supabase) return false;
+
+    const f = datos.formulario;
+    const r = datos.resultado;
+
+    const resumen =
+      `Sistema estimado: ${r.paneles} paneles (${r.potenciaKwp} kWp), ` +
+      `${f.sistema === 'hibrido' ? 'híbrido con baterías' : 'conectado a la red'}, ` +
+      `${f.instalacion} en ${f.departamento}. ` +
+      `Consumo ${f.consumo} kWh/mes a $${f.precioKwh}/kWh, ` +
+      `área ${f.area} m², cubre el ${f.porcentaje}%.`;
+
+    const { error } = await supabase.rpc('crear_pedido', {
+      datos: {
+        nombre: datos.nombre,
+        apellido: '',
+        email: datos.email,
+        telefono: datos.telefono || 'no indicado',
+        tipo_documento: null,
+        documento: null,
+        departamento: f.departamento,
+        ciudad: '',
+        direccion: '',
+        detalle_direccion: null,
+        notas: [resumen, datos.mensaje].filter(Boolean).join(' — '),
+        subtotal: null,
+        envio: 0,
+        total: 0,
+        requiere_cotizacion: true,
+        metodo_pago: 'cotizacion',
+        items: [
+          {
+            producto_slug: 'calculadora-solar',
+            nombre: `Sistema solar estimado — ${r.paneles} paneles (${r.potenciaKwp} kWp)`,
+            sku: null,
+            imagen_url: null,
+            precio_unitario: null,
+            cantidad: 1,
+          },
+        ],
+      },
+    });
+
+    if (error) {
+      console.error('[calculadora] no se pudo registrar la solicitud:', error.message);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('[calculadora] error al registrar:', e);
+    return false;
+  }
+}
+
+/**
  * Copia local del pedido, para poder mostrar la página de confirmación tras
  * recargar sin tener que leerlo del servidor (que no se permite).
  */

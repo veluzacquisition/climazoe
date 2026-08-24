@@ -5,6 +5,7 @@ import EncabezadoPagina from '../components/EncabezadoPagina';
 import Revelar from '../components/Revelar';
 import { site } from '../lib/site.config';
 import { precio } from '../lib/formato';
+import { registrarSolicitudSolar } from '../lib/pagos';
 
 /** `precio()` admite null; acá los valores siempre existen, así que se fija. */
 const pesos = (n: number) => precio(n) ?? '—';
@@ -320,12 +321,18 @@ export default function Calculadora() {
                     rel="noopener noreferrer"
                     className="btn btn-solar flex-1"
                   >
-                    Cotizar con estos datos
+                    Cotizar por WhatsApp
                   </a>
                   <Link to="/catalogo?categoria=paneles-solares" className="btn btn-contorno flex-1">
                     Ver paneles
                   </Link>
                 </div>
+
+                {/* Solicitud formal: el punto de copiar esta calculadora era
+                    TOMAR DATOS, no sólo enseñar un número. Quien no quiere
+                    abrir WhatsApp deja su contacto acá y el pedido queda
+                    guardado con la estimación completa. */}
+                <SolicitudCotizacion formulario={f} resultado={r} />
               </div>
             )}
           </div>
@@ -493,4 +500,168 @@ function enlaceCotizar(
   ].join('\n');
 
   return `https://wa.me/${site.contacto.whatsapp}?text=${encodeURIComponent(texto)}`;
+}
+
+// ---------------------------------------------------------------------------
+// Solicitud de cotización
+// ---------------------------------------------------------------------------
+
+/**
+ * Captura del contacto, con la estimación adjunta.
+ *
+ * Se guarda por el mismo camino que un pedido del checkout —la función
+ * `crear_pedido` de Supabase— para no montar una segunda tubería ni una
+ * segunda tabla. Si Supabase todavía no está conectado, en vez de perder el
+ * dato se cae a WhatsApp con todo escrito: es preferible una conversación a
+ * un formulario que traga la solicitud en silencio.
+ */
+function SolicitudCotizacion({
+  formulario,
+  resultado,
+}: {
+  formulario: Formulario;
+  resultado: ReturnType<typeof calcularSolar>;
+}) {
+  const [datos, setDatos] = useState({ nombre: '', email: '', telefono: '', mensaje: '' });
+  const [estado, setEstado] = useState<'inicial' | 'enviando' | 'listo' | 'error'>('inicial');
+  const [abierto, setAbierto] = useState(false);
+
+  const completo = datos.nombre.trim().length > 1 && /.+@.+\..+/.test(datos.email);
+
+  const enviar = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!completo || estado === 'enviando') return;
+    setEstado('enviando');
+
+    const guardado = await registrarSolicitudSolar({
+      ...datos,
+      formulario,
+      resultado,
+    });
+    setEstado(guardado ? 'listo' : 'error');
+  };
+
+  if (estado === 'listo') {
+    return (
+      <div className="mt-6 rounded-marca-lg border border-marca-borde bg-marca-tenue p-6">
+        <p className="font-bold text-marca-texto">Solicitud recibida</p>
+        <p className="mt-2 text-sm leading-relaxed text-texto-medio">
+          Nos llega su estimación con los datos de contacto. Le respondemos con
+          una cotización real; si prefiere no esperar, escríbanos por WhatsApp.
+        </p>
+      </div>
+    );
+  }
+
+  if (!abierto) {
+    return (
+      <button
+        type="button"
+        onClick={() => setAbierto(true)}
+        className="mt-4 w-full rounded-marca border border-dashed border-borde py-3 text-sm font-bold text-apoyo transition-colors hover:border-apoyo hover:bg-apoyo-tenue"
+      >
+        O déjenos sus datos y le enviamos la cotización
+      </button>
+    );
+  }
+
+  return (
+    <form onSubmit={enviar} className="mt-6 rounded-marca-lg border border-borde bg-superficie p-6">
+      <h3 className="font-bold">Solicitar cotización</h3>
+      <p className="mt-1.5 text-sm text-texto-medio">
+        Le adjuntamos la estimación que acaba de hacer.
+      </p>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <CampoTexto
+          id="sol-nombre"
+          etiqueta="Nombre"
+          valor={datos.nombre}
+          onCambio={(v) => setDatos((d) => ({ ...d, nombre: v }))}
+          requerido
+        />
+        <CampoTexto
+          id="sol-email"
+          etiqueta="Correo"
+          tipo="email"
+          valor={datos.email}
+          onCambio={(v) => setDatos((d) => ({ ...d, email: v }))}
+          requerido
+        />
+        <CampoTexto
+          id="sol-tel"
+          etiqueta="Teléfono"
+          tipo="tel"
+          valor={datos.telefono}
+          onCambio={(v) => setDatos((d) => ({ ...d, telefono: v }))}
+        />
+        <CampoTexto
+          id="sol-msg"
+          etiqueta="Algo que debamos saber"
+          valor={datos.mensaje}
+          onCambio={(v) => setDatos((d) => ({ ...d, mensaje: v }))}
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={!completo || estado === 'enviando'}
+        className="btn btn-primario mt-5 w-full disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        {estado === 'enviando' ? 'Enviando…' : 'Enviar solicitud'}
+      </button>
+
+      {estado === 'error' && (
+        <p className="mt-3 text-sm leading-relaxed text-acento-texto">
+          No pudimos guardar la solicitud.{' '}
+          <a
+            href={enlaceCotizar(formulario, resultado)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold underline"
+          >
+            Mándenosla por WhatsApp
+          </a>{' '}
+          y la atendemos igual.
+        </p>
+      )}
+
+      <p className="mt-3 text-xs leading-relaxed text-texto-suave">
+        Usamos sus datos sólo para responderle esta cotización.
+      </p>
+    </form>
+  );
+}
+
+function CampoTexto({
+  id,
+  etiqueta,
+  valor,
+  onCambio,
+  tipo = 'text',
+  requerido = false,
+}: {
+  id: string;
+  etiqueta: string;
+  valor: string;
+  onCambio: (v: string) => void;
+  tipo?: string;
+  requerido?: boolean;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="text-sm font-semibold">
+        {etiqueta}
+        {requerido && <span className="text-acento-texto"> *</span>}
+      </label>
+      <input
+        id={id}
+        type={tipo}
+        value={valor}
+        required={requerido}
+        onChange={(e) => onCambio(e.target.value)}
+        className="mt-2 w-full rounded-marca border border-borde bg-fondo px-4 py-2.5 text-sm text-texto focus:border-apoyo focus:outline-none"
+      />
+    </div>
+  );
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MAX_POR_LINEA, useCarrito } from '../../lib/carrito';
 import { precio as formatear } from '../../lib/formato';
@@ -11,6 +12,26 @@ import { precio as formatear } from '../../lib/formato';
  */
 export default function PanelCarrito() {
   const { items, totales, abierto, cerrar, quitar, cambiarCantidad } = useCarrito();
+  const botonCerrar = useRef<HTMLButtonElement>(null);
+
+  // Es un diálogo modal y le faltaban las tres cosas que eso implica: cerrar
+  // con Escape, congelar el fondo y llevar el foco adentro. Sin lo primero el
+  // panel se quedaba encima bloqueando la página entera —el buscador y el
+  // menú lateral sí lo tenían, el carrito no—.
+  useEffect(() => {
+    if (!abierto) return;
+    const alPulsar = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') cerrar();
+    };
+    document.addEventListener('keydown', alPulsar);
+    const antes = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    botonCerrar.current?.focus();
+    return () => {
+      document.removeEventListener('keydown', alPulsar);
+      document.body.style.overflow = antes;
+    };
+  }, [abierto, cerrar]);
 
   if (!abierto) return null;
 
@@ -30,6 +51,7 @@ export default function PanelCarrito() {
             )}
           </h2>
           <button
+            ref={botonCerrar}
             type="button"
             onClick={cerrar}
             aria-label="Cerrar carrito"

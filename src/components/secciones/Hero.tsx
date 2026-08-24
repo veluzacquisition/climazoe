@@ -96,7 +96,7 @@ export default function Hero() {
           style={{ '--retraso': '240ms' } as React.CSSProperties}
         >
           <Link to="/catalogo" className="btn btn-xl btn-primario">
-            Explorar la tienda
+            Explorar
           </Link>
           <a
             href={`https://wa.me/${site.contacto.whatsapp}`}
