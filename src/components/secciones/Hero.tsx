@@ -1,137 +1,193 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { site } from '../../lib/site.config';
-import { MEDIA_HERO, imagen, imagenSrcSet } from '../../lib/media';
+import { MEDIA_HERO, imagen, imagenSrcSet, posterDeVideo, video } from '../../lib/media';
 
 /**
- * Hero en dos columnas: mensaje a la izquierda, pieza de marca a la derecha.
+ * Hero.
  *
- * La imagen nueva NO es una fotografía de fondo: es una composición cerrada
- * que ya trae el lettering "Clima Zoe". Eso descarta el tratamiento anterior
- * —foto a sangre bajo un degradado blanco— por dos razones:
+ * La foto va detrás de un degradado blanco que arranca opaco y se abre hacia
+ * el centro: blanco puro arriba, 70% al medio, 90% abajo. Es el tratamiento
+ * que pidió el dueño del sitio de referencia y hace dos cosas a la vez.
  *
- *   · Lavarla al 30% para poder leer texto encima destruiría el globo y
- *     borraría su propia tipografía.
- *   · El titular caería justo sobre las letras de la imagen. Dos textos
- *     peleando en el mismo sitio.
+ *   · Arriba no hay costura. El encabezado es blanco y el hero empieza en
+ *     blanco puro, así que la barra de navegación y la sección se leen como
+ *     una sola pieza en vez de dos bloques pegados.
+ *   · La foto queda como marca de agua. Se ve de qué va el negocio sin que la
+ *     imagen pelee con el titular, y el texto puede ir en el azul oscuro de
+ *     la marca en lugar de blanco sobre un velo.
  *
- * Partida en dos, la pieza se ve a plena fuerza y el mensaje tiene su propio
- * aire. De paso el bloque gana el dinamismo que pedía el dueño: dos pesos
- * distintos en la misma fila se leen mejor que un centrado simétrico.
+ * El degradado NO es decorativo: es lo que garantiza el contraste. Sobre el
+ * píxel más oscuro que puede tener la foto, el 70% de blanco deja el titular
+ * en 7,9:1 — por encima del 4,5:1 que exige la norma.
  *
- * El fondo es un degradado azul claro que arranca en blanco puro arriba, así
- * que la costura con el encabezado —también blanco— sigue sin verse.
+ * Para cambiar la foto por el video: poner MEDIA.tipo en 'video'.
  */
 
-const MEDIA = {
+const MEDIA: { tipo: 'imagen' | 'video'; id: string; alt: string } = {
+  tipo: 'imagen',
   id: MEDIA_HERO.marcaGlobo,
-  alt: 'La Tierra iluminada por el sol junto al logotipo de Clima Zoe',
+  alt: 'La Tierra iluminada por el sol, con el logotipo de Clima Zoe',
 };
 
+/** El degradado, en un solo sitio para que el hero y su borde no se separen. */
+const VELO =
+  'linear-gradient(to bottom, ' +
+  'rgb(255 255 255) 0%, ' +
+  'rgb(255 255 255 / 0.85) 25%, ' +
+  'rgb(255 255 255 / 0.7) 50%, ' +
+  'rgb(255 255 255 / 0.92) 100%)';
+
 export default function Hero() {
+  const [menosMovimiento, setMenosMovimiento] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const leer = () => setMenosMovimiento(mq.matches);
+    leer();
+    mq.addEventListener('change', leer);
+    return () => mq.removeEventListener('change', leer);
+  }, []);
+
   return (
-    <section className="relative isolate overflow-hidden">
-      {/* Fondo: blanco arriba para fundirse con el encabezado, azul muy
-          diluido hacia abajo para que la primera pantalla no sea un folio en
-          blanco. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-20 bg-[linear-gradient(175deg,#ffffff_0%,#f2f7fe_38%,#e3eefd_100%)]"
-      />
-      <span
-        aria-hidden="true"
-        className="resplandor resplandor-apoyo -z-10 -left-24 top-1/4 size-[28rem]"
-      />
-      <span
-        aria-hidden="true"
-        className="resplandor resplandor-marca -z-10 -right-16 bottom-0 size-80"
-      />
+    <section className="relative isolate overflow-hidden bg-fondo">
+      {MEDIA.tipo === 'video' ? (
+        <VideoFondo id={MEDIA.id} alt={MEDIA.alt} congelado={menosMovimiento} />
+      ) : (
+        <img
+          src={imagen(MEDIA.id, 1600)}
+          srcSet={imagenSrcSet(MEDIA.id)}
+          sizes="100vw"
+          alt={MEDIA.alt}
+          // Es el elemento más grande de la primera pantalla: se pide con
+          // prioridad para que no aparezca el fondo plano y luego salte.
+          fetchPriority="high"
+          decoding="sync"
+          // Encuadre sobre el GLOBO, no sobre la imagen entera.
+          //
+          // La pieza trae su propio lettering "Clima Zoe" a la derecha, y a
+          // sangre completa caía justo detrás del titular: "Clima" se cruzaba
+          // con "empresas e industria" y "Zoe" con los botones. Dos textos
+          // superpuestos, ilegibles los dos.
+          //
+          // El elemento se hace más ancho que su contenedor y se ancla a la
+          // izquierda: sólo entra en cuadro el 57% izquierdo de la imagen —el
+          // globo— y las letras quedan fuera. El logotipo ya está en el
+          // encabezado, así que repetirlo aquí tampoco aportaba nada.
+          className="absolute inset-y-0 left-0 -z-20 h-full w-[175%] max-w-none object-cover object-left"
+        />
+      )}
 
-      <div className="contenedor relative grid items-center gap-10 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20">
-        {/* --- Mensaje ----------------------------------------------------- */}
-        <div className="text-center lg:text-left">
-          <p className="chip entra-hero border border-marca-borde bg-marca-tenue text-marca-texto">
-            <span className="size-1.5 rounded-full bg-marca" />
-            Proyectos de energía solar
-          </p>
+      <div aria-hidden="true" className="absolute inset-0 -z-10" style={{ background: VELO }} />
 
-          <h1
-            className="entra-hero mt-6 text-[2.1rem] font-bold leading-[1.1] tracking-[-0.03em] sm:text-[2.75rem] lg:text-[3.25rem]"
-            style={{ '--retraso': '80ms' } as React.CSSProperties}
-          >
-            Soluciones de <span className="text-apoyo-texto">energía solar</span> para
-            hogar, empresas e industria
-          </h1>
+      <div className="contenedor relative flex min-h-[30rem] flex-col items-center justify-center py-20 text-center lg:min-h-[34rem] lg:py-24">
+        <p className="chip entra-hero border border-marca-borde bg-marca-tenue text-marca-texto">
+          <span className="size-1.5 rounded-full bg-marca" />
+          Proyectos de energía solar
+        </p>
 
-          <p
-            className="entra-hero mt-6 max-w-xl text-lg leading-relaxed text-texto-medio lg:text-xl"
-            style={{ '--retraso': '160ms' } as React.CSSProperties}
-          >
-            Construimos proyectos de energía fotovoltaica a su alcance y a la
-            medida.
-          </p>
+        <h1
+          className="entra-hero mx-auto mt-6 max-w-4xl text-[2rem] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[2.6rem] lg:text-[3.25rem]"
+          style={{ '--retraso': '80ms' } as React.CSSProperties}
+        >
+          Soluciones de <span className="text-marca-texto">energía solar</span>{' '}
+          para hogar, empresas e industria
+        </h1>
 
-          <div
-            className="entra-hero mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
-            style={{ '--retraso': '240ms' } as React.CSSProperties}
-          >
-            <Link to="/catalogo" className="btn btn-xl btn-primario">
-              Explorar
-            </Link>
-            <a
-              href={`https://wa.me/${site.contacto.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-xl btn-solar"
-            >
-              <IconoWhatsApp />
-              Asesoría gratis
-            </a>
-          </div>
+        <p
+          className="entra-hero mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-texto-medio"
+          style={{ '--retraso': '160ms' } as React.CSSProperties}
+        >
+          Construimos proyectos de energía fotovoltaica a su alcance y a la
+          medida.
+        </p>
 
-          {/* La calculadora no cabe en la barra de navegación; esta es su
-              puerta de entrada. Es una herramienta, no una sección. */}
-          <Link
-            to="/calculadora"
-            className="entra-hero group mt-7 inline-flex items-center gap-2 text-sm font-bold text-apoyo-texto transition-colors hover:text-apoyo-fuerte"
-            style={{ '--retraso': '320ms' } as React.CSSProperties}
-          >
-            <IconoCalculadora />
-            Calcule cuánto ahorraría con paneles
-            <span
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
-            >
-              →
-            </span>
+        <div
+          className="entra-hero mt-9 flex flex-col justify-center gap-3 sm:flex-row"
+          style={{ '--retraso': '240ms' } as React.CSSProperties}
+        >
+          <Link to="/catalogo" className="btn btn-xl btn-primario">
+            Explorar
           </Link>
+          <a
+            href={`https://wa.me/${site.contacto.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-xl btn-solar"
+          >
+            <IconoWhatsApp />
+            Asesoría gratis
+          </a>
         </div>
 
-        {/* --- Pieza de marca ---------------------------------------------- */}
-        <div
-          className="entra-hero relative"
-          style={{ '--retraso': '120ms' } as React.CSSProperties}
+        {/* La calculadora salió de la barra de navegación —no cabía— así que
+            su puerta de entrada es esta. Es una herramienta, no una sección:
+            funciona mejor como invitación que como pestaña. */}
+        <Link
+          to="/calculadora"
+          className="entra-hero group mt-7 inline-flex items-center gap-2 text-sm font-bold text-apoyo-texto transition-colors hover:text-apoyo-fuerte"
+          style={{ '--retraso': '320ms' } as React.CSSProperties}
         >
-          {/* Halo detrás del marco: el azul de la imagen y el del fondo son
-              parecidos, y sin este respiro el recuadro se pierde. */}
+          <IconoCalculadora />
+          Calcule cuánto ahorraría con paneles
           <span
             aria-hidden="true"
-            className="absolute -inset-6 -z-10 rounded-[2rem] bg-apoyo/10 blur-2xl"
-          />
-          <img
-            src={imagen(MEDIA.id, 1200)}
-            srcSet={imagenSrcSet(MEDIA.id)}
-            sizes="(min-width: 1024px) 48vw, 100vw"
-            alt={MEDIA.alt}
-            // Es el elemento más grande de la primera pantalla.
-            fetchPriority="high"
-            decoding="sync"
-            width={1672}
-            height={941}
-            className="w-full rounded-marca-lg sombra-elevada"
-          />
-        </div>
+            className="transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+          >
+            →
+          </span>
+        </Link>
       </div>
     </section>
+  );
+}
+
+/**
+ * Video de fondo: sin sonido, en bucle y en línea.
+ *
+ * `muted` no es decorativo — sin él los navegadores bloquean la reproducción
+ * automática y quedaría el póster fijo. Con "reducir movimiento" activo no se
+ * reproduce: se muestra un fotograma.
+ */
+function VideoFondo({
+  id,
+  alt,
+  congelado,
+}: {
+  id: string;
+  alt: string;
+  congelado: boolean;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const poster = posterDeVideo(id);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (congelado) v.pause();
+    else void v.play().catch(() => {});
+  }, [congelado]);
+
+  if (congelado) {
+    return (
+      <img src={poster} alt={alt} className="absolute inset-0 -z-20 size-full object-cover" />
+    );
+  }
+
+  return (
+    <video
+      ref={ref}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      autoPlay
+      preload="metadata"
+      aria-label={alt}
+      className="absolute inset-0 -z-20 size-full object-cover"
+    >
+      <source src={video(id)} type="video/mp4" />
+    </video>
   );
 }
 
