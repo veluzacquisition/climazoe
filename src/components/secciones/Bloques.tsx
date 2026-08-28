@@ -92,7 +92,14 @@ export function Intro() {
 
 export function BandaGarantias() {
   return (
-    <Seccion>
+    <Seccion
+      resplandores={
+        <>
+          <span className="resplandor resplandor-apoyo -left-28 top-0 size-96" />
+          <span className="resplandor resplandor-solar -right-20 bottom-4 size-72" />
+        </>
+      }
+    >
       <Revelar className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" paso={90}>
         {GARANTIAS.map((g, i) => (
           <article
@@ -159,7 +166,7 @@ export function Marcas() {
   if (marcas.length === 0) return null;
 
   return (
-    <Seccion fondo="alt" espaciado="compacto">
+    <Seccion fondo="degradado" espaciado="compacto">
       <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
         Trabajamos con {marcas.length} marcas
       </p>
@@ -171,10 +178,10 @@ export function Marcas() {
           <Link
             key={m.nombre}
             to={`/catalogo?q=${encodeURIComponent(m.nombre)}`}
-            className="group inline-flex items-center gap-2 rounded-marca-pildora border border-borde bg-fondo px-4 py-2 text-sm font-bold text-texto-medio shadow-panel transition-all duration-200 hover:-translate-y-0.5 hover:border-apoyo hover:text-apoyo hover:sombra-flotante motion-reduce:transform-none"
+            className="group inline-flex items-center gap-2 rounded-marca-pildora border border-borde bg-fondo px-4 py-2 text-sm font-bold text-texto-medio shadow-panel transition-all duration-200 hover:-translate-y-0.5 hover:border-apoyo hover:text-apoyo-texto hover:sombra-flotante motion-reduce:transform-none"
           >
             {m.nombre}
-            <span className="rounded-marca-pildora bg-superficie-alta px-1.5 py-0.5 text-[11px] tabular-nums text-texto-suave transition-colors group-hover:bg-apoyo-tenue group-hover:text-apoyo">
+            <span className="rounded-marca-pildora bg-superficie-alta px-1.5 py-0.5 text-[11px] tabular-nums text-texto-suave transition-colors group-hover:bg-apoyo-tenue group-hover:text-apoyo-texto">
               {m.n}
             </span>
           </Link>
@@ -267,7 +274,7 @@ export function ComoComprar() {
               rectángulo y da la sensación de capas; el dato sale de
               site.config, no está escrito a mano. */}
           <div className="absolute -bottom-6 -right-4 hidden rounded-marca-lg border border-borde bg-fondo p-5 sombra-elevada sm:block lg:-right-8">
-            <p className="text-3xl font-bold tracking-tight text-apoyo">
+            <p className="text-3xl font-bold tracking-tight text-apoyo-texto">
               {aniosDeTrayectoria(ANIO_INICIO_COMERCIAL)} años
             </p>
             <p className="mt-1 max-w-[9rem] text-xs leading-snug text-texto-medio">
@@ -326,7 +333,7 @@ export function Tienda() {
   const tel = (n: string) => n.replace(/\s/g, '');
 
   return (
-    <Seccion fondo="alt">
+    <Seccion fondo="degradado">
       <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch">
         <div className="rounded-marca-lg border border-borde bg-fondo p-8 sm:p-10">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-marca-texto">

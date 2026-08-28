@@ -6,6 +6,7 @@ import Seccion, { TituloSeccion } from '../components/Seccion';
 import Revelar from '../components/Revelar';
 import Hero from '../components/secciones/Hero';
 import CarruselCategorias from '../components/secciones/CarruselCategorias';
+import Impacto from '../components/secciones/Impacto';
 import {
   BandaGarantias,
   Intro,
@@ -77,9 +78,10 @@ export default function Home({ segmento }: { segmento: Segmento }) {
       <BandaGarantias />
       <Marcas />
       <CarruselCategorias />
+      <Impacto />
 
       <FranjaProductos
-        fondo="alt"
+        fondo="degradado"
         etiqueta="Catálogo"
         titulo="Productos destacados"
         bajada="Equipo disponible para despacho inmediato."
@@ -104,7 +106,7 @@ function FranjaProductos({
   cargando,
   segmento,
 }: {
-  fondo?: 'base' | 'alt';
+  fondo?: 'base' | 'alt' | 'degradado';
   etiqueta?: string;
   titulo: string;
   bajada: string;

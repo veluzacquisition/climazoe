@@ -12,8 +12,14 @@ interface Props {
   children: React.ReactNode;
   /** 'claro' = base blanca; 'oscuro' = negro de marca. */
   tono?: 'claro' | 'oscuro';
-  /** 'base' usa el fondo del tono; 'alt' usa la superficie, para bandear. */
-  fondo?: 'base' | 'alt';
+  /**
+   * 'base'      — el fondo del tono.
+   * 'alt'       — la superficie, para bandear.
+   * 'degradado' — de blanco a superficie. Rompe el corte recto entre franjas:
+   *               en una página larga, seis rectángulos de color plano uno
+   *               tras otro se leen como un formulario, no como un sitio.
+   */
+  fondo?: 'base' | 'alt' | 'degradado';
   /** Espaciado vertical. 'none' cuando el hijo maneja el suyo. */
   espaciado?: 'normal' | 'amplio' | 'compacto' | 'none';
   /** Envuelve el contenido en `.contenedor`. */
@@ -47,7 +53,11 @@ export default function Seccion({
 }: Props) {
   const clases = [
     tono === 'oscuro' ? 'tono-oscuro' : '',
-    fondo === 'alt' ? 'bg-superficie' : 'bg-fondo',
+    fondo === 'alt'
+      ? 'bg-superficie'
+      : fondo === 'degradado'
+        ? 'bg-[linear-gradient(to_bottom,var(--fondo),var(--superficie))]'
+        : 'bg-fondo',
     ESPACIADO[espaciado],
     // `isolate` + `overflow-hidden` sólo cuando hay decoración: el
     // desenfoque de los resplandores se sale del borde y forzaría scroll

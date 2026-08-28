@@ -23,13 +23,22 @@ interface Cifra {
 export default function Impacto() {
   const { datos } = useCatalogo();
 
+  // Las marcas se cuentan sobre el catálogo, no a mano.
+  const marcas = datos
+    ? new Set(datos.productos.map((p) => p.marca).filter(Boolean)).size || null
+    : null;
+
+  // Sólo cifras que salen de datos propios y verificables. "Proyectos
+  // instalados" estaba acá con un guion porque no lo sabemos: en desarrollo se
+  // veía como pendiente, pero en producción quedaba una tarjeta con un "—"
+  // que parece un error de carga. Vuelve cuando llegue el número real.
   const cifras: Cifra[] = [
     // Ojo: acá se cuenta desde la actividad comercial, no desde la
     // constitución, porque la etiqueta habla de VENDER.
     { valor: aniosDeTrayectoria(ANIO_INICIO_COMERCIAL), sufijo: '', etiqueta: 'Años vendiendo energía solar' },
     { valor: datos?.productos.length ?? null, sufijo: '', etiqueta: 'Productos en catálogo' },
-    { valor: datos?.categorias.length ?? null, sufijo: '', etiqueta: 'Categorías' },
-    { valor: null, etiqueta: 'Proyectos instalados' },
+    { valor: marcas, sufijo: '', etiqueta: 'Marcas representadas' },
+    { valor: datos?.categorias.length ?? null, sufijo: '', etiqueta: 'Líneas de producto' },
   ];
 
   // Bloque oscuro con cifras verdes: es el patrón de "control energético"
@@ -50,7 +59,7 @@ export default function Impacto() {
         {cifras.map((c) => (
           <div
             key={c.etiqueta}
-            className="rounded-marca-lg border border-borde bg-superficie px-6 py-9 text-center"
+            className="group rounded-marca-lg border border-borde bg-superficie px-6 py-9 text-center transition-all duration-300 hover:-translate-y-1 hover:border-marca-borde motion-reduce:transform-none"
           >
             <dt className="sr-only">{c.etiqueta}</dt>
             <dd>
@@ -70,7 +79,7 @@ export default function Impacto() {
       </dl>
 
       <div className="mx-auto mt-8 max-w-xl">
-        <Pendiente nota="Número real de proyectos, clientes y kWp instalados por Clima Zoe." />
+        <Pendiente nota="Proyectos instalados, clientes y kWp en operación: faltan los números reales." />
       </div>
     </Seccion>
   );
@@ -115,7 +124,7 @@ function Contador({ hasta, sufijo = '' }: { hasta: number; sufijo?: string }) {
   }, [hasta]);
 
   return (
-    <span ref={ref} className="block text-5xl font-bold tracking-tight text-marca sm:text-6xl">
+    <span ref={ref} className="block text-5xl font-bold tracking-tight text-marca-texto sm:text-6xl">
       {valor.toLocaleString('es-CO')}
       {sufijo}
     </span>

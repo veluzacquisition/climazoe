@@ -440,7 +440,7 @@ function Dato({
       </p>
       <p
         className={`mt-2 text-2xl font-bold tracking-tight tabular-nums ${
-          destacado ? 'text-apoyo' : 'text-texto'
+          destacado ? 'text-apoyo-texto' : 'text-texto'
         }`}
       >
         {valor}
@@ -558,7 +558,7 @@ function SolicitudCotizacion({
       <button
         type="button"
         onClick={() => setAbierto(true)}
-        className="mt-4 w-full rounded-marca border border-dashed border-borde py-3 text-sm font-bold text-apoyo transition-colors hover:border-apoyo hover:bg-apoyo-tenue"
+        className="mt-4 w-full rounded-marca border border-dashed border-borde py-3 text-sm font-bold text-apoyo-texto transition-colors hover:border-apoyo hover:bg-apoyo-tenue"
       >
         O déjenos sus datos y le enviamos la cotización
       </button>

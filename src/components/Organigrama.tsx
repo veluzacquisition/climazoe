@@ -96,7 +96,7 @@ function Pieza({
       className={`group inline-flex items-center gap-2 whitespace-nowrap rounded-marca px-3.5 py-2.5 text-sm font-semibold transition-all duration-200 ${
         activa
           ? 'bg-apoyo text-zoe-white shadow-panel'
-          : 'text-texto-medio hover:bg-superficie hover:text-apoyo'
+          : 'text-texto-medio hover:bg-superficie hover:text-apoyo-texto'
       }`}
     >
       <IconoCategoria slug={icono} />
@@ -131,7 +131,7 @@ function SubPieza({
       className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-marca-pildora border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
         activa
           ? 'border-marca-borde bg-marca-tenue text-marca-texto'
-          : 'border-borde text-texto-medio hover:border-apoyo hover:text-apoyo'
+          : 'border-borde text-texto-medio hover:border-apoyo hover:text-apoyo-texto'
       }`}
     >
       {texto}

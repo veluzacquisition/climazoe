@@ -54,6 +54,13 @@ export function posterDeVideo(id: string, ancho = 1600): string {
 
 /** Recursos del hero. Cambiar una foto es cambiar su id acá. */
 export const MEDIA_HERO = {
+  /**
+   * Pieza de marca del hero: el globo con el lettering "Clima Zoe".
+   *
+   * Ojo, NO es una fotografía de fondo: trae su propia tipografía, así que no
+   * admite velo ni texto encima. Va entera, a un lado del titular.
+   */
+  marcaGlobo: 'v1787930438/ChatGPT_Image_Aug_28_2026_10_20_05_AM_mm9uye.png',
   panelesTecho: 'v1786994783/Solar_panels_on_roof_2K_202608171426_eemhza.jpg',
   instalacion: 'v1786994785/Solar_panel_installation_on_roof_202608171426_c903np.jpg',
   videoInstalacion: 'v1786995026/Initial_Scene_-_2026-08-17_202608171430_mtetym.mp4',

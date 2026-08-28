@@ -51,7 +51,7 @@ export default function EncabezadoPagina({
   const id = FONDOS[fondo];
 
   return (
-    <section className="tono-oscuro relative isolate overflow-hidden bg-zoe-black">
+    <section className="tono-oscuro relative isolate overflow-hidden bg-[#0b4499]">
       <img
         src={imagen(id, 1600)}
         srcSet={imagenSrcSet(id)}
@@ -64,13 +64,15 @@ export default function EncabezadoPagina({
         decoding="async"
         className="absolute inset-0 -z-20 size-full object-cover"
       />
-      {/* Degradado en lugar de un negro plano al 70%: más oscuro arriba
-          —donde entra el encabezado— y más abierto abajo, así la foto se ve
-          de verdad en vez de quedar apagada de forma uniforme. El tinte va en
-          el azul de la marca, no en negro. */}
+      {/* Velo en AZUL REY, no en negro.
+          El anterior tiraba a #001227 y dejaba el encabezado casi negro; al
+          entrar a la sección de abajo —azul rey pleno— el salto se veía como
+          un corte. Este comparte familia con el resto del sitio: se abre en
+          el centro para que la foto respire y cierra abajo para empalmar con
+          lo que venga. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_18_42/0.86),rgb(0_36_82/0.72)_55%,rgb(0_18_42/0.88))]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(8_50_120/0.88),rgb(11_68_153/0.70)_55%,rgb(8_50_120/0.90))]"
       />
       <span
         aria-hidden="true"
@@ -88,7 +90,7 @@ export default function EncabezadoPagina({
               <span key={m.texto}>
                 {i > 0 && <span className="mx-2">/</span>}
                 {m.a ? (
-                  <Link to={m.a} className="transition-colors hover:text-marca">
+                  <Link to={m.a} className="transition-colors hover:text-marca-texto">
                     {m.texto}
                   </Link>
                 ) : (
@@ -101,7 +103,7 @@ export default function EncabezadoPagina({
 
         {etiqueta && (
           <p
-            className="entra-hero chip mx-auto border border-marca-borde bg-black/40 text-marca backdrop-blur-sm"
+            className="entra-hero chip mx-auto border border-marca-borde bg-black/40 text-marca-texto backdrop-blur-sm"
             style={{ '--retraso': '60ms' } as React.CSSProperties}
           >
             {etiqueta}

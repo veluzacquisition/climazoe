@@ -64,7 +64,7 @@ export default function Servicios() {
               className="acento-tarjeta group relative h-full overflow-hidden rounded-marca-lg border border-borde bg-fondo p-7 shadow-panel transition-all duration-300 hover:-translate-y-1.5 hover:border-transparent hover:sombra-flotante motion-reduce:transform-none sm:p-8"
             >
               <div className="flex items-start gap-5">
-                <span className="flex size-14 shrink-0 items-center justify-center rounded-marca bg-apoyo-tenue text-apoyo transition-all duration-300 group-hover:bg-apoyo group-hover:text-zoe-white motion-reduce:transition-none">
+                <span className="flex size-14 shrink-0 items-center justify-center rounded-marca bg-apoyo-tenue text-apoyo-texto transition-all duration-300 group-hover:bg-apoyo group-hover:text-zoe-white motion-reduce:transition-none">
                   <IconoServicio nombre={s.icono} />
                 </span>
                 <div className="min-w-0">
@@ -74,7 +74,7 @@ export default function Servicios() {
                   >
                     {String(i + 1).padStart(2, '0')}
                   </p>
-                  <h3 className="mt-1 text-xl font-bold leading-snug transition-colors group-hover:text-apoyo">
+                  <h3 className="mt-1 text-xl font-bold leading-snug transition-colors group-hover:text-apoyo-texto">
                     {s.titulo}
                   </h3>
                   <p className="mt-2.5 leading-relaxed text-texto-medio">{s.detalle}</p>
@@ -98,7 +98,7 @@ export default function Servicios() {
       </Seccion>
 
       {/* --- Líneas de producto -------------------------------------------- */}
-      <Seccion fondo="alt">
+      <Seccion fondo="degradado">
         <TituloSeccion
           etiqueta="Catálogo"
           titulo="Qué comercializamos"
@@ -173,7 +173,7 @@ export default function Servicios() {
       {/* --- Certificaciones --------------------------------------------------
           Rotuladas como certificación de los EQUIPOS, no de Clima Zoe:
           presentarlas como propias sería atribuirse algo que no se tiene. */}
-      <Seccion fondo="alt" espaciado="compacto">
+      <Seccion fondo="degradado" espaciado="compacto">
         <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-texto-suave">
           Los equipos que comercializamos cumplen
         </p>

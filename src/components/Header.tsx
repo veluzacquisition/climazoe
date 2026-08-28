@@ -212,7 +212,7 @@ function PestanaTienda({ texto, a }: { texto: string; a: string }) {
                 <Link
                   to={`/catalogo?categoria=${c.slug}`}
                   onClick={() => setAbierto(false)}
-                  className="flex items-center justify-between gap-3 rounded-marca px-3 py-2 text-sm font-semibold text-texto-medio transition-colors hover:bg-superficie hover:text-apoyo"
+                  className="flex items-center justify-between gap-3 rounded-marca px-3 py-2 text-sm font-semibold text-texto-medio transition-colors hover:bg-superficie hover:text-apoyo-texto"
                 >
                   <span className="truncate">{c.nombre}</span>
                   <span className="shrink-0 text-xs tabular-nums text-texto-suave">
@@ -225,7 +225,7 @@ function PestanaTienda({ texto, a }: { texto: string; a: string }) {
           <Link
             to={a}
             onClick={() => setAbierto(false)}
-            className="mt-3 flex items-center justify-center gap-1.5 border-t border-borde-suave pt-3 text-sm font-bold text-apoyo transition-colors hover:text-apoyo-fuerte"
+            className="mt-3 flex items-center justify-center gap-1.5 border-t border-borde-suave pt-3 text-sm font-bold text-apoyo-texto transition-colors hover:text-apoyo-fuerte"
           >
             Ver todo el catálogo
             <span aria-hidden="true">→</span>

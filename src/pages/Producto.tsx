@@ -140,7 +140,7 @@ export default function Producto({ segmento }: { segmento: Segmento }) {
               cotizar. */}
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
             {producto.marca && (
-              <span className="rounded-marca border border-apoyo/30 bg-apoyo-tenue px-3 py-1.5 font-semibold text-apoyo">
+              <span className="rounded-marca border border-apoyo/30 bg-apoyo-tenue px-3 py-1.5 font-semibold text-apoyo-texto">
                 {producto.marca}
               </span>
             )}

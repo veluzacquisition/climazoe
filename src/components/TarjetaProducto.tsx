@@ -76,7 +76,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
           {/* El enlace cubre la tarjeta entera: en horizontal el título es un
               blanco pequeño y obligar a apuntarle es incómodo. Las acciones de
               abajo van por encima con `relative`. */}
-          <Link to={`/producto/${producto.id}`} className="transition-colors hover:text-apoyo">
+          <Link to={`/producto/${producto.id}`} className="transition-colors hover:text-apoyo-texto">
             <span className="absolute inset-0" aria-hidden="true" />
             <span className="line-clamp-2">{esFicha ? producto.sku : producto.nombre}</span>
           </Link>
@@ -95,7 +95,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
                 href={ficha.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-bold text-apoyo transition-colors hover:text-apoyo-fuerte"
+                className="inline-flex items-center gap-1.5 text-[13px] font-bold text-apoyo-texto transition-colors hover:text-apoyo-fuerte"
               >
                 <IconoDescarga />
                 Ficha técnica
@@ -103,7 +103,7 @@ export default function TarjetaProducto({ producto, segmento }: Props) {
             ) : (
               <Link
                 to={`/producto/${producto.id}`}
-                className="inline-flex items-center gap-1.5 text-[13px] font-bold text-apoyo transition-colors hover:text-apoyo-fuerte"
+                className="inline-flex items-center gap-1.5 text-[13px] font-bold text-apoyo-texto transition-colors hover:text-apoyo-fuerte"
               >
                 Ver especificaciones
                 <span aria-hidden="true">→</span>

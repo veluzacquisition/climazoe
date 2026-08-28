@@ -84,7 +84,7 @@ export default function Nosotros() {
               empresa de energía solar. Lo que sí importa —desde cuándo
               trabajamos y desde dónde— queda dicho en prosa. */}
           <div className="rounded-marca-lg border border-apoyo/25 bg-apoyo-tenue p-8 sm:p-10">
-            <p className="text-5xl font-bold tracking-tight text-apoyo">
+            <p className="text-5xl font-bold tracking-tight text-apoyo-texto">
               {aniosDeTrayectoria()} años
             </p>
             <p className="mt-3 text-lg font-semibold">construyendo Clima Zoe</p>

@@ -30,11 +30,7 @@
      (#0060D8 / #0048FC). Es el color institucional de la marca: como letra
      sobre blanco da 5.73:1 y con blanco encima otros 5.73:1, así que sirve
      igual de texto y de relleno. */
-  --zoe-blue: #0060d8;
-  /* Amarillo solar. Muestreado del resplandor del globo del emblema
-     (#F8F800, 3.527 px) y calentado un punto hacia ámbar: el amarillo puro
-     tiene R=G y en relleno grande se lee neón en vez de solar. Con negro
-     encima da 14.68:1; con blanco, 1.43:1, así que el texto va SIEMPRE negro. */
+  --zoe-blue: #1272e6;
   --zoe-yellow: #fad600;
 
   /* --- Superficies -------------------------------------------------------
@@ -48,15 +44,15 @@
   /* Las superficies llevan el azul rey diluido, no un gris. Es lo que da el
      "azul suave" y la sensación de brillo: un gris neutro apaga, un azul al
      6% ilumina y ancla la página a la marca. */
-  --superficie: #edf4fc;      /* azul rey al 6%  — franjas alternas */
-  --superficie-alta: #e0ecfa; /* azul rey al 12% — hover y capas */
-  --borde: #ccdff7;
-  --borde-suave: #e0ecfa;
+  --superficie: #e8f1fd;      /* azul rey al 6%  — franjas alternas */
+  --superficie-alta: #dbeafd; /* azul rey al 12% — hover y capas */
+  --borde: #c7dcf8;
+  --borde-suave: #dbeafd;
 
   /* --- Texto (todos verificados ≥4.5:1 sobre fondo y superficie) --------- */
   --texto: #0c1b2e;       /* 17.33:1 sobre blanco */
   --texto-medio: #3a4a61; /*  9.01:1 */
-  --texto-suave: #5e7089; /*  5.05:1 */
+  --texto-suave: #53657d; /*  5.96:1 blanco · 5.23 superficie · 4.88 superficie-alta */
 
   /* --- Roles de marca ----------------------------------------------------
      Verde = protagonista. Es el color que la gente ya asocia con Clima Zoe,
@@ -73,7 +69,7 @@
   /* TEXTO: el mismo verde como letra sobre blanco da 2.05:1 y es ilegible,
      así que se separa del relleno y se oscurece. Sobre fondo oscuro vuelve
      a ser el verde vivo (ver `.tono-oscuro`). */
-  --marca-texto: #3e7a2f; /* 5.21:1 sobre blanco */
+  --marca-texto: #377028; /* 5.98 blanco · 5.25 superficie · 4.90 superficie-alta */
 
   /* Rojo-naranja = acento puntual, máximo 10-15% de la superficie. Descuentos,
      alertas de stock, urgencia. Nunca compite con el verde. */
@@ -98,10 +94,15 @@
      peleen: el AZUL es la marca y la estructura —enlaces, encabezados,
      secciones profundas—, el VERDE es catálogo y disponibilidad, y el
      AMARILLO es conversación. Cada uno tiene un trabajo y no invade el otro. */
+  /* RELLENO: el azul vivo, para botones, píldoras activas y distintivos. */
   --apoyo: var(--zoe-blue);
-  --apoyo-fuerte: #004dad;
-  --apoyo-tenue: rgb(0 96 216 / 0.08);
-  --apoyo-borde: rgb(0 96 216 / 0.28);
+  --apoyo-fuerte: #0b57b8;
+  /* TEXTO: el mismo azul como letra da 4.03:1 sobre la superficie azulada y
+     3.76 sobre la alta — por debajo del mínimo—. Se separa igual que el
+     verde: el vivo rellena, este escribe. 5.72 / 5.02 / 4.68. */
+  --apoyo-texto: #0d63cc;
+  --apoyo-tenue: rgb(18 114 230 / 0.09);
+  --apoyo-borde: rgb(18 114 230 / 0.30);
   --apoyo-contraste: var(--zoe-white);
 
   /* --- Estados ----------------------------------------------------------- */
@@ -157,24 +158,31 @@
 .tono-oscuro {
   /* Navy profundo en vez de negro puro. Sale de mezclar el navy del globo
      (#284978) al 42% sobre negro, así que es color de marca y no un azul
-     cualquiera; da 16.59:1 con blanco, casi lo mismo que el #0D1B3E del
-     referente. El negro pleno se queda sólo para el velo sobre fotografía:
-     como fondo de sección se lee duro, y estamos vendiendo equipo caro. */
-  --fondo: #002452;            /* azul rey profundo — 15.28:1 con blanco */
-  --superficie: #012f68;
-  --superficie-alta: #0a3d7d;
-  --borde: #1c4d8f;
-  --borde-suave: #123f78;
+     El azul de las secciones profundas es REY, no marino. El #002452 anterior
+     era casi negro: aportaba contraste de sobra (15:1) pero apagaba la página
+     y hacía que cada franja oscura pareciera un agujero. Este #0b4499 sigue
+     dando 9,13:1 con blanco —muy por encima del 4,5 exigido— y se lee como
+     color, no como ausencia de luz. El verde de marca encima da 4,45:1 y el
+     amarillo 6,38:1, así que los tres acentos siguen funcionando. */
+  --fondo: #0b4499;            /* azul REY — 9.13:1 con blanco */
+  --superficie: #0d4ea9;
+  --superficie-alta: #1259ba;
+  --borde: #2f6fc9;
+  --borde-suave: #245fb8;
 
   --texto: var(--zoe-white);
-  --texto-medio: #cfe0f5; /* 11.4:1 sobre el azul profundo */
-  --texto-suave: #a8c2e4; /*  8.0:1 */
+  --texto-medio: #d7e6fa; /* 7.4:1 sobre el azul rey */
+  --apoyo-texto: var(--zoe-white);
+  --texto-suave: #c3d8f3; /*  6.27 fondo · 5.39 superficie · 4.56 alta */
 
   --apoyo-tenue: rgb(255 255 255 / 0.08);
   --apoyo-borde: rgb(255 255 255 / 0.22);
 
-  /* Sobre negro el verde vivo sí funciona como letra: 10.24:1. */
-  --marca-texto: var(--zoe-green);
+  /* Sobre el azul rey el verde vivo del logo cae a 4.45:1 —justo por debajo
+     del mínimo— y a 3.82 sobre la superficie. Se aclara un punto: sigue
+     leyéndose como el verde de la marca y da 5.98 / 5.14. El vivo se queda
+     para los rellenos, que no tienen que cumplir contraste de texto. */
+  --marca-texto: #9ce389;
   --marca-tenue: rgb(104 203 78 / 0.14);
   --marca-borde: rgb(104 203 78 / 0.35);
 
@@ -226,6 +234,7 @@
 
   --color-apoyo: var(--apoyo);
   --color-apoyo-fuerte: var(--apoyo-fuerte);
+  --color-apoyo-texto: var(--apoyo-texto);
   --color-apoyo-tenue: var(--apoyo-tenue);
   --color-apoyo-borde: var(--apoyo-borde);
   --color-apoyo-contraste: var(--apoyo-contraste);
@@ -497,7 +506,7 @@
   }
 
   .resplandor-marca { background: rgb(104 203 78 / 0.16); }
-  .resplandor-apoyo { background: rgb(0 96 216 / 0.10); }
+  .resplandor-apoyo { background: rgb(18 114 230 / 0.13); }
   .resplandor-solar { background: rgb(250 214 0 / 0.14); }
 
   /* --- Malla de puntos ---------------------------------------------------
