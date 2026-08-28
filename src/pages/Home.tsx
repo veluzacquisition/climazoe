@@ -5,6 +5,7 @@ import TarjetaProducto from '../components/TarjetaProducto';
 import Seccion, { TituloSeccion } from '../components/Seccion';
 import Revelar from '../components/Revelar';
 import Hero from '../components/secciones/Hero';
+import CintaAnuncios from '../components/secciones/CintaAnuncios';
 import CarruselCategorias from '../components/secciones/CarruselCategorias';
 import Impacto from '../components/secciones/Impacto';
 import {
@@ -74,6 +75,7 @@ export default function Home({ segmento }: { segmento: Segmento }) {
   return (
     <>
       <Hero />
+      <CintaAnuncios />
       <Intro />
       <BandaGarantias />
       <Marcas />

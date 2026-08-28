@@ -63,18 +63,14 @@ export default function Hero() {
           // prioridad para que no aparezca el fondo plano y luego salte.
           fetchPriority="high"
           decoding="sync"
-          // Encuadre sobre el GLOBO, no sobre la imagen entera.
+          // Imagen completa, sin recortar.
           //
-          // La pieza trae su propio lettering "Clima Zoe" a la derecha, y a
-          // sangre completa caía justo detrás del titular: "Clima" se cruzaba
-          // con "empresas e industria" y "Zoe" con los botones. Dos textos
-          // superpuestos, ilegibles los dos.
-          //
-          // El elemento se hace más ancho que su contenedor y se ancla a la
-          // izquierda: sólo entra en cuadro el 57% izquierdo de la imagen —el
-          // globo— y las letras quedan fuera. El logotipo ya está en el
-          // encabezado, así que repetirlo aquí tampoco aportaba nada.
-          className="absolute inset-y-0 left-0 -z-20 h-full w-[175%] max-w-none object-cover object-left"
+          // Ojo con lo que implica: la pieza trae su propio lettering "Clima
+          // Zoe" a la derecha y cae detrás del titular. Para ver la versión
+          // encuadrada sólo sobre el globo, cambiar esta línea por:
+          //   absolute inset-y-0 left-0 -z-20 h-full w-[175%] max-w-none
+          //   object-cover object-left
+          className="absolute inset-0 -z-20 size-full object-cover"
         />
       )}
 

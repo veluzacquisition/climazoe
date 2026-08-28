@@ -79,7 +79,12 @@
   --acento-contraste: var(--zoe-black); /* 4.85:1 vs 4.33:1 del blanco */
   /* El rojo puro como letra sobre su propio fondo tenue cae a ~4.4:1; esta
      versión oscurecida da 5.15:1. El #D6492E queda para rellenos sólidos. */
-  --acento-texto: #c14229;
+  --acento-texto: #b83c24; /* 5.66 blanco · 4.97 superficie · 4.64 alta */
+  /* El amarillo como letra da 1.4:1 sobre blanco: ilegible. Esta es su
+     versión escribible, para las tarjetas donde el ámbar es el color. */
+  --solar-texto: #7d6300;  /* 5.74 · 5.04 · 4.70 */
+  --solar-tenue: rgb(250 214 0 / 0.16);
+  --solar-borde: rgb(196 168 0 / 0.35);
 
   /* Amarillo = el CTA de contacto. Es el color con más pregnancia de la
      paleta sobre la foto del hero (9.9:1 contra el velo) y en la marca
@@ -231,6 +236,9 @@
   --color-solar: var(--solar);
   --color-solar-fuerte: var(--solar-fuerte);
   --color-solar-contraste: var(--solar-contraste);
+  --color-solar-texto: var(--solar-texto);
+  --color-solar-tenue: var(--solar-tenue);
+  --color-solar-borde: var(--solar-borde);
 
   --color-apoyo: var(--apoyo);
   --color-apoyo-fuerte: var(--apoyo-fuerte);
@@ -542,5 +550,41 @@
 
   @media (prefers-reduced-motion: reduce) {
     .acento-tarjeta::after { transition: none; }
+  }
+}
+
+@layer utilities {
+  /* Cinta de anuncios que se desplaza sola.
+     
+     Va con dos copias idénticas del contenido y una traslación del -50%: al
+     terminar la primera, la segunda está exactamente donde estaba la primera
+     al empezar, así el bucle no tiene costura. La alternativa —duplicar en
+     JavaScript y medir anchos— hace lo mismo con más piezas que se pueden
+     romper.
+
+     `width: max-content` es obligatorio: sin él, la pista se ajusta al
+     contenedor y las dos copias se comprimen en vez de salirse. */
+  .cinta {
+    display: flex;
+    width: max-content;
+    animation: correr-cinta 42s linear infinite;
+  }
+
+  .cinta:hover { animation-play-state: paused; }
+
+  @keyframes correr-cinta {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Sin movimiento, la cinta se queda quieta y se puede desplazar a mano.
+     No se oculta: la información que lleva —pagos, envíos, garantía— es
+     contenido, no decoración. */
+  @media (prefers-reduced-motion: reduce) {
+    .cinta {
+      animation: none;
+      overflow-x: auto;
+      max-width: 100%;
+    }
   }
 }

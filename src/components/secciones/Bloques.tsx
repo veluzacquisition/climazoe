@@ -27,30 +27,69 @@ import BotonAgendar from '../BotonAgendar';
  * era una franja fina de cuatro palabras; como tarjetas sostienen el peso de
  * lo que se vende sin volverse un muro de texto.
  */
+/**
+ * Cada tarjeta lleva su propio color de la paleta.
+ *
+ * Cuatro cajas idénticas en gris se leen como una lista; cuatro colores
+ * distintos se leen como cuatro razones. Se usan los cuatro que ya tiene la
+ * marca —azul, verde, ámbar y coral— así que no entra ningún color nuevo.
+ *
+ * Ojo con la separación relleno/texto: el amarillo vivo como letra da 1.4:1
+ * y es ilegible, por eso cada color tiene su token `-texto` verificado. Los
+ * cuatro pasan 4.5:1 sobre las tres superficies del sitio.
+ */
 const GARANTIAS = [
   {
     t: 'Asesoría técnica',
     s: 'Criterio antes de vender',
     d: 'Dimensionamos según su consumo real, no según lo que queramos vender.',
     icono: <IconoChat />,
+    color: {
+      texto: 'text-apoyo-texto',
+      fondo: 'bg-apoyo-tenue',
+      borde: 'group-hover:border-apoyo',
+      relleno: 'group-hover:bg-apoyo group-hover:text-zoe-white',
+      barra: 'from-apoyo to-apoyo-fuerte',
+    },
   },
   {
     t: 'Catálogo con respaldo',
     s: 'Equipos certificados',
     d: 'Paneles, baterías e inversores de marcas con norma CE, IEC, UL y RETIE.',
     icono: <IconoEscudo />,
+    color: {
+      texto: 'text-marca-texto',
+      fondo: 'bg-marca-tenue',
+      borde: 'group-hover:border-marca',
+      relleno: 'group-hover:bg-marca group-hover:text-marca-contraste',
+      barra: 'from-marca to-marca-fuerte',
+    },
   },
   {
     t: 'Envíos a toda Colombia',
     s: 'Cobertura nacional',
     d: 'Despachamos a cualquier municipio y coordinamos la entrega en obra.',
     icono: <IconoCamion />,
+    color: {
+      texto: 'text-solar-texto',
+      fondo: 'bg-solar-tenue',
+      borde: 'group-hover:border-solar',
+      relleno: 'group-hover:bg-solar group-hover:text-solar-contraste',
+      barra: 'from-solar to-solar-fuerte',
+    },
   },
   {
     t: 'Venta e instalación',
     s: 'De principio a fin',
     d: 'No entregamos una caja: montamos el sistema y lo dejamos funcionando.',
     icono: <IconoLlave />,
+    color: {
+      texto: 'text-acento-texto',
+      fondo: 'bg-acento-tenue',
+      borde: 'group-hover:border-acento',
+      relleno: 'group-hover:bg-acento group-hover:text-zoe-white',
+      barra: 'from-acento to-acento-fuerte',
+    },
   },
 ];
 
@@ -104,23 +143,33 @@ export function BandaGarantias() {
         {GARANTIAS.map((g, i) => (
           <article
             key={g.t}
-            className="acento-tarjeta group relative h-full overflow-hidden rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel transition-all duration-300 hover:-translate-y-1.5 hover:border-transparent hover:sombra-flotante motion-reduce:transform-none"
+            className={`group relative h-full overflow-hidden rounded-marca-lg border border-borde bg-fondo p-6 shadow-panel transition-all duration-300 hover:-translate-y-1.5 hover:sombra-flotante motion-reduce:transform-none ${g.color.borde}`}
           >
+            {/* Barra de color arriba: crece desde la izquierda al pasar el
+                mouse. Es lo que convierte un rectángulo con borde en una
+                tarjeta que responde, y no cuesta nada. */}
+            <span
+              aria-hidden="true"
+              className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-linear-to-r transition-transform duration-500 group-hover:scale-x-100 motion-reduce:transition-none ${g.color.barra}`}
+            />
+
             <div className="flex items-start justify-between">
-              <span className="flex size-12 items-center justify-center rounded-marca bg-marca-tenue text-marca-texto transition-all duration-300 group-hover:bg-marca group-hover:text-marca-contraste motion-reduce:transition-none">
+              <span
+                className={`flex size-12 items-center justify-center rounded-marca transition-all duration-300 motion-reduce:transition-none ${g.color.fondo} ${g.color.texto} ${g.color.relleno}`}
+              >
                 {g.icono}
               </span>
               {/* El número no ordena una secuencia —no hay pasos acá— sino que
                   da ritmo a la fila y ancla la esquina que si no queda vacía. */}
               <span
                 aria-hidden="true"
-                className="text-2xl font-bold tabular-nums text-borde transition-colors duration-300 group-hover:text-marca-tenue"
+                className={`text-2xl font-bold tabular-nums text-borde transition-colors duration-300 ${g.color.texto.replace('text-', 'group-hover:text-')}`}
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
             </div>
             <h3 className="mt-6 text-lg font-bold leading-snug">{g.t}</h3>
-            <p className="mt-1 text-sm font-semibold text-marca-texto">{g.s}</p>
+            <p className={`mt-1 text-sm font-semibold ${g.color.texto}`}>{g.s}</p>
             <p className="mt-3 text-sm leading-relaxed text-texto-medio">{g.d}</p>
           </article>
         ))}
